@@ -1,3 +1,4 @@
+// INTERFACES
 export interface ILoginCredentials {
 	email: string;
 	password: string;
@@ -24,6 +25,8 @@ export interface ILoginUserResponse {
 	};
 };
 
+
+// TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
 
 export type TGraphQLError = {

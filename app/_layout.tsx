@@ -1,15 +1,15 @@
-import { useAuthStore } from '@/shared/context/authStore.context';
-import { Stack } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
+import { Stack } from 'expo-router';
 import { useEffect } from 'react';
+
+// CONTEXT AND STORE
+import { useAuthStore } from '@/shared/context/authStore.context';
 
 export default function RootLayout() {
 	useEffect(() => {
 		const updateTokenStates = async () => {
 			const secureAccessToken = await SecureStore.getItemAsync('accessToken');
-      console.log('secureAccessToken from SecureStore:', secureAccessToken);
 			const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
-      console.log('secureRefreshToken from SecureStore:', secureRefreshToken);
 
 			if (secureAccessToken && secureRefreshToken) {
 				useAuthStore

@@ -1,5 +1,9 @@
-import { useAuthStore } from '../context/authStore.context';
 import * as SecureStore from 'expo-secure-store';
+
+// CONTEXT AND STORE
+import { useAuthStore } from '../context/authStore.context';
+
+// TYPES
 import {
 	IRefreshTokensResponse,
 	TGraphQLError,

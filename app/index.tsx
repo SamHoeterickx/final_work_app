@@ -3,11 +3,18 @@ import { Button, Text, View } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useState } from 'react';
 
+// CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
+
+// TYPES
+import { ILoginUserResponse, TGraphQLResponse } from '@/shared/types/types';
+
+// UTILS
+import { graphqlFetch } from '@/shared/utils/api.utils';
+
+// GRAPHQL
 import { LOGIN_USER } from '@/shared/graphql/mutations';
 import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
-import { ILoginUserResponse, TGraphQLResponse } from '@/shared/types/types';
-import { graphqlFetch } from '@/shared/utils/api.utils';
 
 const variables = {
 	email: 'sam+2@mail.com',
@@ -27,7 +34,6 @@ export default function Index() {
 		});
 
 		const response: TGraphQLResponse<ILoginUserResponse> = await data.json();
-		console.log(response)
 
 		const newAccessToken = response.data?.loginUser?.accessToken;
 		const newRefreshToken = response.data?.loginUser?.refreshToken;
@@ -42,7 +48,6 @@ export default function Index() {
 
 	const getChapter = async () => {
 		const response = await graphqlFetch(GET_ALL_CHAPTERS);
-		console.log(response);
 		setTest(JSON.stringify(response, null, 2));
 	};
 
