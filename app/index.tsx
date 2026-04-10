@@ -52,8 +52,8 @@ export default function Index() {
 			>
 				<Text>Edit app/index.tsx to edit this screen.</Text>
 
-				<Button title="press" onPress={handleOnPress} />
-				<Button title="tokens" onPress={getChapter} />
+				<Button title="login" onPress={handleOnPress} />
+				<Button title="get chapters" onPress={getChapter} />
 			</View>
 		</View>
 	);

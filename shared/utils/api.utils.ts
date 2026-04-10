@@ -1,13 +1,19 @@
 import { useAuthStore } from '../context/authStore.context';
-import { IRefreshTokensResponse, TGraphQLError, TGraphQLResponse, TTokenRefreshSubscriber } from '../types/types';
-
+import {
+	IRefreshTokensResponse,
+	TGraphQLError,
+	TGraphQLResponse,
+	TTokenRefreshSubscriber,
+} from '../types/types';
 
 const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
 
 let isRefreshing = false;
 let refreshSubscribers: TTokenRefreshSubscriber[] = [];
 
-const addTokenRefreshSubscriber = (subscriber: TTokenRefreshSubscriber): void => {
+const addTokenRefreshSubscriber = (
+	subscriber: TTokenRefreshSubscriber,
+): void => {
 	refreshSubscribers.push(subscriber);
 };
 
@@ -16,8 +22,25 @@ const onRefreshed = (token: string | null): void => {
 	refreshSubscribers = [];
 };
 
-export const graphqlFetch = async <T = unknown>(query: string, variables: Record<string, unknown> = {}): Promise<T | undefined> => {
-	const performRequest = async (token: string,): Promise<{ response: Response; data: TGraphQLResponse<T> }> => {
+/**
+ * Fetch GraphQL Query or Mutation with authentication
+ * Gets the AccessToken and RefreshToken from authStore
+ *
+ * @param query - string;
+ * @param variables - (optional) object containing the variables for the query
+ *
+ * @returns
+ * a Promise
+ *
+ * @throws an Error if session is Expired
+ */
+export const graphqlFetch = async <T = unknown>(
+	query: string,
+	variables: Record<string, unknown> = {},
+): Promise<T | undefined> => {
+	const performRequest = async (
+		token: string,
+	): Promise<{ response: Response; data: TGraphQLResponse<T> }> => {
 		const headers = new Headers({
 			'Content-Type': 'application/json',
 			Accept: 'application/json',
@@ -40,7 +63,7 @@ export const graphqlFetch = async <T = unknown>(query: string, variables: Record
 
 	const currentToken = useAuthStore.getState().accessToken;
 	if (!currentToken) {
-		return undefined;
+		throw new Error(`Unauthorized: failed to find token`);
 	}
 
 	const { response, data } = await performRequest(currentToken);
@@ -87,7 +110,8 @@ export const graphqlFetch = async <T = unknown>(query: string, variables: Record
 
 				const newAccessToken = refreshData.data?.refreshTokens?.accessToken;
 				const newRefreshToken = refreshData.data?.refreshTokens?.refreshToken;
-				if (!newAccessToken || !newRefreshToken) throw new Error('Failed to recieve new token');
+				if (!newAccessToken || !newRefreshToken)
+					throw new Error('Failed to recieve new token');
 
 				useAuthStore.getState().setTokens(newAccessToken, newRefreshToken);
 				isRefreshing = false;
@@ -99,7 +123,7 @@ export const graphqlFetch = async <T = unknown>(query: string, variables: Record
 				isRefreshing = false;
 				useAuthStore.getState().logout();
 				onRefreshed(null);
-				throw new Error('Sessie verlopen');
+				throw new Error(`${error instanceof Error ? error.message : String(error)}`);
 			}
 		} else {
 			return new Promise<T | undefined>((resolve, reject) => {
@@ -108,7 +132,7 @@ export const graphqlFetch = async <T = unknown>(query: string, variables: Record
 						const retryResult = await performRequest(newToken);
 						resolve(retryResult.data.data);
 					} else {
-						reject(new Error('Sessie verlopen'));
+						reject(new Error('Session Expired'));
 					}
 				});
 			});
@@ -117,7 +141,21 @@ export const graphqlFetch = async <T = unknown>(query: string, variables: Record
 	return data.data;
 };
 
-export const graphFetchAuth = async (query: string, variables: Record<string, unknown> = {}): Promise<{ response: Response; data: TGraphQLResponse } | undefined> => {
+/**
+ * Fetch GraphQL authentication Query or Mutation
+ *
+ * @param query - string;
+ * @param variables - (optional) object containing the variables for the query
+ *
+ * @returns
+ * a Promise
+ *
+ * @throws an Error if the request has failed
+ */
+export const graphFetchAuth = async (
+	query: string,
+	variables: Record<string, unknown> = {},
+): Promise<{ response: Response; data: TGraphQLResponse } | undefined> => {
 	try {
 		const token = useAuthStore.getState().accessToken;
 
@@ -140,6 +178,8 @@ export const graphFetchAuth = async (query: string, variables: Record<string, un
 
 		return { response, data };
 	} catch (error) {
-		throw new Error(`GraphQL request failed: ${error instanceof Error ? error.message : String(error)}`);
+		throw new Error(
+			`GraphQL request failed: ${error instanceof Error ? error.message : String(error)}`,
+		);
 	}
-}
+};
