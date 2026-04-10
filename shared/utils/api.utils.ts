@@ -1,4 +1,5 @@
 import { useAuthStore } from '../context/authStore.context';
+import * as SecureStore from 'expo-secure-store';
 import {
 	IRefreshTokensResponse,
 	TGraphQLError,
@@ -114,6 +115,8 @@ export const graphqlFetch = async <T = unknown>(
 				if (!newAccessToken || !newRefreshToken)
 					throw new Error('Failed to recieve new token');
 
+				await SecureStore.setItemAsync('accessToken', newAccessToken);
+				await SecureStore.setItemAsync('refreshToken', newRefreshToken);
 				useAuthStore.getState().setTokens(newAccessToken, newRefreshToken);
 				isRefreshing = false;
 				onRefreshed(newAccessToken);
@@ -124,7 +127,9 @@ export const graphqlFetch = async <T = unknown>(
 				isRefreshing = false;
 				useAuthStore.getState().logout();
 				onRefreshed(null);
-				throw new Error(`${error instanceof Error ? error.message : String(error)}`);
+				throw new Error(
+					`${error instanceof Error ? error.message : String(error)}`,
+				);
 			}
 		} else {
 			return new Promise<T | undefined>((resolve, reject) => {

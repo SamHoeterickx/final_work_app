@@ -1,12 +1,13 @@
 import { Stack } from 'expo-router';
 import { Button, Text, View } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
+import { useState } from 'react';
 
-
-import { LOGIN_USER } from '@/shared/graphql/mutations';
 import { useAuthStore } from '@/shared/context/authStore.context';
-import { graphqlFetch } from '@/shared/utils/api.utils';
-import { ILoginUserResponse, TGraphQLResponse } from '@/shared/types/types';
+import { LOGIN_USER } from '@/shared/graphql/mutations';
 import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
+import { ILoginUserResponse, TGraphQLResponse } from '@/shared/types/types';
+import { graphqlFetch } from '@/shared/utils/api.utils';
 
 const variables = {
 	email: 'sam+2@mail.com',
@@ -14,6 +15,8 @@ const variables = {
 };
 
 export default function Index() {
+	const [test, setTest] = useState('');
+
 	const handleOnPress = async () => {
 		const data = await fetch('http://localhost:8080/graphql', {
 			method: 'POST',
@@ -24,6 +27,7 @@ export default function Index() {
 		});
 
 		const response: TGraphQLResponse<ILoginUserResponse> = await data.json();
+		console.log(response)
 
 		const newAccessToken = response.data?.loginUser?.accessToken;
 		const newRefreshToken = response.data?.loginUser?.refreshToken;
@@ -31,14 +35,16 @@ export default function Index() {
 		if (!newAccessToken || !newRefreshToken)
 			throw new Error('Failed to recieve new token');
 
+		await SecureStore.setItemAsync('accessToken', newAccessToken);
+		await SecureStore.setItemAsync('refreshToken', newRefreshToken);
 		useAuthStore.getState().setTokens(newAccessToken, newRefreshToken);
 	};
 
 	const getChapter = async () => {
 		const response = await graphqlFetch(GET_ALL_CHAPTERS);
 		console.log(response);
-	}
-
+		setTest(JSON.stringify(response, null, 2));
+	};
 
 	return (
 		<View style={{ flex: 1 }}>
@@ -55,6 +61,7 @@ export default function Index() {
 				<Button title="login" onPress={handleOnPress} />
 				<Button title="get chapters" onPress={getChapter} />
 			</View>
+			{test ? <Text>{test}</Text> : null}
 		</View>
 	);
 }
