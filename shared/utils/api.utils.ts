@@ -63,6 +63,7 @@ export const graphqlFetch = async <T = unknown>(
 
 	const currentToken = useAuthStore.getState().accessToken;
 	if (!currentToken) {
+		// router.replace('/login');
 		throw new Error(`Unauthorized: failed to find token`);
 	}
 
