@@ -7,10 +7,12 @@ export interface ILoginCredentials {
 export interface IAuthStore {
 	accessToken: string | null;
 	refreshToken: string | null;
+    isHydrated: boolean;
 	setTokens: (accessToken: string, refreshToken: string) => void;
 	logout: () => void;
+    setHydrated: (state: boolean) => void;
 }
-
+ 
 export interface IRefreshTokensResponse {
 	refreshTokens: {
 		accessToken: string;

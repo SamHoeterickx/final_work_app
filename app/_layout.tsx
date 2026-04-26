@@ -1,27 +1,60 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
 
-export default function RootLayout() {
-	useEffect(() => {
-		const updateTokenStates = async () => {
-			const secureAccessToken = await SecureStore.getItemAsync('accessToken');
-			const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
+const queryClient = new QueryClient();
 
-			if (secureAccessToken && secureRefreshToken) {
-				useAuthStore
-					.getState()
-					.setTokens(secureAccessToken, secureRefreshToken);
-			} else {
-				// router.replace('/login');
+const InitialLayout = () => {
+    const { accessToken, isHydrated, setHydrated, setTokens } = useAuthStore();
+
+    const segments = useSegments();
+    const router = useRouter();
+
+    useEffect(() => {
+        const loadTokens = async () => {
+            try{
+                const secureAccessToken = await SecureStore.getItemAsync('accessToken');
+				const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
+
+				if (secureAccessToken && secureRefreshToken) {
+					setTokens(secureAccessToken, secureRefreshToken);
+				}
+			} catch (error) {
+				console.error("Failed to load tokens", error);
+			} finally {
+				setHydrated(true); 
 			}
-		};
+        }
+        loadTokens();
+    }, [])
 
-		updateTokenStates();
-	}, []);
+    useEffect(() => {
+        if(!isHydrated) return;
 
-	return <Stack screenOptions={{ headerShown: false }} />;
+        const inAuthGroup = segments[0] === '(auth)';
+
+        if (!accessToken && !inAuthGroup) {
+			router.replace('/(auth)/login');
+		} else if (accessToken && inAuthGroup) {
+			router.replace('/(app)/home');
+		}
+	}, [accessToken, isHydrated, segments]);
+
+    if (!isHydrated) {
+		return null;
+	}
+
+    return <Stack screenOptions={{ headerShown: false }} />;
+}
+
+export default function RootLayout() {
+	return (
+        <QueryClientProvider client={queryClient}>
+            <InitialLayout />
+        </QueryClientProvider>
+    )
 }
