@@ -5,14 +5,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { Button, OnboardingQuestionTemplate, OnboardingQuestionWrapper } from '@/shared/components';
+import { Button, OnboardingQuestionWrapper } from '@/shared/components';
 
 // CONST
 import { onboardingQuestions } from '@/shared/const/onboarding.const';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/base.styles';
-import { OnboardingQuestionKind } from '@/shared/types/types';
 
 const MAX_ONBOARDING_LENGTH = 6;
 
@@ -30,7 +29,11 @@ export default function OnboardingScreen() {
     }
 
     const handleContinueOnboarding = () => {
-        setOnboardingCount(prev => prev + 1);
+        if(onboardingCount !== MAX_ONBOARDING_LENGTH) {
+            setOnboardingCount(prev => prev + 1);
+        }else {
+            // router.navigate('/(auth)/login')
+        }
     }
 
     const renderOnboardingQuestion = () => {
