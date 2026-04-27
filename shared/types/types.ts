@@ -1,3 +1,5 @@
+import { StyleProp, ViewStyle } from "react-native";
+
 // INTERFACES
 export interface ILoginCredentials {
 	email: string;
@@ -41,4 +43,12 @@ export type TGraphQLResponse<T = unknown> = {
 	data?: T;
 	errors?: TGraphQLError[];
 };
+
+// PROPS
+export interface IButtonProps{
+    copy: string;
+    styles?: 'primary' | 'secundary';
+    size?: 'small' | 'normal' | 'large'
+    onPress: () => void;
+}
 

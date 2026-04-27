@@ -1,6 +1,8 @@
+import { Button } from '@/shared/components';
 import { useLogin } from '@/shared/hooks';
+import { baseStyles } from '@/shared/styles/base.styles';
 import { useRouter } from 'expo-router';
-import { Button, Text, TextInput } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const variables = {
@@ -21,26 +23,44 @@ export default function LoginScreen() {
         });
     };
 
+    const navigateLogin = () => {
+        router.navigate('/(auth)/login')
+    }
+
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Login</Text>
-            <TextInput
-                placeholder='email'
-            />
-            <TextInput
-                placeholder='password'
-            />
-            {isPending ? (
-                <Text>Loading...</Text>
-            ) : (
-                <Button title="Login" onPress={handleLogin} />
-            )}
-            {isError && <Text style={{ color: 'red' }}>{error.message}</Text>}
+        <SafeAreaView style={ [baseStyles.container, styles.cLogin] }>
+            <View style={ styles.cHeader}>
+                <Image
+                    style={ styles.logo }
+                    source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                    resizeMode='contain'
+                />
+            </View>
+            <View>
+                <TextInput placeholder='Email' />
+                <TextInput placeholder='password' />
+            </View>
+            <View>
+                <Button copy='Login' onPress={navigateLogin} styles={baseStyles.button} />
+            </View>
             
-            <Button 
-                title="Register" 
-                onPress={() => router.push('/(auth)/onboarding')} 
-            />
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    cLogin: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    }, 
+    cHeader: {
+        width: '100%',
+        flex: 1,
+        alignItems: 'center'
+    },
+    logo: {
+        width: '50%',
+        maxWidth: 300,
+    },
+})

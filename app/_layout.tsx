@@ -6,6 +6,17 @@ import { useEffect } from 'react';
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
 
+// FONTS
+import { 
+    useFonts, 
+    Inter_400Regular, 
+    Inter_500Medium, 
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+    Inter_900Black
+} from '@expo-google-fonts/inter';
+
 const queryClient = new QueryClient();
 
 const InitialLayout = () => {
@@ -13,6 +24,15 @@ const InitialLayout = () => {
 
     const segments = useSegments();
     const router = useRouter();
+
+    const [fontsLoaded] = useFonts({
+        Inter_400Regular,
+        Inter_500Medium,
+        Inter_600SemiBold,
+        Inter_700Bold,
+        Inter_800ExtraBold,
+        Inter_900Black
+    });
 
     useEffect(() => {
         const loadTokens = async () => {
@@ -38,13 +58,13 @@ const InitialLayout = () => {
         const inAuthGroup = segments[0] === '(auth)';
 
         if (!accessToken && !inAuthGroup) {
-			router.replace('/(auth)/login');
+			router.replace('/(auth)/startApp');
 		} else if (accessToken && inAuthGroup) {
 			router.replace('/(app)/home');
 		}
 	}, [accessToken, isHydrated, segments]);
 
-    if (!isHydrated) {
+    if (!isHydrated && !fontsLoaded) {
 		return null;
 	}
 
