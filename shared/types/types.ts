@@ -29,6 +29,20 @@ export interface ILoginUserResponse {
 	};
 };
 
+export interface IOnboardingQuestions {
+    title: string;
+    description: string;
+    kind: OnboardingQuestionKind,
+    options: Record<string, any>
+}
+
+// ENUMS
+export enum OnboardingQuestionKind {
+    SINGLE_CHOICE = 'single_choice',
+    MULTIPLE_TILES = 'multiple_tiles',
+    MULTIPLE_CHOICE = 'multiple_choice',
+    MULTIPLE_CHOICE_TITLE = 'multiple_choice_title'
+}
 
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
@@ -54,4 +68,8 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'>{
     onChangeText: (name: string, value: string) => void;
     placeholder: string;
     name: string;
+}
+
+export interface IOnboardingQuestionWrapperProps {
+    kind: OnboardingQuestionKind
 }
