@@ -18,6 +18,7 @@ export default function HomeScreen() {
         <SafeAreaView style={{ flex: 1}}>
             <Text style={{ fontSize: 22, fontWeight: 'bold' }}>HOME ISLAND</Text>
             <Button title="test chapters button" onPress={getChapters} />
+            <Button title="Logout" onPress={logout} />
             
             <ScrollView >
                 <Text>{chapters || "No data yet"}</Text>

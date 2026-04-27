@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, TextInputProps, TouchableOpacityProps, ViewStyle } from "react-native";
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -34,9 +34,7 @@ export interface ILoginUserResponse {
 export type TTokenRefreshSubscriber = (token: string | null) => void;
 
 export type TGraphQLError = {
-	extensions?: {
-		code?: string;
-	};
+	message: string;
 };
 
 export type TGraphQLResponse<T = unknown> = {
@@ -45,10 +43,15 @@ export type TGraphQLResponse<T = unknown> = {
 };
 
 // PROPS
-export interface IButtonProps{
+export interface IButtonProps extends TouchableOpacityProps {
     copy: string;
     styles?: 'primary' | 'secundary';
     size?: 'small' | 'normal' | 'large'
     onPress: () => void;
 }
 
+export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'>{
+    onChangeText: (name: string, value: string) => void;
+    placeholder: string;
+    name: string;
+}

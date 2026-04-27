@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import { baseStyles } from "../styles/base.styles";
 import { IButtonProps } from "../types/types";
 
-export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress }) => {
+export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...settings }) => {
 
     const renderButtonStyles = () => {
         let customStyles: any[] = [];
@@ -24,6 +24,7 @@ export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress }) => {
         <TouchableOpacity
             style={[baseStyles.button, renderButtonStyles()]}
             onPress={onPress}
+            {...settings}
         >
             <Text style={baseStyles.buttonCopy}>{copy}</Text>
         </TouchableOpacity>

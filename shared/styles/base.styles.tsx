@@ -11,6 +11,8 @@ export const baseStyles = StyleSheet.create({
         width: '90%',
         height: '100%',
         flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginHorizontal: '5%'
     },
     wrapper: {
@@ -33,11 +35,18 @@ export const baseStyles = StyleSheet.create({
         fontFamily: 'Inter_700Bold',
         fontSize: 16,
     },
+    h4: {
+        fontFamily: 'Inter_600SemiBold',
+        fontSize: 16,
+    },
     p: {
         fontFamily: 'Inter_400Regular'
     },
     link: {
 
+    },
+    error: {
+        color: 'red'
     },
 
     // ==================/==================
@@ -65,11 +74,25 @@ export const baseStyles = StyleSheet.create({
         backgroundColor: SECUNDARY_COLOR,
         borderWidth: 2,
         borderColor: PRIMARY_COLOR,
-
     },
     buttonCopy: {
         textTransform: 'uppercase',
         fontFamily: 'Inter_600SemiBold',
         fontSize: 16,
+    },
+
+    // ==================/==================
+    // ==========INPUTFIELD STYLING=========
+    // ==================/==================
+    cInputField: {
+        width: '100%'
+    },
+    inputField: {
+        paddingVertical: 12,
+        paddingHorizontal: 12,
+        backgroundColor: SECUNDARY_COLOR,
+        borderWidth: 2,
+        borderColor: PRIMARY_COLOR,
+        borderRadius: 16,
     }
 }) 

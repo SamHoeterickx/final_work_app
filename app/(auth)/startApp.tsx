@@ -1,6 +1,6 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
 import { Button } from '@/shared/components';
@@ -12,14 +12,19 @@ export default function StartAppScreen() {
     const router = useRouter();
 
     return (
-        <SafeAreaView style={ [baseStyles.container, styles.cLogin] }>
+        <SafeAreaView style={[baseStyles.container]}>
+            <Image
+                style={styles.logo}
+                source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                resizeMode='contain'
+            />
             <View style={ styles.cHeader}>
-                <Image
-                    style={ styles.logo }
-                    source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                {/* <Image
+                    style={styles.placeholderImage}
+                    source={require('@/assets/images/android-icon-background.png')}
                     resizeMode='contain'
-                />
-                <Text style={ baseStyles.h3 }>
+                /> */}
+                <Text style={baseStyles.h3}>
                     Ontdek de wereld van koffie
                 </Text>
             </View>
@@ -41,20 +46,13 @@ export default function StartAppScreen() {
 }
 
 const styles = StyleSheet.create({
-    cLogin: {
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    }, 
     cHeader: {
         width: '100%',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 124,
+        justifyContent: 'flex-start',
     },
     logo: {
-        width: '60%',
-        maxWidth: 300,
+        width: '35%',
     },
 })
