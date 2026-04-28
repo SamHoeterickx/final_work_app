@@ -4,7 +4,7 @@ import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
+export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
 
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
     const currentAnswers = answers[questionIndex] || [];
@@ -24,7 +24,10 @@ export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionInde
                 onPress={() => handleOnPress(index)}
             >
                 <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: PRIMARY_COLOR}]}/>
-                <Text style={[baseStyles.h4, { flex: 1 }]}>{option.label}</Text>
+                <View style={styles.textWrapper}> 
+                    <Text style={baseStyles.h4}>{option.label}</Text>
+                    <Text style={baseStyles.p}>{option.description}</Text>
+                </View>
             </TouchableOpacity>
         ));
     }
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 24,
-        minHeight: 90, 
+        minHeight: 100, 
 
         borderWidth: 2,
         borderColor: PRIMARY_COLOR,
@@ -63,5 +66,9 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         borderColor: PRIMARY_COLOR,
         borderWidth: 2
+    },
+    textWrapper: {
+        flex: 1, 
+        gap: 4,
     }
 });

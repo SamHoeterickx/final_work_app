@@ -1,4 +1,4 @@
-import { StyleProp, TextInputProps, TouchableOpacityProps, ViewStyle } from "react-native";
+import { TextInputProps, TouchableOpacityProps } from "react-native";
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -13,6 +13,12 @@ export interface IAuthStore {
 	setTokens: (accessToken: string, refreshToken: string) => void;
 	logout: () => void;
     setHydrated: (state: boolean) => void;
+}
+
+export interface IOnboardingStore {
+    answers: Record<number, number[]>;
+    toggleMultipleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
+    setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
  
 export interface IRefreshTokensResponse {
@@ -33,15 +39,15 @@ export interface IOnboardingQuestions {
     title: string;
     description: string;
     kind: OnboardingQuestionKind,
-    options: Record<string, any>
+    options: IQuestionOption[]
 }
 
 // ENUMS
 export enum OnboardingQuestionKind {
-    SINGLE_CHOICE = 'single_choice',
     MULTIPLE_TILES = 'multiple_tiles',
-    MULTIPLE_CHOICE = 'multiple_choice',
-    MULTIPLE_CHOICE_TITLE = 'multiple_choice_title'
+    SINGLE_CHOICE = 'single_choice',
+    SINGLE_CHOICE_TITLE = 'single_choice_title',
+    SINGLE_CHOICE_IMG = 'single_choice_img'
 }
 
 // TYPES
@@ -70,6 +76,18 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'>{
     name: string;
 }
 
+export interface IQuestionOption {
+    label: string;
+    image?: string | null;
+    description?: string | null;
+}
+
 export interface IOnboardingQuestionWrapperProps {
-    kind: OnboardingQuestionKind
+    kind: OnboardingQuestionKind;
+    options: IQuestionOption[]
+}
+
+export interface IQuestionProps {
+    options: IQuestionOption[],
+    questionIndex: number
 }

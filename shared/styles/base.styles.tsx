@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-const PRIMARY_COLOR = '#D9D9D9';
-const SECUNDARY_COLOR = 'transparant'
+export const PRIMARY_COLOR = '#D9D9D9';
+export const SECUNDARY_COLOR = 'transparant'
 
 export const baseStyles = StyleSheet.create({
     // ==================/==================

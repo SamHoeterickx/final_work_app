@@ -12,11 +12,14 @@ import { onboardingQuestions } from '@/shared/const/onboarding.const';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/base.styles';
+import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
 
 const MAX_ONBOARDING_LENGTH = 6;
 
 export default function OnboardingScreen() {
     const [onboardingCount, setOnboardingCount] = useState<number>(0);
+
+    const { answers } = useOnboardingStore();
 
     const router = useRouter();
 
@@ -30,6 +33,7 @@ export default function OnboardingScreen() {
 
     const handleContinueOnboarding = () => {
         if(onboardingCount !== MAX_ONBOARDING_LENGTH) {
+            console.log(answers)
             setOnboardingCount(prev => prev + 1);
         }else {
             // router.navigate('/(auth)/login')
@@ -43,7 +47,11 @@ export default function OnboardingScreen() {
                     <Text style={[baseStyles.h2, styles.qTitle]}>{onboardingQuestions[onboardingCount].title}</Text>
                     <Text style={[baseStyles.p, styles.qDescription]}>{onboardingQuestions[onboardingCount].description}</Text>
                 </View>
-                <OnboardingQuestionWrapper kind={onboardingQuestions[onboardingCount].kind} />
+                <OnboardingQuestionWrapper 
+                    kind={onboardingQuestions[onboardingCount].kind} 
+                    options={onboardingQuestions[onboardingCount].options} 
+                    questionIndex={onboardingCount}
+                />
             </>
         )
     }
@@ -67,6 +75,7 @@ export default function OnboardingScreen() {
             <Button 
                 copy='Volgende'
                 onPress={handleContinueOnboarding}
+                disabled={!answers[onboardingCount] || answers[onboardingCount].length === 0}
             />
         </SafeAreaView>
     );

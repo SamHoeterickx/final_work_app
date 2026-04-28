@@ -3,8 +3,9 @@ import { baseStyles, PRIMARY_COLOR } from "@/shared/styles/base.styles";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SvgIcon } from "../SvgIcon.component";
 
-export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
+export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
 
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
     const currentAnswers = answers[questionIndex] || [];
@@ -23,8 +24,9 @@ export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionInde
                 ]}
                 onPress={() => handleOnPress(index)}
             >
-                <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: PRIMARY_COLOR}]}/>
+                <SvgIcon name={option.image} height={'80%'} width={60} />
                 <Text style={[baseStyles.h4, { flex: 1 }]}>{option.label}</Text>
+
             </TouchableOpacity>
         ));
     }
@@ -57,11 +59,4 @@ const styles = StyleSheet.create({
 
         opacity: 0.4,
     },
-    selectBox: {
-        width: 30,
-        height: 30,
-        borderRadius: 40,
-        borderColor: PRIMARY_COLOR,
-        borderWidth: 2
-    }
 });
