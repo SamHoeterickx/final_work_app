@@ -6,6 +6,28 @@ export interface ILoginCredentials {
 	password: string;
 }
 
+export interface IRegisterCredentials {
+    name: string;
+    email: string;
+    password: string,
+    repeatPassword: string;
+}
+
+export interface IRegisterVariables {
+    credentials: IRegisterCredentials;
+    onboarding: IOnboardingAnswers;
+}
+
+export interface IOnboardingAnswers {
+    currentBehaviour: string[];
+    experienceLevel: string | null;
+    goal: string | null;
+    currentPreferences: string | null;
+    desiredTempo: string | null;
+    currentMethodes: string[];
+    extraGear: string[] | null;
+}
+
 export interface IAuthStore {
 	accessToken: string | null;
 	refreshToken: string | null;

@@ -29,7 +29,7 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
                 ]}
                 onPress={() => handleOnPress(index)}
             >
-                <SvgIcon name={option.image} width={60} height={60} />
+                { option.image && <SvgIcon name={option.image} width={60} height={60} /> }
                 <Text style={[baseStyles.h4, styles.tileLabel]}>{option.label}</Text>
             </TouchableOpacity>
         ));

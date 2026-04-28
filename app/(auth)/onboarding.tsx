@@ -36,7 +36,7 @@ export default function OnboardingScreen() {
             console.log(answers)
             setOnboardingCount(prev => prev + 1);
         }else {
-            // router.navigate('/(auth)/login')
+            router.navigate('/(auth)/register')
         }
     }
 

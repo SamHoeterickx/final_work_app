@@ -1,24 +1,30 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { useState } from 'react';
+import { Button, InputField } from "@/shared/components";
+import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
+import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
+import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
+import { baseStyles } from "@/shared/styles/base.styles";
+import { IRegisterCredentials } from "@/shared/types/types";
+import { useState } from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-// COMPONENTS
-import { Button, InputField } from '@/shared/components';
-
-// HOOKS
-import { useLogin } from '@/shared/hooks';
-
-// STYLES
-import { baseStyles } from '@/shared/styles/base.styles';
-import { ILoginCredentials } from '@/shared/types/types';
-
-export default function LoginScreen() {
-    const [formData, setFormData] = useState<ILoginCredentials>({
+export default function Register(){
+    const [formData, setFormData] = useState<IRegisterCredentials>({
+        name: '',
         email: '',
-        password: ''
+        password: '',
+        repeatPassword: ''
     });
 
-    const { mutate, isPending, isError, error } = useLogin();
+    const { mutate, isError, error, isPending } = useRegister();
+    const { answers } = useOnboardingStore();
+
+    const handleRegister = () => {
+        console.log(formData);
+        const sanitizedAnswers = refactorOnboardingSelection(answers);
+        console.log(sanitizedAnswers)
+        mutate({ credentials: formData, onboarding: sanitizedAnswers });
+    }
 
     const handleFormInput = (name: string, value: string) => {
         setFormData(prev => ({
@@ -26,10 +32,6 @@ export default function LoginScreen() {
             [name]: value
         }))
     }
-
-    const handleLogin = () => {
-        mutate(formData);
-    };
 
     const renderError = () => {
         return(
@@ -40,7 +42,7 @@ export default function LoginScreen() {
     }
 
     return (
-        <SafeAreaView style={ [baseStyles.container] }>
+        <SafeAreaView style={baseStyles.container}>
             <Image
                 source={require('@/assets/logos/png/brewlingo_logo_black.png')}
                 style={styles.logo}
@@ -48,6 +50,16 @@ export default function LoginScreen() {
             />
             <Text style={[baseStyles.h2, styles.title]}>Registreer</Text>
             <View style={styles.cForm}>
+                <View style={styles.wInputField}>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>Naam</Text>
+                    <InputField
+                        onChangeText={handleFormInput}
+                        name='name'
+                        placeholder='naam'
+                        autoCapitalize="none"
+                        spellCheck={false}
+                    />
+                </View>
                 <View style={styles.wInputField}>
                     <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
                     <InputField
@@ -69,20 +81,30 @@ export default function LoginScreen() {
                         secureTextEntry={true}
                     />
                 </View>
+                <View style={styles.wInputField}>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Wachtwoord</Text>
+                    <InputField
+                        onChangeText={handleFormInput}
+                        name='repeatPassword'
+                        placeholder='herhaal wachtwoord'
+                        autoCapitalize="none"
+                        spellCheck={false}
+                        secureTextEntry={true}
+                    />
+                </View>
                 {
                     isError && renderError()
                 }
             </View>
             <View style={baseStyles.cButton}>
                 <Button
-                    copy='Login'
-                    onPress={handleLogin}
+                    copy='Registreer'
+                    onPress={handleRegister}
                     disabled={isPending}
                 />
             </View>
-            
         </SafeAreaView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({

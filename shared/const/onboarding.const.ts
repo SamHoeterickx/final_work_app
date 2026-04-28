@@ -1,4 +1,4 @@
-import { IOnboardingQuestions, OnboardingQuestionKind } from "../types/types";
+import { IOnboardingAnswers, IOnboardingQuestions, OnboardingQuestionKind } from "../types/types";
 
 export const onboardingQuestions: IOnboardingQuestions[] = [
     {
@@ -190,4 +190,46 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
             },
         ],
     },
-]
+];
+
+export const refactorOnboardingSelection = (answers: Record<number, number[]>): IOnboardingAnswers => {
+    const getSelectedLabels = (questionIndex: number): string[] => {
+        const optionIndices = answers[questionIndex] || [];
+        if (optionIndices.length === 0) {
+            return [];
+        }
+        const question = onboardingQuestions[questionIndex];
+        return optionIndices.map(optionIndex => question.options[optionIndex].label);
+    };
+
+    const getSingleChoiceLabel = (questionIndex: number): string | null => {
+        const labels = getSelectedLabels(questionIndex);
+        return labels.length > 0 ? labels[0] : null;
+    }
+
+    const getMultipleChoiceLabels = (questionIndex: number): string[] => {
+        const labels = getSelectedLabels(questionIndex);
+        if (labels.includes('Heb nog niets')) {
+            return [];
+        }
+        return labels;
+    }
+    
+    const getMultipleChoiceLabelsOrNull = (questionIndex: number): string[] | null => {
+        const labels = getSelectedLabels(questionIndex);
+        if (labels.includes('Heb nog niets') || labels.length === 0) {
+            return null;
+        }
+        return labels;
+    }
+
+    return {
+        currentBehaviour: getMultipleChoiceLabels(0),
+        experienceLevel: getSingleChoiceLabel(1),
+        goal: getSingleChoiceLabel(2),
+        currentPreferences: getSingleChoiceLabel(3),
+        desiredTempo: getSingleChoiceLabel(4),
+        currentMethodes: getMultipleChoiceLabels(5),
+        extraGear: getMultipleChoiceLabelsOrNull(6),
+    };
+};

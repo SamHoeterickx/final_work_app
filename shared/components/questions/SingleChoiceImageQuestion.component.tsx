@@ -24,7 +24,7 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
                 ]}
                 onPress={() => handleOnPress(index)}
             >
-                <SvgIcon name={option.image} height={'80%'} width={60} />
+                { option.image && <SvgIcon name={option.image} width={60} /> }
                 <Text style={[baseStyles.h4, { flex: 1 }]}>{option.label}</Text>
 
             </TouchableOpacity>
