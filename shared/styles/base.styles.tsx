@@ -80,6 +80,11 @@ export const baseStyles = StyleSheet.create({
         fontFamily: 'Inter_600SemiBold',
         fontSize: 16,
     },
+    backButton: {
+        position: 'absolute',
+        left: 20,
+        top: 100,
+    },
 
     // ==================/==================
     // ==========INPUTFIELD STYLING=========
