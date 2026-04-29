@@ -29,10 +29,10 @@ class AuthService {
                 
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage.join('\n')); 
+                        throw new Error(validationMessage[0]); 
                     }
                     if (typeof validationMessage === 'string') {
-                        throw new Error(validationMessage);
+                        throw new Error(validationMessage[0]);
                     }
                 }
                 const topLevelMessage = errorItem.message;
@@ -76,10 +76,10 @@ class AuthService {
                 
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage.join('\n')); 
+                        throw new Error(validationMessage[0]); 
                     }
                     if (typeof validationMessage === 'string') {
-                        throw new Error(validationMessage);
+                        throw new Error(validationMessage[0]);
                     }
                 }
                 const topLevelMessage = errorItem.message;

@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
 
 // COMPONENTS
@@ -40,47 +40,58 @@ export default function LoginScreen() {
     }
 
     return (
-        <SafeAreaView style={ [baseStyles.container] }>
-            <Image
-                source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                style={styles.logo}
-                resizeMode='contain'
-            />
-            <Text style={[baseStyles.h2, styles.title]}>Registreer</Text>
-            <View style={styles.cForm}>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='email'
-                        placeholder='email'
-                        autoCapitalize="none"
-                        spellCheck={false}
+        <SafeAreaView style={{ flex: 1 }}>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <ScrollView
+                    style={{ flex: 1 }}
+                    contentContainerStyle={styles.scrollContent}
+                    showsVerticalScrollIndicator={false}
+                    keyboardShouldPersistTaps="handled"
+                >
+                    <Image
+                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                        style={styles.logo}
+                        resizeMode='contain'
                     />
-                </View>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='password'
-                        placeholder='wachtwoord'
-                        autoCapitalize="none"
-                        spellCheck={false}
-                        secureTextEntry={true}
-                    />
-                </View>
-                {
-                    isError && renderError()
-                }
-            </View>
-            <View style={baseStyles.cButton}>
-                <Button
-                    copy='Login'
-                    onPress={handleLogin}
-                    disabled={isPending}
-                />
-            </View>
-            
+                    <Text style={[baseStyles.h2, styles.title]}>Login</Text>
+                    <View style={styles.cForm}>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='email'
+                                placeholder='email'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                            />
+                        </View>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='password'
+                                placeholder='wachtwoord'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                                secureTextEntry={true}
+                            />
+                        </View>
+                        {
+                            isError && renderError()
+                        }
+                    </View>
+                    <View style={baseStyles.cButton}>
+                        <Button
+                            copy='Login'
+                            onPress={handleLogin}
+                            disabled={isPending}
+                        />
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 }
@@ -102,5 +113,12 @@ const styles = StyleSheet.create({
     },
     inputLabel: {
         marginBottom: 12,
-    }
+    },
+    scrollContent: {
+        flexGrow: 1,
+        width: '90%',
+        marginHorizontal: '5%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
 })

@@ -2,10 +2,10 @@ import { Button, InputField } from "@/shared/components";
 import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
-import { baseStyles } from "@/shared/styles/base.styles";
+import { baseStyles, PRIMARY_COLOR } from "@/shared/styles/base.styles";
 import { IRegisterCredentials } from "@/shared/types/types";
 import { useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Register(){
@@ -20,9 +20,9 @@ export default function Register(){
     const { answers } = useOnboardingStore();
 
     const handleRegister = () => {
-        console.log(formData);
+        if(formData.email === '' || formData.name === '' || formData.password === '' || formData.repeatPassword === '') return
+
         const sanitizedAnswers = refactorOnboardingSelection(answers);
-        console.log(sanitizedAnswers)
         mutate({ credentials: formData, onboarding: sanitizedAnswers });
     }
 
@@ -42,67 +42,79 @@ export default function Register(){
     }
 
     return (
-        <SafeAreaView style={baseStyles.container}>
-            <Image
-                source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                style={styles.logo}
-                resizeMode='contain'
-            />
-            <Text style={[baseStyles.h2, styles.title]}>Registreer</Text>
-            <View style={styles.cForm}>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Naam</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='name'
-                        placeholder='naam'
-                        autoCapitalize="none"
-                        spellCheck={false}
-                    />
-                </View>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='email'
-                        placeholder='email'
-                        autoCapitalize="none"
-                        spellCheck={false}
-                    />
-                </View>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='password'
-                        placeholder='wachtwoord'
-                        autoCapitalize="none"
-                        spellCheck={false}
-                        secureTextEntry={true}
-                    />
-                </View>
-                <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Wachtwoord</Text>
-                    <InputField
-                        onChangeText={handleFormInput}
-                        name='repeatPassword'
-                        placeholder='herhaal wachtwoord'
-                        autoCapitalize="none"
-                        spellCheck={false}
-                        secureTextEntry={true}
-                    />
-                </View>
-                {
-                    isError && renderError()
-                }
-            </View>
-            <View style={baseStyles.cButton}>
-                <Button
-                    copy='Registreer'
-                    onPress={handleRegister}
-                    disabled={isPending}
-                />
-            </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            >
+                <ScrollView
+                    style={{ flex: 1 }}
+                    contentContainerStyle={styles.scrollContent}
+                    showsVerticalScrollIndicator={false}
+                    keyboardShouldPersistTaps="handled"
+                >
+                        <Image
+                            source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                            style={styles.logo}
+                            resizeMode='contain'
+                        />
+                        <Text style={[baseStyles.h2, styles.title]}>Maak een nieuw account</Text>
+                        <View style={styles.cForm}>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Naam</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='name'
+                                placeholder='naam'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                            />
+                        </View>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='email'
+                                placeholder='email'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                            />
+                        </View>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='password'
+                                placeholder='wachtwoord'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                                secureTextEntry={true}
+                            />
+                        </View>
+                        <View style={styles.wInputField}>
+                            <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Wachtwoord</Text>
+                            <InputField
+                                onChangeText={handleFormInput}
+                                name='repeatPassword'
+                                placeholder='herhaal wachtwoord'
+                                autoCapitalize="none"
+                                spellCheck={false}
+                                secureTextEntry={true}
+                            />
+                        </View>
+                            {
+                                isError && renderError()
+                            }
+                        </View>
+                        <View style={baseStyles.cButton}>
+                            <Button
+                                copy='Registreer'
+                                onPress={handleRegister}
+                                disabled={isPending}
+                            />
+                        </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     )
 }
@@ -112,6 +124,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 26,
+        maxWidth: '65%'
     },
     logo: {
         width: '35%',
@@ -124,5 +137,12 @@ const styles = StyleSheet.create({
     },
     inputLabel: {
         marginBottom: 12,
-    }
+    },
+    scrollContent: {
+        flexGrow: 1,
+        width: '90%',
+        marginHorizontal: '5%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
 })
