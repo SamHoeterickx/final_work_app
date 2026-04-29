@@ -22,6 +22,19 @@ export interface IVerifyResetCodeCredentials {
     email: string;
 }
 
+export interface INewPasswordCredentials {
+    oldPassword: string | null;
+    newPassword: string;
+    repeatNewPassword: string;
+}
+
+export interface IChangePasswordWithResetCodeCredentials {
+    resetCode: string;
+    email: string;
+    newPassword: string;
+    repeatNewPassword: string;
+}
+
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
     onboarding: IOnboardingAnswers;
@@ -73,6 +86,11 @@ export interface IOnboardingQuestions {
     description: string;
     kind: OnboardingQuestionKind,
     options: IQuestionOption[]
+}
+
+export interface IErrorData {
+    error: string;
+    isError: boolean;
 }
 
 // ENUMS

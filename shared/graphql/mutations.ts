@@ -55,3 +55,24 @@ export const VERIFY_RESET_CODE_MUTATION = `
         )    
     }
 `;
+
+export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
+	mutation ResetPasswordWithCode(
+		$resetCode: String!,
+		$email: String!,
+		$newPassword: String!,
+		$repeatNewPassword: String!
+	) {
+		resetPasswordWithCode(
+			input: {
+				resetCode: $resetCode,
+				email: $email,
+				newPassword: $newPassword,
+				repeatNewPassword: $repeatNewPassword
+			}
+		) {
+			accessToken
+			refreshToken
+		}
+	}
+`;

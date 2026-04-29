@@ -23,7 +23,7 @@ export default function verifyResetCode(){
         }))
     }
 
-    const handleRequestResetCode = () => {
+    const handleVerifyResetCode = () => {
         if(formData.resetCode === '') return
         const sanitizedEmail = Array.isArray(email) ? email[0] : email;        
         const inputData: IVerifyResetCodeCredentials = {
@@ -61,7 +61,7 @@ export default function verifyResetCode(){
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
                             <Text style={[baseStyles.h2, styles.title]}>Verifieer je reset code</Text>
-                            <Text style={[baseStyles.p]}>...</Text>
+                            <Text style={[baseStyles.p, styles.description]}>We hebben een 8-cijferige code naar je e-mailadres gestuurd. Vul deze hieronder in.</Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
@@ -86,7 +86,7 @@ export default function verifyResetCode(){
                     <View style={baseStyles.cButton}>
                         <Button
                             copy='Verifieer reset code'
-                            onPress={handleRequestResetCode}
+                            onPress={handleVerifyResetCode}
                             disabled={isPending}
                         />
                     </View>
@@ -107,6 +107,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 26,
+    },
+    description: {
+        textAlign: 'center',
+        marginTop: 12,
     },
     logo: {
         width: '35%',

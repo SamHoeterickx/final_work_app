@@ -53,7 +53,7 @@ export default function requestResetCode(){
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
                             <Text style={[baseStyles.h2, styles.title]}>Wachtwoord vergeten</Text>
-                            <Text style={[baseStyles.p]}>...</Text>
+                            <Text style={[baseStyles.p, styles.description]}>Vul je e-mailadres in en we sturen je een code om je wachtwoord opnieuw in te stellen.</Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
@@ -96,6 +96,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 26,
+    },
+    description: {
+        textAlign: 'center',
+        marginTop: 12,
     },
     logo: {
         width: '35%',
