@@ -14,7 +14,7 @@ export const useRequestResetCode = () => {
             console.log('Reset Code successfully sent');
             
             router.navigate({
-                pathname: '/(auth)/verifyResetCode',
+                pathname: '/(auth)/(forgotPassword)/verifyResetCode',
                 params: { email: credentials.email }
             });
         },

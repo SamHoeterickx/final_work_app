@@ -85,7 +85,7 @@ export default function LoginScreen() {
                                 isError && renderError()
                             }
                         </View>
-                        <Link href={'/(auth)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
+                        <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button

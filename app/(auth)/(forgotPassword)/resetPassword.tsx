@@ -138,7 +138,7 @@ export default function resetPassword(){
                         secureTextEntry={true}
                     />
                 </View>
-                <Link href={'/(auth)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
+                <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
             </>
         )
     }

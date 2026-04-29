@@ -13,7 +13,7 @@ export const useVerifyResetCode = () => {
         onSuccess: (_, credentials) => {
             console.log('Reset Code successfully verified');
             router.navigate({
-                pathname: '/(auth)/resetPassword',
+                pathname: '/(auth)/(forgotPassword)/resetPassword',
                 params: {email: credentials.email, resetCode: credentials.resetCode}
             })
         },
