@@ -2,7 +2,7 @@ import { Button, InputField } from "@/shared/components";
 import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
-import { baseStyles, PRIMARY_COLOR } from "@/shared/styles/base.styles";
+import { baseStyles } from "@/shared/styles/base.styles";
 import { IRegisterCredentials } from "@/shared/types/types";
 import { useState } from "react";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
@@ -152,5 +152,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-    }
+    },
+
 })

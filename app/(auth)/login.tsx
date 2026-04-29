@@ -3,7 +3,7 @@ import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, Vi
 import { useState } from 'react';
 
 // COMPONENTS
-import { Button, InputField } from '@/shared/components';
+import { BackButton, Button, InputField } from '@/shared/components';
 
 // HOOKS
 import { useLogin } from '@/shared/hooks';
@@ -11,6 +11,7 @@ import { useLogin } from '@/shared/hooks';
 // STYLES
 import { baseStyles } from '@/shared/styles/base.styles';
 import { ILoginCredentials } from '@/shared/types/types';
+import { Link } from 'expo-router';
 
 export default function LoginScreen() {
     const [formData, setFormData] = useState<ILoginCredentials>({
@@ -42,7 +43,7 @@ export default function LoginScreen() {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={{ flex: 1, position: 'relative' }}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
@@ -84,6 +85,7 @@ export default function LoginScreen() {
                                 isError && renderError()
                             }
                         </View>
+                        <Link href={'/(auth)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
@@ -94,6 +96,7 @@ export default function LoginScreen() {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
+            <BackButton />
         </SafeAreaView>
     );
 }
@@ -129,5 +132,10 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         marginTop: 64,
+    },
+    link: {
+        fontSize: 12,
+        color: 'blue',
+        textDecorationLine: 'underline'
     }
 })
