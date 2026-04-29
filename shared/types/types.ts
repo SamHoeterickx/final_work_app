@@ -13,6 +13,10 @@ export interface IRegisterCredentials {
     repeatPassword: string;
 }
 
+export interface IRequestResetCodeCredentials {
+    email: string;
+}
+
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
     onboarding: IOnboardingAnswers;

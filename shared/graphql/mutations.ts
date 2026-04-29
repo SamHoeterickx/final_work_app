@@ -29,3 +29,15 @@ export const REGISTER_USER_MUTATION = `
         }
     }
 `;
+
+export const REQUEST_RESET_CODE_MUTATION = `
+    mutation LoginUser(
+        $email: String!
+    ) {
+        forgotPasswordRequest(
+            input: {
+                email: $email
+            }
+        )
+    }
+`
