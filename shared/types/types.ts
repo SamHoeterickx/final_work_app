@@ -17,6 +17,10 @@ export interface IRequestResetCodeCredentials {
     email: string;
 }
 
+export interface IVerifyResetCodeCredentials {
+    resetCode: string;
+}
+
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
     onboarding: IOnboardingAnswers;

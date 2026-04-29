@@ -40,4 +40,16 @@ export const REQUEST_RESET_CODE_MUTATION = `
             }
         )
     }
-`
+`;
+
+export const VERIFY_RESET_CODE_MUTATION = `
+    mutation VerifyResetCode(
+        $resetCode: String!
+    ) {
+        verifyResetCode(
+            input: {
+                resetCode: $resetCode
+            }
+        )    
+    }
+`;
