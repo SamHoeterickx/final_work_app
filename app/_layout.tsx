@@ -20,7 +20,7 @@ import {
 const queryClient = new QueryClient();
 
 const InitialLayout = () => {
-    const { accessToken, isHydrated, setHydrated, setTokens } = useAuthStore();
+    const { accessToken, isHydrated, needsRoadmap, setHydrated, setTokens, setNeedsRoadmap } = useAuthStore();
 
     const segments = useSegments();
     const router = useRouter();
@@ -43,7 +43,7 @@ const InitialLayout = () => {
 				const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
 				if (secureAccessToken && secureRefreshToken) {
-					setTokens(secureAccessToken, secureRefreshToken);
+					setTokens(secureAccessToken, secureRefreshToken, false);
 				}
 			} catch (error) {
 				console.error("Failed to load tokens", error);
@@ -61,10 +61,12 @@ const InitialLayout = () => {
 
         if (!accessToken && !inAuthGroup) {
 			router.replace('/(auth)/startApp');
-		} else if (accessToken && inAuthGroup) {
+		}else if (accessToken && needsRoadmap) {
+            router.replace('/(auth)/generateRoadmap');
+        } else if (accessToken && inAuthGroup && !needsRoadmap) {
 			router.replace('/(app)/home');
 		}
-	}, [accessToken, isHydrated, segments]);
+	}, [accessToken, isHydrated, segments, needsRoadmap]);
 
     if (!isHydrated && !fontsLoaded) {
 		return null;

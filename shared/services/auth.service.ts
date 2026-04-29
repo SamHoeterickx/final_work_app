@@ -52,7 +52,7 @@ class AuthService {
 
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken);
+            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
             
         } catch (error) {
             throw error;
@@ -99,7 +99,7 @@ class AuthService {
 
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken);
+            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, true);
             
         } catch (error) {
             throw error;

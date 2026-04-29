@@ -32,9 +32,11 @@ export interface IAuthStore {
 	accessToken: string | null;
 	refreshToken: string | null;
     isHydrated: boolean;
-	setTokens: (accessToken: string, refreshToken: string) => void;
-	logout: () => void;
+    needsRoadmap: boolean;
+	setTokens: (accessToken: string, refreshToken: string, needsRoadmap: boolean) => void;
+	setNeedsRoadmap: (state: boolean) => void;
     setHydrated: (state: boolean) => void;
+	logout: () => void;
 }
 
 export interface IOnboardingStore {
