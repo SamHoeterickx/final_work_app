@@ -43,11 +43,13 @@ export const REQUEST_RESET_CODE_MUTATION = `
 `;
 
 export const VERIFY_RESET_CODE_MUTATION = `
-    mutation VerifyResetCode(
+    mutation VerifyPasswordResetCode(
+        $email: String!,
         $resetCode: String!
     ) {
-        verifyResetCode(
+        verifyPasswordResetCode(
             input: {
+                email: $email,
                 resetCode: $resetCode
             }
         )    

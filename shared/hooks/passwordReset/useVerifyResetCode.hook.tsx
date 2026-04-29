@@ -10,9 +10,12 @@ export const useVerifyResetCode = () => {
         mutationFn: (credentials: IVerifyResetCodeCredentials) => {
             return authService.verifyResetCode(credentials);
         },
-        onSuccess: () => {
+        onSuccess: (_, credentials) => {
             console.log('Reset Code successfully verified');
-            router.navigate('/(auth)/resetPassword')
+            router.navigate({
+                pathname: '/(auth)/resetPassword',
+                params: {email: credentials.email, resetCode: credentials.resetCode}
+            })
         },
         onError: (error: Error) => {
             console.error('Verification Failed', error.message);

@@ -19,6 +19,7 @@ export interface IRequestResetCodeCredentials {
 
 export interface IVerifyResetCodeCredentials {
     resetCode: string;
+    email: string;
 }
 
 export interface IRegisterVariables {

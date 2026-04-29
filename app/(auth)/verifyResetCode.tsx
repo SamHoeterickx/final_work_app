@@ -1,15 +1,20 @@
 import { BackButton, Button, InputField } from "@/shared/components";
+import { useVerifyResetCode } from "@/shared/hooks/passwordReset/useVerifyResetCode.hook";
 import { baseStyles } from "@/shared/styles/base.styles";
+import { IVerifyResetCodeCredentials } from "@/shared/types/types";
+import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function verifyResetCode(){
-const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         resetCode: '',
     });
 
-    // const { mutate, isError, error, isPending } = useRequestResetCode
+    const { email } = useLocalSearchParams();
+
+    const { mutate, isError, error, isPending } = useVerifyResetCode();
 
     const handleFormInput = (name: string, value: string) => {
         setFormData(prev => ({
@@ -20,14 +25,18 @@ const [formData, setFormData] = useState({
 
     const handleRequestResetCode = () => {
         if(formData.resetCode === '') return
-
-        // mutate(formData);
+        const sanitizedEmail = Array.isArray(email) ? email[0] : email;        
+        const inputData: IVerifyResetCodeCredentials = {
+            ...formData,
+           email: sanitizedEmail
+        }
+        mutate(inputData);
     }
 
     const renderError = () => {
         return(
             <View>
-                {/* <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text> */}
+                <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
             </View>
         )
     }
@@ -56,7 +65,7 @@ const [formData, setFormData] = useState({
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>Reset Code</Text>
                                 <InputField
                                     onChangeText={handleFormInput}
                                     name='resetCode'
@@ -68,16 +77,16 @@ const [formData, setFormData] = useState({
                                 />
                             </View>
                             
-                            {/* {
+                            {
                                 isError && renderError()
-                            } */}
+                            }
                         </View>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
                             copy='Verifieer reset code'
                             onPress={handleRequestResetCode}
-                            // disabled={isPending}
+                            disabled={isPending}
                         />
                     </View>
                 </ScrollView>

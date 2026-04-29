@@ -10,12 +10,16 @@ export const useRequestResetCode = () => {
         mutationFn: (credentials: IRequestResetCodeCredentials) => {
             return authService.requestResetCode(credentials);
         },
-        onSuccess: () => {
-            console.log('Reset Code successfully send');
-            router.navigate('/(auth)/verifyResetCode')
+        onSuccess: (_, credentials) => { 
+            console.log('Reset Code successfully sent');
+            
+            router.navigate({
+                pathname: '/(auth)/verifyResetCode',
+                params: { email: credentials.email }
+            });
         },
         onError: (error: Error) => {
-            console.error('Login Failed', error.message);
+            console.error('Request Failed', error.message);
         }
-    })
-}
+    });
+};
