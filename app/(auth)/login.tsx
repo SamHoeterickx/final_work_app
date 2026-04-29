@@ -56,32 +56,34 @@ export default function LoginScreen() {
                         style={styles.logo}
                         resizeMode='contain'
                     />
-                    <Text style={[baseStyles.h2, styles.title]}>Login</Text>
-                    <View style={styles.cForm}>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name='email'
-                                placeholder='email'
-                                autoCapitalize="none"
-                                spellCheck={false}
-                            />
+                    <View style={styles.cInputContent}>
+                        <Text style={[baseStyles.h2, styles.title]}>Login</Text>
+                        <View style={styles.cForm}>
+                            <View style={styles.wInputField}>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                                <InputField
+                                    onChangeText={handleFormInput}
+                                    name='email'
+                                    placeholder='email'
+                                    autoCapitalize="none"
+                                    spellCheck={false}
+                                />
+                            </View>
+                            <View style={styles.wInputField}>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
+                                <InputField
+                                    onChangeText={handleFormInput}
+                                    name='password'
+                                    placeholder='wachtwoord'
+                                    autoCapitalize="none"
+                                    spellCheck={false}
+                                    secureTextEntry={true}
+                                />
+                            </View>
+                            {
+                                isError && renderError()
+                            }
                         </View>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name='password'
-                                placeholder='wachtwoord'
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                        {
-                            isError && renderError()
-                        }
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 26,
+        marginBottom: 32
     },
     logo: {
         width: '35%',
@@ -121,4 +124,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    cInputContent: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 64,
+    }
 })
