@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { baseStyles } from "../styles/base.styles";
+import { baseStyles } from "../styles/design.system";
 import { IButtonProps } from "../types/types";
 
 export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...settings }) => {

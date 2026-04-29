@@ -2,7 +2,7 @@ import { Button, InputField } from "@/shared/components";
 import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
-import { baseStyles } from "@/shared/styles/base.styles";
+import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { IRegisterCredentials } from "@/shared/types/types";
 import { useState } from "react";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
@@ -125,9 +125,8 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 26,
         maxWidth: '65%',
-        marginBottom: 32,
+        marginBottom: spacing.xl,
     },
     logo: {
         width: '35%',
@@ -136,10 +135,10 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     wInputField: {
-        marginBottom: 24,
+        marginBottom: spacing.lg,
     },
     inputLabel: {
-        marginBottom: 12,
+        marginBottom: spacing.sm,
     },
     scrollContent: {
         flexGrow: 1,

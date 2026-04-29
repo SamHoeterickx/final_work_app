@@ -1,5 +1,5 @@
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
-import { baseStyles, PRIMARY_COLOR } from "@/shared/styles/base.styles";
+import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -41,21 +41,21 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        gap: 24,
+        gap: spacing.lg,
         alignItems: 'stretch',
     },
     option: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 24,
+        gap: spacing.lg,
         minHeight: 90, 
 
         borderWidth: 2,
-        borderColor: PRIMARY_COLOR,
-        borderRadius: 16,
+        borderColor: colors.primary,
+        borderRadius: borderRadius.md,
 
-        paddingHorizontal: 16,
-        paddingVertical: 16,
+        paddingHorizontal: spacing.md,
+        paddingVertical: spacing.md,
 
         opacity: 0.4,
     },

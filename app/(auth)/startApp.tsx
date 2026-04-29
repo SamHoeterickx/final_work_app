@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/shared/components';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/base.styles';
+import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
 
 export default function StartAppScreen() {
     const router = useRouter();
@@ -24,8 +24,11 @@ export default function StartAppScreen() {
                     source={require('@/assets/images/android-icon-background.png')}
                     resizeMode='contain'
                 /> */}
-                <Text style={baseStyles.h3}>
+                <Text style={[typography.h1, styles.title]}>
                     Ontdek de wereld van koffie
+                </Text>
+                <Text style={[typography.bodySmall, styles.subtitle]}>
+                    Van boon tot cup, leer alles over koffie en het maken van de perfecte cup.
                 </Text>
             </View>
 
@@ -47,12 +50,20 @@ export default function StartAppScreen() {
 
 const styles = StyleSheet.create({
     cHeader: {
-        width: '100%',
+        width: '85%',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
     },
     logo: {
         width: '35%',
+        marginTop: spacing.xxl
+    },
+    title: {
+        textAlign: 'center',
+        marginBottom: spacing.sm
+    },
+    subtitle: {
+        textAlign: 'center',
     },
 })

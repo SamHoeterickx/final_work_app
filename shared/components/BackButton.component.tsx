@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { FC } from "react";
 
-import { baseStyles } from "../styles/base.styles";
+import { baseStyles, colors } from "../styles/design.system";
 
 export const BackButton: FC = () => {
     const router = useRouter();
@@ -12,6 +12,6 @@ export const BackButton: FC = () => {
     }
 
     return (
-        <Ionicons style={baseStyles.backButton} name="chevron-back" size={32} color="#D9D9D9" onPress={handleNavigateBack} />
+        <Ionicons style={baseStyles.backButton} name="chevron-back" size={32} color={colors.primary} onPress={handleNavigateBack} />
     )
 }

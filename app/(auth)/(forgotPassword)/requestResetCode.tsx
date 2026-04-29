@@ -1,6 +1,6 @@
 import { BackButton, Button, InputField } from "@/shared/components";
 import { useRequestResetCode } from "@/shared/hooks/passwordReset/useRequestResetCode.hook";
-import { baseStyles } from "@/shared/styles/base.styles";
+import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { useState } from "react";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -88,18 +88,17 @@ export default function requestResetCode(){
 
 const styles = StyleSheet.create({
     cText: {
-        marginBottom: 32,
+        marginBottom: spacing.xl,
         alignItems: 'center',
         textAlign: 'center',
     },
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 26,
     },
     description: {
         textAlign: 'center',
-        marginTop: 12,
+        marginTop: spacing.sm,
     },
     logo: {
         width: '35%',
@@ -108,10 +107,10 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     wInputField: {
-        marginBottom: 24,
+        marginBottom: spacing.lg,
     },
     inputLabel: {
-        marginBottom: 12,
+        marginBottom: spacing.sm,
     },
     scrollContent: {
         flexGrow: 1,

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 // STYLES
-import { baseStyles, PRIMARY_COLOR } from "@/shared/styles/base.styles";
+import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 
 // STORE
@@ -48,21 +48,21 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        gap: 16,
+        gap: spacing.md,
     },
     tileOption: {
         width: '47.5%',
         height: '33%',
-        borderRadius: 16,
+        borderRadius: borderRadius.md,
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 8,
+        gap: spacing.sm,
  
         borderWidth: 2,
-        borderColor: PRIMARY_COLOR,
+        borderColor: colors.primary,
 
-        paddingHorizontal: 16,
-        paddingVertical: 16,
+        paddingHorizontal: spacing.md,
+        paddingVertical: spacing.md,
 
         opacity: 0.4,
     },
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 600,
         textTransform: 'uppercase',
-        marginTop: 24,
+        marginTop: spacing.lg,
     }
 });

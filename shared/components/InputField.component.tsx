@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TextInput, View } from "react-native";
 import { IInputFieldProps } from "../types/types";
-import { baseStyles } from "../styles/base.styles";
+import { baseStyles } from "../styles/design.system";
 
 export const InputField: FC<IInputFieldProps> = ({onChangeText, name, placeholder, style, ...settings}) => {
     return(

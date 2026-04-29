@@ -11,8 +11,8 @@ import { Button, OnboardingQuestionWrapper } from '@/shared/components';
 import { onboardingQuestions } from '@/shared/const/onboarding.const';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/base.styles';
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 const MAX_ONBOARDING_LENGTH = 6;
 
@@ -44,8 +44,8 @@ export default function OnboardingScreen() {
         return (
             <>
                 <View style={styles.qHeader}>
-                    <Text style={[baseStyles.h2, styles.qTitle]}>{onboardingQuestions[onboardingCount].title}</Text>
-                    <Text style={[baseStyles.p, styles.qDescription]}>{onboardingQuestions[onboardingCount].description}</Text>
+                    <Text style={baseStyles.h2}>{onboardingQuestions[onboardingCount].title}</Text>
+                    <Text style={baseStyles.p}>{onboardingQuestions[onboardingCount].description}</Text>
                 </View>
                 <OnboardingQuestionWrapper 
                     kind={onboardingQuestions[onboardingCount].kind} 
@@ -63,7 +63,7 @@ export default function OnboardingScreen() {
                     onPress={handleBack}
                     style={styles.backButton}
                 >
-                    <Ionicons name="chevron-back" size={32} color="#D9D9D9" />
+                    <Ionicons name="chevron-back" size={32} color={colors.primary} />
                 </TouchableOpacity>
                 <View style={styles.progressBar}>
                     <View style={[styles.progressStatus, { width: `${(onboardingCount / MAX_ONBOARDING_LENGTH) * 100}%`}]} />
@@ -84,7 +84,7 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
     onboardingHeader: {
         width: '100%',
-        paddingTop: 10,
+        paddingTop: spacing.sm,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -96,14 +96,14 @@ const styles = StyleSheet.create({
     progressBar: {
         width: '85%',
         height: 15,
-        backgroundColor: '#D9D9D9',
-        borderRadius: 16,
+        backgroundColor: colors.primary,
+        borderRadius: borderRadius.md,
         marginTop: 4,
     },
     progressStatus: {
         height: 15,
         backgroundColor: '#CCC',
-        borderRadius: 16
+        borderRadius: borderRadius.md
     },
     cQuestion: {
         height: '75%',
@@ -112,12 +112,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     qHeader: {
-        marginBottom: 24,
-    },
-    qTitle: {
-        fontSize: 20
-    },
-    qDescription: {
-        fontSize: 14
+        marginBottom: spacing.lg,
     }
 })

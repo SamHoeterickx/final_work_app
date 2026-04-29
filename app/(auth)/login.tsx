@@ -1,6 +1,6 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
 import { BackButton, Button, InputField } from '@/shared/components';
@@ -9,7 +9,7 @@ import { BackButton, Button, InputField } from '@/shared/components';
 import { useLogin } from '@/shared/hooks';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/base.styles';
+import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILoginCredentials } from '@/shared/types/types';
 import { Link } from 'expo-router';
 
@@ -105,8 +105,7 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 26,
-        marginBottom: 32
+        marginBottom: spacing.xl
     },
     logo: {
         width: '35%',
@@ -115,10 +114,10 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     wInputField: {
-        marginBottom: 24,
+        marginBottom: spacing.lg,
     },
     inputLabel: {
-        marginBottom: 12,
+        marginBottom: spacing.sm,
     },
     scrollContent: {
         flexGrow: 1,

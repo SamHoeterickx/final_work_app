@@ -1,6 +1,6 @@
 import { BackButton, Button, InputField } from "@/shared/components";
 import { useChangePasswordWithResetCode } from "@/shared/hooks/passwordReset/useChangePasswordWithResetCode.hook";
-import { baseStyles } from "@/shared/styles/base.styles";
+import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { IErrorData, INewPasswordCredentials } from "@/shared/types/types";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
@@ -194,14 +194,13 @@ export default function resetPassword(){
 
 const styles = StyleSheet.create({
     cText: {
-        marginBottom: 32,
+        marginBottom: spacing.xl,
         alignItems: 'center',
         textAlign: 'center',
     },
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 26,
     },
     logo: {
         width: '35%',
@@ -210,10 +209,10 @@ const styles = StyleSheet.create({
         width: '85%',
     },
     wInputField: {
-        marginBottom: 24,
+        marginBottom: spacing.lg,
     },
     inputLabel: {
-        marginBottom: 12,
+        marginBottom: spacing.sm,
     },
     scrollContent: {
         flexGrow: 1,
