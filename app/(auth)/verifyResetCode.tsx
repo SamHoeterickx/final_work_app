@@ -74,6 +74,7 @@ export default function verifyResetCode(){
                                     spellCheck={false}
                                     maxLength={8}
                                     inputMode="decimal"
+                                    style={{textAlign: 'center'}}
                                 />
                             </View>
                             
