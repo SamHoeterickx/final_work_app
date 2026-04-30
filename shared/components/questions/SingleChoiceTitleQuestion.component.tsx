@@ -12,78 +12,80 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 import { IQuestionProps } from '@/shared/types/types';
 
 export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-  const { answers, setSingleChoiceAnswer } = useOnboardingStore();
-  const { t } = useTranslation();
+    const { answers, setSingleChoiceAnswer } = useOnboardingStore();
+    const { t } = useTranslation();
 
-  const currentAnswers = answers[questionIndex] || [];
+    const currentAnswers = answers[questionIndex] || [];
 
-  const handleOnPress = (index: number) => {
-    setSingleChoiceAnswer(questionIndex, index);
-  };
+    const handleOnPress = (index: number) => {
+        setSingleChoiceAnswer(questionIndex, index);
+    };
 
-  const renderOptions = () => {
-    return options.map((option, index) => (
-      <TouchableOpacity
-        key={index}
-        style={[styles.option, currentAnswers.includes(index) && { opacity: 1 }]}
-        onPress={() => handleOnPress(index)}
-      >
-        <View
-          style={[
-            styles.selectBox,
-            currentAnswers.includes(index) && { backgroundColor: colors.primary },
-          ]}
-        />
-        <View style={styles.textWrapper}>
-          <Text style={baseStyles.h4}>{t(option.label)}</Text>
-          <Text style={baseStyles.p}>{option.description ? t(option.description) : ''}</Text>
-        </View>
-      </TouchableOpacity>
-    ));
-  };
+    const renderOptions = () => {
+        return options.map((option, index) => (
+            <TouchableOpacity
+                key={index}
+                style={[styles.option, currentAnswers.includes(index) && { opacity: 1 }]}
+                onPress={() => handleOnPress(index)}
+            >
+                <View
+                    style={[
+                        styles.selectBox,
+                        currentAnswers.includes(index) && { backgroundColor: colors.primary },
+                    ]}
+                />
+                <View style={styles.textWrapper}>
+                    <Text style={baseStyles.h4}>{t(option.label)}</Text>
+                    <Text style={baseStyles.p}>
+                        {option.description ? t(option.description) : ''}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        ));
+    };
 
-  return (
-    <ScrollView
-      style={styles.scrollView}
-      contentContainerStyle={styles.contentContainer}
-      showsVerticalScrollIndicator={false}
-    >
-      {options && renderOptions()}
-    </ScrollView>
-  );
+    return (
+        <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+        >
+            {options && renderOptions()}
+        </ScrollView>
+    );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    width: '100%',
-  },
-  contentContainer: {
-    gap: spacing.lg,
-  },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.lg,
-    minHeight: 100,
+    scrollView: {
+        width: '100%',
+    },
+    contentContainer: {
+        gap: spacing.lg,
+    },
+    option: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: spacing.lg,
+        minHeight: 100,
 
-    borderWidth: 2,
-    borderColor: colors.primary,
-    borderRadius: borderRadius.md,
+        borderWidth: 2,
+        borderColor: colors.primary,
+        borderRadius: borderRadius.md,
 
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.md,
+        paddingHorizontal: spacing.md,
+        paddingVertical: spacing.md,
 
-    opacity: 0.4,
-  },
-  selectBox: {
-    width: 30,
-    height: 30,
-    borderRadius: borderRadius.full,
-    borderColor: colors.primary,
-    borderWidth: 2,
-  },
-  textWrapper: {
-    flex: 1,
-    gap: spacing.xs,
-  },
+        opacity: 0.4,
+    },
+    selectBox: {
+        width: 30,
+        height: 30,
+        borderRadius: borderRadius.full,
+        borderColor: colors.primary,
+        borderWidth: 2,
+    },
+    textWrapper: {
+        flex: 1,
+        gap: spacing.xs,
+    },
 });

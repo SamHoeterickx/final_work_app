@@ -13,24 +13,24 @@ import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
 import { graphqlFetch } from '@/shared/utils/api.utils';
 
 export default function HomeScreen() {
-  const [chapters, setChapters] = useState('');
-  const logout = useAuthStore((state) => state.logout);
-  const { t } = useTranslation();
+    const [chapters, setChapters] = useState('');
+    const logout = useAuthStore((state) => state.logout);
+    const { t } = useTranslation();
 
-  const getChapters = async () => {
-    const response = await graphqlFetch(GET_ALL_CHAPTERS);
-    setChapters(JSON.stringify(response, null, 2));
-  };
+    const getChapters = async () => {
+        const response = await graphqlFetch(GET_ALL_CHAPTERS);
+        setChapters(JSON.stringify(response, null, 2));
+    };
 
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{t('home.title')}</Text>
-      <Button title="test chapters button" onPress={getChapters} />
-      <Button title="Logout" onPress={logout} />
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{t('home.title')}</Text>
+            <Button title="test chapters button" onPress={getChapters} />
+            <Button title="Logout" onPress={logout} />
 
-      <ScrollView>
-        <Text>{chapters || 'No data yet'}</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
+            <ScrollView>
+                <Text>{chapters || 'No data yet'}</Text>
+            </ScrollView>
+        </SafeAreaView>
+    );
 }

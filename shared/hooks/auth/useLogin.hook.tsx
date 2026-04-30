@@ -7,15 +7,15 @@ import { authService } from '@/shared/services/auth.service';
 import { ILoginCredentials } from '@/shared/types/types';
 
 export const useLogin = () => {
-  return useMutation({
-    mutationFn: (credentials: ILoginCredentials) => {
-      return authService.login(credentials);
-    },
-    onSuccess: () => {
-      console.log('Login successfull');
-    },
-    onError: (error: Error) => {
-      console.error('Login Failed', error.message);
-    },
-  });
+    return useMutation({
+        mutationFn: (credentials: ILoginCredentials) => {
+            return authService.login(credentials);
+        },
+        onSuccess: () => {
+            console.log('Login successfull');
+        },
+        onError: (error: Error) => {
+            console.error('Login Failed', error.message);
+        },
+    });
 };

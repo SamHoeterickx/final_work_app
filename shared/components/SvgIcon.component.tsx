@@ -24,34 +24,34 @@ import Bean3 from '@/assets/icons/beans/3_beans.svg';
 import Bean4 from '@/assets/icons/beans/4_beans.svg';
 
 interface SvgIconProps extends SvgProps {
-  name: string;
+    name: string;
 }
 
 const IconMap: Record<string, React.FC<SvgProps>> = {
-  // Machines
-  'filter_coffee.svg': FilterCoffee,
-  'full_automatic_machine.svg': FullAutomatic,
-  'espresso_machine.svg': EspressoMachine,
-  'cup_machine.svg': CupMachine,
-  'french_press.svg': FrenchPress,
-  'coffee_shop.svg': CoffeeShop,
-  'moka_pot.svg': MokaPot,
-  'pour_over.svg': PourOver,
-  'chemex.svg': Chemex,
+    // Machines
+    'filter_coffee.svg': FilterCoffee,
+    'full_automatic_machine.svg': FullAutomatic,
+    'espresso_machine.svg': EspressoMachine,
+    'cup_machine.svg': CupMachine,
+    'french_press.svg': FrenchPress,
+    'coffee_shop.svg': CoffeeShop,
+    'moka_pot.svg': MokaPot,
+    'pour_over.svg': PourOver,
+    'chemex.svg': Chemex,
 
-  // Gear
-  'bean_mil.svg': BeanMil,
-  'milk_foamer.svg': MilkFoamer,
-  'gooseneck_kettle.svg': Gooseneck,
+    // Gear
+    'bean_mil.svg': BeanMil,
+    'milk_foamer.svg': MilkFoamer,
+    'gooseneck_kettle.svg': Gooseneck,
 
-  // Beans
-  '1_bean.svg': Bean1,
-  '2_beans.svg': Bean2,
-  '3_beans.svg': Bean3,
-  '4_beans.svg': Bean4,
+    // Beans
+    '1_bean.svg': Bean1,
+    '2_beans.svg': Bean2,
+    '3_beans.svg': Bean3,
+    '4_beans.svg': Bean4,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, ...props }) => {
-  const IconComponent = IconMap[name];
-  return IconComponent ? <IconComponent {...props} /> : null;
+    const IconComponent = IconMap[name];
+    return IconComponent ? <IconComponent {...props} /> : null;
 };

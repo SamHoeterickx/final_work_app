@@ -1,7 +1,6 @@
 const { FlatCompat } = require('@eslint/eslintrc');
 const prettier = require('eslint-plugin-prettier/recommended');
 const reactNative = require('eslint-plugin-react-native');
-// 1. Importeer de TypeScript plugin (deze is al geïnstalleerd via de expo config)
 const typescriptEslint = require('@typescript-eslint/eslint-plugin');
 
 const compat = new FlatCompat({
@@ -9,13 +8,15 @@ const compat = new FlatCompat({
 });
 
 module.exports = [
+  {
+    ignores: ['eslint.config.js'],
+  },
   ...compat.extends('expo'),
   prettier,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       'react-native': reactNative,
-      // 2. Koppel de naam aan de geïmporteerde plugin, zodat de linter de rules snapt
       '@typescript-eslint': typescriptEslint,
     },
     rules: {
