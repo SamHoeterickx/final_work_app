@@ -1,9 +1,15 @@
-import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
-import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { IQuestionProps } from "@/shared/types/types";
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+// STORE
+import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { IQuestionProps } from '@/shared/types/types';
 
 export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
@@ -13,26 +19,30 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
 
     const handleOnPress = (index: number) => {
         setSingleChoiceAnswer(questionIndex, index);
-    }
+    };
 
     const renderOptions = () => {
         return options.map((option, index) => (
             <TouchableOpacity
-                key={index} 
-                style={[
-                    styles.option,
-                    currentAnswers.includes(index) && { opacity: 1 }
-                ]}
+                key={index}
+                style={[styles.option, currentAnswers.includes(index) && { opacity: 1 }]}
                 onPress={() => handleOnPress(index)}
             >
-                <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: colors.primary}]}/>
-                <View style={styles.textWrapper}> 
+                <View
+                    style={[
+                        styles.selectBox,
+                        currentAnswers.includes(index) && { backgroundColor: colors.primary },
+                    ]}
+                />
+                <View style={styles.textWrapper}>
                     <Text style={baseStyles.h4}>{t(option.label)}</Text>
-                    <Text style={baseStyles.p}>{option.description ? t(option.description) : ''}</Text>
+                    <Text style={baseStyles.p}>
+                        {option.description ? t(option.description) : ''}
+                    </Text>
                 </View>
             </TouchableOpacity>
         ));
-    }
+    };
 
     return (
         <ScrollView
@@ -40,7 +50,7 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
         >
-            { options && renderOptions() }
+            {options && renderOptions()}
         </ScrollView>
     );
 };
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: spacing.lg,
-        minHeight: 100, 
+        minHeight: 100,
 
         borderWidth: 2,
         borderColor: colors.primary,
@@ -72,10 +82,10 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: borderRadius.full,
         borderColor: colors.primary,
-        borderWidth: 2
+        borderWidth: 2,
     },
     textWrapper: {
-        flex: 1, 
+        flex: 1,
         gap: spacing.xs,
-    }
+    },
 });

@@ -1,5 +1,15 @@
+import { Link } from 'expo-router';
 import { useState } from 'react';
-import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import {
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
@@ -10,14 +20,14 @@ import { useLogin } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
+
+// TYPES
 import { ILoginCredentials } from '@/shared/types/types';
-import { Link } from 'expo-router';
-import { useTranslation } from 'react-i18next';
 
 export default function LoginScreen() {
     const [formData, setFormData] = useState<ILoginCredentials>({
         email: '',
-        password: ''
+        password: '',
     });
 
     const { mutate, isPending, isError, error } = useLogin();
@@ -25,23 +35,23 @@ export default function LoginScreen() {
     const { t } = useTranslation();
 
     const handleFormInput = (name: string, value: string) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
-        }))
-    }
+            [name]: value,
+        }));
+    };
 
     const handleLogin = () => {
         mutate(formData);
     };
 
     const renderError = () => {
-        return(
+        return (
             <View>
                 <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -58,41 +68,48 @@ export default function LoginScreen() {
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_black.png')}
                         style={styles.logo}
-                        resizeMode='contain'
+                        resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
                         <Text style={[baseStyles.h2, styles.title]}>{t('login.title')}</Text>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('login.fieldLabels.email')}</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                                    {t('login.fieldLabels.email')}
+                                </Text>
                                 <InputField
                                     onChangeText={handleFormInput}
-                                    name='email'
+                                    name="email"
                                     placeholder={t('login.fieldLabels.email')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                 />
                             </View>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('login.fieldLabels.password')}</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                                    {t('login.fieldLabels.password')}
+                                </Text>
                                 <InputField
                                     onChangeText={handleFormInput}
-                                    name='password'
+                                    name="password"
                                     placeholder={t('login.fieldLabels.password')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                     secureTextEntry={true}
                                 />
                             </View>
-                            {
-                                isError && renderError()
-                            }
+                            {isError && renderError()}
                         </View>
-                        <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>{t('login.buttons.forgotPassword')}</Link>
+                        <Link
+                            href={'/(auth)/(forgotPassword)/requestResetCode'}
+                            style={[baseStyles.p, styles.link]}
+                        >
+                            {t('login.buttons.forgotPassword')}
+                        </Link>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='login.buttons.login'
+                            copy="login.buttons.login"
                             onPress={handleLogin}
                             disabled={isPending}
                         />
@@ -108,7 +125,7 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        marginBottom: spacing.xl
+        marginBottom: spacing.xl,
     },
     logo: {
         width: '35%',
@@ -138,6 +155,6 @@ const styles = StyleSheet.create({
     link: {
         fontSize: 12,
         color: 'blue',
-        textDecorationLine: 'underline'
-    }
-})
+        textDecorationLine: 'underline',
+    },
+});

@@ -1,13 +1,13 @@
+import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import { Button } from '@/shared/components';
 
 // STYLES
 import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
-import { useTranslation } from 'react-i18next';
 
 export default function StartAppScreen() {
     const router = useRouter();
@@ -19,9 +19,9 @@ export default function StartAppScreen() {
             <Image
                 style={styles.logo}
                 source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                resizeMode='contain'
+                resizeMode="contain"
             />
-            <View style={ styles.cHeader}>
+            <View style={styles.cHeader}>
                 <Text style={[typography.h1, styles.title]}>{t('startApp.title')}</Text>
                 <Text style={[typography.bodySmall, styles.subtitle]}>
                     {t('startApp.subtitle')}
@@ -29,17 +29,16 @@ export default function StartAppScreen() {
             </View>
 
             <View style={baseStyles.cButton}>
-                <Button 
-                    copy='startApp.buttons.onboarding' 
-                    onPress={() => router.navigate('/(auth)/onboarding')} 
+                <Button
+                    copy="startApp.buttons.onboarding"
+                    onPress={() => router.navigate('/(auth)/onboarding')}
                 />
-                <Button 
-                    copy='startApp.buttons.login' 
-                    onPress={() => router.navigate('/(auth)/login')} 
-                    styles='secundary'
+                <Button
+                    copy="startApp.buttons.login"
+                    onPress={() => router.navigate('/(auth)/login')}
+                    styles="secundary"
                 />
             </View>
-            
         </SafeAreaView>
     );
 }
@@ -53,13 +52,13 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: '35%',
-        marginTop: spacing.xxl
+        marginTop: spacing.xxl,
     },
     title: {
         textAlign: 'center',
-        marginBottom: spacing.sm
+        marginBottom: spacing.sm,
     },
     subtitle: {
         textAlign: 'center',
     },
-})
+});

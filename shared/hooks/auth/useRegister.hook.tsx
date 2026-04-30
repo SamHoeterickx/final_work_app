@@ -1,12 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
 // SERVICE
-import { authService } from "@/shared/services/auth.service";
+import { authService } from '@/shared/services/auth.service';
 
 // TYPES
-import { IRegisterVariables } from "@/shared/types/types";
-
-
+import { IRegisterVariables } from '@/shared/types/types';
 
 export const useRegister = () => {
     return useMutation({
@@ -18,6 +16,6 @@ export const useRegister = () => {
         },
         onError: (error: Error) => {
             console.error('Register Failed', error.message);
-        }
-    })
-}
+        },
+    });
+};

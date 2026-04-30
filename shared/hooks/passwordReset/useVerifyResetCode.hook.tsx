@@ -1,7 +1,7 @@
-import { authService } from "@/shared/services/auth.service"
-import { IVerifyResetCodeCredentials } from "@/shared/types/types"
-import { useMutation } from "@tanstack/react-query"
-import { useRouter } from "expo-router"
+import { authService } from '@/shared/services/auth.service';
+import { IVerifyResetCodeCredentials } from '@/shared/types/types';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'expo-router';
 
 export const useVerifyResetCode = () => {
     const router = useRouter();
@@ -14,11 +14,11 @@ export const useVerifyResetCode = () => {
             console.log('Reset Code successfully verified');
             router.navigate({
                 pathname: '/(auth)/(forgotPassword)/resetPassword',
-                params: {email: credentials.email, resetCode: credentials.resetCode}
-            })
+                params: { email: credentials.email, resetCode: credentials.resetCode },
+            });
         },
         onError: (error: Error) => {
             console.error('Verification Failed', error.message);
-        }
-    })
-}
+        },
+    });
+};

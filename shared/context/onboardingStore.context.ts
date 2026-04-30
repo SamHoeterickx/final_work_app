@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { IOnboardingStore } from "../types/types";
+import { create } from 'zustand';
+import { IOnboardingStore } from '../types/types';
 
 export const useOnboardingStore = create<IOnboardingStore>((set) => ({
     answers: {},

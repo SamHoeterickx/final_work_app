@@ -4,32 +4,48 @@ import * as SecureStore from 'expo-secure-store';
 import { graphFetchAuth } from '../utils/api.utils';
 
 // TYPES
-import { IChangePasswordWithResetCodeCredentials, ILoginCredentials, IOnboardingAnswers, IRegisterCredentials, IRequestResetCodeCredentials, IVerifyResetCodeCredentials } from '../types/types';
+import {
+    IChangePasswordWithResetCodeCredentials,
+    ILoginCredentials,
+    IOnboardingAnswers,
+    IRegisterCredentials,
+    IRequestResetCodeCredentials,
+    IVerifyResetCodeCredentials,
+} from '../types/types';
 
 // MUTATIONS
 import { useAuthStore } from '../context/authStore.context';
-import { LOGIN_USER_MUTATION, REGISTER_USER_MUTATION, REQUEST_RESET_CODE_MUTATION, RESET_PASSWORD_WITH_RESET_CODE_MUTATION, VERIFY_RESET_CODE_MUTATION } from '../graphql/mutations';
+import {
+    LOGIN_USER_MUTATION,
+    REGISTER_USER_MUTATION,
+    REQUEST_RESET_CODE_MUTATION,
+    RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
+    VERIFY_RESET_CODE_MUTATION,
+} from '../graphql/mutations';
 
 class AuthService {
-	constructor() {}
+    constructor() {}
 
-	async login(credentials: ILoginCredentials) {
+    async login(credentials: ILoginCredentials) {
         try {
-            const result = await graphFetchAuth(LOGIN_USER_MUTATION, credentials as unknown as Record<string, any>);
+            const result = await graphFetchAuth(
+                LOGIN_USER_MUTATION,
+                credentials as unknown as Record<string, any>,
+            );
 
             if (!result || !result.data) {
                 throw new Error('Failed to recieve data');
             }
 
-            const data = result.data as any;         
+            const data = result.data as any;
             if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
                 const errorItem = data.errors[0];
 
                 const validationMessage = errorItem.extensions?.originalError?.message;
-                
+
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage[0]); 
+                        throw new Error(validationMessage[0]);
                     }
                     if (typeof validationMessage === 'string') {
                         throw new Error(validationMessage[0]);
@@ -53,13 +69,12 @@ class AuthService {
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
             useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
-            
         } catch (error) {
             throw error;
         }
     }
 
-    async register(credentials: IRegisterCredentials, onboarding: IOnboardingAnswers){
+    async register(credentials: IRegisterCredentials, onboarding: IOnboardingAnswers) {
         try {
             const variables = { ...credentials, onboarding };
             const result = await graphFetchAuth(REGISTER_USER_MUTATION, variables);
@@ -68,15 +83,15 @@ class AuthService {
                 throw new Error('Failed to recieve data');
             }
 
-            const data = result.data as any;         
+            const data = result.data as any;
             if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
                 const errorItem = data.errors[0];
 
                 const validationMessage = errorItem.extensions?.originalError?.message;
-                
+
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage[0]); 
+                        throw new Error(validationMessage[0]);
                     }
                     if (typeof validationMessage === 'string') {
                         throw new Error(validationMessage[0]);
@@ -100,7 +115,6 @@ class AuthService {
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
             useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, true);
-            
         } catch (error) {
             throw error;
         }
@@ -108,21 +122,24 @@ class AuthService {
 
     async requestResetCode(credentials: IRequestResetCodeCredentials) {
         try {
-            const result = await graphFetchAuth(REQUEST_RESET_CODE_MUTATION, credentials as unknown as Record<string, any>);
+            const result = await graphFetchAuth(
+                REQUEST_RESET_CODE_MUTATION,
+                credentials as unknown as Record<string, any>,
+            );
 
             if (!result || !result.data) {
                 throw new Error('Failed to recieve data');
             }
 
-            const data = result.data as any;         
+            const data = result.data as any;
             if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
                 const errorItem = data.errors[0];
 
                 const validationMessage = errorItem.extensions?.originalError?.message;
-                
+
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage[0]); 
+                        throw new Error(validationMessage[0]);
                     }
                     if (typeof validationMessage === 'string') {
                         throw new Error(validationMessage[0]);
@@ -134,29 +151,32 @@ class AuthService {
                 }
 
                 throw new Error('Unknown error occured while requesting password reset');
-            }            
+            }
         } catch (error) {
             throw error;
         }
     }
 
-    async verifyResetCode(credentials: IVerifyResetCodeCredentials){
+    async verifyResetCode(credentials: IVerifyResetCodeCredentials) {
         try {
-            const result = await graphFetchAuth(VERIFY_RESET_CODE_MUTATION, credentials as unknown as Record<string, any>);
+            const result = await graphFetchAuth(
+                VERIFY_RESET_CODE_MUTATION,
+                credentials as unknown as Record<string, any>,
+            );
 
             if (!result || !result.data) {
                 throw new Error('Failed to recieve data');
             }
 
-            const data = result.data as any;         
+            const data = result.data as any;
             if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
                 const errorItem = data.errors[0];
 
                 const validationMessage = errorItem.extensions?.originalError?.message;
-                
+
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage[0]); 
+                        throw new Error(validationMessage[0]);
                     }
                     if (typeof validationMessage === 'string') {
                         throw new Error(validationMessage[0]);
@@ -168,7 +188,7 @@ class AuthService {
                 }
 
                 throw new Error('Unknown error occured while verifying reset code');
-            }            
+            }
         } catch (error) {
             throw error;
         }
@@ -176,21 +196,24 @@ class AuthService {
 
     async changePasswordWithResetCode(credentials: IChangePasswordWithResetCodeCredentials) {
         try {
-            const result = await graphFetchAuth(RESET_PASSWORD_WITH_RESET_CODE_MUTATION, credentials as unknown as Record<string, any>);
+            const result = await graphFetchAuth(
+                RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
+                credentials as unknown as Record<string, any>,
+            );
 
             if (!result || !result.data) {
                 throw new Error('Failed to recieve data');
             }
 
-            const data = result.data as any;         
+            const data = result.data as any;
             if (data.errors && Array.isArray(data.errors) && data.errors.length > 0) {
                 const errorItem = data.errors[0];
 
                 const validationMessage = errorItem.extensions?.originalError?.message;
-                
+
                 if (validationMessage) {
                     if (Array.isArray(validationMessage)) {
-                        throw new Error(validationMessage[0]); 
+                        throw new Error(validationMessage[0]);
                     }
                     if (typeof validationMessage === 'string') {
                         throw new Error(validationMessage[0]);
@@ -202,7 +225,7 @@ class AuthService {
                 }
 
                 throw new Error('Unknown error occured while requesting password reset');
-            }            
+            }
 
             const newAccessToken = data.data?.resetPasswordWithCode?.accessToken;
             const newRefreshToken = data.data?.resetPasswordWithCode?.refreshToken;

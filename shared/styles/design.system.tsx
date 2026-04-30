@@ -1,4 +1,4 @@
-import { StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export const colors = {
     primary: '#D9D9D9',
@@ -6,18 +6,18 @@ export const colors = {
     accent: '#',
     accentLight: '#',
     background: '#EFEFEF',
-    
+
     text: {
         primary: '#',
         secondary: '#',
         muted: '#',
         inverse: '#',
     },
-    
+
     success: '#',
     warning: '#',
     error: '#',
-    
+
     border: '#',
     shadow: '#',
     overlay: '#',
@@ -121,7 +121,7 @@ export const baseStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    
+
     // Typography
     h1: { ...typography.h1 } as TextStyle,
     h2: { ...typography.h2 } as TextStyle,
@@ -129,26 +129,24 @@ export const baseStyles = StyleSheet.create({
     h4: { ...typography.h4 } as TextStyle,
     p: { ...typography.body } as TextStyle,
     caption: { ...typography.caption } as TextStyle,
-    
+
     inputGroup: {
         marginBottom: spacing.lg,
     } as ViewStyle,
-    
+
     errorText: {
         ...typography.bodySmall,
         color: colors.error,
         marginTop: spacing.xs,
     } as TextStyle,
 
-    wrapper: {
-
-    },
+    wrapper: {},
     cButton: {
-        width: '100%'
+        width: '100%',
     },
 
     error: {
-        color: 'red'
+        color: 'red',
     },
 
     // ==================/==================
@@ -166,12 +164,8 @@ export const baseStyles = StyleSheet.create({
 
         backgroundColor: colors.primary,
     },
-    sButton: {
-
-    },
-    xlButton: {
-
-    },
+    sButton: {},
+    xlButton: {},
     secundaryButton: {
         backgroundColor: colors.secondary,
         borderWidth: 2,
@@ -192,7 +186,7 @@ export const baseStyles = StyleSheet.create({
     // ==========INPUTFIELD STYLING=========
     // ==================/==================
     cInputField: {
-        width: '100%'
+        width: '100%',
     },
     inputField: {
         paddingVertical: 12,
@@ -201,5 +195,5 @@ export const baseStyles = StyleSheet.create({
         borderWidth: 2,
         borderColor: colors.primary,
         borderRadius: borderRadius.md,
-    }
+    },
 });

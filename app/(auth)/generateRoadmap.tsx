@@ -1,5 +1,3 @@
-export default function GenerateRoadmap(){
-    return (
-        <></>
-    )
+export default function GenerateRoadmap() {
+    return <></>;
 }

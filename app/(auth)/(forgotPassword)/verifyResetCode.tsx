@@ -1,14 +1,30 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { useVerifyResetCode } from "@/shared/hooks/passwordReset/useVerifyResetCode.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
-import { IVerifyResetCodeCredentials } from "@/shared/types/types";
-import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function verifyResetCode(){
+// COMPONENTS
+import { BackButton, Button, InputField } from '@/shared/components';
+
+// HOOKS
+import { useVerifyResetCode } from '@/shared/hooks/passwordReset/useVerifyResetCode.hook';
+
+// STYLES
+import { baseStyles, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { IVerifyResetCodeCredentials } from '@/shared/types/types';
+
+export default function VerifyResetCode() {
     const [formData, setFormData] = useState({
         resetCode: '',
     });
@@ -19,29 +35,29 @@ export default function verifyResetCode(){
     const { mutate, isError, error, isPending } = useVerifyResetCode();
 
     const handleFormInput = (name: string, value: string) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
-        }))
-    }
+            [name]: value,
+        }));
+    };
 
     const handleVerifyResetCode = () => {
-        if(formData.resetCode === '') return
-        const sanitizedEmail = Array.isArray(email) ? email[0] : email;        
+        if (formData.resetCode === '') return;
+        const sanitizedEmail = Array.isArray(email) ? email[0] : email;
         const inputData: IVerifyResetCodeCredentials = {
             ...formData,
-           email: sanitizedEmail
-        }
+            email: sanitizedEmail,
+        };
         mutate(inputData);
-    }
+    };
 
     const renderError = () => {
-        return(
+        return (
             <View>
                 <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -50,7 +66,7 @@ export default function verifyResetCode(){
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
-                    style={{ flex: 1,  position: 'relative' }}
+                    style={{ flex: 1, position: 'relative' }}
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
@@ -58,36 +74,42 @@ export default function verifyResetCode(){
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_black.png')}
                         style={styles.logo}
-                        resizeMode='contain'
+                        resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>{t('forgotPassword.verifyResetCode.title')}</Text>
-                            <Text style={[baseStyles.p, styles.description]}>{t('forgotPassword.verifyResetCode.subtitle')}</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>
+                                {t('forgotPassword.verifyResetCode.title')}
+                            </Text>
+                            <Text style={[baseStyles.p, styles.description]}>
+                                {t('forgotPassword.verifyResetCode.subtitle')}
+                            </Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                                    {t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
+                                </Text>
                                 <InputField
                                     onChangeText={handleFormInput}
-                                    name='resetCode'
-                                    placeholder={t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
+                                    name="resetCode"
+                                    placeholder={t(
+                                        'forgotPassword.verifyResetCode.fieldLabels.resetCode',
+                                    )}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                     maxLength={8}
                                     inputMode="decimal"
-                                    style={{textAlign: 'center'}}
+                                    style={{ textAlign: 'center' }}
                                 />
                             </View>
-                            
-                            {
-                                isError && renderError()
-                            }
+
+                            {isError && renderError()}
                         </View>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='forgotPassword.verifyResetCode.buttons.verifyCode'
+                            copy="forgotPassword.verifyResetCode.buttons.verifyCode"
                             onPress={handleVerifyResetCode}
                             disabled={isPending}
                         />
@@ -138,9 +160,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 64,
     },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline'
-    }
-})
+});

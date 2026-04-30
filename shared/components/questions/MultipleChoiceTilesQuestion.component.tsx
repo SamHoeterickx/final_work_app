@@ -1,16 +1,18 @@
-import { FC } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-// STYLES
-import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { IQuestionProps } from "@/shared/types/types";
-
-// STORE
-import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from "../SvgIcon.component";
-import { useTranslation } from "react-i18next";
+import { SvgIcon } from '../SvgIcon.component';
+
+// STORE
+import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { IQuestionProps } from '@/shared/types/types';
 
 export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, toggleMultipleChoiceAnswer } = useOnboardingStore();
@@ -20,29 +22,22 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
 
     const handleOnPress = (index: number) => {
         toggleMultipleChoiceAnswer(questionIndex, index);
-    }
+    };
 
     const renderOptions = () => {
         return options.map((option, index) => (
-            <TouchableOpacity 
-                key={index} 
-                style={[
-                    styles.tileOption, 
-                    currentAnswers.includes(index) && { opacity: 1 }
-                ]}
+            <TouchableOpacity
+                key={index}
+                style={[styles.tileOption, currentAnswers.includes(index) && { opacity: 1 }]}
                 onPress={() => handleOnPress(index)}
             >
-                { option.image && <SvgIcon name={option.image} width={60} height={60} /> }
+                {option.image && <SvgIcon name={option.image} width={60} height={60} />}
                 <Text style={[baseStyles.h4, styles.tileLabel]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
     };
 
-    return (
-        <View style={styles.container}>
-            { options && renderOptions() }
-        </View>
-    );
+    return <View style={styles.container}>{options && renderOptions()}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -60,7 +55,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         gap: spacing.sm,
- 
+
         borderWidth: 2,
         borderColor: colors.primary,
 
@@ -75,5 +70,5 @@ const styles = StyleSheet.create({
         fontWeight: 600,
         textTransform: 'uppercase',
         marginTop: spacing.lg,
-    }
+    },
 });

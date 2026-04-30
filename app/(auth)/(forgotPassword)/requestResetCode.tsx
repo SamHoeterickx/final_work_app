@@ -1,40 +1,54 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { useRequestResetCode } from "@/shared/hooks/passwordReset/useRequestResetCode.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function requestResetCode(){
+// COMPONENTS
+import { BackButton, Button, InputField } from '@/shared/components';
+
+// HOOKS
+import { useRequestResetCode } from '@/shared/hooks/passwordReset/useRequestResetCode.hook';
+
+// STYLES
+import { baseStyles, spacing } from '@/shared/styles/design.system';
+
+export default function RequestResetCode() {
     const [formData, setFormData] = useState({
         email: '',
     });
 
     const { mutate, isError, error, isPending } = useRequestResetCode();
 
-    const { t } = useTranslation(); 
+    const { t } = useTranslation();
 
     const handleFormInput = (name: string, value: string) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
-        }))
-    }
+            [name]: value,
+        }));
+    };
 
     const handleRequestResetCode = () => {
-        if(formData.email === '') return
+        if (formData.email === '') return;
 
         mutate(formData);
-    }
+    };
 
     const renderError = () => {
-        return(
+        return (
             <View>
                 <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -43,7 +57,7 @@ export default function requestResetCode(){
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
-                    style={{ flex: 1,  position: 'relative' }}
+                    style={{ flex: 1, position: 'relative' }}
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
@@ -51,33 +65,39 @@ export default function requestResetCode(){
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_black.png')}
                         style={styles.logo}
-                        resizeMode='contain'
+                        resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>{t('forgotPassword.requestResetCode.title')}</Text>
-                            <Text style={[baseStyles.p, styles.description]}>{t('forgotPassword.requestResetCode.subtitle')}</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>
+                                {t('forgotPassword.requestResetCode.title')}
+                            </Text>
+                            <Text style={[baseStyles.p, styles.description]}>
+                                {t('forgotPassword.requestResetCode.subtitle')}
+                            </Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('forgotPassword.requestResetCode.fieldLabels.email')}</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                                    {t('forgotPassword.requestResetCode.fieldLabels.email')}
+                                </Text>
                                 <InputField
                                     onChangeText={handleFormInput}
-                                    name='email'
-                                    placeholder={t('forgotPassword.requestResetCode.fieldLabels.email')}
+                                    name="email"
+                                    placeholder={t(
+                                        'forgotPassword.requestResetCode.fieldLabels.email',
+                                    )}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                 />
                             </View>
-                            
-                            {
-                                isError && renderError()
-                            }
+
+                            {isError && renderError()}
                         </View>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='forgotPassword.requestResetCode.buttons.requestCode'
+                            copy="forgotPassword.requestResetCode.buttons.requestCode"
                             onPress={handleRequestResetCode}
                             disabled={isPending}
                         />
@@ -128,9 +148,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 64,
     },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline'
-    }
-})
+});

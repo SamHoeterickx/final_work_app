@@ -1,9 +1,15 @@
-import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
-import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { IQuestionProps } from "@/shared/types/types";
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+// STORE
+import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { IQuestionProps } from '@/shared/types/types';
 
 export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
@@ -13,31 +19,33 @@ export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionInde
 
     const handleOnPress = (index: number) => {
         setSingleChoiceAnswer(questionIndex, index);
-    }
+    };
 
     const renderOptions = () => {
         return options.map((option, index) => (
             <TouchableOpacity
-                key={index} 
-                style={[
-                    styles.option,
-                    currentAnswers.includes(index) && { opacity: 1 }
-                ]}
+                key={index}
+                style={[styles.option, currentAnswers.includes(index) && { opacity: 1 }]}
                 onPress={() => handleOnPress(index)}
             >
-                <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: colors.primary}]}/>
+                <View
+                    style={[
+                        styles.selectBox,
+                        currentAnswers.includes(index) && { backgroundColor: colors.primary },
+                    ]}
+                />
                 <Text style={[baseStyles.h4, { flex: 1 }]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
-    }
+    };
 
     return (
-        <ScrollView 
+        <ScrollView
             style={styles.scrollView}
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
         >
-            { options && renderOptions() }
+            {options && renderOptions()}
         </ScrollView>
     );
 };
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: spacing.lg,
-        minHeight: 90, 
+        minHeight: 90,
 
         borderWidth: 2,
         borderColor: colors.primary,
@@ -69,6 +77,6 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: borderRadius.full,
         borderColor: colors.primary,
-        borderWidth: 2
-    }
+        borderWidth: 2,
+    },
 });
