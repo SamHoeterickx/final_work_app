@@ -1,50 +1,53 @@
-# Welcome to your Expo app 👋
+<div align="center">
+  <img src="./assets/logos/png/brewlingo_logo_black.png" width="300" alt="Brewlingo Logo" />
+  <h2>DISCOVER THE WORLD OF COFFEE</h2>
+</div>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Dit repository bevat mijn eindwerkt als MCT student aan EHB.  </br>
+> Hoewel de repository publiek is voor beoordeling door docenten, is dit **geen** open-source project. Pull requests of externe bijdragen worden niet geaccepteerd. </br>
 
-## Get started
+## Project Overview
+Brewlingo is een full-stack mobiele applicatie die gebruikers meeneemt in de uitgebreide **theorie achter koffie**. In plaats van alleen recepten, focust de app op de wetenschap en kennis die nodig is om een echte expert te worden. Denk aan de herkomst van bonen, de invloed van maalgraad op extractie, en de theoretische basis voor technieken zoals latte art.
 
-1. Install dependencies
+Op basis van een interactieve onboarding flow genereert de app een gepersonaliseerde **learning roadmap**, zodat de gebruiker stap voor stap de theorie leert die relevant is voor hun eigen apparatuur en ambities.
 
-   ```bash
-   npm install
-   ```
+## 🏗️ Repository Structure
+Dit project bestaat uit twee aparte repositories. Deze README dient als centrale documentatie voor beide onderdelen.
 
-2. Start the app
+* **[Brewlingo App (Frontend)](https://github.com/SamHoeterickx/final_work_app)**
+* **[Brewlingo API (Backend)](https://github.com/SamHoeterickx/final_work_backend)**
 
-   ```bash
-   npx expo start
-   ```
+## Tech Stack
 
-In the output, you'll find options to open the app in a
+### Frontend (Mobile App)
+*   **Framework:** React Native met Expo (Expo Router voor file-based routing)
+*   **State Management:** Zustand
+*   **Data Fetching:** GraphQL Request & React Query
+*   **Localization:** React-i18next (Ondersteunde talen: EN, NL, FR)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Backend (API)
+*   **Framework:** NestJS
+*   **API Paradigm:** GraphQL (Code-first approach)
+*   **Database & ORM:** PostgreSQL met TypeORM
+*   **Authentication:** JWT (JSON Web Tokens) met hashed refresh tokens
+*   **Mailing:** Resend (voor wachtwoordherstel codes)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Tooling & CI/CD
+*   **Code Quality:** ESLint 9 (Flat Config) & Prettier
+*   **CI/CD:** GitHub Actions (Automated linting, PR checks, and semantic versioning releases)
 
-## Get a fresh project
 
-When you're ready, run:
+## MVP-1 Features
 
-```bash
-npm run reset-project
-```
+*   **Interactieve Theorie Onboarding:** Een flow die bepaalt wat de gebruiker al weet en welke apparatuur ze bezitten om de juiste theorie aan te bieden.
+*   **Personalized Roadmap:** Generatie van een uniek leertraject gebaseerd op tags, zoals `latte_art`, `bean_to_cup` en `tasting_skills`.
+*   **Authenticatie Flow:** Beveiligd inlogsysteem met registratie, JWT tokens en wachtwoordherstel via e-mail verificatie.
+*   **Meertaligheid:** De volledige interface is beschikbaar in het Nederlands, Engels en Frans.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Auteur
 
-## Learn more
+Dit project is ontwikkeld door:
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+*   **Sam Hoeterickx**
+    *   Linkedin: [Sam Hoeterickx](https://www.linkedin.com/in/sam-hoeterickx/)
+    *   GitHub: [@SamHoeterickx](https://github.com/SamHoeterickx)
