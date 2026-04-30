@@ -2,11 +2,13 @@ import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
+    const { t } = useTranslation();
+
     const currentAnswers = answers[questionIndex] || [];
 
     const handleOnPress = (index: number) => {
@@ -25,8 +27,8 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
             >
                 <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: colors.primary}]}/>
                 <View style={styles.textWrapper}> 
-                    <Text style={baseStyles.h4}>{option.label}</Text>
-                    <Text style={baseStyles.p}>{option.description}</Text>
+                    <Text style={baseStyles.h4}>{t(option.label)}</Text>
+                    <Text style={baseStyles.p}>{option.description ? t(option.description) : ''}</Text>
                 </View>
             </TouchableOpacity>
         ));

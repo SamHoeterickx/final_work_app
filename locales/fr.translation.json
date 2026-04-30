@@ -64,6 +64,98 @@
             "register": "S'inscrire"
         }
     },
+    "onboarding": {
+        "currentBehaviour": {
+            "title": "Comment préparez-vous actuellement votre café ?",
+            "subtitle": "Choisissez les façons dont vous buvez du café.",
+            "optionLabels": {
+                "instantCoffee": "Café instantané",
+                "work": "Au travail",
+                "espresso": "Expresso",
+                "podMachine": "Machine à capsules",
+                "frenchPress": "Presse française",
+                "coffeeShop": "Au café"
+            }
+        },
+        "experienceLevel": {
+            "title": "Quelle est votre expérience avec le café ?",
+            "subtitle": "Nous adaptons votre parcours d'apprentissage en fonction de ce que vous savez déjà.",
+            "optionLabels": {
+                "tasteEnjoyer": "L'Amateur de goût",
+                "curious": "Le Curieux",
+                "connoisseur": "Le Connaisseur",
+                "experimenter": "L'Expérimentateur"
+            },
+            "optionDescriptions": {
+                "tasteEnjoyer": "Je bois du café principalement pour la convivialité.",
+                "curious": "J'ai déjà entendu des termes comme taille de mouture ou torréfaction.",
+                "connoisseur": "Un Arabica / Robusta n'a rien de nouveau pour moi.",
+                "experimenter": "J'expérimente avec les méthodes de préparation."
+            }
+        },
+        "goal": {
+            "title": "Que souhaitez-vous accomplir ?",
+            "subtitle": "Choisissez votre objectif principal. Pas d'inquiétude, nous couvrons tout, mais nous adaptons votre parcours.",
+            "optionLabels": {
+                "tastingSkills": "Je veux apprendre à reconnaître et décrire les saveurs.",
+                "perfectEspresso": "Je veux apprendre à préparer l'expresso parfait.",
+                "latteArt": "Je veux me concentrer sur la texture du lait et créer de beaux motifs.",
+                "beanToCup": "Je veux apprendre tout le processus, de la plantation à la tasse."
+            }
+        },
+        "currentPreferences": {
+            "title": "Quel type de buveur de café êtes-vous ?",
+            "subtitle": "Aimez-vous un grand classique corsé ou préférez-vous chercher des saveurs fruitées ?",
+            "optionLabels": {
+                "boldClassic": "J'aime un goût puissant et corsé avec des notes profondes.",
+                "milkBalanced": "Pour moi, tout est question d'équilibre entre un café doux et un lait parfait.",
+                "versatile": "Je veux tout apprendre : de terreux et épicé à floral et frais.",
+                "fruityAcidic": "Je recherche des saveurs légères, fraîches et fruitées avec un peu d'acidité."
+            }
+        },
+        "desiredTempo": {
+            "title": "Quel est votre rythme ?",
+            "subtitle": "Comment et combien de temps souhaitez-vous consacrer chaque jour à votre voyage autour du café ?",
+            "optionLabels": {
+                "quickShot": "Le shot rapide",
+                "dailyRoutine": "La routine quotidienne",
+                "weekendLover": "L'amoureux du week-end",
+                "ownPace": "À mon propre rythme"
+            },
+            "optionDescriptions": {
+                "quickShot": "Rapide et intense, apprenez-moi l'essentiel.",
+                "dailyRoutine": "Je prends le temps pour une courte leçon en buvant mon café.",
+                "weekendLover": "Le week-end, j'adore me plonger dans la matière.",
+                "ownPace": "Pas d'horaire fixe, je préfère le faire à mon rythme."
+            }
+        },
+        "currentMethodes": {
+            "title": "Quelles méthodes de préparation possédez-vous déjà ?",
+            "subtitle": "Sélectionnez les méthodes pour lesquelles vous êtes équipé.",
+            "optionLabels": {
+                "chemex": "Chemex",
+                "mokaPot": "Cafetière Moka",
+                "espressoMachine": "Expresso",
+                "pourOver": "Pour over (filtre manuel)",
+                "frenchPress": "Presse française",
+                "none": "Je n'ai encore rien"
+            }
+        },
+        "extraGear": {
+            "title": "Qu'y a-t-il d'autre dans votre cuisine ?",
+            "subtitle": "Sélectionnez l'équipement supplémentaire que vous possédez déjà.",
+            "optionLabels": {
+                "precisionScale": "Balance de précision",
+                "gooseneckKettle": "Bouilloire col de cygne",
+                "coffeeGrinder": "Moulin à café",
+                "milkFrother": "Mousseur à lait",
+                "none": "Je n'ai encore rien"
+            }
+        },
+        "buttons": {
+            "next": "Suivant"
+        }
+    },
     "home": {
         "title": "Ceci est un titre"
     }

@@ -108,8 +108,6 @@ export const baseStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginHorizontal: '5%',
-
-        backgroundColor: colors.background
     },
     safeArea: {
         flex: 1,

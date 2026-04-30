@@ -2,190 +2,211 @@ import { IOnboardingAnswers, IOnboardingQuestions, OnboardingQuestionKind } from
 
 export const onboardingQuestions: IOnboardingQuestions[] = [
     {
-        title: 'Hoe zet je momenteel koffie?',
-        description: 'Kies de manieren waarop jij koffie drinkt.',
+        title: 'onboarding.currentBehaviour.title',
+        description: 'onboarding.currentBehaviour.subtitle',
         kind: OnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
-                label: 'Oploskoffie',
+                label: 'onboarding.currentBehaviour.optionLabels.instantCoffee',
+                tag: 'instant_coffee',
                 image: 'filter_coffee.svg'
             },
             {
-                label: 'Op het werk',
+                label: 'onboarding.currentBehaviour.optionLabels.work',
+                tag: 'work',
                 image: 'full_automatic_machine.svg'
-
             },
             {
-                label: 'Espresso',
+                label: 'onboarding.currentBehaviour.optionLabels.espresso',
+                tag: 'espresso',
                 image: 'espresso_machine.svg'
-
             },
             {
-                label: 'Cup machine',
+                label: 'onboarding.currentBehaviour.optionLabels.podMachine',
+                tag: 'pod_machine',
                 image: 'cup_machine.svg'
-
             },
             {
-                label: 'French press',
+                label: 'onboarding.currentBehaviour.optionLabels.frenchPress',
+                tag: 'french_press',
                 image: 'french_press.svg'
-
             },
             {
-                label: 'Coffee shop',
+                label: 'onboarding.currentBehaviour.optionLabels.coffeeShop',
+                tag: 'coffee_shop',
                 image: 'coffee_shop.svg'
-
             },
         ],
     },
     {
-        title: 'Wat is jouw koffie ervaring?',
-        description: 'We passen je leertraject aan op basis van wat je al weet.',
+        title: 'onboarding.experienceLevel.title',
+        description: 'onboarding.experienceLevel.subtitle',
         kind: OnboardingQuestionKind.SINGLE_CHOICE_IMG,
         options: [
             {
-                label: 'De Smaakgenieter',
-                description: 'Ik drink koffie vooral voor de gezelligheid.',
+                label: 'onboarding.experienceLevel.optionLabels.tasteEnjoyer',
+                tag: 'taste_enjoyer',
+                description: 'onboarding.experienceLevel.optionDescriptions.tasteEnjoyer',
                 image: '1_bean.svg'
             },
             {
-                label: 'De Nieuwsgierige',
-                description: 'Ik heb termen als maalgraad of branding wel eens gehoord',
+                label: 'onboarding.experienceLevel.optionLabels.curious',
+                tag: 'curious',
+                description: 'onboarding.experienceLevel.optionDescriptions.curious',
                 image: '2_beans.svg'
             },
             {
-                label: 'De Kenner',
-                description: 'Een Arabica / Robusto is niet nieuws voor mij',
+                label: 'onboarding.experienceLevel.optionLabels.connoisseur',
+                tag: 'connoisseur',
+                description: 'onboarding.experienceLevel.optionDescriptions.connoisseur',
                 image: '3_beans.svg'
             },
             {
-                label: 'De Smaakmaker',
-                description: 'Ik experimenteer met zetmethodes',
+                label: 'onboarding.experienceLevel.optionLabels.experimenter',
+                tag: 'experimenter',
+                description: 'onboarding.experienceLevel.optionDescriptions.experimenter',
                 image: '4_beans.svg'
             }
         ]
     },
     {
-        title: 'Wat wil je graag bereiken? ',
-        description: 'Kies je hoofddoel. Geen zorgen, we behandelen alles, maar we passen je leertraject hierop aan',
+        title: 'onboarding.goal.title',
+        description: 'onboarding.goal.subtitle',
         kind: OnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
-                label: 'Ik wil smaken leren herkennen en omschrijven',
+                label: 'onboarding.goal.optionLabels.tastingSkills',
+                tag: 'tasting_skills'
             },
             {
-                label: 'Ik wil de perfecte espresso leren maken',
+                label: 'onboarding.goal.optionLabels.perfectEspresso',
+                tag: 'perfect_espresso'
             },
             {
-                label: 'Ik wil de focus leggen op melktextuur en prachtige figuren maken.',
+                label: 'onboarding.goal.optionLabels.latteArt',
+                tag: 'latte_art'
             },
             {
-                label: 'Ik wil het hele proces leren, van de plantage tot in het kopje.',
+                label: 'onboarding.goal.optionLabels.beanToCup',
+                tag: 'bean_to_cup'
             }
         ]
     },
     {
-        title: 'Wat voor koffiedrinker ben jij? ',
-        description: 'Houd je van een stevige klassieker of zoek je liever de fruitige smaken op?',
+        title: 'onboarding.currentPreferences.title',
+        description: 'onboarding.currentPreferences.subtitle',
         kind: OnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
-                label: 'Ik houd van een krachtige, volle smaak met tonen',
+                label: 'onboarding.currentPreferences.optionLabels.boldClassic',
+                tag: 'bold_classic'
             },
             {
-                label: 'Voor mij draait het om de balans tussen zachte koffie en perfecte melk.',
+                label: 'onboarding.currentPreferences.optionLabels.milkBalanced',
+                tag: 'milk_balanced'
             },
             {
-                label: 'Ik wil alles leren: van aards en kruidig tot bloemig en fris',
+                label: 'onboarding.currentPreferences.optionLabels.versatile',
+                tag: 'versatile'
             },
             {
-                label: 'Ik zoek naar lichte, frisse en fruitige smaken met een beetje aciditeit.',
+                label: 'onboarding.currentPreferences.optionLabels.fruityAcidic',
+                tag: 'fruity_acidic'
             }
         ]
     },
     {
-        title: 'Wat is jouw tempo?',
-        description: 'Hoe en hoeveel tijd wil je dagelijks besteden aan je koffiereis?',
+        title: 'onboarding.desiredTempo.title',
+        description: 'onboarding.desiredTempo.subtitle',
         kind: OnboardingQuestionKind.SINGLE_CHOICE_TITLE,
         options: [
             {
-                label: 'De snelle shot',
-                description: 'Snel en krachtig, leer me de belangrijkste zaken.'
+                label: 'onboarding.desiredTempo.optionLabels.quickShot',
+                tag: 'quick_shot',
+                description: 'onboarding.desiredTempo.optionDescriptions.quickShot'
             },
             {
-                label: 'De dagelijkse routine',
-                description: 'Ik neem de tijd voor een korte les tijdens het drinken van mijn koffie.'
+                label: 'onboarding.desiredTempo.optionLabels.dailyRoutine',
+                tag: 'daily_routine',
+                description: 'onboarding.desiredTempo.optionDescriptions.dailyRoutine'
             },
             {
-                label: 'De weekend liefhebber',
-                description: 'In het weekend duik ik graag in de leerstof.'
+                label: 'onboarding.desiredTempo.optionLabels.weekendLover',
+                tag: 'weekend_lover',
+                description: 'onboarding.desiredTempo.optionDescriptions.weekendLover'
             },
             {
-                label: 'Op eigen tempo',
-                description: 'Geen vaste tijd, ik doe het liever op mijn eigen tempo.'
+                label: 'onboarding.desiredTempo.optionLabels.ownPace',
+                tag: 'own_pace',
+                description: 'onboarding.desiredTempo.optionDescriptions.ownPace'
             }
         ]
     },
     {
-        title: 'Welke zetmethodes heb je al?',
-        description: 'Selecteer de methodeswaar je materiaal voor hebt.',
+        title: 'onboarding.currentMethodes.title',
+        description: 'onboarding.currentMethodes.subtitle',
         kind: OnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
-                label: 'Chemex',
+                label: 'onboarding.currentMethodes.optionLabels.chemex',
+                tag: 'chemex',
                 image: 'chemex.svg'
             },
             {
-                label: 'Moka pot',
+                label: 'onboarding.currentMethodes.optionLabels.mokaPot',
+                tag: 'moka_pot',
                 image: 'moka_pot.svg'
-
             },
             {
-                label: 'Espresso',
+                label: 'onboarding.currentMethodes.optionLabels.espressoMachine',
+                tag: 'espresso_machine',
                 image: 'espresso_machine.svg'
-
             },
             {
-                label: 'Pour over',
+                label: 'onboarding.currentMethodes.optionLabels.pourOver',
+                tag: 'pour_over',
                 image: 'pour_over.svg'
-
             },
             {
-                label: 'French press',
+                label: 'onboarding.currentMethodes.optionLabels.frenchPress',
+                tag: 'french_press',
                 image: 'french_press.svg'
-
             },
             {
-                label: 'Heb nog niets',
+                label: 'onboarding.currentMethodes.optionLabels.none',
+                tag: 'none',
                 image: 'cross.svg'
             },
         ],
     },
     {
-        title: 'Wat staat er nog in je keuken?',
-        description: 'Selecteer de extra gear dat je al hebt.',
+        title: 'onboarding.extraGear.title',
+        description: 'onboarding.extraGear.subtitle',
         kind: OnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
-                label: 'Precisie weegschaal',
+                label: 'onboarding.extraGear.optionLabels.precisionScale',
+                tag: 'precision_scale',
                 image: ''
             },
             {
-                label: 'Goosneck Kettle',
+                label: 'onboarding.extraGear.optionLabels.gooseneckKettle',
+                tag: 'gooseneck_kettle',
                 image: 'gooseneck_kettle.svg'
-
             },
             {
-                label: 'Bonenmaler',
+                label: 'onboarding.extraGear.optionLabels.coffeeGrinder',
+                tag: 'coffee_grinder',
                 image: 'bean_mil.svg'
-
             },
             {
-                label: 'Melk opschuimer',
+                label: 'onboarding.extraGear.optionLabels.milkFrother',
+                tag: 'milk_frother',
                 image: 'milk_foamer.svg'
-
             },
             {
-                label: 'Heb nog niets',
+                label: 'onboarding.extraGear.optionLabels.none',
+                tag: 'none',
                 image: 'cross.svg'
             },
         ],
@@ -193,43 +214,43 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
 ];
 
 export const refactorOnboardingSelection = (answers: Record<number, number[]>): IOnboardingAnswers => {
-    const getSelectedLabels = (questionIndex: number): string[] => {
+    const getSelectedTags = (questionIndex: number): string[] => {
         const optionIndices = answers[questionIndex] || [];
         if (optionIndices.length === 0) {
             return [];
         }
         const question = onboardingQuestions[questionIndex];
-        return optionIndices.map(optionIndex => question.options[optionIndex].label);
+        return optionIndices.map(optionIndex => question.options[optionIndex].tag as string);
     };
 
-    const getSingleChoiceLabel = (questionIndex: number): string | null => {
-        const labels = getSelectedLabels(questionIndex);
-        return labels.length > 0 ? labels[0] : null;
+    const getSingleChoiceTag = (questionIndex: number): string | null => {
+        const tags = getSelectedTags(questionIndex);
+        return tags.length > 0 ? tags[0] : null;
     }
 
-    const getMultipleChoiceLabels = (questionIndex: number): string[] => {
-        const labels = getSelectedLabels(questionIndex);
-        if (labels.includes('Heb nog niets')) {
+    const getMultipleChoiceTags = (questionIndex: number): string[] => {
+        const tags = getSelectedTags(questionIndex);
+        if (tags.includes('none')) {
             return [];
         }
-        return labels;
+        return tags;
     }
     
-    const getMultipleChoiceLabelsOrNull = (questionIndex: number): string[] | null => {
-        const labels = getSelectedLabels(questionIndex);
-        if (labels.includes('Heb nog niets') || labels.length === 0) {
+    const getMultipleChoiceTagsOrNull = (questionIndex: number): string[] | null => {
+        const tags = getSelectedTags(questionIndex);
+        if (tags.includes('none') || tags.length === 0) {
             return null;
         }
-        return labels;
+        return tags;
     }
 
     return {
-        currentBehaviour: getMultipleChoiceLabels(0),
-        experienceLevel: getSingleChoiceLabel(1),
-        goal: getSingleChoiceLabel(2),
-        currentPreferences: getSingleChoiceLabel(3),
-        desiredTempo: getSingleChoiceLabel(4),
-        currentMethodes: getMultipleChoiceLabels(5),
-        extraGear: getMultipleChoiceLabelsOrNull(6),
+        currentBehaviour: getMultipleChoiceTags(0),
+        experienceLevel: getSingleChoiceTag(1),
+        goal: getSingleChoiceTag(2),
+        currentPreferences: getSingleChoiceTag(3),
+        desiredTempo: getSingleChoiceTag(4),
+        currentMethodes: getMultipleChoiceTags(5),
+        extraGear: getMultipleChoiceTagsOrNull(6),
     };
 };

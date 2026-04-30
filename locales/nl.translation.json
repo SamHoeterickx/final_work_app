@@ -64,6 +64,98 @@
             "register": "Registreren"
         }
     },
+    "onboarding": {
+        "currentBehaviour": {
+            "title": "Hoe zet je momenteel koffie?",
+            "subtitle": "Kies de manieren waarop jij koffie drinkt.",
+            "optionLabels": {
+                "instantCoffee": "Oploskoffie",
+                "work": "Op het werk",
+                "espresso": "Espresso",
+                "podMachine": "Cup machine",
+                "frenchPress": "French press",
+                "coffeeShop": "Coffee shop"
+            }
+        },
+        "experienceLevel": {
+            "title": "Wat is jouw koffie ervaring?",
+            "subtitle": "We passen je leertraject aan op basis van wat je al weet.",
+            "optionLabels": {
+                "tasteEnjoyer": "De Smaakgenieter",
+                "curious": "De Nieuwsgierige",
+                "connoisseur": "De Kenner",
+                "experimenter": "De Smaakmaker"
+            },
+            "optionDescriptions": {
+                "tasteEnjoyer": "Ik drink koffie vooral voor de gezelligheid.",
+                "curious": "Ik heb termen als maalgraad of branding wel eens gehoord",
+                "connoisseur": "Een Arabica / Robusta is niets nieuws voor mij",
+                "experimenter": "Ik experimenteer met zetmethodes"
+            }
+        },
+        "goal": {
+            "title": "Wat wil je graag bereiken?",
+            "subtitle": "Kies je hoofddoel. Geen zorgen, we behandelen alles, maar we passen je leertraject hierop aan",
+            "optionLabels": {
+                "tastingSkills": "Ik wil smaken leren herkennen en omschrijven",
+                "perfectEspresso": "Ik wil de perfecte espresso leren maken",
+                "latteArt": "Ik wil de focus leggen op melktextuur en prachtige figuren maken.",
+                "beanToCup": "Ik wil het hele proces leren, van de plantage tot in het kopje."
+            }
+        },
+        "currentPreferences": {
+            "title": "Wat voor koffiedrinker ben jij?",
+            "subtitle": "Houd je van een stevige klassieker of zoek je liever de fruitige smaken op?",
+            "optionLabels": {
+                "boldClassic": "Ik houd van een krachtige, volle smaak met tonen",
+                "milkBalanced": "Voor mij draait het om de balans tussen zachte koffie en perfecte melk.",
+                "versatile": "Ik wil alles leren: van aards en kruidig tot bloemig en fris",
+                "fruityAcidic": "Ik zoek naar lichte, frisse en fruitige smaken met een beetje aciditeit."
+            }
+        },
+        "desiredTempo": {
+            "title": "Wat is jouw tempo?",
+            "subtitle": "Hoe en hoeveel tijd wil je dagelijks besteden aan je koffiereis?",
+            "optionLabels": {
+                "quickShot": "De snelle shot",
+                "dailyRoutine": "De dagelijkse routine",
+                "weekendLover": "De weekend liefhebber",
+                "ownPace": "Op eigen tempo"
+            },
+            "optionDescriptions": {
+                "quickShot": "Snel en krachtig, leer me de belangrijkste zaken.",
+                "dailyRoutine": "Ik neem de tijd voor een korte les tijdens het drinken van mijn koffie.",
+                "weekendLover": "In het weekend duik ik graag in de leerstof.",
+                "ownPace": "Geen vaste tijd, ik doe het liever op mijn eigen tempo."
+            }
+        },
+        "currentMethodes": {
+            "title": "Welke zetmethodes heb je al?",
+            "subtitle": "Selecteer de methodes waar je materiaal voor hebt.",
+            "optionLabels": {
+                "chemex": "Chemex",
+                "mokaPot": "Moka pot",
+                "espressoMachine": "Espresso",
+                "pourOver": "Pour over",
+                "frenchPress": "French press",
+                "none": "Heb nog niets"
+            }
+        },
+        "extraGear": {
+            "title": "Wat staat er nog in je keuken?",
+            "subtitle": "Selecteer de extra gear dat je al hebt.",
+            "optionLabels": {
+                "precisionScale": "Precisie weegschaal",
+                "gooseneckKettle": "Goosneck Kettle",
+                "coffeeGrinder": "Bonenmaler",
+                "milkFrother": "Melk opschuimer",
+                "none": "Heb nog niets"
+            }
+        },
+        "buttons": {
+            "next": "Volgende"
+        }
+    }, 
     "home": {
         "title": "Dit is een titel"
     }

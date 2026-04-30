@@ -64,6 +64,98 @@
             "register": "Register"
         }
     },
+    "onboarding": {
+        "currentBehaviour": {
+            "title": "How do you currently make coffee?",
+            "subtitle": "Choose the ways you drink coffee.",
+            "optionLabels": {
+                "instantCoffee": "Instant coffee",
+                "work": "At work",
+                "espresso": "Espresso",
+                "podMachine": "Pod machine",
+                "frenchPress": "French press",
+                "coffeeShop": "Coffee shop"
+            }
+        },
+        "experienceLevel": {
+            "title": "What is your coffee experience?",
+            "subtitle": "We tailor your learning path based on what you already know.",
+            "optionLabels": {
+                "tasteEnjoyer": "The Taste Enjoyer",
+                "curious": "The Curious",
+                "connoisseur": "The Connoisseur",
+                "experimenter": "The Experimenter"
+            },
+            "optionDescriptions": {
+                "tasteEnjoyer": "I drink coffee mainly for the socializing.",
+                "curious": "I have heard terms like grind size or roast before.",
+                "connoisseur": "An Arabica / Robusta is nothing new to me.",
+                "experimenter": "I experiment with brewing methods."
+            }
+        },
+        "goal": {
+            "title": "What would you like to achieve?",
+            "subtitle": "Choose your main goal. Don't worry, we cover everything, but we tailor your learning path accordingly.",
+            "optionLabels": {
+                "tastingSkills": "I want to learn to recognize and describe flavors.",
+                "perfectEspresso": "I want to learn how to make the perfect espresso.",
+                "latteArt": "I want to focus on milk texture and creating beautiful latte art.",
+                "beanToCup": "I want to learn the whole process, from the plantation to the cup."
+            }
+        },
+        "currentPreferences": {
+            "title": "What kind of coffee drinker are you?",
+            "subtitle": "Do you like a bold classic or do you prefer to seek out fruity flavors?",
+            "optionLabels": {
+                "boldClassic": "I like a strong, full-bodied flavor with deep notes.",
+                "milkBalanced": "For me, it's all about the balance between smooth coffee and perfect milk.",
+                "versatile": "I want to learn everything: from earthy and spicy to floral and fresh.",
+                "fruityAcidic": "I'm looking for light, fresh, and fruity flavors with a bit of acidity."
+            }
+        },
+        "desiredTempo": {
+            "title": "What is your pace?",
+            "subtitle": "How and how much time do you want to spend daily on your coffee journey?",
+            "optionLabels": {
+                "quickShot": "The quick shot",
+                "dailyRoutine": "The daily routine",
+                "weekendLover": "The weekend lover",
+                "ownPace": "At my own pace"
+            },
+            "optionDescriptions": {
+                "quickShot": "Fast and strong, teach me the essentials.",
+                "dailyRoutine": "I take the time for a short lesson while drinking my coffee.",
+                "weekendLover": "On the weekend I love to dive into the learning material.",
+                "ownPace": "No fixed time, I prefer to do it at my own pace."
+            }
+        },
+        "currentMethodes": {
+            "title": "Which brewing methods do you already use?",
+            "subtitle": "Select the methods you have equipment for.",
+            "optionLabels": {
+                "chemex": "Chemex",
+                "mokaPot": "Moka pot",
+                "espressoMachine": "Espresso",
+                "pourOver": "Pour over",
+                "frenchPress": "French press",
+                "none": "I don't have anything yet"
+            }
+        },
+        "extraGear": {
+            "title": "What else is in your kitchen?",
+            "subtitle": "Select the extra gear you already have.",
+            "optionLabels": {
+                "precisionScale": "Precision scale",
+                "gooseneckKettle": "Gooseneck Kettle",
+                "coffeeGrinder": "Coffee grinder",
+                "milkFrother": "Milk frother",
+                "none": "I don't have anything yet"
+            }
+        },
+        "buttons": {
+            "next": "Next"
+        }
+    },
     "home": {
         "title": "This is a title"
     }
