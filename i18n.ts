@@ -2,12 +2,7 @@ import * as Localization from 'expo-localization';
 import i18n from 'i18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
-
-enum ELocales {
-    EN = 'en',
-    NL = 'nl',
-    FR = 'fr',
-}
+import { ELocales } from './shared/types/types';
 
 const getDeviceLanguage = (): ELocales => {
     try {

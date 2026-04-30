@@ -1,7 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 
 // CONTEXT AND STORE
-import { useAuthStore } from '../context/authStore.context';
+import { useAuthStore } from '@/shared/context/authStore.context';
 
 // TYPES
 import {
@@ -9,7 +9,7 @@ import {
     TGraphQLError,
     TGraphQLResponse,
     TTokenRefreshSubscriber,
-} from '../types/types';
+} from '@/shared/types/types';
 
 const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
 

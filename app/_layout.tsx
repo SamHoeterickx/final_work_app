@@ -14,7 +14,7 @@ import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 
 // TRANSLATIONS
-import '../i18n';
+import '@/i18n';
 
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';

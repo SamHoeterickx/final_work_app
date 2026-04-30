@@ -101,6 +101,12 @@ export enum OnboardingQuestionKind {
     SINGLE_CHOICE_IMG = 'single_choice_img',
 }
 
+export enum ELocales {
+    EN = 'en',
+    NL = 'nl',
+    FR = 'fr',
+}
+
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
 
@@ -142,4 +148,8 @@ export interface IOnboardingQuestionWrapperProps {
 export interface IQuestionProps {
     options: IQuestionOption[];
     questionIndex: number;
+}
+
+export interface IBackButtonProps {
+    style?: Record<string, any>;
 }

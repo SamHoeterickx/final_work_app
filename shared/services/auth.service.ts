@@ -1,7 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 
 // UTILS
-import { graphFetchAuth } from '../utils/api.utils';
+import { graphFetchAuth } from '@/shared/utils/api.utils';
 
 // TYPES
 import {
@@ -11,17 +11,17 @@ import {
     IRegisterCredentials,
     IRequestResetCodeCredentials,
     IVerifyResetCodeCredentials,
-} from '../types/types';
+} from '@/shared/types/types';
 
 // MUTATIONS
-import { useAuthStore } from '../context/authStore.context';
+import { useAuthStore } from '@/shared/context/authStore.context';
 import {
     LOGIN_USER_MUTATION,
     REGISTER_USER_MUTATION,
     REQUEST_RESET_CODE_MUTATION,
     RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
     VERIFY_RESET_CODE_MUTATION,
-} from '../graphql/mutations';
+} from '@/shared/graphql/mutations';
 
 class AuthService {
     constructor() {}

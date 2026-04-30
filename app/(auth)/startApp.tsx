@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { Button } from '@/shared/components';
+import { Button, LanguageButton } from '@/shared/components';
 
 // STYLES
 import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
@@ -29,6 +29,7 @@ export default function StartAppScreen() {
             </View>
 
             <View style={baseStyles.cButton}>
+                <LanguageButton />
                 <Button
                     copy="startApp.buttons.onboarding"
                     onPress={() => router.navigate('/(auth)/onboarding')}
