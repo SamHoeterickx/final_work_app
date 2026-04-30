@@ -10,9 +10,12 @@ import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 
 // COMPONENTS
 import { SvgIcon } from "../SvgIcon.component";
+import { useTranslation } from "react-i18next";
 
 export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, toggleMultipleChoiceAnswer } = useOnboardingStore();
+    const { t } = useTranslation();
+
     const currentAnswers = answers[questionIndex] || [];
 
     const handleOnPress = (index: number) => {
@@ -30,7 +33,7 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
                 onPress={() => handleOnPress(index)}
             >
                 { option.image && <SvgIcon name={option.image} width={60} height={60} /> }
-                <Text style={[baseStyles.h4, styles.tileLabel]}>{option.label}</Text>
+                <Text style={[baseStyles.h4, styles.tileLabel]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
     };

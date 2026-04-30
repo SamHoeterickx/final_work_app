@@ -4,6 +4,7 @@ import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { IErrorData, INewPasswordCredentials } from "@/shared/types/types";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -20,6 +21,7 @@ export default function resetPassword(){
     });
 
     const { email, resetCode } = useLocalSearchParams<{ email?: string; resetCode?: string }>();
+    const { t } = useTranslation();
     
     const { mutate: mutateRC, isError: isErrorRC, error: errorRC, isPending: isPendingRC } = useChangePasswordWithResetCode();
 
@@ -77,22 +79,22 @@ export default function resetPassword(){
         return (
             <>
                 <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Nieuw Wachtwoord</Text>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('resetPassword.fieldLabels.newPassword')}</Text>
                     <InputField
                         onChangeText={handleFormInput}
                         name='newPassword'
-                        placeholder='nieuw wachtwoord'
+                        placeholder={t('resetPassword.fieldLabels.newPassword')}
                         autoCapitalize="none"
                         spellCheck={false}
                         secureTextEntry={true}
                     />
                 </View>
                 <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Nieuw Wachtwoord</Text>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('resetPassword.fieldLabels.repeatNewPassword')}</Text>
                     <InputField
                         onChangeText={handleFormInput}
                         name='repeatNewPassword'
-                        placeholder='herhaal nieuw wachtwoord'
+                        placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
                         autoCapitalize="none"
                         spellCheck={false}
                         secureTextEntry={true}
@@ -106,39 +108,39 @@ export default function resetPassword(){
         return (
             <>
                 <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Oud Wachtwoord</Text>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('resetPassword.fieldLabels.oldPassword')}</Text>
                     <InputField
                         onChangeText={handleFormInput}
                         name='oldPassword'
-                        placeholder='oud wachtwoord'
+                        placeholder={t('resetPassword.fieldLabels.oldPassword')}
                         autoCapitalize="none"
                         spellCheck={false}
                         secureTextEntry={true}
                     />
                 </View>
                 <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Nieuw Wachtwoord</Text>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('resetPassword.fieldLabels.newPassword')}</Text>
                     <InputField
                         onChangeText={handleFormInput}
                         name='newPassword'
-                        placeholder='nieuw wachtwoord'
+                        placeholder={t('resetPassword.fieldLabels.newPassword')}
                         autoCapitalize="none"
                         spellCheck={false}
                         secureTextEntry={true}
                     />
                 </View>
                 <View style={styles.wInputField}>
-                    <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Nieuw Wachtwoord</Text>
+                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('resetPassword.fieldLabels.repeatNewPassword')}</Text>
                     <InputField
                         onChangeText={handleFormInput}
                         name='repeatNewPassword'
-                        placeholder='herhaal nieuw wachtwoord'
+                        placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
                         autoCapitalize="none"
                         spellCheck={false}
                         secureTextEntry={true}
                     />
                 </View>
-                <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
+                <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>{t('resetPassword.fieldLabels.buttons.forgotPassword')}</Link>
             </>
         )
     }
@@ -150,7 +152,6 @@ export default function resetPassword(){
             </View>
         )
     }
-
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -171,7 +172,7 @@ export default function resetPassword(){
                     />
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>Kies een nieuw wachtwoord</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>{t('resetPassword.title')}</Text>
                         </View>
                         <View style={styles.cForm}>
                             { resetCode ? renderForgotPassword() : renderChangePassword() }
@@ -180,7 +181,7 @@ export default function resetPassword(){
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='Verifieer reset code'
+                            copy='resetPassword.buttons.resetPassword'
                             onPress={handlePasswordChange}
                             disabled={isPending}
                         />

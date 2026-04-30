@@ -12,6 +12,7 @@ import { useLogin } from '@/shared/hooks';
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILoginCredentials } from '@/shared/types/types';
 import { Link } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 export default function LoginScreen() {
     const [formData, setFormData] = useState<ILoginCredentials>({
@@ -20,6 +21,8 @@ export default function LoginScreen() {
     });
 
     const { mutate, isPending, isError, error } = useLogin();
+
+    const { t } = useTranslation();
 
     const handleFormInput = (name: string, value: string) => {
         setFormData(prev => ({
@@ -58,24 +61,24 @@ export default function LoginScreen() {
                         resizeMode='contain'
                     />
                     <View style={styles.cInputContent}>
-                        <Text style={[baseStyles.h2, styles.title]}>Login</Text>
+                        <Text style={[baseStyles.h2, styles.title]}>{t('login.title')}</Text>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('login.fieldLabels.email')}</Text>
                                 <InputField
                                     onChangeText={handleFormInput}
                                     name='email'
-                                    placeholder='email'
+                                    placeholder={t('login.fieldLabels.email')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                 />
                             </View>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('login.fieldLabels.password')}</Text>
                                 <InputField
                                     onChangeText={handleFormInput}
                                     name='password'
-                                    placeholder='wachtwoord'
+                                    placeholder={t('login.fieldLabels.password')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                     secureTextEntry={true}
@@ -85,11 +88,11 @@ export default function LoginScreen() {
                                 isError && renderError()
                             }
                         </View>
-                        <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>Wachtwoord vergeten</Link>
+                        <Link href={'/(auth)/(forgotPassword)/requestResetCode'} style={[baseStyles.p, styles.link]}>{t('login.buttons.forgotPassword')}</Link>
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='Login'
+                            copy='login.buttons.login'
                             onPress={handleLogin}
                             disabled={isPending}
                         />

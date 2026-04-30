@@ -2,11 +2,13 @@ import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
+    const { t } = useTranslation();
+
     const currentAnswers = answers[questionIndex] || [];
 
     const handleOnPress = (index: number) => {
@@ -25,25 +27,30 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
             >
                 <View style={[styles.selectBox, currentAnswers.includes(index) && {backgroundColor: colors.primary}]}/>
                 <View style={styles.textWrapper}> 
-                    <Text style={baseStyles.h4}>{option.label}</Text>
-                    <Text style={baseStyles.p}>{option.description}</Text>
+                    <Text style={baseStyles.h4}>{t(option.label)}</Text>
+                    <Text style={baseStyles.p}>{option.description ? t(option.description) : ''}</Text>
                 </View>
             </TouchableOpacity>
         ));
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+        >
             { options && renderOptions() }
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    scrollView: {
         width: '100%',
+    },
+    contentContainer: {
         gap: spacing.lg,
-        alignItems: 'stretch',
     },
     option: {
         flexDirection: 'row',

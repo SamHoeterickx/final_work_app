@@ -129,6 +129,7 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'>{
 
 export interface IQuestionOption {
     label: string;
+    tag: string;
     image?: string | null;
     description?: string | null;
 }

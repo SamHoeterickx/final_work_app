@@ -2,6 +2,7 @@ import { BackButton, Button, InputField } from "@/shared/components";
 import { useRequestResetCode } from "@/shared/hooks/passwordReset/useRequestResetCode.hook";
 import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -10,7 +11,9 @@ export default function requestResetCode(){
         email: '',
     });
 
-    const { mutate, isError, error, isPending } = useRequestResetCode()
+    const { mutate, isError, error, isPending } = useRequestResetCode();
+
+    const { t } = useTranslation(); 
 
     const handleFormInput = (name: string, value: string) => {
         setFormData(prev => ({
@@ -52,16 +55,16 @@ export default function requestResetCode(){
                     />
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>Wachtwoord vergeten</Text>
-                            <Text style={[baseStyles.p, styles.description]}>Vul je e-mailadres in en we sturen je een code om je wachtwoord opnieuw in te stellen.</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>{t('forgotPassword.requestResetCode.title')}</Text>
+                            <Text style={[baseStyles.p, styles.description]}>{t('forgotPassword.requestResetCode.subtitle')}</Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('forgotPassword.requestResetCode.fieldLabels.email')}</Text>
                                 <InputField
                                     onChangeText={handleFormInput}
                                     name='email'
-                                    placeholder='email'
+                                    placeholder={t('forgotPassword.requestResetCode.fieldLabels.email')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                 />
@@ -74,7 +77,7 @@ export default function requestResetCode(){
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='Reset code aanvragen'
+                            copy='forgotPassword.requestResetCode.buttons.requestCode'
                             onPress={handleRequestResetCode}
                             disabled={isPending}
                         />

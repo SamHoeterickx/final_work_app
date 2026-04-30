@@ -2,12 +2,14 @@ import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SvgIcon } from "../SvgIcon.component";
+import { useTranslation } from "react-i18next";
 
 export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
+    const { t } = useTranslation();
+
     const currentAnswers = answers[questionIndex] || [];
 
     const handleOnPress = (index: number) => {
@@ -25,24 +27,29 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
                 onPress={() => handleOnPress(index)}
             >
                 { option.image && <SvgIcon name={option.image} width={60} /> }
-                <Text style={[baseStyles.h4, { flex: 1 }]}>{option.label}</Text>
+                <Text style={[baseStyles.h4, { flex: 1 }]}>{t(option.label)}</Text>
 
             </TouchableOpacity>
         ));
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView 
+            style={styles.scrollView}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+        >
             { options && renderOptions() }
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    scrollView: {
         width: '100%',
+    },
+    contentContainer: {
         gap: spacing.lg,
-        alignItems: 'stretch',
     },
     option: {
         flexDirection: 'row',

@@ -13,6 +13,7 @@ import { onboardingQuestions } from '@/shared/const/onboarding.const';
 // STYLES
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+import { useTranslation } from 'react-i18next';
 
 const MAX_ONBOARDING_LENGTH = 6;
 
@@ -22,6 +23,7 @@ export default function OnboardingScreen() {
     const { answers } = useOnboardingStore();
 
     const router = useRouter();
+    const { t } = useTranslation();
 
     const handleBack = () => {
         if(onboardingCount === 0){
@@ -44,8 +46,8 @@ export default function OnboardingScreen() {
         return (
             <>
                 <View style={styles.qHeader}>
-                    <Text style={baseStyles.h2}>{onboardingQuestions[onboardingCount].title}</Text>
-                    <Text style={baseStyles.p}>{onboardingQuestions[onboardingCount].description}</Text>
+                    <Text style={baseStyles.h2}>{t(onboardingQuestions[onboardingCount].title)}</Text>
+                    <Text style={baseStyles.p}>{t(onboardingQuestions[onboardingCount].description)}</Text>
                 </View>
                 <OnboardingQuestionWrapper 
                     kind={onboardingQuestions[onboardingCount].kind} 
@@ -73,7 +75,7 @@ export default function OnboardingScreen() {
                 {onboardingQuestions[onboardingCount] && renderOnboardingQuestion()}
             </View>
             <Button 
-                copy='Volgende'
+                copy='onboarding.buttons.next'
                 onPress={handleContinueOnboarding}
                 disabled={!answers[onboardingCount] || answers[onboardingCount].length === 0}
             />
