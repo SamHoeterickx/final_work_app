@@ -1,154 +1,166 @@
-import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Button, InputField } from "@/shared/components";
+import { BackButton, Button, InputField } from '@/shared/components';
 
 // HOOKS
-import { useVerifyResetCode } from "@/shared/hooks/passwordReset/useVerifyResetCode.hook";
+import { useVerifyResetCode } from '@/shared/hooks/passwordReset/useVerifyResetCode.hook';
 
 // STYLES
-import { baseStyles, spacing } from "@/shared/styles/design.system";
+import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { IVerifyResetCodeCredentials } from "@/shared/types/types";
+import { IVerifyResetCodeCredentials } from '@/shared/types/types';
 
-export default function verifyResetCode(){
-    const [formData, setFormData] = useState({
-        resetCode: '',
-    });
+export default function verifyResetCode() {
+  const [formData, setFormData] = useState({
+    resetCode: '',
+  });
 
-    const { email } = useLocalSearchParams();
-    const { t } = useTranslation();
+  const { email } = useLocalSearchParams();
+  const { t } = useTranslation();
 
-    const { mutate, isError, error, isPending } = useVerifyResetCode();
+  const { mutate, isError, error, isPending } = useVerifyResetCode();
 
-    const handleFormInput = (name: string, value: string) => {
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
+  const handleFormInput = (name: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-    const handleVerifyResetCode = () => {
-        if(formData.resetCode === '') return
-        const sanitizedEmail = Array.isArray(email) ? email[0] : email;        
-        const inputData: IVerifyResetCodeCredentials = {
-            ...formData,
-           email: sanitizedEmail
-        }
-        mutate(inputData);
-    }
+  const handleVerifyResetCode = () => {
+    if (formData.resetCode === '') return;
+    const sanitizedEmail = Array.isArray(email) ? email[0] : email;
+    const inputData: IVerifyResetCodeCredentials = {
+      ...formData,
+      email: sanitizedEmail,
+    };
+    mutate(inputData);
+  };
 
-    const renderError = () => {
-        return(
-            <View>
-                <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
-            </View>
-        )
-    }
-
+  const renderError = () => {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <KeyboardAvoidingView
-                style={{ flex: 1 }}
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            >
-                <ScrollView
-                    style={{ flex: 1,  position: 'relative' }}
-                    contentContainerStyle={styles.scrollContent}
-                    showsVerticalScrollIndicator={false}
-                    keyboardShouldPersistTaps="handled"
-                >
-                    <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
-                        resizeMode='contain'
-                    />
-                    <View style={styles.cInputContent}>
-                        <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>{t('forgotPassword.verifyResetCode.title')}</Text>
-                            <Text style={[baseStyles.p, styles.description]}>{t('forgotPassword.verifyResetCode.subtitle')}</Text>
-                        </View>
-                        <View style={styles.cForm}>
-                            <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}</Text>
-                                <InputField
-                                    onChangeText={handleFormInput}
-                                    name='resetCode'
-                                    placeholder={t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
-                                    autoCapitalize="none"
-                                    spellCheck={false}
-                                    maxLength={8}
-                                    inputMode="decimal"
-                                    style={{textAlign: 'center'}}
-                                />
-                            </View>
-                            
-                            {
-                                isError && renderError()
-                            }
-                        </View>
-                    </View>
-                    <View style={baseStyles.cButton}>
-                        <Button
-                            copy='forgotPassword.verifyResetCode.buttons.verifyCode'
-                            onPress={handleVerifyResetCode}
-                            disabled={isPending}
-                        />
-                    </View>
-                </ScrollView>
-            </KeyboardAvoidingView>
-            <BackButton />
-        </SafeAreaView>
+      <View>
+        <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
+      </View>
     );
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <ScrollView
+          style={{ flex: 1, position: 'relative' }}
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+        >
+          <Image
+            source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <View style={styles.cInputContent}>
+            <View style={styles.cText}>
+              <Text style={[baseStyles.h2, styles.title]}>
+                {t('forgotPassword.verifyResetCode.title')}
+              </Text>
+              <Text style={[baseStyles.p, styles.description]}>
+                {t('forgotPassword.verifyResetCode.subtitle')}
+              </Text>
+            </View>
+            <View style={styles.cForm}>
+              <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                  {t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
+                </Text>
+                <InputField
+                  onChangeText={handleFormInput}
+                  name="resetCode"
+                  placeholder={t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  maxLength={8}
+                  inputMode="decimal"
+                  style={{ textAlign: 'center' }}
+                />
+              </View>
+
+              {isError && renderError()}
+            </View>
+          </View>
+          <View style={baseStyles.cButton}>
+            <Button
+              copy="forgotPassword.verifyResetCode.buttons.verifyCode"
+              onPress={handleVerifyResetCode}
+              disabled={isPending}
+            />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <BackButton />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-    cText: {
-        marginBottom: spacing.xl,
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    title: {
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    description: {
-        textAlign: 'center',
-        marginTop: spacing.sm,
-    },
-    logo: {
-        width: '35%',
-    },
-    cForm: {
-        width: '85%',
-    },
-    wInputField: {
-        marginBottom: spacing.lg,
-    },
-    inputLabel: {
-        marginBottom: spacing.sm,
-    },
-    scrollContent: {
-        flexGrow: 1,
-        width: '90%',
-        marginHorizontal: '5%',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    cInputContent: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        marginTop: 64,
-    },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline'
-    }
-})
+  cText: {
+    marginBottom: spacing.xl,
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  title: {
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  description: {
+    textAlign: 'center',
+    marginTop: spacing.sm,
+  },
+  logo: {
+    width: '35%',
+  },
+  cForm: {
+    width: '85%',
+  },
+  wInputField: {
+    marginBottom: spacing.lg,
+  },
+  inputLabel: {
+    marginBottom: spacing.sm,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    width: '90%',
+    marginHorizontal: '5%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  cInputContent: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    marginTop: 64,
+  },
+  link: {
+    fontSize: 12,
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
+});

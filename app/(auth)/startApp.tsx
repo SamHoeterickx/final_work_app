@@ -10,56 +10,53 @@ import { Button } from '@/shared/components';
 import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
 
 export default function StartAppScreen() {
-    const router = useRouter();
+  const router = useRouter();
 
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <SafeAreaView style={[baseStyles.container]}>
-            <Image
-                style={styles.logo}
-                source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                resizeMode='contain'
-            />
-            <View style={ styles.cHeader}>
-                <Text style={[typography.h1, styles.title]}>{t('startApp.title')}</Text>
-                <Text style={[typography.bodySmall, styles.subtitle]}>
-                    {t('startApp.subtitle')}
-                </Text>
-            </View>
+  return (
+    <SafeAreaView style={[baseStyles.container]}>
+      <Image
+        style={styles.logo}
+        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+        resizeMode="contain"
+      />
+      <View style={styles.cHeader}>
+        <Text style={[typography.h1, styles.title]}>{t('startApp.title')}</Text>
+        <Text style={[typography.bodySmall, styles.subtitle]}>{t('startApp.subtitle')}</Text>
+      </View>
 
-            <View style={baseStyles.cButton}>
-                <Button 
-                    copy='startApp.buttons.onboarding' 
-                    onPress={() => router.navigate('/(auth)/onboarding')} 
-                />
-                <Button 
-                    copy='startApp.buttons.login' 
-                    onPress={() => router.navigate('/(auth)/login')} 
-                    styles='secundary'
-                />
-            </View>
-            
-        </SafeAreaView>
-    );
+      <View style={baseStyles.cButton}>
+        <Button
+          copy="startApp.buttons.onboarding"
+          onPress={() => router.navigate('/(auth)/onboarding')}
+        />
+        <Button
+          copy="startApp.buttons.login"
+          onPress={() => router.navigate('/(auth)/login')}
+          styles="secundary"
+        />
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-    cHeader: {
-        width: '85%',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    logo: {
-        width: '35%',
-        marginTop: spacing.xxl
-    },
-    title: {
-        textAlign: 'center',
-        marginBottom: spacing.sm
-    },
-    subtitle: {
-        textAlign: 'center',
-    },
-})
+  cHeader: {
+    width: '85%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: '35%',
+    marginTop: spacing.xxl,
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: spacing.sm,
+  },
+  subtitle: {
+    textAlign: 'center',
+  },
+});

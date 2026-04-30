@@ -23,7 +23,6 @@ import Bean2 from '@/assets/icons/beans/2_beans.svg';
 import Bean3 from '@/assets/icons/beans/3_beans.svg';
 import Bean4 from '@/assets/icons/beans/4_beans.svg';
 
-
 interface SvgIconProps extends SvgProps {
   name: string;
 }
@@ -39,12 +38,12 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
   'moka_pot.svg': MokaPot,
   'pour_over.svg': PourOver,
   'chemex.svg': Chemex,
-  
+
   // Gear
   'bean_mil.svg': BeanMil,
   'milk_foamer.svg': MilkFoamer,
   'gooseneck_kettle.svg': Gooseneck,
-  
+
   // Beans
   '1_bean.svg': Bean1,
   '2_beans.svg': Bean2,

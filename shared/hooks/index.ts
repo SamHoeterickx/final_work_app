@@ -1,1 +1,1 @@
-export { useLogin } from './auth/useLogin.hook'
+export { useLogin } from './auth/useLogin.hook';
