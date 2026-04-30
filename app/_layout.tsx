@@ -41,6 +41,9 @@ const InitialLayout = () => {
             try {
                 SecureStore.deleteItemAsync('accessToken');
                 SecureStore.deleteItemAsync('refreshTOken');
+                // The following lines seem to be for debugging and will log the user out on every app start.
+                // SecureStore.deleteItemAsync('accessToken');
+                // SecureStore.deleteItemAsync('refreshToken');
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
