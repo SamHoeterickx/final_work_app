@@ -1,7 +1,8 @@
-import { NativeModules, Platform } from 'react-native';
+
+import resourcesToBackend from 'i18next-resources-to-backend';
+import * as Localization from 'expo-localization';
 import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
 
 enum ELocales {
     EN = 'en',
@@ -10,22 +11,20 @@ enum ELocales {
 }
 
 const getDeviceLanguage = (): ELocales => {
-    let deviceLanguage = 'nl';
-    try {
-        if (Platform.OS === 'ios') {
-            const settings = NativeModules.SettingsManager.settings;
-            deviceLanguage = settings.AppleLocale || settings.AppleLanguages?.[0] || 'nl';
-        } else {
-            deviceLanguage = NativeModules.I18nManager.localeIdentifier || 'nl';
+    try{
+        const languageCode = Localization.getLocales()[0]?.languageCode?.toLowerCase() || ELocales.NL;
+
+        const supportedLocales = Object.values(ELocales) as string[];
+        if(supportedLocales.includes(languageCode)) {
+            return languageCode as ELocales
         }
-    } catch (error) {
+        
+
+    }catch(error){
         console.warn('Error fetching device language', error);
     }
 
-    const langCode = deviceLanguage.split('_')[0].toLowerCase();
-    const supportedLocales = Object.values(ELocales) as string[];
-    
-    return supportedLocales.includes(langCode) ? (langCode as ELocales) : ELocales.NL;
+    return ELocales.NL
 };
 
 i18n
