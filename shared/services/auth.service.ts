@@ -108,6 +108,13 @@ class AuthService {
             const newAccessToken = data.data?.registerUser?.accessToken;
             const newRefreshToken = data.data?.registerUser?.refreshToken;
 
+            if (!newAccessToken || !newRefreshToken) {
+                throw new Error('Register Successfull, but no tokens recieved');
+            }
+
+            await SecureStore.setItemAsync('accessToken', newAccessToken);
+            await SecureStore.setItemAsync('refreshToken', newRefreshToken);
+            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, true);
         } catch (error) {
             throw error;
         }
