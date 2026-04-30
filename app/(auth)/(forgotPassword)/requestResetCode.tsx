@@ -1,10 +1,16 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { useRequestResetCode } from "@/shared/hooks/passwordReset/useRequestResetCode.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+// COMPONENTS
+import { BackButton, Button, InputField } from "@/shared/components";
+
+// HOOKS
+import { useRequestResetCode } from "@/shared/hooks/passwordReset/useRequestResetCode.hook";
+
+// STYLES
+import { baseStyles, spacing } from "@/shared/styles/design.system";
 
 export default function requestResetCode(){
     const [formData, setFormData] = useState({

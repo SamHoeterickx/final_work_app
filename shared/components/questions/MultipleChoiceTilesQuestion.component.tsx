@@ -1,16 +1,18 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-// STYLES
-import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { IQuestionProps } from "@/shared/types/types";
+// COMPONENTS
+import { SvgIcon } from "../SvgIcon.component";
 
 // STORE
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 
-// COMPONENTS
-import { SvgIcon } from "../SvgIcon.component";
-import { useTranslation } from "react-i18next";
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { IQuestionProps } from "@/shared/types/types";
 
 export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, toggleMultipleChoiceAnswer } = useOnboardingStore();

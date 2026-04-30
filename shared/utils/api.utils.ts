@@ -5,10 +5,10 @@ import { useAuthStore } from '../context/authStore.context';
 
 // TYPES
 import {
-	IRefreshTokensResponse,
-	TGraphQLError,
-	TGraphQLResponse,
-	TTokenRefreshSubscriber,
+    IRefreshTokensResponse,
+    TGraphQLError,
+    TGraphQLResponse,
+    TTokenRefreshSubscriber,
 } from '../types/types';
 
 const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';

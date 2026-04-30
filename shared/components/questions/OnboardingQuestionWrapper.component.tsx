@@ -1,9 +1,13 @@
 import { FC } from "react";
-import { IOnboardingQuestionWrapperProps, OnboardingQuestionKind } from "../../types/types";
-import { SingleChoiceImageQuestion } from "./SingleChoiceImageQuestion.component";
+
+// COMPONENTS
 import { MultipleChoiceTilesQuestion } from "./MultipleChoiceTilesQuestion.component";
-import { SingleChoiceTitleQuestion } from "./SingleChoiceTitleQuestion.component";
+import { SingleChoiceImageQuestion } from "./SingleChoiceImageQuestion.component";
 import { SingleChoiceQuestion } from "./SingleChoiceQuestion.component";
+import { SingleChoiceTitleQuestion } from "./SingleChoiceTitleQuestion.component";
+
+// TYPES
+import { IOnboardingQuestionWrapperProps, OnboardingQuestionKind } from "../../types/types";
 
 export const OnboardingQuestionWrapper: FC<IOnboardingQuestionWrapperProps & { questionIndex: number }> = ({ kind, options, questionIndex }) => {
     switch (kind) {

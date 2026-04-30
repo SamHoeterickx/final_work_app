@@ -1,12 +1,20 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { useVerifyResetCode } from "@/shared/hooks/passwordReset/useVerifyResetCode.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
-import { IVerifyResetCodeCredentials } from "@/shared/types/types";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+// COMPONENTS
+import { BackButton, Button, InputField } from "@/shared/components";
+
+// HOOKS
+import { useVerifyResetCode } from "@/shared/hooks/passwordReset/useVerifyResetCode.hook";
+
+// STYLES
+import { baseStyles, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { IVerifyResetCodeCredentials } from "@/shared/types/types";
 
 export default function verifyResetCode(){
     const [formData, setFormData] = useState({

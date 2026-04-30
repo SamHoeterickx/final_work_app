@@ -1,13 +1,25 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
-import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
-import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
-import { IRegisterCredentials } from "@/shared/types/types";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+// COMPONENTS
+import { BackButton, Button, InputField } from "@/shared/components";
+
+// CONST
+import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
+
+// STORE
+import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
+
+// HOOKS
+import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
+
+// STYLES
+import { baseStyles, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { IRegisterCredentials } from "@/shared/types/types";
 
 export default function Register(){
     const [formData, setFormData] = useState<IRegisterCredentials>({

@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,10 +11,11 @@ import { Button, OnboardingQuestionWrapper } from '@/shared/components';
 // CONST
 import { onboardingQuestions } from '@/shared/const/onboarding.const';
 
-// STYLES
+// STORE
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
+
+// STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
-import { useTranslation } from 'react-i18next';
 
 const MAX_ONBOARDING_LENGTH = 6;
 

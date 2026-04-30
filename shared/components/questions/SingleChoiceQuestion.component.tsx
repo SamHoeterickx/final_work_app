@@ -1,9 +1,15 @@
-import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
-import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+// STORE
+import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { IQuestionProps } from "@/shared/types/types";
 
 export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();

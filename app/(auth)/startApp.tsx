@@ -1,13 +1,13 @@
+import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import { Button } from '@/shared/components';
 
 // STYLES
 import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
-import { useTranslation } from 'react-i18next';
 
 export default function StartAppScreen() {
     const router = useRouter();

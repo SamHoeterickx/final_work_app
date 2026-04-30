@@ -1,24 +1,23 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect } from 'react';
+// FONTS
+import {
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+    Inter_900Black,
+    useFonts
+} from '@expo-google-fonts/inter';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { useEffect } from 'react';
 
 // TRANSLATIONS
 import '../i18n';
 
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
-
-// FONTS
-import { 
-    useFonts, 
-    Inter_400Regular, 
-    Inter_500Medium, 
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-    Inter_900Black
-} from '@expo-google-fonts/inter';
 
 const queryClient = new QueryClient();
 

@@ -1,10 +1,16 @@
-import { useAuthStore } from '@/shared/context/authStore.context';
-import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
-import { graphqlFetch } from '@/shared/utils/api.utils';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, ScrollView, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+// STORE
+import { useAuthStore } from '@/shared/context/authStore.context';
+
+// GRAPHQL
+import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
+
+// UTILS
+import { graphqlFetch } from '@/shared/utils/api.utils';
 
 export default function HomeScreen() {
     const [chapters, setChapters] = useState('');

@@ -1,4 +1,6 @@
+import { Link } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,9 +12,9 @@ import { useLogin } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
+
+// TYPES
 import { ILoginCredentials } from '@/shared/types/types';
-import { Link } from 'expo-router';
-import { useTranslation } from 'react-i18next';
 
 export default function LoginScreen() {
     const [formData, setFormData] = useState<ILoginCredentials>({

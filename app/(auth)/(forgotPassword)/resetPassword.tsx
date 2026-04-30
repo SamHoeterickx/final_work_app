@@ -1,12 +1,20 @@
-import { BackButton, Button, InputField } from "@/shared/components";
-import { useChangePasswordWithResetCode } from "@/shared/hooks/passwordReset/useChangePasswordWithResetCode.hook";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
-import { IErrorData, INewPasswordCredentials } from "@/shared/types/types";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+// COMPONENTS
+import { BackButton, Button, InputField } from "@/shared/components";
+
+// HOOKS
+import { useChangePasswordWithResetCode } from "@/shared/hooks/passwordReset/useChangePasswordWithResetCode.hook";
+
+// STYLES
+import { baseStyles, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { IErrorData, INewPasswordCredentials } from "@/shared/types/types";
 
 export default function resetPassword(){
     const [isPending, setIsPending] = useState<boolean>(false);
