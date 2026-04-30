@@ -2,7 +2,7 @@ import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SvgIcon } from "../SvgIcon.component";
 import { useTranslation } from "react-i18next";
 
@@ -34,17 +34,22 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView 
+            style={styles.scrollView}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+        >
             { options && renderOptions() }
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    scrollView: {
         width: '100%',
+    },
+    contentContainer: {
         gap: spacing.lg,
-        alignItems: 'stretch',
     },
     option: {
         flexDirection: 'row',

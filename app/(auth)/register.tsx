@@ -1,4 +1,4 @@
-import { Button, InputField } from "@/shared/components";
+import { BackButton, Button, InputField } from "@/shared/components";
 import { refactorOnboardingSelection } from "@/shared/const/onboarding.const";
 import { useOnboardingStore } from "@/shared/context/onboardingStore.context";
 import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
@@ -45,7 +45,7 @@ export default function Register(){
     }
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, position: 'relative' }}>
             <KeyboardAvoidingView
                 style={{ flex: 1 }}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -120,6 +120,7 @@ export default function Register(){
                         </View>
                 </ScrollView>
             </KeyboardAvoidingView>
+            <BackButton />
         </SafeAreaView>
     )
 }

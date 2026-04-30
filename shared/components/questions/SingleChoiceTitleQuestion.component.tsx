@@ -3,7 +3,7 @@ import { baseStyles, borderRadius, colors, spacing } from "@/shared/styles/desig
 import { IQuestionProps } from "@/shared/types/types";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, setSingleChoiceAnswer } = useOnboardingStore();
@@ -35,17 +35,22 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+        >
             { options && renderOptions() }
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    scrollView: {
         width: '100%',
+    },
+    contentContainer: {
         gap: spacing.lg,
-        alignItems: 'stretch',
     },
     option: {
         flexDirection: 'row',
