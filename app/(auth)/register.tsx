@@ -5,6 +5,7 @@ import { useRegister } from "@/shared/hooks/auth/useRegister.hook";
 import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { IRegisterCredentials } from "@/shared/types/types";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -18,6 +19,8 @@ export default function Register(){
 
     const { mutate, isError, error, isPending } = useRegister();
     const { answers } = useOnboardingStore();
+
+    const { t } = useTranslation();
 
     const handleRegister = () => {
         if(formData.email === '' || formData.name === '' || formData.password === '' || formData.repeatPassword === '') return
@@ -59,45 +62,45 @@ export default function Register(){
                             resizeMode='contain'
                         />
                         <View style={styles.cInputContent}>
-                            <Text style={[baseStyles.h2, styles.title]}>Maak een nieuw account</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>{t('register.title')}</Text>
                             <View style={styles.cForm}>
                                 <View style={styles.wInputField}>
-                                    <Text style={[baseStyles.h4, styles.inputLabel]}>Naam</Text>
+                                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('register.fieldLabels.name')}</Text>
                                     <InputField
                                         onChangeText={handleFormInput}
                                         name='name'
-                                        placeholder='naam'
+                                        placeholder={t('register.fieldLabels.name')}
                                         autoCapitalize="none"
                                         spellCheck={false}
                                     />
                                 </View>
                                 <View style={styles.wInputField}>
-                                    <Text style={[baseStyles.h4, styles.inputLabel]}>Email</Text>
+                                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('register.fieldLabels.email')}</Text>
                                     <InputField
                                         onChangeText={handleFormInput}
                                         name='email'
-                                        placeholder='email'
+                                        placeholder={t('register.fieldLabels.email')}
                                         autoCapitalize="none"
                                         spellCheck={false}
                                     />
                                 </View>
                                 <View style={styles.wInputField}>
-                                    <Text style={[baseStyles.h4, styles.inputLabel]}>Wachtwoord</Text>
+                                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('register.fieldLabels.password')}</Text>
                                     <InputField
                                         onChangeText={handleFormInput}
                                         name='password'
-                                        placeholder='wachtwoord'
+                                        placeholder={t('register.fieldLabels.password')}
                                         autoCapitalize="none"
                                         spellCheck={false}
                                         secureTextEntry={true}
                                     />
                                 </View>
                                 <View style={styles.wInputField}>
-                                    <Text style={[baseStyles.h4, styles.inputLabel]}>Herhaal Wachtwoord</Text>
+                                    <Text style={[baseStyles.h4, styles.inputLabel]}>{t('register.fieldLabels.repeatPassword')}</Text>
                                     <InputField
                                         onChangeText={handleFormInput}
                                         name='repeatPassword'
-                                        placeholder='herhaal wachtwoord'
+                                        placeholder={t('register.fieldLabels.repeatPassword')}
                                         autoCapitalize="none"
                                         spellCheck={false}
                                         secureTextEntry={true}
@@ -110,7 +113,7 @@ export default function Register(){
                         </View>
                         <View style={baseStyles.cButton}>
                             <Button
-                                copy='Registreer'
+                                copy='register.buttons.register'
                                 onPress={handleRegister}
                                 disabled={isPending}
                             />

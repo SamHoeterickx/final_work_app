@@ -1,5 +1,70 @@
 {
+    "startApp": {
+        "title": "Découvrez le monde du café",
+        "subtitle": "Du grain à la tasse, apprenez tout sur le café et comment préparer la tasse parfaite.",
+        "buttons": {
+            "onboarding": "Commencer mon voyage",
+            "login": "Reprendre mon voyage"
+        }
+    },
+    "login": {
+        "title": "Connexion",
+        "fieldLabels": {
+            "email": "E-mail",
+            "password": "Mot de passe"
+        },
+        "buttons": {
+            "login": "Se connecter",
+            "forgotPassword": "Mot de passe oublié ?"
+        }
+    },
+    "forgotPassword": {
+        "requestResetCode": {
+            "title": "Mot de passe oublié",
+            "subtitle": "Entrez votre adresse e-mail et nous vous enverrons un code pour réinitialiser votre mot de passe.",
+            "fieldLabels": {
+                "email": "E-mail"
+            },
+            "buttons": {
+                "requestCode": "Demander le code"
+            }
+        },
+        "verifyResetCode": {
+            "title": "Vérifiez votre code",
+            "subtitle": "Nous avons envoyé un code à 8 chiffres à votre adresse e-mail. Entrez-le ci-dessous.",
+            "fieldLabels": {
+                "resetCode": "Code de réinitialisation"
+            },
+            "buttons": {
+                "verifyCode": "Vérifier le code"
+            }
+        }
+    },
+    "resetPassword": {
+        "title": "Choisissez un nouveau mot de passe",
+        "fieldLabels": {
+            "oldPassword": "Ancien mot de passe",
+            "newPassword": "Nouveau mot de passe",
+            "repeatNewPassword": "Répétez le nouveau mot de passe"
+        },
+        "buttons": {
+            "resetPassword": "Réinitialiser le mot de passe",
+            "forgotPassword": "Mot de passe oublié ?"
+        }
+    },
+    "register": {
+        "title": "Créer un compte",
+        "fieldLabels": {
+            "name": "Nom",
+            "email": "E-mail",
+            "password": "Mot de passe",
+            "repeatPassword": "Répétez le mot de passe"
+        },
+        "buttons": {
+            "register": "S'inscrire"
+        }
+    },
     "home": {
-        "title": "Ca c'est une titre"
+        "title": "Ceci est un titre"
     }
 }

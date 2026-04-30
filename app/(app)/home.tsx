@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { Button, Text, View, ScrollView } from 'react-native';
-import { graphqlFetch } from '@/shared/utils/api.utils';
-import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
 import { useAuthStore } from '@/shared/context/authStore.context';
+import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
+import { graphqlFetch } from '@/shared/utils/api.utils';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button, ScrollView, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
     const [chapters, setChapters] = useState('');
     const logout = useAuthStore((state) => state.logout);
+    const { t } = useTranslation();
 
     const getChapters = async () => {
         const response = await graphqlFetch(GET_ALL_CHAPTERS);
@@ -16,7 +18,7 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={{ flex: 1}}>
-            <Text style={{ fontSize: 22, fontWeight: 'bold' }}>HOME ISLAND</Text>
+            <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{t('home.title')}</Text>
             <Button title="test chapters button" onPress={getChapters} />
             <Button title="Logout" onPress={logout} />
             

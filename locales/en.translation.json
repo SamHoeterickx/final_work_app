@@ -1,4 +1,69 @@
 {
+    "startApp": {
+        "title": "Discover the world of coffee",
+        "subtitle": "From bean to cup, learn everything about coffee and making the perfect cup.",
+        "buttons": {
+            "onboarding": "Start my journey",
+            "login": "Resume my journey"
+        }
+    },
+    "login": {
+        "title": "Login",
+        "fieldLabels": {
+            "email": "Email",
+            "password": "Password"
+        },
+        "buttons": {
+            "login": "Login",
+            "forgotPassword": "Forgot password?"
+        }
+    },
+    "forgotPassword": {
+        "requestResetCode": {
+            "title": "Forgot password",
+            "subtitle": "Enter your email address and we will send you a code to reset your password.",
+            "fieldLabels": {
+                "email": "Email"
+            },
+            "buttons": {
+                "requestCode": "Request Reset Code"
+            }
+        },
+        "verifyResetCode": {
+            "title": "Verify your Reset Code",
+            "subtitle": "We have sent an 8-digit code to your email address. Enter it below.",
+            "fieldLabels": {
+                "resetCode": "Reset Code"
+            },
+            "buttons": {
+                "verifyCode": "Verify Reset Code"
+            }
+        }
+    },
+    "resetPassword": {
+        "title": "Choose a new password",
+        "fieldLabels": {
+            "oldPassword": "Old Password",
+            "newPassword": "New Password",
+            "repeatNewPassword": "Repeat New Password"
+        },
+        "buttons": {
+            "resetPassword": "Reset password",
+            "forgotPassword":"Forgot password?"
+        }
+    },
+    "register": {
+        "title": "Create a new account",
+        "fieldLabels": {
+            "name": "Name",
+            "email": "Email",
+            "password": "Password",
+            "repeatPassword": "Repeat password"
+        },
+        "buttons": {
+            "register": "Register"
+        }
+    },
     "home": {
         "title": "This is a title"
     }

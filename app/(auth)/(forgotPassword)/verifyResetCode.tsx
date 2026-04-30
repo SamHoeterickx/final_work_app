@@ -4,6 +4,7 @@ import { baseStyles, spacing } from "@/shared/styles/design.system";
 import { IVerifyResetCodeCredentials } from "@/shared/types/types";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -13,6 +14,7 @@ export default function verifyResetCode(){
     });
 
     const { email } = useLocalSearchParams();
+    const { t } = useTranslation();
 
     const { mutate, isError, error, isPending } = useVerifyResetCode();
 
@@ -60,16 +62,16 @@ export default function verifyResetCode(){
                     />
                     <View style={styles.cInputContent}>
                         <View style={styles.cText}>
-                            <Text style={[baseStyles.h2, styles.title]}>Verifieer je reset code</Text>
-                            <Text style={[baseStyles.p, styles.description]}>We hebben een 8-cijferige code naar je e-mailadres gestuurd. Vul deze hieronder in.</Text>
+                            <Text style={[baseStyles.h2, styles.title]}>{t('forgotPassword.verifyResetCode.title')}</Text>
+                            <Text style={[baseStyles.p, styles.description]}>{t('forgotPassword.verifyResetCode.subtitle')}</Text>
                         </View>
                         <View style={styles.cForm}>
                             <View style={styles.wInputField}>
-                                <Text style={[baseStyles.h4, styles.inputLabel]}>Reset Code</Text>
+                                <Text style={[baseStyles.h4, styles.inputLabel]}>{t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}</Text>
                                 <InputField
                                     onChangeText={handleFormInput}
                                     name='resetCode'
-                                    placeholder='reset code'
+                                    placeholder={t('forgotPassword.verifyResetCode.fieldLabels.resetCode')}
                                     autoCapitalize="none"
                                     spellCheck={false}
                                     maxLength={8}
@@ -85,7 +87,7 @@ export default function verifyResetCode(){
                     </View>
                     <View style={baseStyles.cButton}>
                         <Button
-                            copy='Verifieer reset code'
+                            copy='forgotPassword.verifyResetCode.buttons.verifyCode'
                             onPress={handleVerifyResetCode}
                             disabled={isPending}
                         />

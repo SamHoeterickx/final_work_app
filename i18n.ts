@@ -18,7 +18,6 @@ const getDeviceLanguage = (): ELocales => {
         if(supportedLocales.includes(languageCode)) {
             return languageCode as ELocales
         }
-        
 
     }catch(error){
         console.warn('Error fetching device language', error);

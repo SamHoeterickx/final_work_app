@@ -1,4 +1,69 @@
 {
+    "startApp": {
+        "title": "Ontdek de wereld van koffie",
+        "subtitle": "Van boon tot cup, leer alles over koffie en het maken van de perfecte cup.",
+        "buttons": {
+            "onboarding": "Start mijn reis",
+            "login": "Hervat mijn reis"
+        }
+    },
+    "login": {
+        "title": "Inloggen",
+        "fieldLabels": {
+            "email": "E-mailadres",
+            "password": "Wachtwoord"
+        },
+        "buttons": {
+            "login": "Inloggen",
+            "forgotPassword": "Wachtwoord vergeten?"
+        }
+    },
+    "forgotPassword": {
+        "requestResetCode": {
+            "title": "Wachtwoord vergeten",
+            "subtitle": "Vul je e-mailadres in en we sturen je een code om je wachtwoord opnieuw in te stellen.",
+            "fieldLabels": {
+                "email": "E-mailadres"
+            },
+            "buttons": {
+                "requestCode": "Resetcode aanvragen"
+            }
+        },
+        "verifyResetCode": {
+            "title": "Verifieer je resetcode",
+            "subtitle": "We hebben een 8-cijferige code naar je e-mailadres gestuurd. Vul deze hieronder in.",
+            "fieldLabels": {
+                "resetCode": "Resetcode"
+            },
+            "buttons": {
+                "verifyCode": "Code verifiëren"
+            }
+        }
+    },
+    "resetPassword": {
+        "title": "Kies een nieuw wachtwoord",
+        "fieldLabels": {
+            "oldPassword": "Oud wachtwoord",
+            "newPassword": "Nieuw wachtwoord",
+            "repeatNewPassword": "Herhaal nieuw wachtwoord"
+        },
+        "buttons": {
+            "resetPassword": "Wachtwoord opslaan",
+            "forgotPassword": "Wachtwoord vergeten?"
+        }
+    },
+    "register": {
+        "title": "Maak een account aan",
+        "fieldLabels": {
+            "name": "Naam",
+            "email": "E-mailadres",
+            "password": "Wachtwoord",
+            "repeatPassword": "Herhaal wachtwoord"
+        },
+        "buttons": {
+            "register": "Registreren"
+        }
+    },
     "home": {
         "title": "Dit is een titel"
     }

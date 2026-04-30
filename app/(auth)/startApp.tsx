@@ -1,15 +1,18 @@
-import { useRouter } from 'expo-router';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import { Button } from '@/shared/components';
 
 // STYLES
 import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
+import { useTranslation } from 'react-i18next';
 
 export default function StartAppScreen() {
     const router = useRouter();
+
+    const { t } = useTranslation();
 
     return (
         <SafeAreaView style={[baseStyles.container]}>
@@ -19,26 +22,19 @@ export default function StartAppScreen() {
                 resizeMode='contain'
             />
             <View style={ styles.cHeader}>
-                {/* <Image
-                    style={styles.placeholderImage}
-                    source={require('@/assets/images/android-icon-background.png')}
-                    resizeMode='contain'
-                /> */}
-                <Text style={[typography.h1, styles.title]}>
-                    Ontdek de wereld van koffie
-                </Text>
+                <Text style={[typography.h1, styles.title]}>{t('startApp.title')}</Text>
                 <Text style={[typography.bodySmall, styles.subtitle]}>
-                    Van boon tot cup, leer alles over koffie en het maken van de perfecte cup.
+                    {t('startApp.subtitle')}
                 </Text>
             </View>
 
             <View style={baseStyles.cButton}>
                 <Button 
-                    copy='START MIJN REIS' 
+                    copy='startApp.buttons.onboarding' 
                     onPress={() => router.navigate('/(auth)/onboarding')} 
                 />
                 <Button 
-                    copy='HERVAT MIJN REIS' 
+                    copy='startApp.buttons.login' 
                     onPress={() => router.navigate('/(auth)/login')} 
                     styles='secundary'
                 />
