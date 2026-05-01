@@ -26,7 +26,7 @@ export const LanguageButton: FC = ({}) => {
     return (
         <Link href='/(auth)/settings/changeLanguage' asChild>
             <TouchableOpacity style={styles.link}>
-                <Fontisto name="world-o" size={24} color="black" />
+                <Fontisto name="world-o" size={20} color="black" />
                 <Text style={styles.copy}>
                     { renderCurrentLanguage() }
                 </Text>

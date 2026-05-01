@@ -67,6 +67,11 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
+export interface IUserPreferencesStore {
+    language: ELocales;
+    setLanguage: (language: ELocales) => void;
+}
+
 export interface IRefreshTokensResponse {
     refreshTokens: {
         accessToken: string;

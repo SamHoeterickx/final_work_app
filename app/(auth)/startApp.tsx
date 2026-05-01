@@ -1,7 +1,7 @@
-import { useRouter } from 'expo-router';
-import { useTranslation } from 'react-i18next';
-import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import { Button, LanguageButton } from '@/shared/components';
