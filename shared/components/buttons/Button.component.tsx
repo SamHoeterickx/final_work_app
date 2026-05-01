@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { baseStyles } from '../styles/design.system';
-import { IButtonProps } from '../types/types';
 import { useTranslation } from 'react-i18next';
+import { Text, TouchableOpacity } from 'react-native';
+
+import { baseStyles } from '@/shared/styles/design.system';
+import { IButtonProps } from '@/shared/types/types';
 
 export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...settings }) => {
     const { t } = useTranslation();

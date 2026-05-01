@@ -3,7 +3,7 @@
   <h2>DISCOVER THE WORLD OF COFFEE</h2>
 </div>
 
-> Dit repository bevat mijn eindwerkt als MCT student aan EHB.  </br>
+> Deze repository bevat mijn eindwerkt als MCT student aan EHB.  </br>
 > Hoewel de repository publiek is voor beoordeling door docenten, is dit **geen** open-source project. Pull requests of externe bijdragen worden niet geaccepteerd. </br>
 
 ## Project Overview
@@ -11,7 +11,7 @@ Brewlingo is een full-stack mobiele applicatie die gebruikers meeneemt in de uit
 
 Op basis van een interactieve onboarding flow genereert de app een gepersonaliseerde **learning roadmap**, zodat de gebruiker stap voor stap de theorie leert die relevant is voor hun eigen apparatuur en ambities.
 
-## 🏗️ Repository Structure
+## Repository Structure
 Dit project bestaat uit twee aparte repositories. Deze README dient als centrale documentatie voor beide onderdelen.
 
 * **[Brewlingo App (Frontend)](https://github.com/SamHoeterickx/final_work_app)**

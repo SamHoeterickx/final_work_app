@@ -178,8 +178,8 @@ export const baseStyles = StyleSheet.create({
     },
     backButton: {
         position: 'absolute',
-        left: spacing.lg,
-        top: 100,
+        left: spacing.md,
+        top: 96,
     },
 
     // ==================/==================

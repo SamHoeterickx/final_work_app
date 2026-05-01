@@ -67,6 +67,11 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
+export interface IUserPreferencesStore {
+    language: ELocales;
+    setLanguage: (language: ELocales) => void;
+}
+
 export interface IRefreshTokensResponse {
     refreshTokens: {
         accessToken: string;
@@ -99,6 +104,12 @@ export enum OnboardingQuestionKind {
     SINGLE_CHOICE = 'single_choice',
     SINGLE_CHOICE_TITLE = 'single_choice_title',
     SINGLE_CHOICE_IMG = 'single_choice_img',
+}
+
+export enum ELocales {
+    EN = 'en',
+    NL = 'nl',
+    FR = 'fr',
 }
 
 // TYPES
@@ -142,4 +153,8 @@ export interface IOnboardingQuestionWrapperProps {
 export interface IQuestionProps {
     options: IQuestionOption[];
     questionIndex: number;
+}
+
+export interface IBackButtonProps {
+    style?: Record<string, any>;
 }
