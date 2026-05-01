@@ -1,4 +1,3 @@
-
 import { spacing } from '@/shared/styles/design.system';
 import { ELocales } from '@/shared/types/types';
 import { Fontisto } from '@expo/vector-icons';
@@ -7,33 +6,29 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-
 export const LanguageButton: FC = ({}) => {
-
-    const { i18n} = useTranslation();
+    const { i18n } = useTranslation();
 
     const renderCurrentLanguage = () => {
-        switch(i18n.language){
-            case(ELocales.EN):
+        switch (i18n.language) {
+            case ELocales.EN:
                 return 'English';
-            case(ELocales.NL):
+            case ELocales.NL:
                 return 'Nederlands';
-            case(ELocales.FR):
+            case ELocales.FR:
                 return 'Francais';
         }
-    }
+    };
 
     return (
-        <Link href='/(auth)/settings/changeLanguage' asChild>
+        <Link href="/(auth)/settings/changeLanguage" asChild>
             <TouchableOpacity style={styles.link}>
                 <Fontisto name="world-o" size={20} color="black" />
-                <Text style={styles.copy}>
-                    { renderCurrentLanguage() }
-                </Text>
+                <Text style={styles.copy}>{renderCurrentLanguage()}</Text>
             </TouchableOpacity>
         </Link>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     link: {
@@ -45,4 +40,4 @@ const styles = StyleSheet.create({
         paddingLeft: spacing.sm,
         fontSize: 14,
     },
-})
+});

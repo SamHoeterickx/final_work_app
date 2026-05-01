@@ -81,16 +81,14 @@ const InitialLayout = () => {
 };
 
 export default function RootLayout() {
-
     const { language } = useUserPreferencesStore();
     const { i18n } = useTranslation();
 
     useEffect(() => {
-        if(language && i18n.language !== language){
+        if (language && i18n.language !== language) {
             i18n.changeLanguage(language);
         }
-    }, [language, i18n])
-
+    }, [language, i18n]);
 
     return (
         <QueryClientProvider client={queryClient}>

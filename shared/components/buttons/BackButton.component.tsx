@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { baseStyles, colors } from '@/shared/styles/design.system';
 import { IBackButtonProps } from '@/shared/types/types';
 
-export const BackButton: FC<IBackButtonProps> = ({style}) => {
+export const BackButton: FC<IBackButtonProps> = ({ style }) => {
     const router = useRouter();
 
     const handleNavigateBack = () => {
