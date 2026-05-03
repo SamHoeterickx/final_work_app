@@ -112,6 +112,13 @@ export enum ELocales {
     FR = 'fr',
 }
 
+export enum EFlowStep {
+    'GENERATING',
+    'SUCCESS',
+    'CHAPTER_UNLOCKED',
+    'START_LEARNING',
+}
+
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
 
@@ -157,4 +164,21 @@ export interface IQuestionProps {
 
 export interface IBackButtonProps {
     style?: Record<string, any>;
+}
+
+export interface IPostOnboardingFlowProps {
+    handleNext: () => void;
+}
+
+export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
+    chapter: string;
+    islandPath: string;
+}
+export interface IStartLearningProps extends IPostOnboardingFlowProps {
+    name: string;
+}
+
+export interface IIslandModelProps {
+    islandPath: string;
+    scale?: number;
 }

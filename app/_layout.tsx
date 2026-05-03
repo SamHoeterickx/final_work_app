@@ -67,7 +67,7 @@ const InitialLayout = () => {
         if (!accessToken && !inAuthGroup) {
             router.replace('/(auth)/startApp');
         } else if (accessToken && needsRoadmap) {
-            router.replace('/(auth)/generateRoadmap');
+            router.replace('/(auth)/postOnboardingFlow');
         } else if (accessToken && inAuthGroup && !needsRoadmap) {
             router.replace('/(app)/home');
         }
