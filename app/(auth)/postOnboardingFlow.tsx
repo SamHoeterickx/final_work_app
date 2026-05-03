@@ -8,6 +8,9 @@ import { ChapterUnlocked, GeneratingRoadmap, GeneratingSuccessfull, StartLearnin
 // TYPES
 import { EFlowStep } from "@/shared/types/types";
 
+// STORE
+import { useAuthStore } from "@/shared/context/authStore.context";
+
 // STYLES
 import { baseStyles } from "@/shared/styles/design.system";
 import { useTranslation } from "react-i18next";
@@ -39,8 +42,9 @@ const DUMMYDATA = {
 }
 
 export default function PostOnboardingFlow() {
-    const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.CHAPTER_UNLOCKED);
+    const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.GENERATING);
 
+    const { setNeedsRoadmap } = useAuthStore();
     const { i18n } = useTranslation();
 
     const router = useRouter();
@@ -56,6 +60,7 @@ export default function PostOnboardingFlow() {
     },[currentStep]);
 
     const handleStartLesson = () => {
+        setNeedsRoadmap(false);
         router.replace('/(app)/home')
     }
 
@@ -69,7 +74,7 @@ export default function PostOnboardingFlow() {
             case EFlowStep.CHAPTER_UNLOCKED : 
                 return <ChapterUnlocked chapter={(DUMMYDATA as any)[i18n.language].name} islandPath={DUMMYDATA.path} handleNext={() => setCurrentStep(EFlowStep.START_LEARNING)} />
             case EFlowStep.START_LEARNING : 
-                return <StartLearning name={(DUMMYDATA as any)[i18n.language].lessons[0].name} handleNext={handleStartLesson} />
+                return <StartLearning name={(DUMMYDATA as any).lessons[0][i18n.language].name} handleNext={handleStartLesson} />
             default: 
                 return null
         }

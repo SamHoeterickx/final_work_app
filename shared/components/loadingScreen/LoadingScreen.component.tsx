@@ -1,17 +1,26 @@
-import { baseStyles } from "@/shared/styles/design.system";
+import { baseStyles, colors } from "@/shared/styles/design.system";
 import { FC } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 export const LoadingScreen: FC = () => {
     return (
         <View style={styles.cLoading} >
-            <Text style={baseStyles.h2}>Loading...</Text>
+            <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
+            <Text style={[baseStyles.h3, styles.text]}>Loading...</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     cLoading: {
-        flex: 1
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    loader: {
+        marginBottom: 16,
+    },
+    text: {
+        textAlign: 'center',
+        opacity: 0.6,
     }
 })

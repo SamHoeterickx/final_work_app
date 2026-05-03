@@ -1,7 +1,7 @@
 import { baseStyles } from "@/shared/styles/design.system";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { LoadingScreen } from "./loadingScreen/LoadingScreen.component";
 
 export const GeneratingRoadmap: FC = () => {
@@ -9,8 +9,27 @@ export const GeneratingRoadmap: FC = () => {
 
     return (
         <>
-            <Text style={[baseStyles.h1]}>{t('postOnboardingFlow.generating.title')}</Text>    
-            <LoadingScreen />
+            <View style={baseStyles.cHeader}>
+                <Text style={[baseStyles.h2, styles.title]}>{t('postOnboardingFlow.generating.title')}</Text>    
+            </View>
+            <View style={styles.cContent}>
+                <LoadingScreen />
+            </View>
+            <View style={styles.cFooter} />
         </>
     )
 }
+
+const styles = StyleSheet.create({
+    title: {
+        textAlign: "center"
+    },
+    cContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    cFooter: {
+        height: 80, // Approximate height of the button in other screens to keep layout consistent
+    }
+})

@@ -53,11 +53,12 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
 
     return (
         <>
-            <View style={styles.cHeader}>
+            <View style={baseStyles.cHeader}>
                 <Text style={[baseStyles.h2, styles.title]}>{t('postOnboardingFlow.chapterUnlocked.title')}</Text>
-                <Text style={[baseStyles.p]}>{t('postOnboardingFlow.chapterUnlocked.description')}</Text>
+                <Text style={[baseStyles.p, styles.description]}>{t('postOnboardingFlow.chapterUnlocked.description')}</Text>
             </View>
-                <Text style={[baseStyles.h3]}>{chapter}</Text>
+            <View style={styles.cContent}>
+                <Text style={[baseStyles.h3, styles.chapterTitle]}>{chapter}</Text>
                 {/* CANVAS */}
                 <View style={styles.iconContainer}>
                     <Animated.View style={[styles.iconWrapper, { opacity: lockedOpacity, transform: [{ scale: lockedScale }] }]}>
@@ -67,8 +68,6 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                         <SvgIcon name="unlocked" />
                     </Animated.View>
                 </View>
-            <View>
-
             </View>
             <Button
                 copy="postOnboardingFlow.chapterUnlocked.buttons.continue"
@@ -79,12 +78,21 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
 }
 
 const styles = StyleSheet.create({
-    cHeader: {
-        alignItems: 'center',
-        marginTop: 64
-    },
     title: {
+        textAlign: 'center',
         marginBottom: 8,
+    },
+    description: {
+        textAlign: 'center',
+    },
+    cContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    chapterTitle: {
+        marginBottom: 24,
     },
     iconContainer: {
         height: 120,

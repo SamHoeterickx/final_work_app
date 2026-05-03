@@ -121,6 +121,10 @@ export const baseStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    cHeader: {
+        alignItems: 'center',
+        marginTop: 64
+    },
 
     // Typography
     h1: { ...typography.h1 } as TextStyle,
