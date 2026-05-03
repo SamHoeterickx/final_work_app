@@ -178,3 +178,8 @@ export interface IChapterUnlockedProps extends IPostOnboardingFlowProps{
 export interface IStartLearningProps extends IPostOnboardingFlowProps{
     name: string;
 }
+
+export interface IIslandModelProps {
+    islandPath: string;
+    scale?: number;
+}
