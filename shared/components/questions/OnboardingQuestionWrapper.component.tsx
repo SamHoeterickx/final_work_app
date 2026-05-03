@@ -7,7 +7,7 @@ import { SingleChoiceQuestion } from './SingleChoiceQuestion.component';
 import { SingleChoiceTitleQuestion } from './SingleChoiceTitleQuestion.component';
 
 // TYPES
-import { IOnboardingQuestionWrapperProps, OnboardingQuestionKind } from '../../types/types';
+import { IOnboardingQuestionWrapperProps, OnboardingQuestionKind } from '@/shared/types/types';
 
 export const OnboardingQuestionWrapper: FC<
     IOnboardingQuestionWrapperProps & { questionIndex: number }

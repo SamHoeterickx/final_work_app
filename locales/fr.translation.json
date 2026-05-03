@@ -156,6 +156,38 @@
             "next": "Suivant"
         }
     },
+    "changeLanguage": {
+        "title": "Changer la langue",
+        "buttons": {
+            "update": "Enregistrer les modifications"
+        }
+    },
+    "postOnboardingFlow": {
+        "generating": {
+            "title": "Création de votre parcours personnalisé..."  
+        },
+        "success": {
+            "title": "Votre parcours est prêt !",
+            "description": "Nous avons conçu le cours théorique parfait pour votre équipement.",
+            "buttons": {
+                "continue": "Découvrir mon parcours"
+            }
+        },
+        "chapterUnlocked": {
+            "title": "Chapitre 1 Débloqué !",
+            "description": "Il est temps de se plonger dans les bases.",
+            "buttons": {
+                "continue": "Explorer le Chapitre 1"
+            }
+        },
+        "start": {
+            "title": "Prêt à apprendre ?",
+            "description": "Découvrez la science derrière votre tasse parfaite.",
+            "buttons": {
+                "start": "Commencer la première leçon"
+            }
+        }
+    },
     "home": {
         "title": "Ceci est un titre"
     }

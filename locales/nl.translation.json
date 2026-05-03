@@ -155,7 +155,39 @@
         "buttons": {
             "next": "Volgende"
         }
-    }, 
+    },
+    "changeLanguage": {
+        "title": "Taal wijzigen",
+        "buttons": {
+            "update": "Wijzigingen opslaan"
+        }
+    },
+   "postOnboardingFlow": {
+        "generating": {
+            "title": "Jouw persoonlijke traject samenstellen..."  
+        },
+        "success": {
+            "title": "Jouw traject staat klaar!",
+            "description": "We hebben de perfecte theoriecursus afgestemd op jouw koffie-apparatuur.",
+            "buttons": {
+                "continue": "Onthul mijn traject"
+            }
+        },
+        "chapterUnlocked": {
+            "title": "Hoofdstuk 1 Ontgrendeld!",
+            "description": "Het is tijd om in de basis te duiken.",
+            "buttons": {
+                "continue": "Verken Hoofdstuk 1"
+            }
+        },
+        "start": {
+            "title": "Klaar om te leren?",
+            "description": "Ontdek de wetenschap achter jouw perfecte kop koffie.",
+            "buttons": {
+                "start": "Start de eerste les"
+            }
+        }
+    },
     "home": {
         "title": "Dit is een titel"
     }

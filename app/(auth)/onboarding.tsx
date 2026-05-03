@@ -37,7 +37,6 @@ export default function OnboardingScreen() {
 
     const handleContinueOnboarding = () => {
         if (onboardingCount !== MAX_ONBOARDING_LENGTH) {
-            console.log(answers);
             setOnboardingCount((prev) => prev + 1);
         } else {
             router.navigate('/(auth)/register');

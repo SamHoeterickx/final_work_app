@@ -1,5 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import * as SecureStore from 'expo-secure-store';
+import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+
 // FONTS
 import {
     Inter_400Regular,
@@ -10,14 +14,13 @@ import {
     Inter_900Black,
     useFonts,
 } from '@expo-google-fonts/inter';
-import { Stack, useRouter, useSegments } from 'expo-router';
-import * as SecureStore from 'expo-secure-store';
 
 // TRANSLATIONS
-import '../i18n';
+import '@/i18n';
 
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
+import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
 
 const queryClient = new QueryClient();
 
@@ -64,7 +67,7 @@ const InitialLayout = () => {
         if (!accessToken && !inAuthGroup) {
             router.replace('/(auth)/startApp');
         } else if (accessToken && needsRoadmap) {
-            router.replace('/(auth)/generateRoadmap');
+            router.replace('/(auth)/postOnboardingFlow');
         } else if (accessToken && inAuthGroup && !needsRoadmap) {
             router.replace('/(app)/home');
         }
@@ -78,6 +81,15 @@ const InitialLayout = () => {
 };
 
 export default function RootLayout() {
+    const { language } = useUserPreferencesStore();
+    const { i18n } = useTranslation();
+
+    useEffect(() => {
+        if (language && i18n.language !== language) {
+            i18n.changeLanguage(language);
+        }
+    }, [language, i18n]);
+
     return (
         <QueryClientProvider client={queryClient}>
             <InitialLayout />
