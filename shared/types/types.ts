@@ -112,12 +112,12 @@ export enum ELocales {
     FR = 'fr',
 }
 
-export enum EFlowStep{
+export enum EFlowStep {
     'GENERATING',
     'SUCCESS',
     'CHAPTER_UNLOCKED',
-    'START_LEARNING'
-} 
+    'START_LEARNING',
+}
 
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
@@ -130,7 +130,6 @@ export type TGraphQLResponse<T = unknown> = {
     data?: T;
     errors?: TGraphQLError[];
 };
-
 
 // PROPS
 export interface IButtonProps extends TouchableOpacityProps {
@@ -168,14 +167,14 @@ export interface IBackButtonProps {
 }
 
 export interface IPostOnboardingFlowProps {
-    handleNext: () => void
+    handleNext: () => void;
 }
 
-export interface IChapterUnlockedProps extends IPostOnboardingFlowProps{
+export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
     chapter: string;
     islandPath: string;
 }
-export interface IStartLearningProps extends IPostOnboardingFlowProps{
+export interface IStartLearningProps extends IPostOnboardingFlowProps {
     name: string;
 }
 

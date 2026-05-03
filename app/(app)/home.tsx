@@ -1,27 +1,28 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button, ScrollView, Text, View } from 'react-native';
+// import { useState } from 'react';
+// import { useTranslation } from 'react-i18next';
+// import { Button, ScrollView} from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // STORE
-import { useAuthStore } from '@/shared/context/authStore.context';
+// import { useAuthStore } from '@/shared/context/authStore.context';
 
 // GRAPHQL
-import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
+// import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
 
 // UTILS
-import { graphqlFetch } from '@/shared/utils/api.utils';
+// import { graphqlFetch } from '@/shared/utils/api.utils';
 import { baseStyles } from '@/shared/styles/design.system';
 
 export default function HomeScreen() {
-    const [chapters, setChapters] = useState('');
-    const logout = useAuthStore((state) => state.logout);
-    const { t } = useTranslation();
+    // const [chapters, setChapters] = useState('');
+    // const logout = useAuthStore((state) => state.logout);
+    // const { t } = useTranslation();
 
-    const getChapters = async () => {
-        const response = await graphqlFetch(GET_ALL_CHAPTERS);
-        setChapters(JSON.stringify(response, null, 2));
-    };
+    // const getChapters = async () => {
+    //     const response = await graphqlFetch(GET_ALL_CHAPTERS);
+    //     setChapters(JSON.stringify(response, null, 2));
+    // };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>

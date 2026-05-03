@@ -1,24 +1,25 @@
-import { baseStyles } from "@/shared/styles/design.system";
-import { IChapterUnlockedProps } from "@/shared/types/types";
-import { FC, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Animated, StyleSheet, Text, View } from "react-native";
-import { Button } from "./buttons/Button.component";
-import { SvgIcon } from "./SvgIcon.component";
-
+import { baseStyles } from '@/shared/styles/design.system';
+import { IChapterUnlockedProps } from '@/shared/types/types';
+import { FC, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Button } from './buttons/Button.component';
+import { SvgIcon } from './SvgIcon.component';
 
 export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter, islandPath }) => {
     const [isLocked, setIsLocked] = useState<boolean>(true);
-    
+
     const unlockAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLocked(false);
-        }, 1500)
+        }, 1500);
+
+        console.log(islandPath);
 
         return () => clearTimeout(timer);
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (!isLocked) {
@@ -54,17 +55,31 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
     return (
         <>
             <View style={baseStyles.cHeader}>
-                <Text style={[baseStyles.h2, styles.title]}>{t('postOnboardingFlow.chapterUnlocked.title')}</Text>
-                <Text style={[baseStyles.p, styles.description]}>{t('postOnboardingFlow.chapterUnlocked.description')}</Text>
+                <Text style={[baseStyles.h2, styles.title]}>
+                    {t('postOnboardingFlow.chapterUnlocked.title')}
+                </Text>
+                <Text style={[baseStyles.p, styles.description]}>
+                    {t('postOnboardingFlow.chapterUnlocked.description')}
+                </Text>
             </View>
             <View style={styles.cContent}>
                 <Text style={[baseStyles.h3, styles.chapterTitle]}>{chapter}</Text>
                 {/* CANVAS */}
                 <View style={styles.iconContainer}>
-                    <Animated.View style={[styles.iconWrapper, { opacity: lockedOpacity, transform: [{ scale: lockedScale }] }]}>
+                    <Animated.View
+                        style={[
+                            styles.iconWrapper,
+                            { opacity: lockedOpacity, transform: [{ scale: lockedScale }] },
+                        ]}
+                    >
                         <SvgIcon name="locked" />
                     </Animated.View>
-                    <Animated.View style={[styles.iconWrapper, { opacity: unlockedOpacity, transform: [{ scale: unlockedScale }] }]}>
+                    <Animated.View
+                        style={[
+                            styles.iconWrapper,
+                            { opacity: unlockedOpacity, transform: [{ scale: unlockedScale }] },
+                        ]}
+                    >
                         <SvgIcon name="unlocked" />
                     </Animated.View>
                 </View>
@@ -74,8 +89,8 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                 onPress={handleNext}
             />
         </>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     title: {
@@ -102,5 +117,5 @@ const styles = StyleSheet.create({
     },
     iconWrapper: {
         position: 'absolute',
-    }
-})
+    },
+});

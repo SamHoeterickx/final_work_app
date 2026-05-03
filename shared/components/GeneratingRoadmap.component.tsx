@@ -1,8 +1,8 @@
-import { baseStyles } from "@/shared/styles/design.system";
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
-import { LoadingScreen } from "./loadingScreen/LoadingScreen.component";
+import { baseStyles } from '@/shared/styles/design.system';
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, Text, View } from 'react-native';
+import { LoadingScreen } from './loadingScreen/LoadingScreen.component';
 
 export const GeneratingRoadmap: FC = () => {
     const { t } = useTranslation();
@@ -10,19 +10,21 @@ export const GeneratingRoadmap: FC = () => {
     return (
         <>
             <View style={baseStyles.cHeader}>
-                <Text style={[baseStyles.h2, styles.title]}>{t('postOnboardingFlow.generating.title')}</Text>    
+                <Text style={[baseStyles.h2, styles.title]}>
+                    {t('postOnboardingFlow.generating.title')}
+                </Text>
             </View>
             <View style={styles.cContent}>
                 <LoadingScreen />
             </View>
             <View style={styles.cFooter} />
         </>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     title: {
-        textAlign: "center"
+        textAlign: 'center',
     },
     cContent: {
         flex: 1,
@@ -31,5 +33,5 @@ const styles = StyleSheet.create({
     },
     cFooter: {
         height: 80, // Approximate height of the button in other screens to keep layout consistent
-    }
-})
+    },
+});

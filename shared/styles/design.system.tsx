@@ -123,7 +123,7 @@ export const baseStyles = StyleSheet.create({
     },
     cHeader: {
         alignItems: 'center',
-        marginTop: 64
+        marginTop: 64,
     },
 
     // Typography

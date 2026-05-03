@@ -24,8 +24,8 @@ import Bean3 from '@/assets/icons/beans/3_beans.svg';
 import Bean4 from '@/assets/icons/beans/4_beans.svg';
 
 // LOCKS
-import Locked from '@/assets/icons/locked.svg'
-import Unlocked from '@/assets/icons/unlocked.svg'
+import Locked from '@/assets/icons/locked.svg';
+import Unlocked from '@/assets/icons/unlocked.svg';
 
 interface SvgIconProps extends SvgProps {
     name: string;
@@ -55,8 +55,8 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     '4_beans.svg': Bean4,
 
     // LOCKS
-    'locked': Locked,
-    'unlocked': Unlocked,
+    locked: Locked,
+    unlocked: Unlocked,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, ...props }) => {
