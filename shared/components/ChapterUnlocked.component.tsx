@@ -1,17 +1,15 @@
 import { baseStyles } from "@/shared/styles/design.system";
 import { IChapterUnlockedProps } from "@/shared/types/types";
-import { Canvas } from "@react-three/fiber/native";
 import { FC, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Animated, StyleSheet, Text, View } from "react-native";
 import { Button } from "./buttons/Button.component";
-import { IslandModel } from "./islands/island.component";
 import { SvgIcon } from "./SvgIcon.component";
 
 
 export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter, islandPath }) => {
     const [isLocked, setIsLocked] = useState<boolean>(true);
-
+    
     const unlockAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
@@ -59,29 +57,18 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                 <Text style={[baseStyles.h2, styles.title]}>{t('postOnboardingFlow.chapterUnlocked.title')}</Text>
                 <Text style={[baseStyles.p]}>{t('postOnboardingFlow.chapterUnlocked.description')}</Text>
             </View>
-            <View style={styles.contentContainer}>
                 <Text style={[baseStyles.h3]}>{chapter}</Text>
-
-                <View style={styles.canvasWrapper}>
-                    <Canvas style={{ flex: 1 }}>
-                        <ambientLight intensity={1} />
-                        <directionalLight position={[0, 10, 5]} intensity={1.5} />
-                        
-                        <IslandModel 
-                            islandPath={islandPath || require('../../assets/models/test_island.glb')} 
-                            scale={20}
-                        />
-                    </Canvas>
-                    
-                    <View style={[styles.iconContainer, StyleSheet.absoluteFill, { pointerEvents: 'none' }]}>
-                        <Animated.View style={[styles.iconWrapper, { opacity: lockedOpacity, transform: [{ scale: lockedScale }] }]}>
-                            <SvgIcon name="locked" />
-                        </Animated.View>
-                        <Animated.View style={[styles.iconWrapper, { opacity: unlockedOpacity, transform: [{ scale: unlockedScale }] }]}>
-                            <SvgIcon name="unlocked" />
-                        </Animated.View>
-                    </View>
+                {/* CANVAS */}
+                <View style={styles.iconContainer}>
+                    <Animated.View style={[styles.iconWrapper, { opacity: lockedOpacity, transform: [{ scale: lockedScale }] }]}>
+                        <SvgIcon name="locked" />
+                    </Animated.View>
+                    <Animated.View style={[styles.iconWrapper, { opacity: unlockedOpacity, transform: [{ scale: unlockedScale }] }]}>
+                        <SvgIcon name="unlocked" />
+                    </Animated.View>
                 </View>
+            <View>
+
             </View>
             <Button
                 copy="postOnboardingFlow.chapterUnlocked.buttons.continue"
@@ -99,19 +86,11 @@ const styles = StyleSheet.create({
     title: {
         marginBottom: 8,
     },
-    contentContainer: {
-        flex: 1,
-        alignItems: 'center',
-        width: '100%',
-    },
-    canvasWrapper: {
-        flex: 1,
-        width: '100%',
-        marginTop: 16,
-    },
     iconContainer: {
+        height: 120,
         justifyContent: 'center',
         alignItems: 'center',
+        marginVertical: 16,
     },
     iconWrapper: {
         position: 'absolute',
