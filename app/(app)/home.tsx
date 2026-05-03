@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ScrollView, Text } from 'react-native';
+import { Button, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // STORE
@@ -11,6 +11,7 @@ import { GET_ALL_CHAPTERS } from '@/shared/graphql/query';
 
 // UTILS
 import { graphqlFetch } from '@/shared/utils/api.utils';
+import { baseStyles } from '@/shared/styles/design.system';
 
 export default function HomeScreen() {
     const [chapters, setChapters] = useState('');
@@ -24,13 +25,15 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{t('home.title')}</Text>
-            <Button title="test chapters button" onPress={getChapters} />
+            <View style={[baseStyles.cHeader]}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold' }}>Home</Text>
+            </View>
+            {/* <Button title="test chapters button" onPress={getChapters} />
             <Button title="Logout" onPress={logout} />
 
             <ScrollView>
                 <Text>{chapters || 'No data yet'}</Text>
-            </ScrollView>
+            </ScrollView> */}
         </SafeAreaView>
     );
 }

@@ -32,7 +32,7 @@ export default function StartAppScreen() {
                 <LanguageButton />
                 <Button
                     copy="startApp.buttons.onboarding"
-                    onPress={() => router.navigate('/(auth)/postOnboardingFlow')}
+                    onPress={() => router.navigate('/(auth)/onboarding')}
                 />
                 <Button
                     copy="startApp.buttons.login"
