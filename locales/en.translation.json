@@ -156,7 +156,40 @@
             "next": "Next"
         }
     },
+    "changeLanguage": {
+        "title": "Change language",
+        "buttons": {
+            "update": "Save changes"
+        }
+    },
+    "postOnboardingFlow": {
+        "generating": {
+            "title": "Crafting your personalized roadmap..."  
+        },
+        "success": {
+            "title": "Your Roadmap is Ready!",
+            "description": "We've tailored the perfect theory course for your coffee setup.",
+            "buttons": {
+                "continue": "Reveal My Path"
+            }
+        },
+        "chapterUnlocked": {
+            "title": "Chapter 1 Unlocked!",
+            "description": "It's time to dive into the fundamentals.",
+            "buttons": {
+                "continue": "Explore Chapter 1"
+            }
+        },
+        "start": {
+            "title": "Ready to Learn?",
+            "description": "Discover the science behind your perfect cup.",
+            "buttons": {
+                "start": "Start First Lesson"
+            }
+        }
+    },
     "home": {
         "title": "This is a title"
-    }
+    },
+   
 }

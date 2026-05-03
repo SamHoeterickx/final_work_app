@@ -22,7 +22,7 @@ export default function ChangeLanguage() {
 
     const { language, setLanguage } = useUserPreferencesStore();
 
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const router = useRouter();
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function ChangeLanguage() {
 
     return (
         <SafeAreaView style={[baseStyles.container, { position: 'relative' }]}>
-            <Text style={[baseStyles.h2, styles.title]}>Change language</Text>
+            <Text style={[baseStyles.h2, styles.title]}>{t('changeLanguage.title')}</Text>
             <View style={styles.pickerContainer}>
                 <Picker
                     selectedValue={selectedLanguage}
@@ -53,7 +53,7 @@ export default function ChangeLanguage() {
                     <Picker.Item label="Francais" value={ELocales.FR} />
                 </Picker>
             </View>
-            <Button copy="Save Changes" onPress={handleChangeLanguage} />
+            <Button copy="changeLanguage.buttons.update" onPress={handleChangeLanguage} />
             <BackButton style={{ left: 0 }} />
         </SafeAreaView>
     );
