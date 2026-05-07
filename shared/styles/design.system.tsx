@@ -167,6 +167,7 @@ export const baseStyles = StyleSheet.create({
         paddingVertical: 24,
 
         marginTop: 12,
+        marginBottom: Platform.OS === 'android' ? 12 : 0,
 
         borderRadius: borderRadius.full,
         backgroundColor: colors.primary,

@@ -40,7 +40,6 @@ const InitialLayout = () => {
         const loadTokens = async () => {
             try {
                 SecureStore.deleteItemAsync('accessToken');
-                // FIXED: Typo 'refreshTOken' -> 'refreshToken'
                 SecureStore.deleteItemAsync('refreshToken'); 
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
