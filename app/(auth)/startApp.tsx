@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, LanguageButton } from '@/shared/components';
 
 // STYLES
-import { baseStyles, spacing } from '@/shared/styles/design.system';
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 export default function StartAppScreen() {
     const router = useRouter();
@@ -41,23 +41,43 @@ export default function StartAppScreen() {
                 resizeMode="contain"
             />
 
-            <Animated.Image
-                style={[
-                    styles.modelPreview,
-                    {
-                        transform: [
-                            {
-                                translateY: floatAnim.interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [0, -20],
-                                }),
-                            },
-                        ],
-                    },
-                ]}
-                source={require('@/assets/images/moka_pot_island.png')}
-                resizeMode="contain"
-            />
+            <View style={styles.wIsland}>
+                <Animated.Image
+                    style={[
+                        styles.modelPreview,
+                        {
+                            transform: [
+                                {
+                                    translateY: floatAnim.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [0, -20],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                    source={require('@/assets/images/moka_pot_1.png')}
+                    resizeMode="contain"
+                />
+                <Animated.View
+                    style={[
+                        styles.islandShadow,
+                        {
+                            transform: [
+                                {
+                                    rotateX: '75deg',
+                                },
+                                {
+                                    scale: floatAnim.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [1, 0.8],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                />
+            </View>
 
             <View style={baseStyles.xlButton}>
                 <LanguageButton />
@@ -82,8 +102,24 @@ const styles = StyleSheet.create({
         width: '65%',
         marginTop: spacing.xxl * 1.5,
     },
+    wIsland: {
+        width: '100%',
+        height: 300,
+        alignItems: 'center',
+    },
     modelPreview: {
         width: '100%',
         height: 300,
+        alignItems: 'center',
+        zIndex: 3,
+    },
+    islandShadow: {
+        width: 60,
+        aspectRatio: 1 / 1,
+        backgroundColor: colors.shadow,
+        opacity: 0.1,
+        borderRadius: borderRadius.full,
+        marginTop: -20,
+        zIndex: 1,
     },
 });
