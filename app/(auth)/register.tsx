@@ -83,7 +83,7 @@ export default function Register() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
                         style={styles.logo}
                         resizeMode="contain"
                     />

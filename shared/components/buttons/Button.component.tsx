@@ -10,26 +10,24 @@ export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...setti
 
     const renderButtonStyles = () => {
         let customStyles: any[] = [];
+        let customCopyStyles: any[] = []
 
         if (styles === 'secundary') {
             customStyles.push(baseStyles.secundaryButton);
         }
-        if (size === 'small') {
-            customStyles.push(baseStyles.sButton);
-        } else if (size === 'large') {
+        if (size === 'large') {
             customStyles.push(baseStyles.xlButton);
         }
 
         return customStyles;
     };
-
     return (
         <TouchableOpacity
             style={[baseStyles.button, renderButtonStyles()]}
             onPress={onPress}
             {...settings}
         >
-            <Text style={baseStyles.buttonCopy}>{t(copy)}</Text>
+            <Text style={[baseStyles.buttonCopy, styles === 'secundary' ? baseStyles.buttonCopySecundary : '']}>{t(copy)}</Text>
         </TouchableOpacity>
     );
 };

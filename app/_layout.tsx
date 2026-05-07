@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // FONTS
 import {
@@ -21,6 +21,9 @@ import '@/i18n';
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
 import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+
+// STYLES
+import { colors } from '@/shared/styles/design.system';
 
 const queryClient = new QueryClient();
 
@@ -77,7 +80,14 @@ const InitialLayout = () => {
         return null;
     }
 
-    return <Stack screenOptions={{ headerShown: false }} />;
+    return (
+        <Stack 
+            screenOptions={{ 
+                headerShown: false, 
+                contentStyle: { backgroundColor: colors.background } 
+            }} 
+        />
+    );
 };
 
 export default function RootLayout() {

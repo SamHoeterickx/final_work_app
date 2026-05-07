@@ -18,7 +18,7 @@ export default function StartAppScreen() {
         <SafeAreaView style={[baseStyles.container]}>
             <Image
                 style={styles.logo}
-                source={require('@/assets/logos/png/brewlingo_logo_black.png')}
+                source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
                 resizeMode="contain"
             />
             <View style={styles.cHeader}>

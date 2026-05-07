@@ -1,26 +1,24 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { color } from 'three/src/nodes/tsl/TSLCore.js';
 
 export const colors = {
-    primary: '#D9D9D9',
-    secondary: '#',
-    accent: '#',
-    accentLight: '#',
-    background: '#EFEFEF',
+    primary: '#465E3C',
+    secondary: '#222222',
+    background: '#E8DFD3',
 
     text: {
-        primary: '#',
-        secondary: '#',
-        muted: '#',
-        inverse: '#',
+        primary: '#222222',
+        secondary: '#FFFFFF',
+        muted: '#646464',
+        inverted: '#465E3C'
     },
 
     success: '#',
     warning: '#',
     error: '#',
 
-    border: '#',
+    border: '#465E3C',
     shadow: '#',
-    overlay: '#',
 };
 
 export const spacing = {
@@ -146,7 +144,7 @@ export const baseStyles = StyleSheet.create({
 
     wrapper: {},
     cButton: {
-        width: '100%',
+        // width: '100%',
     },
 
     error: {
@@ -156,34 +154,36 @@ export const baseStyles = StyleSheet.create({
     // ==================/==================
     // ============BUTTON STYLING===========
     // ==================/==================
-    button: {
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-        paddingVertical: spacing.lg,
-        marginTop: 12,
-
-        borderRadius: borderRadius.md,
-
-        backgroundColor: colors.primary,
-    },
-    sButton: {},
-    xlButton: {},
-    secundaryButton: {
-        backgroundColor: colors.secondary,
-        borderWidth: 2,
-        borderColor: colors.primary,
-    },
-    buttonCopy: {
-        textTransform: 'uppercase',
-        fontFamily: 'Inter_600SemiBold',
-        fontSize: 16,
-    },
     backButton: {
         position: 'absolute',
         left: spacing.md,
         top: 96,
+    },
+    
+    button: {
+        paddingHorizontal: 48,
+        paddingVertical: 24,
+
+        marginTop: 16,
+
+        borderRadius: borderRadius.full,
+        backgroundColor: colors.primary,
+    },
+    secundaryButton: {
+        backgroundColor: colors.background,
+        borderColor: colors.border,
+        borderWidth: 2,
+    },
+    xlButton: {
+        width: '100%',
+    },
+    buttonCopy: {
+        color: colors.text.secondary,
+        textTransform: 'uppercase',
+        textAlign: 'center'
+    },
+    buttonCopySecundary: {
+        color: colors.text.inverted
     },
 
     // ==================/==================

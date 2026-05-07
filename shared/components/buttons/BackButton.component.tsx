@@ -14,10 +14,10 @@ export const BackButton: FC<IBackButtonProps> = ({ style }) => {
 
     return (
         <Ionicons
-            style={[baseStyles.backButton, style]}
+            // style={[baseStyles.backButton, style]}
             name="chevron-back"
             size={32}
-            color={colors.primary}
+            color={colors.secondary}
             onPress={handleNavigateBack}
         />
     );
