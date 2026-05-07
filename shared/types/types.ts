@@ -155,7 +155,7 @@ export type TGraphQLResponse<T = unknown> = {
 // PROPS
 export interface IButtonProps extends TouchableOpacityProps {
     copy: string;
-    icon?: ESvgIconName
+    icon?: ESvgIconName;
     styles?: 'primary' | 'secundary';
     size?: 'small' | 'normal' | 'large';
     onPress: () => void;

@@ -28,8 +28,6 @@ import Locked from '@/assets/icons/locked.svg';
 import Unlocked from '@/assets/icons/unlocked.svg';
 import { ESvgIconName } from '../types/types';
 
-
-
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
 }

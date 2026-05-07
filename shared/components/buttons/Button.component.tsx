@@ -27,7 +27,14 @@ export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ..
             onPress={onPress}
             {...settings}
         >
-            <Text style={[baseStyles.buttonCopy, styles === 'secundary' ? baseStyles.buttonCopySecundary : '']}>{t(copy)}</Text>
+            <Text
+                style={[
+                    baseStyles.buttonCopy,
+                    styles === 'secundary' ? baseStyles.buttonCopySecundary : '',
+                ]}
+            >
+                {t(copy)}
+            </Text>
             {icon && <SvgIcon name={icon} width={12} />}
         </TouchableOpacity>
     );

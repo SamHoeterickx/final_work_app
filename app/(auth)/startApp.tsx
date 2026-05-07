@@ -64,13 +64,13 @@ export default function StartAppScreen() {
                 <Button
                     copy="startApp.buttons.onboarding"
                     onPress={() => router.navigate('/(auth)/onboarding')}
-                    size='large'
+                    size="large"
                 />
                 <Button
                     copy="startApp.buttons.login"
                     onPress={() => router.navigate('/(auth)/login')}
                     styles="secundary"
-                    size='large'
+                    size="large"
                 />
             </View>
         </SafeAreaView>
@@ -78,12 +78,6 @@ export default function StartAppScreen() {
 }
 
 const styles = StyleSheet.create({
-    cHeader: {
-        width: '85%',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     logo: {
         width: '65%',
         marginTop: spacing.xxl * 1.5,
@@ -91,5 +85,5 @@ const styles = StyleSheet.create({
     modelPreview: {
         width: '100%',
         height: 300,
-    }
+    },
 });

@@ -12,7 +12,6 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
     const unlockAnim = useRef(new Animated.Value(0)).current;
     const floatAnim = useRef(new Animated.Value(0)).current;
 
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLocked(false);
@@ -85,22 +84,22 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
             </View>
             <View style={styles.cContent}>
                 <Animated.Image
-                        style={[
-                            styles.modelPreview,
-                            {
-                                transform: [
-                                    {
-                                        translateY: floatAnim.interpolate({
-                                            inputRange: [0, 1],
-                                            outputRange: [0, -20],
-                                        }),
-                                    },
-                                ],
-                            },
-                        ]}
-                        source={require('@/assets/images/moka_pot_island.png')}
-                        resizeMode="contain"
-                    />
+                    style={[
+                        styles.modelPreview,
+                        {
+                            transform: [
+                                {
+                                    translateY: floatAnim.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [0, -20],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                    source={require('@/assets/images/moka_pot_island.png')}
+                    resizeMode="contain"
+                />
                 <View style={styles.iconContainer}>
                     <Animated.View
                         style={[
@@ -119,7 +118,7 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                         <SvgIcon name="unlocked" />
                     </Animated.View>
                 </View>
-                <Text style={[baseStyles.h3,]}>{chapter}</Text>
+                <Text style={[baseStyles.h3]}>{chapter}</Text>
             </View>
             <Button
                 copy="postOnboardingFlow.chapterUnlocked.buttons.continue"
@@ -154,5 +153,5 @@ const styles = StyleSheet.create({
     modelPreview: {
         width: '100%',
         height: 300,
-    }
+    },
 });

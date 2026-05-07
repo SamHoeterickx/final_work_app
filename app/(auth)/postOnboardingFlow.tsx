@@ -43,21 +43,25 @@ const DUMMYDATA = {
             },
             fr: {
                 name: 'Les Bases de la Cafetière Moka',
-                description: 'Découvrez comment la cafetière Moka prépare le café en utilisant la pression de la vapeur.',
+                description:
+                    'Découvrez comment la cafetière Moka prépare le café en utilisant la pression de la vapeur.',
             },
         },
         {
             en: {
                 name: 'Brewing the Perfect Cup',
-                description: 'Step-by-step guide to avoiding bitterness and getting a rich espresso-like shot.',
+                description:
+                    'Step-by-step guide to avoiding bitterness and getting a rich espresso-like shot.',
             },
             nl: {
                 name: 'Het Perfecte Kopje Zetten',
-                description: 'Stap-voor-stap gids om bitterheid te voorkomen en een rijke, espresso-achtige shot te krijgen.',
+                description:
+                    'Stap-voor-stap gids om bitterheid te voorkomen en een rijke, espresso-achtige shot te krijgen.',
             },
             fr: {
                 name: 'Préparer la Tasse Parfaite',
-                description: "Guide étape par étape pour éviter l'amertume et obtenir un shot riche façon espresso.",
+                description:
+                    "Guide étape par étape pour éviter l'amertume et obtenir un shot riche façon espresso.",
             },
         },
     ],

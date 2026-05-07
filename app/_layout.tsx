@@ -40,7 +40,7 @@ const InitialLayout = () => {
         const loadTokens = async () => {
             try {
                 // SecureStore.deleteItemAsync('accessToken');
-                // SecureStore.deleteItemAsync('refreshToken'); 
+                // SecureStore.deleteItemAsync('refreshToken');
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
@@ -75,11 +75,11 @@ const InitialLayout = () => {
     }
 
     return (
-        <Stack 
-            screenOptions={{ 
-                headerShown: false, 
-                contentStyle: { backgroundColor: colors.background } 
-            }} 
+        <Stack
+            screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: colors.background },
+            }}
         />
     );
 };

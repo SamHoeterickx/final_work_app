@@ -10,7 +10,7 @@ export const colors = {
         primary: '#222222',
         secondary: '#FFFFFF',
         muted: '#646464',
-        inverted: '#465E3C'
+        inverted: '#465E3C',
     },
 
     success: '#',
@@ -42,25 +42,25 @@ export const typography = {
         fontFamily: 'Vanguard-Heavy',
         fontSize: 48,
         color: colors.text.primary,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
     },
     h2: {
         fontFamily: 'Vanguard-DemiBold',
         fontSize: 36,
         color: colors.text.primary,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
     },
     h3: {
         fontFamily: 'Vanguard-DemiBold',
         fontSize: 20,
         color: colors.text.primary,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
     },
     h4: {
         fontFamily: 'Vanguard-Regular',
         fontSize: 20,
         color: colors.text.primary,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
     },
     body: {
         fontFamily: 'helvetica',
@@ -84,18 +84,18 @@ export const typography = {
         color: colors.text.muted,
         textDecorationLine: 'underline',
         textAlign: 'center',
-    }
+    },
 };
 
 export const shadows = {
     button: {
-        shadowColor: colors.shadow, 
-        shadowOffset: { 
+        shadowColor: colors.shadow,
+        shadowOffset: {
             width: 0,
-            height: 4
+            height: 4,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 2,   
+        shadowRadius: 2,
         elevation: 5,
     },
 };
@@ -130,16 +130,16 @@ export const baseStyles = StyleSheet.create({
         marginTop: 64,
     },
     cScrollView: {
-        flex: 1, 
-        width: '100%' 
+        flex: 1,
+        width: '100%',
     },
     cAuth: {
-        width: '90%'
+        width: '90%',
     },
 
     logo: {
         width: '65%',
-        marginTop: spacing.lg
+        marginTop: spacing.lg,
     },
 
     // Typography (Hooks into the typography object above)
@@ -174,7 +174,7 @@ export const baseStyles = StyleSheet.create({
         left: spacing.md,
         top: Platform.OS === 'ios' ? 96 : 72,
     },
-    
+
     button: {
         paddingHorizontal: 48,
         paddingVertical: 24,
@@ -184,7 +184,7 @@ export const baseStyles = StyleSheet.create({
 
         borderRadius: borderRadius.full,
         backgroundColor: colors.primary,
-        ...shadows.button
+        ...shadows.button,
     },
     secundaryButton: {
         backgroundColor: colors.background,
@@ -195,13 +195,13 @@ export const baseStyles = StyleSheet.create({
         width: '100%',
     },
     buttonCopy: {
-        ...typography.h3, 
+        ...typography.h3,
         color: colors.text.secondary,
         textTransform: 'uppercase',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     buttonCopySecundary: {
-        color: colors.text.inverted
+        color: colors.text.inverted,
     },
 
     // ==================/==================

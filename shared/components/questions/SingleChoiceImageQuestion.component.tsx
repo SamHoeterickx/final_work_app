@@ -33,8 +33,10 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
             >
                 {option.image && <SvgIcon name={option.image} width={60} />}
                 <View style={{ flex: 1 }}>
-                    <Text style={[baseStyles.h3, {fontSize: 24}]}>{t(option.label)}</Text>
-                    {option.description && <Text style={baseStyles.p}>{t(option.description)}</Text>}
+                    <Text style={[baseStyles.h3, { fontSize: 24 }]}>{t(option.label)}</Text>
+                    {option.description && (
+                        <Text style={baseStyles.p}>{t(option.description)}</Text>
+                    )}
                 </View>
             </TouchableOpacity>
         ));

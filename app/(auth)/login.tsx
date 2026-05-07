@@ -123,9 +123,9 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
     cLogin: {
-        flex: 1, 
+        flex: 1,
         position: 'relative',
-        width: '100%' 
+        width: '100%',
     },
     title: {
         alignItems: 'center',
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         marginBottom: spacing.xl,
     },
     cForm: {
-        gap: spacing.md
+        gap: spacing.md,
     },
     inputLabel: {
         marginBottom: spacing.sm,

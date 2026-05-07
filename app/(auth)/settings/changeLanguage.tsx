@@ -20,7 +20,6 @@ import { languageData } from '@/shared/const/changeLanguage.const';
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 
-
 export default function ChangeLanguage() {
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales | null>(null);
 
@@ -42,7 +41,6 @@ export default function ChangeLanguage() {
         router.back();
     };
 
-
     return (
         <SafeAreaView style={[baseStyles.container, { position: 'relative' }]}>
             <Text style={[baseStyles.h2, styles.title]}>{t('changeLanguage.title')}</Text>
@@ -50,7 +48,7 @@ export default function ChangeLanguage() {
                 <WheelPicker
                     data={languageData}
                     value={selectedLanguage || ELocales.EN}
-                    onValueChanged={({item: {value}}) => setSelectedLanguage(value as ELocales)}
+                    onValueChanged={({ item: { value } }) => setSelectedLanguage(value as ELocales)}
                     enableScrollByTapOnItem={true}
                 />
             </View>

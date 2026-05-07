@@ -29,9 +29,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 8,
     },
-    description: {
-        textAlign: 'center',
-    },
     cContent: {
         flex: 1,
         justifyContent: 'center',

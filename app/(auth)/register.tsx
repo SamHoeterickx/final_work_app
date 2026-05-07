@@ -88,7 +88,6 @@ export default function Register() {
                         resizeMode="contain"
                     />
                     <View style={baseStyles.cAuth}>
-
                         <Text style={[baseStyles.h2, styles.title]}>{t('register.title')}</Text>
                         <View style={styles.cForm}>
                             <View>
@@ -160,9 +159,9 @@ export default function Register() {
 
 const styles = StyleSheet.create({
     cRegister: {
-        flex: 1, 
+        flex: 1,
         position: 'relative',
-        width: '100%' 
+        width: '100%',
     },
     title: {
         alignItems: 'center',
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
         marginBottom: spacing.xl,
     },
     cForm: {
-        gap: spacing.md
+        gap: spacing.md,
     },
     inputLabel: {
         marginBottom: spacing.sm,

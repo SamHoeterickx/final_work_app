@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
         marginBottom: spacing.lg,
     },
     title: {
-        fontSize: 32
-    }
+        fontSize: 32,
+    },
 });

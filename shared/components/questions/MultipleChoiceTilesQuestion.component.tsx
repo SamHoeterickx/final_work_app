@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
     },
     label: {
         textAlign: 'center',
-    }
+    },
 });
