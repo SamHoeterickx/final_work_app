@@ -4,8 +4,9 @@ import { Text, TouchableOpacity } from 'react-native';
 
 import { baseStyles } from '@/shared/styles/design.system';
 import { IButtonProps } from '@/shared/types/types';
+import { SvgIcon } from '../SvgIcon.component';
 
-export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...settings }) => {
+export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ...settings }) => {
     const { t } = useTranslation();
 
     const renderButtonStyles = () => {
@@ -27,6 +28,7 @@ export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...setti
             {...settings}
         >
             <Text style={[baseStyles.buttonCopy, styles === 'secundary' ? baseStyles.buttonCopySecundary : '']}>{t(copy)}</Text>
+            {icon && <SvgIcon name={icon} width={12} />}
         </TouchableOpacity>
     );
 };

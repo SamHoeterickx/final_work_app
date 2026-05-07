@@ -119,6 +119,27 @@ export enum EFlowStep {
     'START_LEARNING',
 }
 
+export enum ESvgIconName {
+    FILTER_COFFEE = 'filter_coffee.svg',
+    FULL_AUTOMATIC = 'full_automatic_machine.svg',
+    ESPRESSO_MACHINE = 'espresso_machine.svg',
+    CUP_MACHINE = 'cup_machine.svg',
+    FRENCH_PRESS = 'french_press.svg',
+    COFFEE_SHOP = 'coffee_shop.svg',
+    MOKA_POT = 'moka_pot.svg',
+    POUR_OVER = 'pour_over.svg',
+    CHEMEX = 'chemex.svg',
+    BEAN_MILL = 'bean_mil.svg',
+    MILK_FOAMER = 'milk_foamer.svg',
+    GOOSENECK_KETTLE = 'gooseneck_kettle.svg',
+    BEAN_1 = '1_bean.svg',
+    BEAN_2 = '2_beans.svg',
+    BEAN_3 = '3_beans.svg',
+    BEAN_4 = '4_beans.svg',
+    LOCKED = 'locked',
+    UNLOCKED = 'unlocked',
+}
+
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
 
@@ -134,6 +155,7 @@ export type TGraphQLResponse<T = unknown> = {
 // PROPS
 export interface IButtonProps extends TouchableOpacityProps {
     copy: string;
+    icon?: ESvgIconName
     styles?: 'primary' | 'secundary';
     size?: 'small' | 'normal' | 'large';
     onPress: () => void;

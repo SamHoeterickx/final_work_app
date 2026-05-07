@@ -39,8 +39,8 @@ const InitialLayout = () => {
     useEffect(() => {
         const loadTokens = async () => {
             try {
-                SecureStore.deleteItemAsync('accessToken');
-                SecureStore.deleteItemAsync('refreshToken'); 
+                // SecureStore.deleteItemAsync('accessToken');
+                // SecureStore.deleteItemAsync('refreshToken'); 
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
@@ -70,7 +70,6 @@ const InitialLayout = () => {
         }
     }, [accessToken, isHydrated, segments, needsRoadmap]);
 
-    // FIXED: Changed && to || so it waits for BOTH to finish loading before rendering
     if (!isHydrated || !fontsLoaded) {
         return null;
     }
