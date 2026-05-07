@@ -73,7 +73,7 @@ export default function VerifyResetCode() {
                 >
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
-                        style={styles.logo}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
@@ -134,9 +134,6 @@ const styles = StyleSheet.create({
     description: {
         textAlign: 'center',
         marginTop: spacing.sm,
-    },
-    logo: {
-        width: '65%',
     },
     cForm: {
         width: '85%',

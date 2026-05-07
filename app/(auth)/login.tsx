@@ -67,7 +67,7 @@ export default function LoginScreen() {
                 >
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
-                        style={styles.logo}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={baseStyles.cAuth}>
@@ -100,7 +100,7 @@ export default function LoginScreen() {
                             </View>
                             <Link
                                 href={'/(auth)/(forgotPassword)/requestResetCode'}
-                                style={[baseStyles.p, styles.link]}
+                                style={[baseStyles.a]}
                             >
                                 {t('login.buttons.forgotPassword')}
                             </Link>
@@ -132,10 +132,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: spacing.xl,
     },
-    logo: {
-        width: '65%',
-        marginTop: spacing.lg
-    },
     cForm: {
         gap: spacing.md
     },
@@ -148,10 +144,5 @@ const styles = StyleSheet.create({
         marginHorizontal: '5%',
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline',
     },
 });

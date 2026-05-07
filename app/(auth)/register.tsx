@@ -84,7 +84,7 @@ export default function Register() {
                 >
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
-                        style={styles.logo}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={baseStyles.cAuth}>
@@ -168,10 +168,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         marginBottom: spacing.xl,
-    },
-    logo: {
-        width: '65%',
-        marginTop: spacing.lg
     },
     cForm: {
         gap: spacing.md

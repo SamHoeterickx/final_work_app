@@ -202,7 +202,7 @@ export default function ResetPassword() {
                 >
                     <Image
                         source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
-                        style={styles.logo}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
@@ -239,9 +239,6 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-    },
-    logo: {
-        width: '65%',
     },
     cForm: {
         width: '85%',

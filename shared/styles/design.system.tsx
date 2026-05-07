@@ -64,7 +64,7 @@ export const typography = {
     },
     body: {
         fontFamily: 'helvetica',
-        fontSize: 16,
+        fontSize: 14,
         color: colors.text.primary,
     },
     bodySmall: {
@@ -78,6 +78,13 @@ export const typography = {
         letterSpacing: 0.3,
         color: colors.text.muted,
     },
+    link: {
+        fontFamily: 'Vanguard-Regular',
+        fontSize: 14,
+        color: colors.text.muted,
+        textDecorationLine: 'underline',
+        textAlign: 'center',
+    }
 };
 
 export const shadows = {
@@ -130,12 +137,18 @@ export const baseStyles = StyleSheet.create({
         width: '90%'
     },
 
+    logo: {
+        width: '65%',
+        marginTop: spacing.lg
+    },
+
     // Typography (Hooks into the typography object above)
     h1: { ...typography.h1 } as TextStyle,
     h2: { ...typography.h2 } as TextStyle,
     h3: { ...typography.h3 } as TextStyle,
     h4: { ...typography.h4 } as TextStyle,
     p: { ...typography.body } as TextStyle,
+    a: { ...typography.link } as TextStyle,
     caption: { ...typography.caption } as TextStyle,
 
     inputGroup: {
