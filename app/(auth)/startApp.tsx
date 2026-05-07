@@ -1,18 +1,37 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
+import { useEffect, useRef } from 'react';
+import { Animated, Easing, Image, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
 import { Button, LanguageButton } from '@/shared/components';
 
 // STYLES
-import { baseStyles, spacing, typography } from '@/shared/styles/design.system';
+import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 export default function StartAppScreen() {
     const router = useRouter();
 
-    const { t } = useTranslation();
+    const floatAnim = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(floatAnim, {
+                    toValue: 1,
+                    duration: 2000,
+                    easing: Easing.inOut(Easing.sin),
+                    useNativeDriver: true,
+                }),
+                Animated.timing(floatAnim, {
+                    toValue: 0,
+                    duration: 2000,
+                    easing: Easing.inOut(Easing.sin),
+                    useNativeDriver: true,
+                }),
+            ]),
+        ).start();
+    }, [floatAnim]);
 
     return (
         <SafeAreaView style={[baseStyles.container]}>
@@ -21,12 +40,24 @@ export default function StartAppScreen() {
                 source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
                 resizeMode="contain"
             />
-            <View style={styles.cHeader}>
-                <Text style={[typography.h1, styles.title]}>{t('startApp.title')}</Text>
-                <Text style={[typography.bodySmall, styles.subtitle]}>
-                    {t('startApp.subtitle')}
-                </Text>
-            </View>
+
+            <Animated.Image
+                style={[
+                    styles.modelPreview,
+                    {
+                        transform: [
+                            {
+                                translateY: floatAnim.interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [0, -20],
+                                }),
+                            },
+                        ],
+                    },
+                ]}
+                source={require('@/assets/images/moka_pot_island.png')}
+                resizeMode="contain"
+            />
 
             <View style={styles.cButton}>
                 <LanguageButton />
@@ -57,14 +88,11 @@ const styles = StyleSheet.create({
         width: '65%',
         marginTop: spacing.xxl,
     },
-    title: {
-        textAlign: 'center',
-        marginBottom: spacing.sm,
-    },
-    subtitle: {
-        textAlign: 'center',
-    },
     cButton: {
         width: '100%'
+    },
+    modelPreview: {
+        width: '100%',
+        height: 300,
     }
 });

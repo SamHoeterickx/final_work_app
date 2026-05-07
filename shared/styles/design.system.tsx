@@ -17,7 +17,7 @@ export const colors = {
     error: '#',
 
     border: '#465E3C',
-    shadow: '#',
+    shadow: '#000000',
 };
 
 export const spacing = {
@@ -39,24 +39,27 @@ export const borderRadius = {
 export const typography = {
     h1: {
         fontFamily: 'Vanguard-Heavy',
-        fontSize: 32,
-        letterSpacing: -0.5,
+        fontSize: 48,
         color: colors.text.primary,
+        textTransform: 'uppercase'
     },
     h2: {
         fontFamily: 'Vanguard-ExtraBold',
-        fontSize: 24,
+        fontSize: 36,
         color: colors.text.primary,
+        textTransform: 'uppercase'
     },
     h3: {
         fontFamily: 'Vanguard-Bold',
         fontSize: 20,
         color: colors.text.primary,
+        textTransform: 'uppercase'
     },
     h4: {
         fontFamily: 'Vanguard-DemiBold',
         fontSize: 22,
         color: colors.text.primary,
+        textTransform: 'uppercase'
     },
     body: {
         fontFamily: 'Vanguard-Regular',
@@ -77,19 +80,15 @@ export const typography = {
 };
 
 export const shadows = {
-    small: {
-        shadowColor: colors.shadow,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 2,
-    },
-    medium: {
-        shadowColor: colors.shadow,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.15,
-        shadowRadius: 8,
-        elevation: 4,
+    button: {
+        shadowColor: colors.shadow, 
+        shadowOffset: { 
+            width: 0,
+            height: 4
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 2,   
+        elevation: 5,
     },
 };
 
@@ -167,6 +166,7 @@ export const baseStyles = StyleSheet.create({
 
         borderRadius: borderRadius.full,
         backgroundColor: colors.primary,
+        ...shadows.button
     },
     secundaryButton: {
         backgroundColor: colors.background,
