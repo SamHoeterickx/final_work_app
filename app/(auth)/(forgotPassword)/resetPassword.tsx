@@ -201,8 +201,8 @@ export default function ResetPassword() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
@@ -216,7 +216,7 @@ export default function ResetPassword() {
                             {errorData.isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="resetPassword.buttons.resetPassword"
                             onPress={handlePasswordChange}
@@ -239,9 +239,6 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-    },
-    logo: {
-        width: '35%',
     },
     cForm: {
         width: '85%',

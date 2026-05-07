@@ -2,7 +2,7 @@ import { baseStyles } from '@/shared/styles/design.system';
 import { IChapterUnlockedProps } from '@/shared/types/types';
 import { FC, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { Button } from './buttons/Button.component';
 import { SvgIcon } from './SvgIcon.component';
 
@@ -10,6 +10,7 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
     const [isLocked, setIsLocked] = useState<boolean>(true);
 
     const unlockAnim = useRef(new Animated.Value(0)).current;
+    const floatAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -31,6 +32,25 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
             }).start();
         }
     }, [isLocked, unlockAnim]);
+
+    useEffect(() => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(floatAnim, {
+                    toValue: 1,
+                    duration: 2000,
+                    easing: Easing.inOut(Easing.sin),
+                    useNativeDriver: true,
+                }),
+                Animated.timing(floatAnim, {
+                    toValue: 0,
+                    duration: 2000,
+                    easing: Easing.inOut(Easing.sin),
+                    useNativeDriver: true,
+                }),
+            ]),
+        ).start();
+    }, [floatAnim]);
 
     const { t } = useTranslation();
 
@@ -63,8 +83,23 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                 </Text>
             </View>
             <View style={styles.cContent}>
-                <Text style={[baseStyles.h3, styles.chapterTitle]}>{chapter}</Text>
-                {/* CANVAS */}
+                <Animated.Image
+                    style={[
+                        styles.modelPreview,
+                        {
+                            transform: [
+                                {
+                                    translateY: floatAnim.interpolate({
+                                        inputRange: [0, 1],
+                                        outputRange: [0, -20],
+                                    }),
+                                },
+                            ],
+                        },
+                    ]}
+                    source={require('@/assets/images/moka_pot_island.png')}
+                    resizeMode="contain"
+                />
                 <View style={styles.iconContainer}>
                     <Animated.View
                         style={[
@@ -83,6 +118,7 @@ export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter
                         <SvgIcon name="unlocked" />
                     </Animated.View>
                 </View>
+                <Text style={[baseStyles.h3]}>{chapter}</Text>
             </View>
             <Button
                 copy="postOnboardingFlow.chapterUnlocked.buttons.continue"
@@ -106,16 +142,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
     },
-    chapterTitle: {
-        marginBottom: 24,
-    },
     iconContainer: {
         height: 120,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 16,
     },
     iconWrapper: {
         position: 'absolute',
+    },
+    modelPreview: {
+        width: '100%',
+        height: 300,
     },
 });

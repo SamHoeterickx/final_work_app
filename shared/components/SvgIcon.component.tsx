@@ -26,37 +26,38 @@ import Bean4 from '@/assets/icons/beans/4_beans.svg';
 // LOCKS
 import Locked from '@/assets/icons/locked.svg';
 import Unlocked from '@/assets/icons/unlocked.svg';
+import { ESvgIconName } from '../types/types';
 
 interface SvgIconProps extends SvgProps {
-    name: string;
+    name: ESvgIconName | string;
 }
 
 const IconMap: Record<string, React.FC<SvgProps>> = {
     // Machines
-    'filter_coffee.svg': FilterCoffee,
-    'full_automatic_machine.svg': FullAutomatic,
-    'espresso_machine.svg': EspressoMachine,
-    'cup_machine.svg': CupMachine,
-    'french_press.svg': FrenchPress,
-    'coffee_shop.svg': CoffeeShop,
-    'moka_pot.svg': MokaPot,
-    'pour_over.svg': PourOver,
-    'chemex.svg': Chemex,
+    [ESvgIconName.FILTER_COFFEE]: FilterCoffee,
+    [ESvgIconName.FULL_AUTOMATIC]: FullAutomatic,
+    [ESvgIconName.ESPRESSO_MACHINE]: EspressoMachine,
+    [ESvgIconName.CUP_MACHINE]: CupMachine,
+    [ESvgIconName.FRENCH_PRESS]: FrenchPress,
+    [ESvgIconName.COFFEE_SHOP]: CoffeeShop,
+    [ESvgIconName.MOKA_POT]: MokaPot,
+    [ESvgIconName.POUR_OVER]: PourOver,
+    [ESvgIconName.CHEMEX]: Chemex,
 
     // Gear
-    'bean_mil.svg': BeanMil,
-    'milk_foamer.svg': MilkFoamer,
-    'gooseneck_kettle.svg': Gooseneck,
+    [ESvgIconName.BEAN_MILL]: BeanMil,
+    [ESvgIconName.MILK_FOAMER]: MilkFoamer,
+    [ESvgIconName.GOOSENECK_KETTLE]: Gooseneck,
 
     // Beans
-    '1_bean.svg': Bean1,
-    '2_beans.svg': Bean2,
-    '3_beans.svg': Bean3,
-    '4_beans.svg': Bean4,
+    [ESvgIconName.BEAN_1]: Bean1,
+    [ESvgIconName.BEAN_2]: Bean2,
+    [ESvgIconName.BEAN_3]: Bean3,
+    [ESvgIconName.BEAN_4]: Bean4,
 
     // LOCKS
-    locked: Locked,
-    unlocked: Unlocked,
+    [ESvgIconName.LOCKED]: Locked,
+    [ESvgIconName.UNLOCKED]: Unlocked,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, ...props }) => {
