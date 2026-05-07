@@ -109,7 +109,7 @@ export default function LoginScreen() {
                     </View>
                     <View style={baseStyles.xlButton}>
                         <Button
-                            copy="register.buttons.register"
+                            copy="login.buttons.login"
                             onPress={handleLogin}
                             disabled={isPending}
                         />
