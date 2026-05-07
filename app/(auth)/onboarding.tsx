@@ -47,7 +47,7 @@ export default function OnboardingScreen() {
         return (
             <>
                 <View style={styles.qHeader}>
-                    <Text style={baseStyles.h2}>
+                    <Text style={[baseStyles.h2, styles.title]}>
                         {t(onboardingQuestions[onboardingCount].title)}
                     </Text>
                     <Text style={baseStyles.p}>
@@ -81,11 +81,13 @@ export default function OnboardingScreen() {
             <View style={styles.cQuestion}>
                 {onboardingQuestions[onboardingCount] && renderOnboardingQuestion()}
             </View>
-            <Button
-                copy="onboarding.buttons.next"
-                onPress={handleContinueOnboarding}
-                disabled={!answers[onboardingCount] || answers[onboardingCount].length === 0}
-            />
+            <View style={baseStyles.xlButton}>
+                <Button
+                    copy="onboarding.buttons.next"
+                    onPress={handleContinueOnboarding}
+                    disabled={!answers[onboardingCount] || answers[onboardingCount].length === 0}
+                />
+            </View>
         </SafeAreaView>
     );
 }
@@ -105,13 +107,13 @@ const styles = StyleSheet.create({
     progressBar: {
         width: '85%',
         height: 15,
-        backgroundColor: colors.primary,
+        backgroundColor: colors.darkBackground,
         borderRadius: borderRadius.md,
         marginTop: 4,
     },
     progressStatus: {
         height: 15,
-        backgroundColor: '#CCC',
+        backgroundColor: colors.primary,
         borderRadius: borderRadius.md,
     },
     cQuestion: {
@@ -123,4 +125,7 @@ const styles = StyleSheet.create({
     qHeader: {
         marginBottom: spacing.lg,
     },
+    title: {
+        fontSize: 32
+    }
 });

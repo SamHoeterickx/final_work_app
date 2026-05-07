@@ -26,22 +26,14 @@ const InitialLayout = () => {
     const router = useRouter();
 
     const [fontsLoaded] = useFonts({
-        'Vanguard-Thin': require('../assets/fonts/vanguard/vanguard-thin.otf'),
-        'Vanguard-ThinOblique': require('../assets/fonts/vanguard/vanguard-thinoblique.otf'),
-        'Vanguard-Light': require('../assets/fonts/vanguard/vanguard-light.otf'),
-        'Vanguard-LightOblique': require('../assets/fonts/vanguard/vanguard-lightoblique.otf'),
-        'Vanguard-Regular': require('../assets/fonts/vanguard/vanguard-regular.otf'),
-        'Vanguard-RegularOblique': require('../assets/fonts/vanguard/vanguard-regularoblique.otf'),
-        'Vanguard-Medium': require('../assets/fonts/vanguard/vanguard-medium.otf'),
-        'Vanguard-MediumOblique': require('../assets/fonts/vanguard/vanguard-mediumoblique.otf'),
-        'Vanguard-DemiBold': require('../assets/fonts/vanguard/vanguard-demibold.otf'),
-        'Vanguard-DemiBoldOblique': require('../assets/fonts/vanguard/vanguard-demiboldoblique.otf'),
-        'Vanguard-Bold': require('../assets/fonts/vanguard/vanguard-bold.otf'),
-        'Vanguard-BoldOblique': require('../assets/fonts/vanguard/vanguard-boldoblique.otf'),
-        'Vanguard-ExtraBold': require('../assets/fonts/vanguard/vanguard-extrabold.otf'),
-        'Vanguard-ExtraBoldOblique': require('../assets/fonts/vanguard/vanguard-extraboldoblique.otf'),
-        'Vanguard-Heavy': require('../assets/fonts/vanguard/vanguard-heavy.otf'),
-        'Vanguard-HeavyOblique': require('../assets/fonts/vanguard/vanguard-heavyoblique.otf'),
+        'Vanguard-Thin': require('../assets/fonts/vanguard/VanguardCF-Thin.otf'),
+        'Vanguard-Light': require('../assets/fonts/vanguard/VanguardCF-Light.otf'),
+        'Vanguard-Regular': require('../assets/fonts/vanguard/VanguardCF-Regular.otf'),
+        'Vanguard-Medium': require('../assets/fonts/vanguard/VanguardCF-Medium.otf'),
+        'Vanguard-DemiBold': require('../assets/fonts/vanguard/VanguardCF-DemiBold.otf'),
+        'Vanguard-Bold': require('../assets/fonts/vanguard/VanguardCF-Bold.otf'),
+        'Vanguard-ExtraBold': require('../assets/fonts/vanguard/VanguardCF-ExtraBold.otf'),
+        'Vanguard-Heavy': require('../assets/fonts/vanguard/VanguardCF-Heavy.otf'),
     });
 
     useEffect(() => {

@@ -32,7 +32,7 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
                 onPress={() => handleOnPress(index)}
             >
                 {option.image && <SvgIcon name={option.image} width={60} height={60} />}
-                <Text style={[baseStyles.h4, styles.tileLabel]}>{t(option.label)}</Text>
+                <Text style={[baseStyles.h4]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
     };
@@ -63,12 +63,5 @@ const styles = StyleSheet.create({
         paddingVertical: spacing.md,
 
         opacity: 0.4,
-    },
-    tileLabel: {
-        textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 600,
-        textTransform: 'uppercase',
-        marginTop: spacing.lg,
     },
 });

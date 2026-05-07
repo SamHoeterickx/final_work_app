@@ -59,7 +59,7 @@ export default function StartAppScreen() {
                 resizeMode="contain"
             />
 
-            <View style={styles.cButton}>
+            <View style={baseStyles.xlButton}>
                 <LanguageButton />
                 <Button
                     copy="startApp.buttons.onboarding"
@@ -87,9 +87,6 @@ const styles = StyleSheet.create({
     logo: {
         width: '65%',
         marginTop: spacing.xxl,
-    },
-    cButton: {
-        width: '100%'
     },
     modelPreview: {
         width: '100%',

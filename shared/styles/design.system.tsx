@@ -4,6 +4,7 @@ export const colors = {
     primary: '#465E3C',
     secondary: '#222222',
     background: '#E8DFD3',
+    darkBackground: '#D6D0C9',
 
     text: {
         primary: '#222222',
@@ -44,35 +45,35 @@ export const typography = {
         textTransform: 'uppercase'
     },
     h2: {
-        fontFamily: 'Vanguard-ExtraBold',
+        fontFamily: 'Vanguard-DemiBold',
         fontSize: 36,
         color: colors.text.primary,
         textTransform: 'uppercase'
     },
     h3: {
-        fontFamily: 'Vanguard-Bold',
+        fontFamily: 'Vanguard-DemiBold',
         fontSize: 20,
         color: colors.text.primary,
         textTransform: 'uppercase'
     },
     h4: {
-        fontFamily: 'Vanguard-DemiBold',
-        fontSize: 22,
+        fontFamily: 'Vanguard-Regular',
+        fontSize: 20,
         color: colors.text.primary,
         textTransform: 'uppercase'
     },
     body: {
-        fontFamily: 'Vanguard-Regular',
+        fontFamily: 'helvetica',
         fontSize: 16,
-        color: colors.text.secondary,
+        color: colors.text.primary,
     },
     bodySmall: {
-        fontFamily: 'Vanguard-Regular',
+        fontFamily: 'helvetica',
         fontSize: 14,
-        color: colors.text.secondary,
+        color: colors.text.primary,
     },
     caption: {
-        fontFamily: 'Vanguard-Light',
+        fontFamily: 'helvetica',
         fontSize: 12,
         letterSpacing: 0.3,
         color: colors.text.muted,
@@ -177,7 +178,7 @@ export const baseStyles = StyleSheet.create({
         width: '100%',
     },
     buttonCopy: {
-        ...typography.h4, 
+        ...typography.h3, 
         color: colors.text.secondary,
         textTransform: 'uppercase',
         textAlign: 'center'
