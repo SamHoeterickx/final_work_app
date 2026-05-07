@@ -216,7 +216,7 @@ export default function ResetPassword() {
                             {errorData.isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="resetPassword.buttons.resetPassword"
                             onPress={handlePasswordChange}

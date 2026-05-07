@@ -95,7 +95,7 @@ export default function RequestResetCode() {
                             {isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="forgotPassword.requestResetCode.buttons.requestCode"
                             onPress={handleRequestResetCode}

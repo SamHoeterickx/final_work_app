@@ -107,7 +107,7 @@ export default function LoginScreen() {
                             {t('login.buttons.forgotPassword')}
                         </Link>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="login.buttons.login"
                             onPress={handleLogin}

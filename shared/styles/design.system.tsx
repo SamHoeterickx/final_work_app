@@ -122,6 +122,10 @@ export const baseStyles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 64,
     },
+    cScrollView: {
+        flex: 1, 
+        width: '100%' 
+    },
 
     // Typography (Hooks into the typography object above)
     h1: { ...typography.h1 } as TextStyle,
@@ -142,10 +146,6 @@ export const baseStyles = StyleSheet.create({
     } as TextStyle,
 
     wrapper: {},
-    cButton: {
-        // width: '100%',
-    },
-
     error: {
         color: 'red',
     },
@@ -196,10 +196,10 @@ export const baseStyles = StyleSheet.create({
     inputField: {
         ...typography.body,
         paddingVertical: 12,
-        paddingHorizontal: 12,
-        backgroundColor: colors.secondary,
+        paddingHorizontal: 16,
+        backgroundColor: colors.background,
         borderWidth: 2,
         borderColor: colors.primary,
-        borderRadius: borderRadius.md,
+        borderRadius: borderRadius.full,
     },
 });

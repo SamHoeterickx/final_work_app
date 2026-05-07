@@ -107,7 +107,7 @@ export default function VerifyResetCode() {
                             {isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="forgotPassword.verifyResetCode.buttons.verifyCode"
                             onPress={handleVerifyResetCode}
