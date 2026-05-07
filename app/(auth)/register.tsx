@@ -87,7 +87,8 @@ export default function Register() {
                         style={styles.logo}
                         resizeMode="contain"
                     />
-                    <View>
+                    <View style={baseStyles.cAuth}>
+
                         <Text style={[baseStyles.h2, styles.title]}>{t('register.title')}</Text>
                         <View style={styles.cForm}>
                             <View>

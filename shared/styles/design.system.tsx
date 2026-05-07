@@ -1,4 +1,4 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export const colors = {
     primary: '#465E3C',
@@ -126,6 +126,9 @@ export const baseStyles = StyleSheet.create({
         flex: 1, 
         width: '100%' 
     },
+    cAuth: {
+        width: '90%'
+    },
 
     // Typography (Hooks into the typography object above)
     h1: { ...typography.h1 } as TextStyle,
@@ -156,7 +159,7 @@ export const baseStyles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         left: spacing.md,
-        top: 96,
+        top: Platform.OS === 'ios' ? 96 : 72,
     },
     
     button: {

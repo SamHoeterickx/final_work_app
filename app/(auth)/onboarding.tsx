@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
@@ -95,7 +95,7 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
     onboardingHeader: {
         width: '100%',
-        paddingTop: spacing.sm,
+        paddingTop: Platform.OS === 'ios' ? spacing.sm : spacing.lg,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

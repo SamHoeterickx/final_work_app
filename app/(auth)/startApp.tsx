@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: '65%',
-        marginTop: spacing.xxl,
+        marginTop: spacing.xxl * 1.5,
     },
     modelPreview: {
         width: '100%',
