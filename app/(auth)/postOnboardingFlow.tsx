@@ -22,25 +22,42 @@ import { useTranslation } from 'react-i18next';
 
 const DUMMYDATA = {
     en: {
-        name: 'The Journey of the Bean',
+        name: 'Moka Pot',
     },
     nl: {
-        name: 'De Reis van de Boon',
+        name: 'Moka Pot',
     },
     fr: {
-        name: 'Le Voyage du Grain',
+        name: 'Moka Pot',
     },
     path: '',
     lessons: [
         {
             en: {
-                name: 'Arabica vs. Robusta',
+                name: 'The Moka Pot Basics',
+                description: 'Learn how the Moka Pot brews coffee using steam pressure.',
             },
             nl: {
-                name: 'Arabica vs. Robusta',
+                name: 'De Basis van de Moka Pot',
+                description: 'Leer hoe de Moka Pot koffie zet met behulp van stoomdruk.',
             },
             fr: {
-                name: 'Arabica vs. Robusta',
+                name: 'Les Bases de la Cafetière Moka',
+                description: 'Découvrez comment la cafetière Moka prépare le café en utilisant la pression de la vapeur.',
+            },
+        },
+        {
+            en: {
+                name: 'Brewing the Perfect Cup',
+                description: 'Step-by-step guide to avoiding bitterness and getting a rich espresso-like shot.',
+            },
+            nl: {
+                name: 'Het Perfecte Kopje Zetten',
+                description: 'Stap-voor-stap gids om bitterheid te voorkomen en een rijke, espresso-achtige shot te krijgen.',
+            },
+            fr: {
+                name: 'Préparer la Tasse Parfaite',
+                description: "Guide étape par étape pour éviter l'amertume et obtenir un shot riche façon espresso.",
             },
         },
     ],
@@ -91,6 +108,7 @@ export default function PostOnboardingFlow() {
                 return (
                     <StartLearning
                         name={(DUMMYDATA as any).lessons[0][i18n.language].name}
+                        description={(DUMMYDATA as any).lessons[0][i18n.language].description}
                         handleNext={handleStartLesson}
                     />
                 );

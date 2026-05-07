@@ -176,6 +176,7 @@ export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
 }
 export interface IStartLearningProps extends IPostOnboardingFlowProps {
     name: string;
+    description: string;
 }
 
 export interface IIslandModelProps {
