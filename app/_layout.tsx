@@ -5,15 +5,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 // FONTS
-import {
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-    Inter_900Black,
-    useFonts,
-} from '@expo-google-fonts/inter';
+import { useFonts } from 'expo-font';
 
 // TRANSLATIONS
 import '@/i18n';
@@ -34,19 +26,30 @@ const InitialLayout = () => {
     const router = useRouter();
 
     const [fontsLoaded] = useFonts({
-        Inter_400Regular,
-        Inter_500Medium,
-        Inter_600SemiBold,
-        Inter_700Bold,
-        Inter_800ExtraBold,
-        Inter_900Black,
+        'Vanguard-Thin': require('../assets/fonts/vanguard/vanguard-thin.otf'),
+        'Vanguard-ThinOblique': require('../assets/fonts/vanguard/vanguard-thinoblique.otf'),
+        'Vanguard-Light': require('../assets/fonts/vanguard/vanguard-light.otf'),
+        'Vanguard-LightOblique': require('../assets/fonts/vanguard/vanguard-lightoblique.otf'),
+        'Vanguard-Regular': require('../assets/fonts/vanguard/vanguard-regular.otf'),
+        'Vanguard-RegularOblique': require('../assets/fonts/vanguard/vanguard-regularoblique.otf'),
+        'Vanguard-Medium': require('../assets/fonts/vanguard/vanguard-medium.otf'),
+        'Vanguard-MediumOblique': require('../assets/fonts/vanguard/vanguard-mediumoblique.otf'),
+        'Vanguard-DemiBold': require('../assets/fonts/vanguard/vanguard-demibold.otf'),
+        'Vanguard-DemiBoldOblique': require('../assets/fonts/vanguard/vanguard-demiboldoblique.otf'),
+        'Vanguard-Bold': require('../assets/fonts/vanguard/vanguard-bold.otf'),
+        'Vanguard-BoldOblique': require('../assets/fonts/vanguard/vanguard-boldoblique.otf'),
+        'Vanguard-ExtraBold': require('../assets/fonts/vanguard/vanguard-extrabold.otf'),
+        'Vanguard-ExtraBoldOblique': require('../assets/fonts/vanguard/vanguard-extraboldoblique.otf'),
+        'Vanguard-Heavy': require('../assets/fonts/vanguard/vanguard-heavy.otf'),
+        'Vanguard-HeavyOblique': require('../assets/fonts/vanguard/vanguard-heavyoblique.otf'),
     });
 
     useEffect(() => {
         const loadTokens = async () => {
             try {
                 SecureStore.deleteItemAsync('accessToken');
-                SecureStore.deleteItemAsync('refreshTOken');
+                // FIXED: Typo 'refreshTOken' -> 'refreshToken'
+                SecureStore.deleteItemAsync('refreshToken'); 
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
@@ -76,7 +79,8 @@ const InitialLayout = () => {
         }
     }, [accessToken, isHydrated, segments, needsRoadmap]);
 
-    if (!isHydrated && !fontsLoaded) {
+    // FIXED: Changed && to || so it waits for BOTH to finish loading before rendering
+    if (!isHydrated || !fontsLoaded) {
         return null;
     }
 

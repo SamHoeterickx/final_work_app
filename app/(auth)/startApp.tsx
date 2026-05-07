@@ -28,16 +28,18 @@ export default function StartAppScreen() {
                 </Text>
             </View>
 
-            <View style={baseStyles.cButton}>
+            <View style={styles.cButton}>
                 <LanguageButton />
                 <Button
                     copy="startApp.buttons.onboarding"
                     onPress={() => router.navigate('/(auth)/onboarding')}
+                    size='large'
                 />
                 <Button
                     copy="startApp.buttons.login"
                     onPress={() => router.navigate('/(auth)/login')}
                     styles="secundary"
+                    size='large'
                 />
             </View>
         </SafeAreaView>
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     logo: {
-        width: '35%',
+        width: '65%',
         marginTop: spacing.xxl,
     },
     title: {
@@ -62,4 +64,7 @@ const styles = StyleSheet.create({
     subtitle: {
         textAlign: 'center',
     },
+    cButton: {
+        width: '100%'
+    }
 });

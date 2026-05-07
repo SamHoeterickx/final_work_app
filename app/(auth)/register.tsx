@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         marginBottom: spacing.xl,
     },
     logo: {
-        width: '35%',
+        width: '65%',
     },
     cForm: {
         width: '85%',

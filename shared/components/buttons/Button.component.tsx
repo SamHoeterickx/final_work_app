@@ -10,7 +10,6 @@ export const Button: FC<IButtonProps> = ({ copy, styles, size, onPress, ...setti
 
     const renderButtonStyles = () => {
         let customStyles: any[] = [];
-        let customCopyStyles: any[] = []
 
         if (styles === 'secundary') {
             customStyles.push(baseStyles.secundaryButton);

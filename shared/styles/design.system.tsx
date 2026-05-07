@@ -1,5 +1,4 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { color } from 'three/src/nodes/tsl/TSLCore.js';
 
 export const colors = {
     primary: '#465E3C',
@@ -39,38 +38,38 @@ export const borderRadius = {
 
 export const typography = {
     h1: {
-        fontFamily: 'Inter_900Black',
+        fontFamily: 'Vanguard-Heavy',
         fontSize: 32,
         letterSpacing: -0.5,
         color: colors.text.primary,
     },
     h2: {
-        fontFamily: 'Inter_800ExtraBold',
+        fontFamily: 'Vanguard-ExtraBold',
         fontSize: 24,
         color: colors.text.primary,
     },
     h3: {
-        fontFamily: 'Inter_700Bold',
-        fontSize: 18,
+        fontFamily: 'Vanguard-Bold',
+        fontSize: 20,
         color: colors.text.primary,
     },
     h4: {
-        fontFamily: 'Inter_600SemiBold',
-        fontSize: 18,
+        fontFamily: 'Vanguard-DemiBold',
+        fontSize: 22,
         color: colors.text.primary,
     },
     body: {
-        fontFamily: 'Inter_400Regular',
+        fontFamily: 'Vanguard-Regular',
         fontSize: 16,
         color: colors.text.secondary,
     },
     bodySmall: {
-        fontFamily: 'Inter_400Regular',
+        fontFamily: 'Vanguard-Regular',
         fontSize: 14,
         color: colors.text.secondary,
     },
     caption: {
-        fontFamily: 'Inter_400Regular',
+        fontFamily: 'Vanguard-Light',
         fontSize: 12,
         letterSpacing: 0.3,
         color: colors.text.muted,
@@ -124,7 +123,7 @@ export const baseStyles = StyleSheet.create({
         marginTop: 64,
     },
 
-    // Typography
+    // Typography (Hooks into the typography object above)
     h1: { ...typography.h1 } as TextStyle,
     h2: { ...typography.h2 } as TextStyle,
     h3: { ...typography.h3 } as TextStyle,
@@ -164,7 +163,7 @@ export const baseStyles = StyleSheet.create({
         paddingHorizontal: 48,
         paddingVertical: 24,
 
-        marginTop: 16,
+        marginTop: 12,
 
         borderRadius: borderRadius.full,
         backgroundColor: colors.primary,
@@ -178,6 +177,7 @@ export const baseStyles = StyleSheet.create({
         width: '100%',
     },
     buttonCopy: {
+        ...typography.h4, 
         color: colors.text.secondary,
         textTransform: 'uppercase',
         textAlign: 'center'
@@ -193,6 +193,7 @@ export const baseStyles = StyleSheet.create({
         width: '100%',
     },
     inputField: {
+        ...typography.body,
         paddingVertical: 12,
         paddingHorizontal: 12,
         backgroundColor: colors.secondary,

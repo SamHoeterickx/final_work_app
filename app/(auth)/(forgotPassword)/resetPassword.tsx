@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     logo: {
-        width: '35%',
+        width: '65%',
     },
     cForm: {
         width: '85%',
