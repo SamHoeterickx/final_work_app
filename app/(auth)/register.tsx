@@ -167,7 +167,6 @@ const styles = StyleSheet.create({
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        maxWidth: '85%',
         marginBottom: spacing.xl,
     },
     logo: {
