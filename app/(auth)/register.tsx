@@ -21,7 +21,7 @@ import { refactorOnboardingSelection } from '@/shared/const/onboarding.const';
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
 
 // HOOKS
-import { useRegister } from '@/shared/hooks/auth/useRegister.hook';
+import { useRegister } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
