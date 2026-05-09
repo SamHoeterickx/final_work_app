@@ -136,8 +136,16 @@ export enum ESvgIconName {
     BEAN_2 = '2_beans.svg',
     BEAN_3 = '3_beans.svg',
     BEAN_4 = '4_beans.svg',
-    LOCKED = 'locked',
-    UNLOCKED = 'unlocked',
+    LOCKED = 'locked.svg',
+    UNLOCKED = 'unlocked.svg',
+    ARROW_LEFT_FULL = 'arrow_full_left.svg'
+}
+
+export enum EProgressStatus {
+    LOCKED = 'LOCKED',
+    UNLOCKED = 'UNLOCKED',
+    INPROGRESS = 'INPROGRESS',
+    COMPLETED = 'COMPLETED'
 }
 
 // TYPES
@@ -204,4 +212,29 @@ export interface IStartLearningProps extends IPostOnboardingFlowProps {
 export interface IIslandModelProps {
     islandPath: string;
     scale?: number;
+}
+
+export interface IChapterProps {
+    chapterUser: IChapterUser
+}   
+
+export interface IChapter {
+    uuid: string;
+    name: string;
+    description: string,
+    slug: string;
+    lessons: ILessonStatus[];
+    created_at: string; 
+}
+
+export interface IChapterUser {
+    chapter: IChapter;
+    created_at: string;
+    order: number;
+    status: EProgressStatus;
+    uuid: string;
+}
+
+export interface ILessonStatus {
+    status: EProgressStatus
 }

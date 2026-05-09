@@ -176,6 +176,11 @@ export const baseStyles = StyleSheet.create({
     },
 
     button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 16,
+
         paddingHorizontal: 48,
         paddingVertical: 24,
 

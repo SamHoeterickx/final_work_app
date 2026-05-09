@@ -5,6 +5,7 @@ class ChapterService {
     async getMyChapters() {
         try{
             const response = await graphqlFetch<any>(GET_CHAPTERS);
+            console.log(response)
 
             const chapters = response?.getMyChapters;
             return chapters || [];

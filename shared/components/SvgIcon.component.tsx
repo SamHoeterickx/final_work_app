@@ -28,6 +28,9 @@ import Locked from '@/assets/icons/locked.svg';
 import Unlocked from '@/assets/icons/unlocked.svg';
 import { ESvgIconName } from '../types/types';
 
+// ARROWS
+import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg'
+
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
 }
@@ -58,6 +61,7 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     // LOCKS
     [ESvgIconName.LOCKED]: Locked,
     [ESvgIconName.UNLOCKED]: Unlocked,
+    [ESvgIconName.ARROW_LEFT_FULL]: ArrowLeftFull,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, ...props }) => {

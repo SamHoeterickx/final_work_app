@@ -190,6 +190,14 @@
     },
     "home": {
         "title": "This is a title"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Revisit island",
+            "continue": "Continue",
+            "start": "Start",
+            "locked": "Locked"
+        }
     }
    
 }

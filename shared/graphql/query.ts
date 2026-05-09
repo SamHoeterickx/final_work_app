@@ -9,9 +9,12 @@ export const GET_CHAPTERS = `
                 created_at
                 description
                 name
-                slug
                 tags
+                slug
                 uuid
+                lessons {
+                    status
+                }
             }
         }
     }
