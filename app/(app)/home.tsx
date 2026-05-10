@@ -10,7 +10,8 @@ import { LoadingScreen } from '@/shared/components';
 import { Chapter } from '@/shared/components/chapters/Chapter.component';
 import { useAuthStore } from '@/shared/context/authStore.context';
 import { useGetChapters } from '@/shared/hooks';
-import { EProgressStatus, IChapterUser } from '@/shared/types/types';
+import { IChapterUser } from '@/shared/types/types';
+import { EProgressStatus } from '@/shared/types/enums';
 import { useEffect } from 'react';
 import { Dimensions, ScrollView, StyleSheet } from 'react-native';
 

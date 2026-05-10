@@ -1,4 +1,6 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
+
+// ENUMS
 import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind } from './enums';
 
 // INTERFACES
@@ -99,6 +101,34 @@ export interface IErrorData {
     isError: boolean;
 }
 
+export interface IChapter {
+    uuid: string;
+    name: string;
+    description: string,
+    slug: string;
+    lessons: ILessonStatus[];
+    created_at: string; 
+}
+
+export interface IChapterUser {
+    chapter: IChapter;
+    created_at: string;
+    order: number;
+    status: EProgressStatus;
+    uuid: string;
+}
+
+export interface ILessonStatus {
+    status: EProgressStatus
+}
+
+export interface IQuestionOption {
+    label: string;
+    tag: string;
+    image?: string | null;
+    description?: string | null;
+}
+
 
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
@@ -128,13 +158,6 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'> {
     onChangeText: (name: string, value: string) => void;
     placeholder: string;
     name: string;
-}
-
-export interface IQuestionOption {
-    label: string;
-    tag: string;
-    image?: string | null;
-    description?: string | null;
 }
 
 export interface IOnboardingQuestionWrapperProps {
@@ -172,24 +195,3 @@ export interface IIslandModelProps {
 export interface IChapterProps {
     chapterUser: IChapterUser
 }   
-
-export interface IChapter {
-    uuid: string;
-    name: string;
-    description: string,
-    slug: string;
-    lessons: ILessonStatus[];
-    created_at: string; 
-}
-
-export interface IChapterUser {
-    chapter: IChapter;
-    created_at: string;
-    order: number;
-    status: EProgressStatus;
-    uuid: string;
-}
-
-export interface ILessonStatus {
-    status: EProgressStatus
-}
