@@ -74,7 +74,8 @@ export const graphqlFetch = async <T = unknown>(
     const isUnauthorized =
         response.status === 401 ||
         (data.errors &&
-            data.errors.some((error: TGraphQLError) => error.message === 'UNAUTHENTICATED'));
+            data.errors.some((error: TGraphQLError) => error.extensions?.code === 'UNAUTHENTICATED'));
+
 
     if (isUnauthorized) {
         if (!isRefreshing) {

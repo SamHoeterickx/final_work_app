@@ -153,6 +153,9 @@ export type TTokenRefreshSubscriber = (token: string | null) => void;
 
 export type TGraphQLError = {
     message: string;
+    extensions?: {
+        code?: string;
+    };
 };
 
 export type TGraphQLResponse<T = unknown> = {
