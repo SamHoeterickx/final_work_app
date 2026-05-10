@@ -1,5 +1,8 @@
-import { GET_CHAPTERS } from "../graphql/query";
+// UTILS
 import { graphqlFetch } from "../utils/api.utils";
+
+// QUERIES
+import { GET_CHAPTERS } from "../graphql/query";
 
 class ChapterService {
     async getMyChapters() {

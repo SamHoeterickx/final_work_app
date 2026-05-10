@@ -1,10 +1,16 @@
-import { baseStyles } from '@/shared/styles/design.system';
-import { IChapterUnlockedProps } from '@/shared/types/types';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { FC, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
+
+// COMPONENTS
 import { Button } from './buttons/Button.component';
 import { SvgIcon } from './SvgIcon.component';
+
+// STYLES
+import { baseStyles } from '@/shared/styles/design.system';
+
+// TYPES
+import { IChapterUnlockedProps } from '@/shared/types/types';
 
 export const ChapterUnlocked: FC<IChapterUnlockedProps> = ({ handleNext, chapter, islandPath }) => {
     const [isLocked, setIsLocked] = useState<boolean>(true);

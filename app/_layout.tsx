@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 // FONTS
 import { useFonts } from 'expo-font';

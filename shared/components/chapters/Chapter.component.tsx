@@ -1,15 +1,20 @@
-import { EProgressStatus, ESvgIconName, IChapterProps } from "@/shared/types/types";
-import { FC } from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { SvgIcon } from "../SvgIcon.component";
-import { baseStyles, spacing } from "@/shared/styles/design.system";
+import { FC } from "react";
+
+// COMPONENTS
 import { Button } from "../buttons/Button.component";
+import { SvgIcon } from "../SvgIcon.component";
+
+// STYLES
+import { baseStyles, spacing } from "@/shared/styles/design.system";
+
+// TYPES
+import { EProgressStatus, ESvgIconName } from "@/shared/types/enums";
+import { IChapterProps } from "@/shared/types/types";
 
 const { width } = Dimensions.get('window');
 
 export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
-
-
     const renderStatus = () => {
         if(chapterUser.status === EProgressStatus.LOCKED){
             return (
@@ -80,8 +85,8 @@ const styles = StyleSheet.create({
     wChapter: {
         width: width,
         marginTop: spacing.xxl,
-        height: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     chapterTitle: {
         fontSize: 48,

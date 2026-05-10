@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+
+// TYPES
 import { IOnboardingStore } from '../types/types';
 
 export const useOnboardingStore = create<IOnboardingStore>((set) => ({

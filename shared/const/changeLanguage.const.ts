@@ -1,5 +1,5 @@
 // TYPES
-import { ELocales } from '../types/types';
+import { ELocales } from '../types/enums';
 
 export const languageData = [
     {

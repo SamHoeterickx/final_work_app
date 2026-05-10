@@ -1,6 +1,8 @@
-import { baseStyles, colors } from '@/shared/styles/design.system';
-import { FC } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { FC } from 'react';
+
+// STYLES
+import { baseStyles, colors } from '@/shared/styles/design.system';
 
 export const LoadingScreen: FC = () => {
     return (

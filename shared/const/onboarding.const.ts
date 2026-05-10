@@ -1,10 +1,11 @@
-import { IOnboardingAnswers, IOnboardingQuestions, OnboardingQuestionKind } from '../types/types';
+import { IOnboardingAnswers, IOnboardingQuestions } from '../types/types';
+import { EOnboardingQuestionKind } from '../types/enums';
 
 export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentBehaviour.title',
         description: 'onboarding.currentBehaviour.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.currentBehaviour.optionLabels.instantCoffee',
@@ -41,7 +42,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.experienceLevel.title',
         description: 'onboarding.experienceLevel.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE_IMG,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE_IMG,
         options: [
             {
                 label: 'onboarding.experienceLevel.optionLabels.tasteEnjoyer',
@@ -72,7 +73,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.goal.title',
         description: 'onboarding.goal.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
                 label: 'onboarding.goal.optionLabels.tastingSkills',
@@ -95,7 +96,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentPreferences.title',
         description: 'onboarding.currentPreferences.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
                 label: 'onboarding.currentPreferences.optionLabels.boldClassic',
@@ -118,7 +119,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.desiredTempo.title',
         description: 'onboarding.desiredTempo.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE_TITLE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE_TITLE,
         options: [
             {
                 label: 'onboarding.desiredTempo.optionLabels.quickShot',
@@ -145,7 +146,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentMethodes.title',
         description: 'onboarding.currentMethodes.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.currentMethodes.optionLabels.chemex',
@@ -182,7 +183,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.extraGear.title',
         description: 'onboarding.extraGear.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.extraGear.optionLabels.precisionScale',

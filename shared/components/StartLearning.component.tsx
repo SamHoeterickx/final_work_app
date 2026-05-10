@@ -1,9 +1,15 @@
-import { baseStyles } from '@/shared/styles/design.system';
-import { IStartLearningProps } from '@/shared/types/types';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
+
+// COMPONENTS
 import { Button } from './buttons/Button.component';
+
+//STYLES
+import { baseStyles } from '@/shared/styles/design.system';
+
+// TYPES
+import { IStartLearningProps } from '@/shared/types/types';
 
 export const StartLearning: FC<IStartLearningProps> = ({ handleNext, name, description }) => {
     const { t } = useTranslation();

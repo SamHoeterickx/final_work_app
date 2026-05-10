@@ -1,8 +1,12 @@
-import { baseStyles } from '@/shared/styles/design.system';
-import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { FC } from 'react';
+
+// COMPONENTS
 import { LoadingScreen } from './loadingScreen/LoadingScreen.component';
+
+// STYLES
+import { baseStyles } from '@/shared/styles/design.system';
 
 export const GeneratingRoadmap: FC = () => {
     const { t } = useTranslation();
