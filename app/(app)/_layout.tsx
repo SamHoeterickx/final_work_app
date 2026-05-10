@@ -1,15 +1,21 @@
 import { colors } from '@/shared/styles/design.system';
-import { Stack } from 'expo-router';
+import { Tabs } from 'expo-router';
 
 export default function AppLayout() {
     return (
-        <Stack
+        <Tabs
             screenOptions={{
                 headerShown: false,
-                contentStyle: { backgroundColor: colors.background },
+                tabBarStyle: {
+                    backgroundColor: '#FFF',
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    margin: 0,
+                    padding: 0
+                },
             }}
         >
-            <Stack.Screen name="home" />
-        </Stack>
+            <Tabs.Screen name="home" />
+        </Tabs>
     );
 }

@@ -1,19 +1,14 @@
-// import { useState } from 'react';
-// import { useTranslation } from 'react-i18next';
-// import { Button, ScrollView} from 'react-native';
+import { Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-// STORE
-// import { useAuthStore } from '@/shared/context/authStore.context';
 
 import { LoadingScreen } from '@/shared/components';
 import { Chapter } from '@/shared/components/chapters/Chapter.component';
 import { useAuthStore } from '@/shared/context/authStore.context';
 import { useGetChapters } from '@/shared/hooks';
-import { IChapterUser } from '@/shared/types/types';
+import { colors } from '@/shared/styles/design.system';
 import { EProgressStatus } from '@/shared/types/enums';
+import { IChapterUser } from '@/shared/types/types';
 import { useEffect } from 'react';
-import { Dimensions, ScrollView, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -56,7 +51,7 @@ export default function HomeScreen() {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.sHome} >
             {isPending && <LoadingScreen />}
             {!isPending && renderChapters()}
         </SafeAreaView>
@@ -64,6 +59,10 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+    sHome: {
+        backgroundColor: colors.background,
+        flex: 1,
+    },
     cChapters: {
         flex: 1,
     },

@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
         marginTop: spacing.xxl,
         alignItems: 'center',
         justifyContent: 'space-between',
+        flex: 1,
     },
     chapterTitle: {
         fontSize: 48,
