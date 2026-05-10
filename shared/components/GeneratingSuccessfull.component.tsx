@@ -1,12 +1,16 @@
+import { StyleSheet, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
-import { baseStyles, colors } from '@/shared/styles/design.system';
-import { IPostOnboardingFlowProps } from '@/shared/types/types';
 import { Button } from './buttons/Button.component';
+
+// STYLES
+import { baseStyles, colors } from '@/shared/styles/design.system';
+
+// TYPES
+import { IPostOnboardingFlowProps } from '@/shared/types/types';
 
 export const GeneratingSuccessfull: FC<IPostOnboardingFlowProps> = ({ handleNext }) => {
     const { t } = useTranslation();

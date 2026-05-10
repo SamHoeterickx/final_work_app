@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+
+// TYPES
 import { IAuthStore } from '../types/types';
 
 export const useAuthStore = create<IAuthStore>((set) => ({

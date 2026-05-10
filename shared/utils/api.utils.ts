@@ -11,7 +11,8 @@ import {
     TTokenRefreshSubscriber,
 } from '@/shared/types/types';
 
-const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
+// const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
+const GRAPHQL_ENDPOINT = 'http://100.110.165.25:8080/graphql';
 
 let isRefreshing = false;
 let refreshSubscribers: TTokenRefreshSubscriber[] = [];
@@ -74,8 +75,9 @@ export const graphqlFetch = async <T = unknown>(
     const isUnauthorized =
         response.status === 401 ||
         (data.errors &&
-            data.errors.some((error: TGraphQLError) => error.extensions?.code === 'UNAUTHENTICATED'));
-
+            data.errors.some(
+                (error: TGraphQLError) => error.extensions?.code === 'UNAUTHENTICATED',
+            ));
 
     if (isUnauthorized) {
         if (!isRefreshing) {

@@ -1,10 +1,14 @@
-import { spacing } from '@/shared/styles/design.system';
-import { ELocales } from '@/shared/types/types';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Fontisto } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+
+// STYLES
+import { spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { ELocales } from '@/shared/types/enums';
 
 export const LanguageButton: FC = ({}) => {
     const { i18n } = useTranslation();

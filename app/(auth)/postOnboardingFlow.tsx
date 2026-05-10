@@ -1,6 +1,7 @@
-import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import {
@@ -11,14 +12,13 @@ import {
 } from '@/shared/components';
 
 // TYPES
-import { EFlowStep } from '@/shared/types/types';
+import { EFlowStep } from '@/shared/types/enums';
 
 // STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
-import { useTranslation } from 'react-i18next';
 
 const DUMMYDATA = {
     en: {

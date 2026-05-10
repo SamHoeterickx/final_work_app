@@ -1,7 +1,10 @@
 import { create } from 'zustand';
 
 // TYPES
-import { ELocales, IUserPreferencesStore } from '../types/types';
+import { IUserPreferencesStore } from '../types/types';
+import { ELocales } from '../types/enums';
+
+// UTILS
 import { getDeviceLanguage } from '../utils/translations.utils';
 
 const deviceLanguage = getDeviceLanguage();

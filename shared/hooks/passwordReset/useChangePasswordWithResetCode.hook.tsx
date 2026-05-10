@@ -1,6 +1,10 @@
-import { authService } from '@/shared/services/auth.service';
-import { IChangePasswordWithResetCodeCredentials } from '@/shared/types/types';
 import { useMutation } from '@tanstack/react-query';
+
+// SERVICES
+import { authService } from '@/shared/services/auth.service';
+
+// TYPES
+import { IChangePasswordWithResetCodeCredentials } from '@/shared/types/types';
 
 export const useChangePasswordWithResetCode = () => {
     return useMutation({

@@ -1,7 +1,11 @@
-import { authService } from '@/shared/services/auth.service';
-import { IVerifyResetCodeCredentials } from '@/shared/types/types';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
+
+// SERVICES
+import { authService } from '@/shared/services/auth.service';
+
+// TYPES
+import { IVerifyResetCodeCredentials } from '@/shared/types/types';
 
 export const useVerifyResetCode = () => {
     const router = useRouter();

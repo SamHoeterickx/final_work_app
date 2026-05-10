@@ -26,10 +26,12 @@ import Bean4 from '@/assets/icons/beans/4_beans.svg';
 // LOCKS
 import Locked from '@/assets/icons/locked.svg';
 import Unlocked from '@/assets/icons/unlocked.svg';
-import { ESvgIconName } from '../types/types';
+
+// TYPES
+import { ESvgIconName } from '../types/enums';
 
 // ARROWS
-import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg'
+import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
