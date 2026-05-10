@@ -1,20 +1,20 @@
 // UTILS
-import { graphqlFetch } from "../utils/api.utils";
+import { graphqlFetch } from '../utils/api.utils';
 
 // QUERIES
-import { GET_CHAPTERS } from "../graphql/query";
+import { GET_CHAPTERS } from '../graphql/query';
 
 class ChapterService {
     async getMyChapters() {
-        try{
+        try {
             const response = await graphqlFetch<any>(GET_CHAPTERS);
-            console.log(response)
+            console.log(response);
 
             const chapters = response?.getMyChapters;
             return chapters || [];
-        }catch(error){
+        } catch (error) {
             throw error;
         }
-    };
+    }
 }
 export const chapterService = new ChapterService();

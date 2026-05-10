@@ -2,7 +2,6 @@ import { Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { FC } from 'react';
 
-
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 

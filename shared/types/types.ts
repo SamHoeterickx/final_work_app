@@ -104,10 +104,10 @@ export interface IErrorData {
 export interface IChapter {
     uuid: string;
     name: string;
-    description: string,
+    description: string;
     slug: string;
     lessons: ILessonStatus[];
-    created_at: string; 
+    created_at: string;
 }
 
 export interface IChapterUser {
@@ -119,7 +119,7 @@ export interface IChapterUser {
 }
 
 export interface ILessonStatus {
-    status: EProgressStatus
+    status: EProgressStatus;
 }
 
 export interface IQuestionOption {
@@ -128,7 +128,6 @@ export interface IQuestionOption {
     image?: string | null;
     description?: string | null;
 }
-
 
 // TYPES
 export type TTokenRefreshSubscriber = (token: string | null) => void;
@@ -193,5 +192,5 @@ export interface IIslandModelProps {
 }
 
 export interface IChapterProps {
-    chapterUser: IChapterUser
-}   
+    chapterUser: IChapterUser;
+}

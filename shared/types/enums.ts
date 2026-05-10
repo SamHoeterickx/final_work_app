@@ -38,12 +38,12 @@ export enum ESvgIconName {
     BEAN_4 = '4_beans.svg',
     LOCKED = 'locked.svg',
     UNLOCKED = 'unlocked.svg',
-    ARROW_LEFT_FULL = 'arrow_full_left.svg'
+    ARROW_LEFT_FULL = 'arrow_full_left.svg',
 }
 
 export enum EProgressStatus {
     LOCKED = 'LOCKED',
     UNLOCKED = 'UNLOCKED',
     INPROGRESS = 'INPROGRESS',
-    COMPLETED = 'COMPLETED'
+    COMPLETED = 'COMPLETED',
 }

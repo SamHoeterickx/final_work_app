@@ -31,7 +31,7 @@ import Unlocked from '@/assets/icons/unlocked.svg';
 import { ESvgIconName } from '../types/enums';
 
 // ARROWS
-import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg'
+import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
