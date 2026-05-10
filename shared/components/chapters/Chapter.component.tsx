@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { FC } from 'react';
 
 // COMPONENTS
@@ -72,6 +72,11 @@ export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
                 <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
                 {renderStatus()}
             </View>
+            <Image
+                source={require('@/assets/images/moka_pot_1.png')}
+                style={baseStyles.logo}
+                resizeMode="contain"
+            />
             <Button
                 copy={renderButtonCopy()}
                 disabled={chapterUser.status === EProgressStatus.LOCKED}
