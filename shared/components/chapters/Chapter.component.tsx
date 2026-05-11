@@ -3,8 +3,7 @@ import { FC } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
-import { Button } from '../buttons/Button.component';
-import { SvgIcon } from '../SvgIcon.component';
+import { Button, SvgIcon } from '../index';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
@@ -12,7 +11,6 @@ import { baseStyles } from '@/shared/styles/design.system';
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 import { IChapterProps } from '@/shared/types/types';
-
 
 export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     chapterUser,
@@ -75,16 +73,21 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                 <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
                 {renderStatus()}
             </View>
-            <Animated.View style={[styles.imageContainer, { transform: slideAnim ? [{ translateX: slideAnim }] : [] }]}>
-                <Canvas 
+            <Animated.View
+                style={[
+                    styles.imageContainer,
+                    { transform: slideAnim ? [{ translateX: slideAnim }] : [] },
+                ]}
+            >
+                <Canvas
                     camera={{
                         position: [-2, 2.5, 5],
-                        fov: 30
+                        fov: 30,
                     }}
                 >
                     <mesh>
                         <boxGeometry args={[1, 1, 1]} />
-                        <meshBasicMaterial color='hotpink' />
+                        <meshBasicMaterial color="hotpink" />
                     </mesh>
                 </Canvas>
             </Animated.View>
@@ -115,5 +118,5 @@ const styles = StyleSheet.create({
     cButton: {
         alignItems: 'center',
         justifyContent: 'space-between',
-    }
+    },
 });

@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Text, TouchableOpacity } from 'react-native';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
@@ -9,7 +9,7 @@ import { baseStyles } from '@/shared/styles/design.system';
 import { IButtonProps } from '@/shared/types/types';
 
 // ICONS
-import { SvgIcon } from '../SvgIcon.component';
+import { SvgIcon } from '../index';
 
 export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ...settings }) => {
     const { t } = useTranslation();

@@ -3,8 +3,7 @@ import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { LoadingScreen } from '@/shared/components';
-import { Chapter } from '@/shared/components/chapters/Chapter.component';
+import { LoadingScreen, Chapter } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -18,32 +17,34 @@ import { IChapterUser } from '@/shared/types/types';
 
 const { width } = Dimensions.get('window');
 
-
 export default function HomeScreen() {
     const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
-    
+
     const { data: userChapters, isPending } = useGetChapters();
-    const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6)
+    const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
 
     useEffect(() => {
-        if(!userChapters) return
+        if (!userChapters) return;
         console.log(userChapters);
-        
+
         userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            console.log(userChapter.status)
-            if(userChapter.status === EProgressStatus.INPROGRESS || userChapter.status === EProgressStatus.UNLOCKED){
+            console.log(userChapter.status);
+            if (
+                userChapter.status === EProgressStatus.INPROGRESS ||
+                userChapter.status === EProgressStatus.UNLOCKED
+            ) {
                 setCurrentChapterIndex(index);
             }
-        })
+        });
     }, [userChapters]);
 
     useEffect(() => {
         console.log(currentChapterIndex);
-    }, [currentChapterIndex])
-    
+    }, [currentChapterIndex]);
+
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || currentChapterIndex === null) return;
         setIsAnimating(true);
@@ -75,21 +76,29 @@ export default function HomeScreen() {
     }
 
     function onSwipeLeft() {
-        if (currentChapterIndex === null || !userChapters || currentChapterIndex >= userChapters.length - 1) return;
+        if (
+            currentChapterIndex === null ||
+            !userChapters ||
+            currentChapterIndex >= userChapters.length - 1
+        )
+            return;
         animateTransition(currentChapterIndex + 1, 'left');
     }
-    
+
     return (
-        <SafeAreaView style={styles.sHome} >
+        <SafeAreaView style={styles.sHome}>
             {isPending && <LoadingScreen />}
-            <ScrollView 
-                contentContainerStyle={styles.wChapter}    
+            <ScrollView
+                contentContainerStyle={styles.wChapter}
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
                 scrollEnabled={false}
             >
                 {!isPending && currentChapterIndex !== null && userChapters && (
-                    <Chapter chapterUser={userChapters[currentChapterIndex]} slideAnim={slideAnim} />
+                    <Chapter
+                        chapterUser={userChapters[currentChapterIndex]}
+                        slideAnim={slideAnim}
+                    />
                 )}
             </ScrollView>
         </SafeAreaView>

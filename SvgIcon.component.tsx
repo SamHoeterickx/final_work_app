@@ -28,15 +28,15 @@ import Locked from '@/assets/icons/locked.svg';
 import Unlocked from '@/assets/icons/unlocked.svg';
 
 // TYPES
-import { ESvgIconName } from '../types/enums';
+import { ESvgIconName } from '@/shared/types/enums';
 
 // ARROWS
 import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 
 // NAVIGATION
-import Account from '@/assets/icons/navigation/account.svg'
-import Chapters from '@/assets/icons/navigation/chapters.svg'
-import Home from '@/assets/icons/navigation/home.svg'
+import Account from '@/assets/icons/navigation/account.svg';
+import Chapters from '@/assets/icons/navigation/chapters.svg';
+import Home from '@/assets/icons/navigation/home.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
@@ -74,7 +74,7 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     // NAVIGATION
     [ESvgIconName.HOME]: Home,
     [ESvgIconName.ACCOUNT]: Account,
-    [ESvgIconName.CHAPTERS]: Chapters
+    [ESvgIconName.CHAPTERS]: Chapters,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, color, ...props }) => {

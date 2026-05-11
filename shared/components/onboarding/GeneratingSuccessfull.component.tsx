@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
-import { Button } from './buttons/Button.component';
+import { Button } from '../index';
 
 // STYLES
 import { baseStyles, colors } from '@/shared/styles/design.system';

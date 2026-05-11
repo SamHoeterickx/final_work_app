@@ -1,10 +1,9 @@
-import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { FC, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
-import { Button } from './buttons/Button.component';
-import { SvgIcon } from './SvgIcon.component';
+import { Button, SvgIcon } from '../index';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';

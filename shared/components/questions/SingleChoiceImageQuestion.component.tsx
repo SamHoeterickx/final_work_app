@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '@/shared/components/SvgIcon.component';
+import { SvgIcon } from '@/shared/components';
 
 // STORE
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';

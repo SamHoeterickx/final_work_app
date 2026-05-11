@@ -4,7 +4,7 @@ export { Button } from './buttons/Button.component';
 export { LanguageButton } from './buttons/LanguageButton.component';
 
 // INPUT FIELDS
-export { InputField } from './InputField.component';
+export { InputField } from './inputField/InputField.component';
 
 // WRAPPERS
 export { OnboardingQuestionWrapper } from './questions/OnboardingQuestionWrapper.component';
@@ -12,7 +12,14 @@ export { OnboardingQuestionWrapper } from './questions/OnboardingQuestionWrapper
 // LOADINGSCREEN
 export { LoadingScreen } from './loadingScreen/LoadingScreen.component';
 
-export { ChapterUnlocked } from './ChapterUnlocked.component';
-export { GeneratingRoadmap } from './GeneratingRoadmap.component';
-export { GeneratingSuccessfull } from './GeneratingSuccessfull.component';
-export { StartLearning } from './StartLearning.component';
+// ONBOARDING
+export { StartLearning } from './onboarding/StartLearning.component';
+export { GeneratingRoadmap } from './onboarding/GeneratingRoadmap.component';
+export { GeneratingSuccessfull } from './onboarding/GeneratingSuccessfull.component';
+
+// CHAPTERS
+export { Chapter } from './chapters/Chapter.component';
+export { ChapterUnlocked } from './chapters/ChapterUnlocked.component';
+
+// SVG ICON
+export { SvgIcon } from './svgIcon/SvgIcon.component';

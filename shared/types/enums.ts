@@ -39,9 +39,9 @@ export enum ESvgIconName {
     LOCKED = 'locked.svg',
     UNLOCKED = 'unlocked.svg',
     ARROW_LEFT_FULL = 'arrow_full_left.svg',
-    HOME='home.svg',
-    ACCOUNT='account.svg',
-    CHAPTERS='chapters.svg',
+    HOME = 'home.svg',
+    ACCOUNT = 'account.svg',
+    CHAPTERS = 'chapters.svg',
 }
 
 export enum EProgressStatus {

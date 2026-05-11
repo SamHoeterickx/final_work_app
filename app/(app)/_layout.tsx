@@ -1,4 +1,4 @@
-import { SvgIcon } from '@/shared/components/SvgIcon.component';
+import { SvgIcon } from '@/shared/components';
 import { borderRadius, colors } from '@/shared/styles/design.system';
 import { ESvgIconName } from '@/shared/types/enums';
 import { Tabs } from 'expo-router';
@@ -14,17 +14,19 @@ interface AnimatedTabIconProps {
 const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
     const animatedStyle = useAnimatedStyle(() => {
         return {
-            backgroundColor: withTiming(focused ? colors.primary : 'transparent', { duration: 250 }),
+            backgroundColor: withTiming(focused ? colors.primary : 'transparent', {
+                duration: 250,
+            }),
             transform: [{ scale: withSpring(focused ? 1.1 : 1, { damping: 10, stiffness: 60 }) }],
         };
     });
 
     return (
         <Animated.View style={[styles.tabItem, animatedStyle]}>
-            <SvgIcon 
-                name={iconName} 
-                width={size} 
-                color={focused ? colors.text.secondary : colors.text.muted} 
+            <SvgIcon
+                name={iconName}
+                width={size}
+                color={focused ? colors.text.secondary : colors.text.muted}
             />
         </Animated.View>
     );
@@ -37,31 +39,31 @@ export default function AppLayout() {
                 headerShown: false,
                 tabBarShowLabel: false,
                 tabBarStyle: styles.tabBarStyle,
-                tabBarItemStyle: styles.tabBarItemStyle
+                tabBarItemStyle: styles.tabBarItemStyle,
             }}
         >
-            <Tabs.Screen 
+            <Tabs.Screen
                 name="home"
                 options={{
                     title: 'Home',
                     tabBarIcon: ({ focused, size }) => (
-                        <AnimatedTabIcon 
-                            focused={focused} 
-                            size={size} 
-                            iconName={ESvgIconName.HOME} 
+                        <AnimatedTabIcon
+                            focused={focused}
+                            size={size}
+                            iconName={ESvgIconName.HOME}
                         />
                     ),
                 }}
             />
-            <Tabs.Screen 
+            <Tabs.Screen
                 name="account"
                 options={{
                     title: 'Account',
                     tabBarIcon: ({ focused, size }) => (
-                        <AnimatedTabIcon 
-                            focused={focused} 
-                            size={size} 
-                            iconName={ESvgIconName.ACCOUNT} 
+                        <AnimatedTabIcon
+                            focused={focused}
+                            size={size}
+                            iconName={ESvgIconName.ACCOUNT}
                         />
                     ),
                 }}
@@ -86,10 +88,10 @@ const styles = StyleSheet.create({
         marginTop: 35,
     },
     tabItem: {
-        width: 90,  
+        width: 90,
         height: 60,
         borderRadius: borderRadius.full,
         justifyContent: 'center',
         alignItems: 'center',
-    }
-})
+    },
+});
