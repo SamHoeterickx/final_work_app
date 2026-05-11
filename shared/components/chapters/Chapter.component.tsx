@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber/native';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
@@ -11,6 +11,7 @@ import { baseStyles } from '@/shared/styles/design.system';
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 import { IChapterProps } from '@/shared/types/types';
+import { Model } from '../modelLoader/Model.component';
 
 export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     chapterUser,
@@ -85,6 +86,10 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                         fov: 30,
                     }}
                 >
+                    <pointLight position={[0, 20, 10]} intensity={1.5} />
+                    <Suspense>
+                        <Model />
+                    </Suspense>
                     <mesh>
                         <boxGeometry args={[1, 1, 1]} />
                         <meshBasicMaterial color="darkgreen" />
