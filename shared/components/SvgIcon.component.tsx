@@ -33,8 +33,14 @@ import { ESvgIconName } from '../types/enums';
 // ARROWS
 import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 
+// NAVIGATION
+import Account from '@/assets/icons/navigation/account.svg'
+import Chapters from '@/assets/icons/navigation/chapters.svg'
+import Home from '@/assets/icons/navigation/home.svg'
+
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
+    color?: string;
 }
 
 const IconMap: Record<string, React.FC<SvgProps>> = {
@@ -64,9 +70,14 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     [ESvgIconName.LOCKED]: Locked,
     [ESvgIconName.UNLOCKED]: Unlocked,
     [ESvgIconName.ARROW_LEFT_FULL]: ArrowLeftFull,
+
+    // NAVIGATION
+    [ESvgIconName.HOME]: Home,
+    [ESvgIconName.ACCOUNT]: Account,
+    [ESvgIconName.CHAPTERS]: Chapters
 };
 
-export const SvgIcon: React.FC<SvgIconProps> = ({ name, ...props }) => {
+export const SvgIcon: React.FC<SvgIconProps> = ({ name, color, ...props }) => {
     const IconComponent = IconMap[name];
-    return IconComponent ? <IconComponent {...props} /> : null;
+    return IconComponent ? <IconComponent {...props} color={color} /> : null;
 };
