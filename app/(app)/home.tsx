@@ -1,59 +1,41 @@
-import { Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 
-import { LoadingScreen } from '@/shared/components';
+// COMPONENTS
 import { Chapter } from '@/shared/components/chapters/Chapter.component';
-import { useAuthStore } from '@/shared/context/authStore.context';
+import { LoadingScreen } from '@/shared/components';
+
+// HOOKS
 import { useGetChapters } from '@/shared/hooks';
+
+// STYLES
 import { colors } from '@/shared/styles/design.system';
+
+// TYPES
 import { EProgressStatus } from '@/shared/types/enums';
 import { IChapterUser } from '@/shared/types/types';
-import { useEffect } from 'react';
-
-const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
-    const { data: chapters, isPending } = useGetChapters();
-
-    const { accessToken } = useAuthStore();
-
-    let activeIndex: number = chapters
-        ? chapters.findIndex(
-              (chapter: IChapterUser) => chapter.status === EProgressStatus.INPROGRESS,
-          )
-        : 0;
-    if (activeIndex === -1) {
-        activeIndex = 0;
-    }
-    const startPositionX = activeIndex * width;
+    const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
+    
+    const { data: userChapters, isPending } = useGetChapters();
 
     useEffect(() => {
-        console.log(chapters);
-        console.log('---accesstoken', accessToken);
-    }, [chapters]);
+        if(!userChapters) return
 
-    const renderChapters = () => {
-        return (
-            <ScrollView
-                style={styles.cChapters}
-                showsHorizontalScrollIndicator={false}
-                pagingEnabled={true}
-                contentOffset={{ x: startPositionX, y: 0 }}
-                horizontal={true}
-                bounces={false}
-            >
-                {chapters &&
-                    chapters.map((chapterUser: IChapterUser) => (
-                        <Chapter key={chapterUser.uuid} chapterUser={chapterUser} />
-                    ))}
-            </ScrollView>
-        );
-    };
+        userChapters.forEach((userChapter: IChapterUser, index: number) => {
+            if(userChapter.status === EProgressStatus.INPROGRESS || userChapter.status === EProgressStatus.UNLOCKED){
+                setCurrentChapterIndex(1);
+            }
+        })
+    }, [userChapters]);
+
 
     return (
         <SafeAreaView style={styles.sHome} >
             {isPending && <LoadingScreen />}
-            {!isPending && renderChapters()}
+            {!isPending && currentChapterIndex && <Chapter chapterUser={userChapters[currentChapterIndex]} />}
         </SafeAreaView>
     );
 }
