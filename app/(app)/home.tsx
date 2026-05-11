@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Dimensions, ScrollView, StyleSheet } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
@@ -21,29 +21,62 @@ const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
     const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const slideAnim = useRef(new Animated.Value(0)).current;
     
     const { data: userChapters, isPending } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6)
-    
+
     useEffect(() => {
         if(!userChapters) return
+        console.log(userChapters);
         
         userChapters.forEach((userChapter: IChapterUser, index: number) => {
+            console.log(userChapter.status)
             if(userChapter.status === EProgressStatus.INPROGRESS || userChapter.status === EProgressStatus.UNLOCKED){
                 setCurrentChapterIndex(index);
             }
         })
     }, [userChapters]);
+
+    useEffect(() => {
+        console.log(currentChapterIndex);
+    }, [currentChapterIndex])
     
-    
-    function onSwipeLeft() {
-        if (currentChapterIndex === null || currentChapterIndex <= 0) return;
-        setCurrentChapterIndex((prev) => (prev !== null ? prev - 1 : null));
+    function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
+        if (isAnimating || currentChapterIndex === null) return;
+        setIsAnimating(true);
+
+        const outValue = swipeDirection === 'left' ? -width : width;
+        const inValue = swipeDirection === 'left' ? width : -width;
+
+        Animated.timing(slideAnim, {
+            toValue: outValue,
+            duration: 200,
+            useNativeDriver: true,
+        }).start(() => {
+            setCurrentChapterIndex(newIndex);
+            slideAnim.setValue(inValue);
+
+            Animated.timing(slideAnim, {
+                toValue: 0,
+                duration: 200,
+                useNativeDriver: true,
+            }).start(() => {
+                setIsAnimating(false);
+            });
+        });
     }
 
     function onSwipeRight() {
-        if (currentChapterIndex === null || currentChapterIndex >= userChapters.length - 1) return;
-        setCurrentChapterIndex((prev) => (prev !== null ? prev + 1 : null));
+        if (currentChapterIndex === null || currentChapterIndex <= 0) return;
+        animateTransition(currentChapterIndex - 1, 'right');
+    }
+
+    function onSwipeLeft() {
+        if (currentChapterIndex === null || !userChapters || currentChapterIndex >= userChapters.length - 1) return;
+        animateTransition(currentChapterIndex + 1, 'left');
     }
     
     return (
@@ -55,7 +88,9 @@ export default function HomeScreen() {
                 onTouchEnd={onTouchEnd}
                 scrollEnabled={false}
             >
-                {!isPending && currentChapterIndex !== null && userChapters && <Chapter chapterUser={userChapters[currentChapterIndex]} />}
+                {!isPending && currentChapterIndex !== null && userChapters && (
+                    <Chapter chapterUser={userChapters[currentChapterIndex]} slideAnim={slideAnim} />
+                )}
             </ScrollView>
         </SafeAreaView>
     );
@@ -64,9 +99,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     sHome: {
         backgroundColor: colors.background,
-        flex: 1,
-    },
-    cChapters: {
         flex: 1,
     },
     wChapter: {

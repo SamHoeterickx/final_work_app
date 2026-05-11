@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
 import { FC } from 'react';
+import { Animated, Image, StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
 import { Button } from '../buttons/Button.component';
@@ -13,7 +13,10 @@ import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 import { IChapterProps } from '@/shared/types/types';
 
 
-export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
+export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
+    chapterUser,
+    slideAnim,
+}) => {
     const renderStatus = () => {
         if (chapterUser.status === EProgressStatus.LOCKED) {
             return (
@@ -71,11 +74,13 @@ export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
                 <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
                 {renderStatus()}
             </View>
-            <Image
-                source={require('@/assets/images/moka_pot_1.png')}
-                style={baseStyles.logo}
-                resizeMode="contain"
-            />
+            <Animated.View style={[styles.imageContainer, { transform: slideAnim ? [{ translateX: slideAnim }] : [] }]}>
+                <Image
+                    source={require('@/assets/images/moka_pot_1.png')}
+                    style={baseStyles.logo}
+                    resizeMode="contain"
+                />
+            </Animated.View>
             <Button
                 copy={renderButtonCopy()}
                 disabled={chapterUser.status === EProgressStatus.LOCKED}
@@ -94,5 +99,9 @@ const styles = StyleSheet.create({
     status: {
         fontSize: 24,
         textAlign: 'center',
+    },
+    imageContainer: {
+        width: '100%',
+        alignItems: 'center',
     },
 });
