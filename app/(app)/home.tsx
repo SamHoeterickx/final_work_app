@@ -93,6 +93,7 @@ export default function HomeScreen() {
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
                 scrollEnabled={false}
+                style={{ opacity: currentChapterIndex !== null && userChapters[currentChapterIndex].status === EProgressStatus.LOCKED ? .3 : 1}}
             >
                 {!isPending && currentChapterIndex !== null && userChapters && (
                     <Chapter

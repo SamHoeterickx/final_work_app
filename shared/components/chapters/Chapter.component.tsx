@@ -87,7 +87,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                 >
                     <mesh>
                         <boxGeometry args={[1, 1, 1]} />
-                        <meshBasicMaterial color="hotpink" />
+                        <meshBasicMaterial color="darkgreen" />
                     </mesh>
                 </Canvas>
             </Animated.View>
