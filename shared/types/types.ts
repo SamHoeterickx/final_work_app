@@ -120,7 +120,7 @@ export interface IChapterUser {
 
 export interface ILessonsChapter {
     uuid: string;
-    name: string;f
+    name: string;
     status: EProgressStatus;
 }
 
@@ -197,4 +197,7 @@ export interface IChapterProps {
     chapterUser: IChapterUser;
     isFocused: boolean;
     setIsFocused: (state: boolean) => void
+}
+export interface IGeneratingRoadmapProps {
+    onsuccess: () => void;
 }

@@ -1,6 +1,6 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'expo-router';
 
 // COMPONENTS
@@ -75,16 +75,6 @@ export default function PostOnboardingFlow() {
 
     const router = useRouter();
 
-    useEffect(() => {
-        if (currentStep === EFlowStep.GENERATING) {
-            const timer = setTimeout(() => {
-                setCurrentStep(EFlowStep.SUCCESS);
-            }, 5000);
-
-            return () => clearTimeout(timer);
-        }
-    }, [currentStep]);
-
     const handleStartLesson = () => {
         setNeedsRoadmap(false);
         router.replace('/(app)/home');
@@ -93,7 +83,7 @@ export default function PostOnboardingFlow() {
     const renderCurrentStep = () => {
         switch (currentStep) {
             case EFlowStep.GENERATING:
-                return <GeneratingRoadmap />;
+                return <GeneratingRoadmap onsuccess={() => setCurrentStep(EFlowStep.SUCCESS)} />;
             case EFlowStep.SUCCESS:
                 return (
                     <GeneratingSuccessfull

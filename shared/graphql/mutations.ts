@@ -76,3 +76,9 @@ export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
 		}
 	}
 `;
+
+export const GENERATE_CUSTOM_ROADMAP = `
+    mutation GenerateCustomRoadmap {
+        generateCustomRoadmap
+    }
+`

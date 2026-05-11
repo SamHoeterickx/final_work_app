@@ -1,18 +1,35 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
 import { LoadingScreen } from '../index';
 
+// HOOKS
+import { useGenerateCustomRoadmap } from '@/shared/hooks/onboarding/useGenerateCustomRoadmap.hook';
+
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
+import { IGeneratingRoadmapProps } from '@/shared/types/types';
 
-export const GeneratingRoadmap: FC = () => {
+export const GeneratingRoadmap: FC<IGeneratingRoadmapProps> = ({ onsuccess }) => {
     const { t } = useTranslation();
+
+    const { mutate } = useGenerateCustomRoadmap();
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            mutate(undefined, {
+                onSuccess: () => onsuccess(),
+            });
+        }, 4000);
+        
+        return () => clearTimeout(timer);
+    }, [mutate, onsuccess]);
 
     return (
         <>
+
             <View style={baseStyles.cHeader}>
                 <Text style={[baseStyles.h2, styles.title]}>
                     {t('postOnboardingFlow.generating.title')}
@@ -22,6 +39,7 @@ export const GeneratingRoadmap: FC = () => {
                 <LoadingScreen />
             </View>
             <View style={styles.cFooter} />
+
         </>
     );
 };
@@ -36,6 +54,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     cFooter: {
-        height: 80, // Approximate height of the button in other screens to keep layout consistent
+        height: 80,
     },
 });
