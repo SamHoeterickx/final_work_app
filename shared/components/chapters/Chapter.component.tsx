@@ -1,5 +1,6 @@
+import { Canvas } from '@react-three/fiber/native';
 import { FC } from 'react';
-import { Animated, Image, StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
 import { Button } from '../buttons/Button.component';
@@ -75,18 +76,26 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                 {renderStatus()}
             </View>
             <Animated.View style={[styles.imageContainer, { transform: slideAnim ? [{ translateX: slideAnim }] : [] }]}>
-                <Image
-                    source={require('@/assets/images/moka_pot_1.png')}
-                    style={baseStyles.logo}
-                    resizeMode="contain"
-                />
+                <Canvas 
+                    camera={{
+                        position: [-2, 2.5, 5],
+                        fov: 30
+                    }}
+                >
+                    <mesh>
+                        <boxGeometry args={[1, 1, 1]} />
+                        <meshBasicMaterial color='hotpink' />
+                    </mesh>
+                </Canvas>
             </Animated.View>
-            <Button
-                copy={renderButtonCopy()}
-                disabled={chapterUser.status === EProgressStatus.LOCKED}
-                onPress={handleButton}
-                icon={renderButtonIcon()}
-            />
+            <View style={styles.cButton}>
+                <Button
+                    copy={renderButtonCopy()}
+                    disabled={chapterUser.status === EProgressStatus.LOCKED}
+                    onPress={handleButton}
+                    icon={renderButtonIcon()}
+                />
+            </View>
         </>
     );
 };
@@ -101,7 +110,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     imageContainer: {
-        width: '100%',
-        alignItems: 'center',
+        flex: 1,
     },
+    cButton: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    }
 });

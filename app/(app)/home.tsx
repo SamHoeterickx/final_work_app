@@ -104,8 +104,6 @@ const styles = StyleSheet.create({
     wChapter: {
         width: width,
         marginTop: spacing.xxl,
-        alignItems: 'center',
-        justifyContent: 'space-between',
         flex: 1,
     },
 });
