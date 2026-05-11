@@ -1,4 +1,4 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { FC } from 'react';
 
 // COMPONENTS
@@ -6,13 +6,12 @@ import { Button } from '../buttons/Button.component';
 import { SvgIcon } from '../SvgIcon.component';
 
 // STYLES
-import { baseStyles, spacing } from '@/shared/styles/design.system';
+import { baseStyles } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 import { IChapterProps } from '@/shared/types/types';
 
-const { width } = Dimensions.get('window');
 
 export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
     const renderStatus = () => {
@@ -67,7 +66,7 @@ export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
     };
 
     return (
-        <View key={chapterUser.chapter.uuid} style={styles.wChapter}>
+        <>
             <View>
                 <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
                 {renderStatus()}
@@ -83,18 +82,11 @@ export const Chapter: FC<IChapterProps> = ({ chapterUser }) => {
                 onPress={handleButton}
                 icon={renderButtonIcon()}
             />
-        </View>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
-    wChapter: {
-        width: width,
-        marginTop: spacing.xxl,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flex: 1,
-    },
     chapterTitle: {
         fontSize: 48,
         textAlign: 'center',

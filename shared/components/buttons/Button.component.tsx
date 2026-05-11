@@ -40,7 +40,7 @@ export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ..
             >
                 {t(copy)}
             </Text>
-            {icon && <SvgIcon name={icon} width={12} color={'#FFFFFF'} />}
+            {icon && <SvgIcon name={icon} width={12} height={12} color={'#FFFFFF'} />}
         </TouchableOpacity>
     );
 };
