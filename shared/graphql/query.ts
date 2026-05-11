@@ -13,7 +13,9 @@ export const GET_CHAPTERS = `
                 slug
                 uuid
                 lessons {
+                    uuid
                     status
+                    name
                 }
             }
         }

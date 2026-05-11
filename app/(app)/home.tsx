@@ -19,6 +19,7 @@ const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
     const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
+    const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
@@ -71,11 +72,13 @@ export default function HomeScreen() {
     }
 
     function onSwipeRight() {
+        if(isFocused) return
         if (currentChapterIndex === null || currentChapterIndex <= 0) return;
         animateTransition(currentChapterIndex - 1, 'right');
     }
 
     function onSwipeLeft() {
+        if(isFocused) return
         if (
             currentChapterIndex === null ||
             !userChapters ||
@@ -99,6 +102,8 @@ export default function HomeScreen() {
                     <Chapter
                         chapterUser={userChapters[currentChapterIndex]}
                         slideAnim={slideAnim}
+                        isFocused={isFocused}
+                        setIsFocused={setIsFocused}
                     />
                 )}
             </ScrollView>

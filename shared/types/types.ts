@@ -106,7 +106,7 @@ export interface IChapter {
     name: string;
     description: string;
     slug: string;
-    lessons: ILessonStatus[];
+    lessons: ILessonsChapter[];
     created_at: string;
 }
 
@@ -118,7 +118,9 @@ export interface IChapterUser {
     uuid: string;
 }
 
-export interface ILessonStatus {
+export interface ILessonsChapter {
+    uuid: string;
+    name: string;f
     status: EProgressStatus;
 }
 
@@ -193,4 +195,6 @@ export interface IIslandModelProps {
 
 export interface IChapterProps {
     chapterUser: IChapterUser;
+    isFocused: boolean;
+    setIsFocused: (state: boolean) => void
 }
