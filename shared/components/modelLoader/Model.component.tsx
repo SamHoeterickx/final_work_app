@@ -7,5 +7,5 @@ export const Model = () => {
         <group>
             <Gltf src={PuckPrep} />
         </group>
-    )
-}
+    );
+};

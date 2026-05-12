@@ -23,13 +23,12 @@ export const GeneratingRoadmap: FC<IGeneratingRoadmapProps> = ({ onsuccess }) =>
                 onSuccess: () => onsuccess(),
             });
         }, 4000);
-        
+
         return () => clearTimeout(timer);
     }, [mutate, onsuccess]);
 
     return (
         <>
-
             <View style={baseStyles.cHeader}>
                 <Text style={[baseStyles.h2, styles.title]}>
                     {t('postOnboardingFlow.generating.title')}
@@ -39,7 +38,6 @@ export const GeneratingRoadmap: FC<IGeneratingRoadmapProps> = ({ onsuccess }) =>
                 <LoadingScreen />
             </View>
             <View style={styles.cFooter} />
-
         </>
     );
 };

@@ -1,5 +1,5 @@
-import { onboardingService } from "@/shared/services/onboarding.service";
-import { useMutation } from "@tanstack/react-query"
+import { onboardingService } from '@/shared/services/onboarding.service';
+import { useMutation } from '@tanstack/react-query';
 
 export const useGenerateCustomRoadmap = () => {
     return useMutation({
@@ -12,5 +12,5 @@ export const useGenerateCustomRoadmap = () => {
         onError: (error: Error) => {
             console.error('Login Failed', error.message);
         },
-    })
-}
+    });
+};

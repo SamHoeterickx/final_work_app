@@ -72,13 +72,13 @@ export default function HomeScreen() {
     }
 
     function onSwipeRight() {
-        if(isFocused) return
+        if (isFocused) return;
         if (currentChapterIndex === null || currentChapterIndex <= 0) return;
         animateTransition(currentChapterIndex - 1, 'right');
     }
 
     function onSwipeLeft() {
-        if(isFocused) return
+        if (isFocused) return;
         if (
             currentChapterIndex === null ||
             !userChapters ||
@@ -96,7 +96,13 @@ export default function HomeScreen() {
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
                 scrollEnabled={false}
-                style={{ opacity: currentChapterIndex !== null && userChapters[currentChapterIndex].status === EProgressStatus.LOCKED ? .3 : 1}}
+                style={{
+                    opacity:
+                        currentChapterIndex !== null &&
+                        userChapters[currentChapterIndex].status === EProgressStatus.LOCKED
+                            ? 0.3
+                            : 1,
+                }}
             >
                 {!isPending && currentChapterIndex !== null && userChapters && (
                     <Chapter

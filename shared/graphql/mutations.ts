@@ -81,4 +81,4 @@ export const GENERATE_CUSTOM_ROADMAP = `
     mutation GenerateCustomRoadmap {
         generateCustomRoadmap
     }
-`
+`;

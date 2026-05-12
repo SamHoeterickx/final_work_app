@@ -8,10 +8,15 @@ import { baseStyles, colors } from '@/shared/styles/design.system';
 // TYPES
 import { IBackButtonProps } from '@/shared/types/types';
 
-export const BackButton: FC<IBackButtonProps> = ({ style }) => {
+export const BackButton: FC<IBackButtonProps> = ({ style, isFocused, setIsFocused }) => {
     const router = useRouter();
 
     const handleNavigateBack = () => {
+        if (isFocused && setIsFocused) {
+            setIsFocused(false);
+            return;
+        }
+
         router.back();
     };
 

@@ -173,6 +173,8 @@ export interface IQuestionProps {
 
 export interface IBackButtonProps {
     style?: Record<string, any>;
+    isFocused?: boolean;
+    setIsFocused?: (state: boolean) => void;
 }
 
 export interface IPostOnboardingFlowProps {
@@ -196,8 +198,47 @@ export interface IIslandModelProps {
 export interface IChapterProps {
     chapterUser: IChapterUser;
     isFocused: boolean;
-    setIsFocused: (state: boolean) => void
+    setIsFocused: (state: boolean) => void;
 }
 export interface IGeneratingRoadmapProps {
     onsuccess: () => void;
+}
+
+export interface IChapterActionsProps {
+    status: EProgressStatus;
+    isFocused: boolean;
+    onPress: () => void;
+}
+
+export interface IChapterHeaderProps {
+    chapterUser: IChapterUser;
+    isFocused: boolean;
+    selectedLesson: ILessonsChapter | null;
+    setIsFocused: (state: boolean) => void;
+}
+
+export interface IChapterSceneProps {
+    isFocused: boolean;
+    cameraPos: [number, number, number];
+    cameraTarget: [number, number, number];
+    lessons: ILessonsChapter[];
+    onLessonClick: (index: number, lesson: ILessonsChapter) => void;
+}
+
+export interface ICameraControllerProps {
+    position: [number, number, number];
+    target: [number, number, number];
+}
+
+export interface IFloatingGroupProps {
+    isFocused: boolean;
+    children: React.ReactNode;
+}
+
+export interface IChapterProgressProps {
+    lessons: ILessonsChapter[];
+}
+
+export interface ILessonStatusProps {
+    lesson: ILessonsChapter;
 }
