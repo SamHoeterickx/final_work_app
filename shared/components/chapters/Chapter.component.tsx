@@ -10,6 +10,9 @@ import { ChapterScene } from './ui/ChapterScene.component';
 import { EProgressStatus } from '@/shared/types/enums';
 import { IChapterProps, ILessonsChapter } from '@/shared/types/types';
 
+// CONST
+import { CAMERA_HEIGHT, CAMERA_RADIUS, LESSON_RADIUS } from '@/shared/const/chapter.const';
+
 export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     chapterUser,
     slideAnim,
@@ -22,7 +25,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     useEffect(() => {
         if (!isFocused) {
-            setCameraPos([-2, 2.5, 5]);
+            setCameraPos([-2, CAMERA_HEIGHT, 5]);
             setCameraTarget([0, 0.5, 0]);
             setSelectedLesson(null);
         }
@@ -40,7 +43,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         if (activeIndex !== -1) {
             handleLessonClick(activeIndex, chapterUser.chapter.lessons[activeIndex]);
         } else {
-            setCameraPos([0, 2.5, 1.5]);
+            setCameraPos([0, CAMERA_HEIGHT, 1.5]);
             setCameraTarget([0, 0.5, 0]);
         }
         setIsFocused(true);
@@ -48,20 +51,25 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
         const totalLessons = chapterUser.chapter.lessons.length;
-        const lessonRadius = 0.35;
-        const cameraRadius = 2.25;
-        const cameraHeight = 2.25;
 
         const angle = (index / totalLessons) * Math.PI * 2;
 
-        const lessonX = Math.cos(angle) * lessonRadius;
-        const lessonZ = Math.sin(angle) * lessonRadius;
+        const lessonX = Math.cos(angle) * LESSON_RADIUS;
+        const lessonZ = Math.sin(angle) * LESSON_RADIUS;
         setCameraTarget([lessonX, 0.5, lessonZ]);
 
-        const camX = Math.cos(angle) * cameraRadius;
-        const camZ = Math.sin(angle) * cameraRadius;
-        setCameraPos([camX, cameraHeight, camZ]);
+        const camX = Math.cos(angle) * CAMERA_RADIUS;
+        const camZ = Math.sin(angle) * CAMERA_RADIUS;
+        setCameraPos([camX, CAMERA_HEIGHT, camZ]);
         setSelectedLesson(lesson);
+    };
+
+    const handlePassButtonStatus = (): EProgressStatus => {
+        if (!isFocused) {
+            return chapterUser.status;
+        } else {
+            return selectedLesson?.status ?? EProgressStatus.INPROGRESS;
+        }
     };
 
     return (
@@ -88,7 +96,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                 />
             </Animated.View>
             <ChapterActions
-                status={chapterUser.status}
+                status={handlePassButtonStatus()}
                 isFocused={isFocused}
                 onPress={handleButton}
             />

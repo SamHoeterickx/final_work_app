@@ -6,10 +6,11 @@ import { CameraController } from '../../camera/CameraController.component';
 import { FloatingGroup } from './FloatingGroup.component';
 
 // TYPES
+import { EProgressStatus } from '@/shared/types/enums';
 import { IChapterSceneProps } from '@/shared/types/types';
 
-const ISLAND_HEIGHT: number = 0.35;
-const LESSONS_RADIUS: number = 0.3;
+// CONST
+import { ISLAND_HEIGHT, LESSON_RADIUS } from '@/shared/const/chapter.const';
 
 export const ChapterScene: FC<IChapterSceneProps> = ({
     isFocused,
@@ -23,8 +24,11 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
 
         return lessons.map((lesson, index) => {
             const angle = (index / totalLessons) * Math.PI * 2;
-            const x = Math.cos(angle) * LESSONS_RADIUS;
-            const z = Math.sin(angle) * LESSONS_RADIUS;
+            const x = Math.cos(angle) * LESSON_RADIUS;
+            const z = Math.sin(angle) * LESSON_RADIUS;
+
+            const isLocked = lesson.status === EProgressStatus.LOCKED;
+
             return (
                 <mesh
                     key={lesson.uuid}
@@ -32,7 +36,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
                     onPointerDown={() => onLessonClick(index, lesson)}
                 >
                     <cylinderGeometry args={[0.09, 0.09, 0.05]} />
-                    <meshBasicMaterial color="darkgreen" />
+                    <meshBasicMaterial color="darkgreen" transparent opacity={isLocked ? 0.3 : 1} />
                 </mesh>
             );
         });

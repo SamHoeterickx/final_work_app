@@ -26,13 +26,13 @@ export const ChapterActions: FC<IChapterActionsProps> = ({ status, isFocused, on
         if (isFocused) {
             switch (status) {
                 case EProgressStatus.LOCKED:
-                    return 'chapter.buttons.locked';
+                    return 'chapterLesson.buttons.locked';
                 case EProgressStatus.UNLOCKED:
-                    return 'chapter.buttons.start';
+                    return 'chapterLesson.buttons.start';
                 case EProgressStatus.INPROGRESS:
-                    return 'Start';
+                    return 'chapterLesson.buttons.start';
                 case EProgressStatus.COMPLETED:
-                    return 'chapter.buttons.completed';
+                    return 'chapterLesson.buttons.completed';
             }
         }
 

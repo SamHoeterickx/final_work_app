@@ -198,6 +198,13 @@
             "start": "Start",
             "locked": "Locked"
         }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Start",
+            "restart": "Restart",
+            "locked": "Locked"
+        }
     }
    
 }
