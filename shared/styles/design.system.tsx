@@ -9,7 +9,7 @@ export const colors = {
     text: {
         primary: '#222222',
         secondary: '#FFFFFF',
-        muted: '#646464',
+        muted: '#696969',
         inverted: '#465E3C',
     },
 
@@ -176,6 +176,11 @@ export const baseStyles = StyleSheet.create({
     },
 
     button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 16,
+
         paddingHorizontal: 48,
         paddingVertical: 24,
 

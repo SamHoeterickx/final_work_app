@@ -190,5 +190,20 @@
     },
     "home": {
         "title": "Ceci est un titre"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Revisiter l'île",
+            "continue": "Continuer",
+            "start": "Commencer",
+            "locked": "Verrouillé"
+        }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Commencer",
+            "restart": "Recommencer",
+            "locked": "Verrouillé"
+        }
     }
 }

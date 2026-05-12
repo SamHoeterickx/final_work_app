@@ -1,12 +1,25 @@
-export const GET_ALL_CHAPTERS = `
-    query GetAllChapters {
-        getAllChapters {
-            name
-            lessons {
+export const GET_CHAPTERS = `
+    query GetMyChapters {
+        getMyChapters {
+            created_at
+            order
+            status
+            uuid
+            chapter {
+                created_at
+                description
                 name
-                isCompleted
-                isUnlocked
+                tags
+                slug
+                uuid
+                lessons {
+                    uuid
+                    status
+                    name
+                    order
+                }
             }
         }
     }
+
 `;

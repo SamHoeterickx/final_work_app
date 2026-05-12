@@ -1,7 +1,7 @@
-import { useRouter } from 'expo-router';
-import { useEffect, useRef } from 'react';
 import { Animated, Easing, Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useEffect, useRef } from 'react';
+import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import { Button, LanguageButton } from '@/shared/components';

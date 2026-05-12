@@ -2,9 +2,14 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, TouchableOpacity } from 'react-native';
 
+// STYLES
 import { baseStyles } from '@/shared/styles/design.system';
+
+// TYPES
 import { IButtonProps } from '@/shared/types/types';
-import { SvgIcon } from '../SvgIcon.component';
+
+// ICONS
+import { SvgIcon } from '../index';
 
 export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ...settings }) => {
     const { t } = useTranslation();
@@ -35,7 +40,7 @@ export const Button: FC<IButtonProps> = ({ copy, icon, styles, size, onPress, ..
             >
                 {t(copy)}
             </Text>
-            {icon && <SvgIcon name={icon} width={12} />}
+            {icon && <SvgIcon name={icon} width={12} height={12} color={'#FFFFFF'} />}
         </TouchableOpacity>
     );
 };

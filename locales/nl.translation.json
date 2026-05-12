@@ -190,5 +190,20 @@
     },
     "home": {
         "title": "Dit is een titel"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Bezoek eiland opnieuw",
+            "continue": "Ga verder",
+            "start": "Start",
+            "locked": "Vergrendeld"
+        }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Start",
+            "restart": "Herstart",
+            "locked": "Locked"
+        }
     }
 }

@@ -190,6 +190,21 @@
     },
     "home": {
         "title": "This is a title"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Revisit island",
+            "continue": "Continue",
+            "start": "Start",
+            "locked": "Locked"
+        }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Start",
+            "restart": "Restart",
+            "locked": "Locked"
+        }
     }
    
 }

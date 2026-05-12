@@ -12,7 +12,7 @@ import { BackButton, Button } from '@/shared/components';
 import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
 
 // TYPES
-import { ELocales } from '@/shared/types/types';
+import { ELocales } from '@/shared/types/enums';
 
 //CONST
 import { languageData } from '@/shared/const/changeLanguage.const';

@@ -13,8 +13,10 @@ import {
     IVerifyResetCodeCredentials,
 } from '@/shared/types/types';
 
-// MUTATIONS
+// CONTEXT
 import { useAuthStore } from '@/shared/context/authStore.context';
+
+// MUTATIONS
 import {
     LOGIN_USER_MUTATION,
     REGISTER_USER_MUTATION,

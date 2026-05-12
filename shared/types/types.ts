@@ -1,5 +1,8 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
+// ENUMS
+import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind } from './enums';
+
 // INTERFACES
 export interface ILoginCredentials {
     email: string;
@@ -89,7 +92,7 @@ export interface ILoginUserResponse {
 export interface IOnboardingQuestions {
     title: string;
     description: string;
-    kind: OnboardingQuestionKind;
+    kind: EOnboardingQuestionKind;
     options: IQuestionOption[];
 }
 
@@ -98,46 +101,34 @@ export interface IErrorData {
     isError: boolean;
 }
 
-// ENUMS
-export enum OnboardingQuestionKind {
-    MULTIPLE_TILES = 'multiple_tiles',
-    SINGLE_CHOICE = 'single_choice',
-    SINGLE_CHOICE_TITLE = 'single_choice_title',
-    SINGLE_CHOICE_IMG = 'single_choice_img',
+export interface IChapter {
+    uuid: string;
+    name: string;
+    description: string;
+    slug: string;
+    lessons: ILessonsChapter[];
+    created_at: string;
 }
 
-export enum ELocales {
-    EN = 'en',
-    NL = 'nl',
-    FR = 'fr',
+export interface IChapterUser {
+    chapter: IChapter;
+    created_at: string;
+    order: number;
+    status: EProgressStatus;
+    uuid: string;
 }
 
-export enum EFlowStep {
-    'GENERATING',
-    'SUCCESS',
-    'CHAPTER_UNLOCKED',
-    'START_LEARNING',
+export interface ILessonsChapter {
+    uuid: string;
+    name: string;
+    status: EProgressStatus;
 }
 
-export enum ESvgIconName {
-    FILTER_COFFEE = 'filter_coffee.svg',
-    FULL_AUTOMATIC = 'full_automatic_machine.svg',
-    ESPRESSO_MACHINE = 'espresso_machine.svg',
-    CUP_MACHINE = 'cup_machine.svg',
-    FRENCH_PRESS = 'french_press.svg',
-    COFFEE_SHOP = 'coffee_shop.svg',
-    MOKA_POT = 'moka_pot.svg',
-    POUR_OVER = 'pour_over.svg',
-    CHEMEX = 'chemex.svg',
-    BEAN_MILL = 'bean_mil.svg',
-    MILK_FOAMER = 'milk_foamer.svg',
-    GOOSENECK_KETTLE = 'gooseneck_kettle.svg',
-    BEAN_1 = '1_bean.svg',
-    BEAN_2 = '2_beans.svg',
-    BEAN_3 = '3_beans.svg',
-    BEAN_4 = '4_beans.svg',
-    LOCKED = 'locked',
-    UNLOCKED = 'unlocked',
+export interface IQuestionOption {
+    label: string;
+    tag: string;
+    image?: string | null;
+    description?: string | null;
 }
 
 // TYPES
@@ -145,6 +136,9 @@ export type TTokenRefreshSubscriber = (token: string | null) => void;
 
 export type TGraphQLError = {
     message: string;
+    extensions?: {
+        code?: string;
+    };
 };
 
 export type TGraphQLResponse<T = unknown> = {
@@ -167,15 +161,8 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'> {
     name: string;
 }
 
-export interface IQuestionOption {
-    label: string;
-    tag: string;
-    image?: string | null;
-    description?: string | null;
-}
-
 export interface IOnboardingQuestionWrapperProps {
-    kind: OnboardingQuestionKind;
+    kind: EOnboardingQuestionKind;
     options: IQuestionOption[];
 }
 
@@ -186,6 +173,8 @@ export interface IQuestionProps {
 
 export interface IBackButtonProps {
     style?: Record<string, any>;
+    isFocused?: boolean;
+    setIsFocused?: (state: boolean) => void;
 }
 
 export interface IPostOnboardingFlowProps {
@@ -204,4 +193,52 @@ export interface IStartLearningProps extends IPostOnboardingFlowProps {
 export interface IIslandModelProps {
     islandPath: string;
     scale?: number;
+}
+
+export interface IChapterProps {
+    chapterUser: IChapterUser;
+    isFocused: boolean;
+    setIsFocused: (state: boolean) => void;
+}
+export interface IGeneratingRoadmapProps {
+    onsuccess: () => void;
+}
+
+export interface IChapterActionsProps {
+    status: EProgressStatus;
+    isFocused: boolean;
+    onPress: () => void;
+}
+
+export interface IChapterHeaderProps {
+    chapterUser: IChapterUser;
+    isFocused: boolean;
+    selectedLesson: ILessonsChapter | null;
+    setIsFocused: (state: boolean) => void;
+}
+
+export interface IChapterSceneProps {
+    isFocused: boolean;
+    cameraPos: [number, number, number];
+    cameraTarget: [number, number, number];
+    lessons: ILessonsChapter[];
+    onLessonClick: (index: number, lesson: ILessonsChapter) => void;
+}
+
+export interface ICameraControllerProps {
+    position: [number, number, number];
+    target: [number, number, number];
+}
+
+export interface IFloatingGroupProps {
+    isFocused: boolean;
+    children: React.ReactNode;
+}
+
+export interface IChapterProgressProps {
+    lessons: ILessonsChapter[];
+}
+
+export interface ILessonStatusProps {
+    lesson: ILessonsChapter;
 }
