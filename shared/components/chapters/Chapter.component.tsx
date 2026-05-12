@@ -37,13 +37,13 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const handleButton = () => {
         console.log('pressed');
 
-        if(!isFocused){
+        if (!isFocused) {
             handleButtonChapter();
-        }else {
-            if(!selectedLesson) return;
+        } else {
+            if (!selectedLesson) return;
 
             console.log('---LESSON');
-            router.navigate(`/(app)/lesson/${selectedLesson.uuid}`)
+            router.navigate(`/(app)/lesson/${selectedLesson.uuid}`);
         }
     };
 
@@ -61,7 +61,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
             setCameraTarget([0, 0.5, 0]);
         }
         setIsFocused(true);
-    }
+    };
 
     const handlePassButtonStatus = (): EProgressStatus => {
         if (!isFocused) {

@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
     },
     text: {
         flex: 1,
-        lineHeight: 22
-    }
+        lineHeight: 22,
+    },
 });
