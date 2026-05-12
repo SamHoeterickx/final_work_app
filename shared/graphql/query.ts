@@ -17,6 +17,7 @@ export const GET_CHAPTERS = `
                     status
                     name
                     order
+                    description
                 }
             }
         }

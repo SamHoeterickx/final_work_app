@@ -56,7 +56,7 @@ export default function AppLayout() {
                 }}
             />
             <Tabs.Screen
-                name="account"
+                name="(account)"
                 options={{
                     title: 'Account',
                     tabBarIcon: ({ focused, size }) => (
