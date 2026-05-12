@@ -205,6 +205,37 @@
             "restart": "Restart",
             "locked": "Locked"
         }
+    },
+    "settings": {
+        "title": "Settings",
+        "tabs": {
+            "profile": "Profile",
+            "notifications": "Notifications",
+            "changeLanguage": "Change Language",
+            "about": "About",
+            "privacyPolicy": "Privacy Policy",
+            "termsOfCondition": "Terms of Condition"
+        },
+        "buttons": {
+            "logout": "logout"
+        },
+        "profile": {
+            "title": "Profile"
+        },
+        "changeLanguage": {
+            "title": "Change Language"
+        },
+        "notifications": {
+            "title": "Notifications"
+        },
+        "about": {
+            "title": "About BrewLingo"
+        },
+        "privacyPolicy": {
+            "title": "Privacy Policy"
+        },
+        "termsOfCondition": {
+            "title": "Terms of Condition"
+        }
     }
-   
 }

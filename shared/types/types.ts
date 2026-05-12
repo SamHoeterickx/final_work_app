@@ -1,7 +1,7 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
-import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind } from './enums';
+import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind, ESettingsOptions } from './enums';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -241,4 +241,14 @@ export interface IChapterProgressProps {
 
 export interface ILessonStatusProps {
     lesson: ILessonsChapter;
+}
+
+export interface ISettingTabProps {
+    copy: string;
+    icon: ESvgIconName;
+    path: string;
+}
+
+export interface ISettingsOptionsWrapperProps {
+    option: ESettingsOptions
 }

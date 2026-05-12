@@ -1,18 +1,28 @@
-import { BackButton, Button, SvgIcon } from '@/shared/components';
+import { BackButton, Button, SettingsTab } from '@/shared/components';
+import { SETTINGS_OPTIONS } from '@/shared/const/settings.const';
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
-import { ESvgIconName } from '@/shared/types/enums';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SettingsScreen() {
 
-    const handleOpenAccountSettings = () => {
-
-    }
+    const { t } = useTranslation();
 
     const handleLogout = () => {
 
     }
+
+    const renderSettingTabs = () => {
+        return SETTINGS_OPTIONS.map((setting, index) => (
+            <SettingsTab
+                key={index}
+                copy={setting.copy}
+                icon={setting.icon}
+                path={setting.path}
+            />
+        ))
+    } 
 
     return (
         <SafeAreaView style={styles.sAccount}>
@@ -22,52 +32,18 @@ export default function SettingsScreen() {
             >
                 <BackButton style={styles.backBtn} />
                 <View style={styles.cTitle}>
-                    <Text style={baseStyles.h1}>Settings</Text>
+                    <Text style={baseStyles.h1}>{t('settings.title')}</Text>
                 </View>
 
                 <View style={styles.cSettingTabs}>
-                    <TouchableOpacity
-                        onPress={handleOpenAccountSettings}
-                        style={styles.wSettingTab}
-                    >
-                        <SvgIcon name={ESvgIconName.ACCOUNT} width={32} height={32} />
-                        <Text style={baseStyles.h2}>Account</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={handleOpenAccountSettings}
-                        style={styles.wSettingTab}
-                    >
-                        <SvgIcon name={ESvgIconName.NOTIFICATIONS} width={32} height={32} />
-                        <Text style={baseStyles.h2}>Notifications</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={handleOpenAccountSettings}
-                        style={styles.wSettingTab}
-                    >
-                        <SvgIcon name={ESvgIconName.INFO} width={32} height={32} />
-                        <Text style={baseStyles.h2}>About</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={handleOpenAccountSettings}
-                        style={styles.wSettingTab}
-                    >
-                        <SvgIcon name={ESvgIconName.PRIVACY} width={32} height={32} />
-                        <Text style={baseStyles.h2}>Privacy Policy</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={handleOpenAccountSettings}
-                        style={styles.wSettingTab}
-                    >
-                        <SvgIcon name={ESvgIconName.LEGAL} width={32} height={32} />
-                        <Text style={baseStyles.h2}>Terms of agreement</Text>
-                    </TouchableOpacity>
+                    {renderSettingTabs()}                    
                 </View>
             
             </ScrollView>
 
             <View style={styles.cButton}>
                 <Button 
-                    copy='LOGOUT'
+                    copy='settings.buttons.logout'
                     onPress={handleLogout}
                 />
             </View>

@@ -205,5 +205,37 @@
             "restart": "Herstart",
             "locked": "Locked"
         }
+    },
+    "settings": {
+        "title": "Instellingen",
+        "tabs": {
+            "profile": "Profiel",
+            "notifications": "Notificaties",
+            "changeLanguage": "Taal wijzigen",
+            "about": "Over",
+            "privacyPolicy": "Privacybeleid",
+            "termsOfCondition": "Algemene voorwaarden"
+        },
+        "buttons": {
+            "logout": "Uitloggen"
+        },
+        "profile": {
+            "title": "Profiel"
+        },
+        "changeLanguage": {
+            "title": "Taal wijzigen"
+        },
+        "notifications": {
+            "title": "Notificaties"
+        },
+        "about": {
+            "title": "Over BrewLingo"
+        },
+        "privacyPolicy": {
+            "title": "Privacybeleid"
+        },
+        "termsOfCondition": {
+            "title": "Algemene voorwaarden"
+        }
     }
 }

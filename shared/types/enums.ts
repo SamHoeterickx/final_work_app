@@ -55,3 +55,12 @@ export enum EProgressStatus {
     INPROGRESS = 'INPROGRESS',
     COMPLETED = 'COMPLETED',
 }
+
+export enum ESettingsOptions {
+    PROFILE = 'profile',
+    CHANGE_LANGUAGE = 'changeLanguage',
+    NOTIFICATIONS = 'notifications',
+    ABOUT = 'about',
+    PRIVACY_POLICY = 'privacyPolicy',
+    TERMS_OF_CONDITION = 'termsOfCondition'
+}
