@@ -16,6 +16,7 @@ export const GET_CHAPTERS = `
                     uuid
                     status
                     name
+                    order
                 }
             }
         }

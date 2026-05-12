@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { Animated, StyleSheet } from 'react-native';
 
@@ -23,6 +24,8 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const [cameraPos, setCameraPos] = useState<[number, number, number]>([-2, 2.5, 5]);
     const [selectedLesson, setSelectedLesson] = useState<ILessonsChapter | null>(null);
 
+    const router = useRouter();
+
     useEffect(() => {
         if (!isFocused) {
             setCameraPos([-2, CAMERA_HEIGHT, 5]);
@@ -34,6 +37,17 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const handleButton = () => {
         console.log('pressed');
 
+        if(!isFocused){
+            handleButtonChapter();
+        }else {
+            if(!selectedLesson) return;
+
+            console.log('---LESSON');
+            router.navigate(`/(app)/lesson/${selectedLesson.uuid}`)
+        }
+    };
+
+    const handleButtonChapter = () => {
         const activeIndex = chapterUser.chapter.lessons.findIndex(
             (lesson) =>
                 lesson.status === EProgressStatus.INPROGRESS ||
@@ -47,6 +61,14 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
             setCameraTarget([0, 0.5, 0]);
         }
         setIsFocused(true);
+    }
+
+    const handlePassButtonStatus = (): EProgressStatus => {
+        if (!isFocused) {
+            return chapterUser.status;
+        } else {
+            return selectedLesson?.status ?? EProgressStatus.INPROGRESS;
+        }
     };
 
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
@@ -62,14 +84,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         const camZ = Math.sin(angle) * CAMERA_RADIUS;
         setCameraPos([camX, CAMERA_HEIGHT, camZ]);
         setSelectedLesson(lesson);
-    };
-
-    const handlePassButtonStatus = (): EProgressStatus => {
-        if (!isFocused) {
-            return chapterUser.status;
-        } else {
-            return selectedLesson?.status ?? EProgressStatus.INPROGRESS;
-        }
     };
 
     return (

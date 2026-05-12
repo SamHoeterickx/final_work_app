@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     },
     wChapter: {
         width: width,
-        marginTop: spacing.xxl,
+        marginTop: spacing.xxl * 2,
         flex: 1,
     },
 });

@@ -68,6 +68,13 @@ export default function AppLayout() {
                     ),
                 }}
             />
+            <Tabs.Screen
+                name="lesson/[uuid]"
+                options={{
+                    href: null,
+                    tabBarStyle: { display: 'none' },
+                }}
+            />
         </Tabs>
     );
 }

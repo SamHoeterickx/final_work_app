@@ -16,7 +16,7 @@ export const ChapterProgress: FC<IChapterProgressProps> = ({ lessons }) => {
     return (
         <Text
             style={[baseStyles.h3, styles.status]}
-        >{`${completed.length} / ${allLessons.length}`}</Text>
+        >{`${completed.length}   /   ${allLessons.length}`}</Text>
     );
 };
 
