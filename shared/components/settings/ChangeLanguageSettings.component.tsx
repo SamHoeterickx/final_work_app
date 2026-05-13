@@ -1,21 +1,21 @@
-import { useUserPreferencesStore } from "@/shared/context/userPreferencesStore.context"
-import { ELocales } from "@/shared/types/enums"
-import WheelPicker from "@quidone/react-native-wheel-picker"
-import { useRouter } from "expo-router"
-import { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
-import { StyleSheet, View } from "react-native"
-import { Button } from "../buttons/Button.component"
+import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+import { ELocales } from '@/shared/types/enums';
+import WheelPicker from '@quidone/react-native-wheel-picker';
+import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, View } from 'react-native';
+import { Button } from '../buttons/Button.component';
 
 // CONST
-import { languageData } from '@/shared/const/changeLanguage.const'
+import { languageData } from '@/shared/const/changeLanguage.const';
 
 export const ChangeLanguageSettings = () => {
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales | null>(null);
-    
+
     const { language, setLanguage } = useUserPreferencesStore();
-    
-    const { i18n, t } = useTranslation();
+
+    const { i18n } = useTranslation();
     const router = useRouter();
 
     useEffect(() => {
@@ -42,14 +42,11 @@ export const ChangeLanguageSettings = () => {
                 />
             </View>
             <View style={styles.cButton}>
-                <Button 
-                    copy="changeLanguage.buttons.update" 
-                    onPress={handleChangeLanguage} 
-                />
+                <Button copy="changeLanguage.buttons.update" onPress={handleChangeLanguage} />
             </View>
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {

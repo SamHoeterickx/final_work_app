@@ -46,7 +46,7 @@ export enum ESvgIconName {
     NOTIFICATIONS = 'notifications',
     LEGAL = 'legal',
     PRIVACY = 'privacy',
-    INFO = 'info'
+    INFO = 'info',
 }
 
 export enum EProgressStatus {

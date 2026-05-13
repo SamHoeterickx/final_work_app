@@ -34,7 +34,7 @@ export const ChangeEmailSettings: FC = () => {
     const handleChangeEmail = () => {
         if (formData.updatedEmailAdress === '') return;
         mutate(formData, {
-            onSuccess: () => router.back()
+            onSuccess: () => router.back(),
         });
     };
 

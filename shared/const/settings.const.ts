@@ -41,10 +41,10 @@ export const PROFILE_SETTINGS_OPTIONS: ISettingTabProps[] = [
     },
     {
         copy: 'settings.profile.tabs.changeEmail',
-        path: 'changeEmail'
+        path: 'changeEmail',
     },
     {
         copy: 'settings.profile.tabs.changeName',
-        path: 'changeName'
-    }
-]
+        path: 'changeName',
+    },
+];

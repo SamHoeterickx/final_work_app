@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from '@tanstack/react-query';
 
 // SERVICE
-import { authService } from "@/shared/services/auth.service"
+import { authService } from '@/shared/services/auth.service';
 
 // CONST
-import { QUERY_KEYS } from "@/shared/const/query-keys.const"
+import { QUERY_KEYS } from '@/shared/const/query-keys.const';
 
 export const useGetUserdata = () => {
     return useQuery({
@@ -13,7 +13,7 @@ export const useGetUserdata = () => {
             const response = await authService.getUserData();
 
             const responseData = response?.data as any;
-            return responseData.data.getUserData
-        }
-    })
-}
+            return responseData.data.getUserData;
+        },
+    });
+};

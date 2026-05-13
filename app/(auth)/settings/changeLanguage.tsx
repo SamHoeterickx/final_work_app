@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
@@ -9,7 +9,6 @@ import { BackButton, ChangeLanguageSettings } from '@/shared/components';
 import { baseStyles } from '@/shared/styles/design.system';
 
 export default function ChangeLanguageScreen() {
-
     const { t } = useTranslation();
     return (
         <SafeAreaView style={[baseStyles.container, styles.sChangeLanguage]}>
@@ -33,6 +32,6 @@ const styles = StyleSheet.create({
     },
     wChangeLanguage: {
         height: '80%',
-        width: '100%'
-    }
+        width: '100%',
+    },
 });

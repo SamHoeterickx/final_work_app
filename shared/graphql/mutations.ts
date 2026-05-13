@@ -35,7 +35,7 @@ export const LOGOUT_MUTATION = `
         logOut
     }
 
-`
+`;
 
 export const REQUEST_RESET_CODE_MUTATION = `
     mutation LoginUser(
@@ -96,18 +96,18 @@ export const DELETE_USER_MUTATION = `
             password: $password
         })
     }
-`
+`;
 export const UPDATE_USERNAME_MUTATION = `
     mutation updateUserName($updatedUsername: String!) {
         updateUserName(input: { 
             updatedUsername: $updatedUsername
         })
     }
-`
+`;
 export const UPDATE_EMAIL_MUTATION = `
     mutation UpdateEmail($updatedEmailAdress: String!) {
         updateEmail(input: { 
             updatedEmailAdress: $updatedEmailAdress
         })
     }
-`
+`;

@@ -131,16 +131,15 @@ class AuthService {
     }
 
     async logout() {
-        try{
+        try {
             const response = await graphFetchAuth(LOGOUT_MUTATION);
 
-            if(!response)return
+            if (!response) return;
 
             await SecureStore.deleteItemAsync('accessToken');
             await SecureStore.deleteItemAsync('refreshToken');
             useAuthStore.getState().logout();
-
-        }catch(error){
+        } catch (error) {
             throw error;
         }
     }
@@ -268,39 +267,43 @@ class AuthService {
     }
 
     async getUserData() {
-        try{
+        try {
             return await graphFetchAuth(GET_USER_DATA_QUERY);
-        }catch(error){
+        } catch (error) {
             throw error;
         }
-    } 
-    
+    }
+
     async updateUsername(credentials: IUpdateUsernameCredentials) {
-        try{
-            console.log(credentials)
-            return await graphqlFetch<any>(UPDATE_USERNAME_MUTATION, { updatedUsername: credentials.updatedUsername })
-        }catch(error){
+        try {
+            console.log(credentials);
+            return await graphqlFetch<any>(UPDATE_USERNAME_MUTATION, {
+                updatedUsername: credentials.updatedUsername,
+            });
+        } catch (error) {
             throw error;
         }
     }
 
     async updateEmail(credentials: IUpdateEmailCredentials) {
-        try{
-            return await graphqlFetch<any>(UPDATE_EMAIL_MUTATION, { updatedEmailAdress: credentials.updatedEmailAdress })
-        }catch(error){
+        try {
+            return await graphqlFetch<any>(UPDATE_EMAIL_MUTATION, {
+                updatedEmailAdress: credentials.updatedEmailAdress,
+            });
+        } catch (error) {
             throw error;
         }
     }
 
     async deleteUser(credentials: IDeleteUserCredentials) {
-        try{
-            return await graphqlFetch<any>(DELETE_USER_MUTATION, { password: credentials.password })
-        }catch(error){
+        try {
+            return await graphqlFetch<any>(DELETE_USER_MUTATION, {
+                password: credentials.password,
+            });
+        } catch (error) {
             throw error;
         }
     }
-
-
 }
 
 export const authService = new AuthService();

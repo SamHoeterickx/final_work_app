@@ -13,8 +13,11 @@ import { useChangePasswordWithResetCode } from '@/shared/hooks';
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { IChangePasswordSettingsProps, IErrorData, INewPasswordCredentials } from '@/shared/types/types';
-
+import {
+    IChangePasswordSettingsProps,
+    IErrorData,
+    INewPasswordCredentials,
+} from '@/shared/types/types';
 
 export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ resetCode, email }) => {
     const [isPending, setIsPending] = useState<boolean>(false);

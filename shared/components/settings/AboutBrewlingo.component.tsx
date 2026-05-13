@@ -8,9 +8,7 @@ export const AboutBrewlingo: FC = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={[baseStyles.p, styles.content]}>
-                {t('settings.about.content')}
-            </Text>
+            <Text style={[baseStyles.p, styles.content]}>{t('settings.about.content')}</Text>
         </View>
     );
 };

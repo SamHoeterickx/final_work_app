@@ -7,48 +7,32 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SettingsScreen() {
-
     const { t } = useTranslation();
 
-    const handleLogout = async() => {
+    const handleLogout = async () => {
         await authService.logout();
-    }
+    };
 
     const renderSettingTabs = () => {
         return SETTINGS_OPTIONS.map((setting, index) => (
-            <SettingsTab
-                key={index}
-                copy={setting.copy}
-                icon={setting.icon}
-                path={setting.path}
-            />
-        ))
-    } 
+            <SettingsTab key={index} copy={setting.copy} icon={setting.icon} path={setting.path} />
+        ));
+    };
 
     return (
         <SafeAreaView style={styles.sAccount}>
-            <ScrollView
-                style={styles.svAccount}
-                showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={styles.svAccount} showsVerticalScrollIndicator={false}>
                 <BackButton style={styles.backBtn} />
                 <View style={styles.cTitle}>
                     <Text style={baseStyles.h1}>{t('settings.title')}</Text>
                 </View>
 
-                <View style={styles.cSettingTabs}>
-                    {renderSettingTabs()}                    
-                </View>
-            
+                <View style={styles.cSettingTabs}>{renderSettingTabs()}</View>
             </ScrollView>
 
             <View style={styles.cButton}>
-                <Button 
-                    copy='settings.buttons.logout'
-                    onPress={handleLogout}
-                />
+                <Button copy="settings.buttons.logout" onPress={handleLogout} />
             </View>
-            
         </SafeAreaView>
     );
 }
@@ -58,29 +42,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background,
         paddingHorizontal: 25,
-        position: 'relative'
+        position: 'relative',
     },
     svAccount: {
         paddingTop: spacing.xxl,
-        flex: 1
+        flex: 1,
     },
     cTitle: {
         alignItems: 'center',
         marginBottom: spacing.xxl,
     },
     backBtn: {
-        top: spacing.md
+        top: spacing.md,
     },
     cSettingTabs: {
-        gap: 16
-    },
-    wSettingTab: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 32,
-        paddingBottom: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: colors.border,
+        gap: 16,
     },
     cButton: {
         alignItems: 'center',
@@ -89,4 +65,4 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
     },
-})
+});

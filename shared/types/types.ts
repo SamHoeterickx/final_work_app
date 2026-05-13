@@ -1,7 +1,13 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
-import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind, ESettingsOptions } from './enums';
+import {
+    ELocales,
+    EProgressStatus,
+    ESvgIconName,
+    EOnboardingQuestionKind,
+    ESettingsOptions,
+} from './enums';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -37,14 +43,14 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
-export interface IUpdateUsernameCredentials{
+export interface IUpdateUsernameCredentials {
     updatedUsername: string;
 }
 
-export interface IUpdateEmailCredentials{
+export interface IUpdateEmailCredentials {
     updatedEmailAdress: string;
 }
-export interface IDeleteUserCredentials{
+export interface IDeleteUserCredentials {
     password: string;
 }
 
@@ -260,7 +266,7 @@ export interface ISettingTabProps {
 }
 
 export interface ISettingsOptionsWrapperProps {
-    option: ESettingsOptions
+    option: ESettingsOptions;
 }
 
 export interface IChangePasswordSettingsProps {

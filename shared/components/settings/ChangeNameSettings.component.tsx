@@ -35,8 +35,8 @@ export const ChangeNameSettings: FC = () => {
     const handleChangeName = () => {
         if (formData.updatedUsername === '') return;
         mutate(formData, {
-            onSuccess: () => router.back()
-        })
+            onSuccess: () => router.back(),
+        });
     };
 
     return (

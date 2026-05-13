@@ -1,60 +1,59 @@
-import { SvgIcon } from '@/shared/components';
+import { LoadingScreen, SvgIcon } from '@/shared/components';
 import { useGetUserdata } from '@/shared/hooks';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
-import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
+import { ESvgIconName } from '@/shared/types/enums';
 
 import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const badges = [
-    {
-        status: EProgressStatus.COMPLETED
-    },
-    {
-        status: EProgressStatus.COMPLETED
-    },
-    {
-        status: EProgressStatus.COMPLETED
-    },
-    {
-        status: EProgressStatus.INPROGRESS
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    {
-        status: EProgressStatus.LOCKED
-    },
-    
-]
+// const badges = [
+//     {
+//         status: EProgressStatus.COMPLETED,
+//     },
+//     {
+//         status: EProgressStatus.COMPLETED,
+//     },
+//     {
+//         status: EProgressStatus.COMPLETED,
+//     },
+//     {
+//         status: EProgressStatus.INPROGRESS,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+//     {
+//         status: EProgressStatus.LOCKED,
+//     },
+// ];
 
 export default function AccountScreen() {
     const router = useRouter();
@@ -62,28 +61,29 @@ export default function AccountScreen() {
     const { data, isPending, isError, error } = useGetUserdata();
 
     const handleOpenSettings = () => {
-        router.push('/(app)/(account)/settings')
-    }
+        router.push('/(app)/(account)/settings');
+    };
 
     return (
         <SafeAreaView style={styles.sAccount}>
-            <ScrollView
-                style={styles.svAccount}
-                showsVerticalScrollIndicator={false}
-            >
+            {isPending && <LoadingScreen />}
+            <ScrollView style={styles.svAccount} showsVerticalScrollIndicator={false}>
                 <View style={styles.cHeader}>
-                    <TouchableOpacity
-                        style={styles.cSettings}
-                        onPress={handleOpenSettings}
-                    >
+                    <TouchableOpacity style={styles.cSettings} onPress={handleOpenSettings}>
                         <SvgIcon name={ESvgIconName.SETTINGS} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.cTitle}>
-                    <Text style={baseStyles.h1}>{data?.name}</Text>
-                    <Text style={[baseStyles.h4, styles.userLevel]}>{data?.level}</Text>
+                    {isError ? (
+                        <Text style={baseStyles.errorText}>{error?.message}</Text>
+                    ) : (
+                        <>
+                            <Text style={baseStyles.h1}>{data?.name}</Text>
+                            <Text style={[baseStyles.h4, styles.userLevel]}>{data?.level}</Text>
+                        </>
+                    )}
                 </View>
-                
+
                 {/* <View style={styles.cStats}>
                     <View style={styles.wStats}>
                         <SvgIcon name={ESvgIconName.BEAN_1} style={styles.statsIcon} />
@@ -134,8 +134,6 @@ export default function AccountScreen() {
                 </View> */}
             </ScrollView>
 
-
-
             {/* 
                 <View style={styles.wStats}>
                     <SvgIcon name={ESvgIconName.BEAN_1} style={styles.statsIcon} />
@@ -162,7 +160,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         marginBottom: spacing.lg,
         paddingHorizontal: 25,
-    },  
+    },
     cSettings: {
         width: 48,
         aspectRatio: 1 / 1,
@@ -178,51 +176,4 @@ const styles = StyleSheet.create({
     userLevel: {
         fontSize: 26,
     },
-    cStats: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        marginBottom: spacing.xxl,
-        paddingHorizontal: 25,
-    },
-    wStats: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: 24,
-        paddingHorizontal: 32,
-        paddingVertical: 12,
-        backgroundColor: colors.text.secondary,
-        borderRadius: borderRadius.lg
-    },
-    statsIcon: {
-        width: 48,
-        aspectRatio: 1 / 1
-    },
-    wStatsText: {
-        alignItems: 'center'
-    },
-    cStreaks: {
-        paddingHorizontal: 25,
-        backgroundColor: colors.text.secondary,
-        paddingTop: spacing.xxl,
-        marginBottom: spacing.xxl,
-        borderRadius: borderRadius.lg
-    },
-    cBadge: {
-        paddingHorizontal: 25,
-    },
-    svBadges: {
-        gap: 32
-    },
-    subtitle: {
-        textAlign: 'center',
-        marginBottom: spacing.lg,
-    },
-    label: {
-        fontSize: 14
-    },
-    badge: {
-        width: 124,
-        aspectRatio: 1 / 1
-    }
-})
+});

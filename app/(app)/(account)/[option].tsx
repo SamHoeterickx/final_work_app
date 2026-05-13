@@ -1,14 +1,12 @@
-import { BackButton, SettingsOptionsWrapper } from "@/shared/components";
-import { baseStyles, colors, spacing } from "@/shared/styles/design.system";
-import { ESettingsOptions } from "@/shared/types/enums";
-import { useLocalSearchParams } from "expo-router";
-import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
+import { BackButton, SettingsOptionsWrapper } from '@/shared/components';
+import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
+import { ESettingsOptions } from '@/shared/types/enums';
+import { useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ProfileSettingsScreen() {
-
     const { option } = useLocalSearchParams();
     const { t } = useTranslation();
 
@@ -21,14 +19,15 @@ export default function ProfileSettingsScreen() {
             >
                 <BackButton style={styles.backBtn} />
                 <View style={styles.cTitle}>
-                    <Text style={[baseStyles.h1, styles.title]}>{t(`settings.${option}.title`)}</Text>
+                    <Text style={[baseStyles.h1, styles.title]}>
+                        {t(`settings.${option}.title`)}
+                    </Text>
                 </View>
-                
-                <SettingsOptionsWrapper option={option as ESettingsOptions} />
 
+                <SettingsOptionsWrapper option={option as ESettingsOptions} />
             </ScrollView>
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -36,11 +35,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.background,
         paddingHorizontal: 25,
-        position: 'relative'
+        position: 'relative',
     },
     svProfileSettings: {
         paddingTop: spacing.xxl,
-        flex: 1
+        flex: 1,
     },
     svContentContainer: {
         flexGrow: 1,
@@ -56,13 +55,6 @@ const styles = StyleSheet.create({
         marginTop: spacing.sm,
     },
     backBtn: {
-        top: spacing.md
+        top: spacing.md,
     },
-    cButton: {
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 10,
-        left: 0,
-        right: 0,
-    },
-})
+});
