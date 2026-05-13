@@ -227,7 +227,8 @@
                 "changeName": "Change Name"
             },
             "buttons": {
-                "delete": "Delete account"
+                "delete": "Delete account",
+                "cancel": "Cancel"
             }
         },
         "changeLanguage": {

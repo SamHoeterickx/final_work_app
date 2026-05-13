@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, InputField } from '@/shared/components';
 
 // HOOKS
-import { useUpdateUsername } from '@/shared/hooks/settings/useUpdateUsername.hook';
+import { useUpdateUsername } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';

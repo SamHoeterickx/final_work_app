@@ -267,3 +267,8 @@ export interface IChangePasswordSettingsProps {
     resetCode?: string;
     email?: string;
 }
+
+export interface IDeleteUserModalProps {
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
+}

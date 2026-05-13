@@ -13,7 +13,6 @@ export const useGetUserdata = () => {
             const response = await authService.getUserData();
 
             const responseData = response?.data as any;
-            console.log(responseData.data.getUserData);
             return responseData.data.getUserData
         }
     })

@@ -1,9 +1,9 @@
-// AUTH
-export { useLogin } from './auth/useLogin.hook';
-export { useRegister } from './auth/useRegister.hook';
-
-// CHAPTERS
-export { useGetChapters } from './chapter/useGetChapters.hook';
-
-// GESTURES
-export { useSwipe } from './gestures/useSwipe.hook';
+export * from './auth/useGetUserData.hook';
+export * from './auth/useLogin.hook';
+export * from './auth/useRegister.hook';
+export * from './gestures/useSwipe.hook';
+export * from './passwordReset/useChangePasswordWithResetCode.hook';
+export * from './settings/useDeleteUser.hook';
+export * from './settings/useUpdateEmail.hook';
+export * from './settings/useUpdateUsername.hook';
+export * from './chapter/useGetChapters.hook';

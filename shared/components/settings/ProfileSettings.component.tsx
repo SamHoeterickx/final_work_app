@@ -1,20 +1,18 @@
+import { useState } from "react"
 import { StyleSheet, View } from "react-native"
 
 // COMPONENTS
-import { SettingsTab } from "./SettingsTab.component"
 import { Button } from "../buttons/Button.component"
-
-// HOOKS
-import { useDeleteUser } from "@/shared/hooks/settings/useDeleteUser.hook"
+import { SettingsTab } from "./SettingsTab.component"
 
 // CONST
 import { PROFILE_SETTINGS_OPTIONS } from "@/shared/const/settings.const"
+import { DeleteUserModal } from "../modal/DeleteAccountModal.component"
 
 
 export const ProfileSettings = () => {
-
-    // const { mutate, isPending, isError, error} = useDeleteUser();
-
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    
     const renderProfileSettingTabs = () => {
         return PROFILE_SETTINGS_OPTIONS.map((setting, index) => (
             <SettingsTab
@@ -25,9 +23,6 @@ export const ProfileSettings = () => {
         ));
     }
 
-    const handleDeleteAccount = () => {
-
-    }
 
     return (
         <>
@@ -35,11 +30,16 @@ export const ProfileSettings = () => {
                 {renderProfileSettingTabs()}                    
             </View>
 
+            <DeleteUserModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+            />
 
             <View style={styles.cButton}>
                 <Button 
                     copy='settings.profile.buttons.delete'
-                    onPress={handleDeleteAccount}
+                    onPress={() => setIsModalOpen(true)}
+                    disabled={isModalOpen}
                 />
             </View>
         </>

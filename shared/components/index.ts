@@ -24,6 +24,8 @@ export { ChapterUnlocked } from './chapters/ChapterUnlocked.component';
 // SVG ICON
 export { SvgIcon } from './svgIcon/SvgIcon.component';
 
+// MODALS
+export { DeleteUserModal } from './modal/DeleteAccountModal.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';

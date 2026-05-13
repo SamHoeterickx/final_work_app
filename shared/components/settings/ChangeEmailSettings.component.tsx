@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, InputField } from '@/shared/components';
 
 // HOOKS
-import { useUpdateEmail } from '@/shared/hooks/settings/useUpdateEmail.hook';
+import { useUpdateEmail } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';

@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, InputField } from '@/shared/components';
 
 // HOOKS
-import { useChangePasswordWithResetCode } from '@/shared/hooks/passwordReset/useChangePasswordWithResetCode.hook';
+import { useChangePasswordWithResetCode } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';

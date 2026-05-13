@@ -1,5 +1,5 @@
 import { SvgIcon } from '@/shared/components';
-import { useGetUserdata } from '@/shared/hooks/auth/useGetUserData.hook';
+import { useGetUserdata } from '@/shared/hooks';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 
