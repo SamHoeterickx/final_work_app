@@ -30,6 +30,13 @@ export const REGISTER_USER_MUTATION = `
     }
 `;
 
+export const LOGOUT_MUTATION = `
+    mutation LogOut {
+        logOut
+    }
+
+`
+
 export const REQUEST_RESET_CODE_MUTATION = `
     mutation LoginUser(
         $email: String!

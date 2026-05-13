@@ -1,5 +1,6 @@
 import { BackButton, Button, SettingsTab } from '@/shared/components';
 import { SETTINGS_OPTIONS } from '@/shared/const/settings.const';
+import { authService } from '@/shared/services/auth.service';
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -9,8 +10,8 @@ export default function SettingsScreen() {
 
     const { t } = useTranslation();
 
-    const handleLogout = () => {
-
+    const handleLogout = async() => {
+        await authService.logout();
     }
 
     const renderSettingTabs = () => {

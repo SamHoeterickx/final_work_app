@@ -19,6 +19,7 @@ import { useAuthStore } from '@/shared/context/authStore.context';
 // MUTATIONS
 import {
     LOGIN_USER_MUTATION,
+    LOGOUT_MUTATION,
     REGISTER_USER_MUTATION,
     REQUEST_RESET_CODE_MUTATION,
     RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
@@ -118,6 +119,21 @@ class AuthService {
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
             useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, true);
         } catch (error) {
+            throw error;
+        }
+    }
+
+    async logout() {
+        try{
+            const response = await graphFetchAuth(LOGOUT_MUTATION);
+
+            if(!response)return
+
+            await SecureStore.deleteItemAsync('accessToken');
+            await SecureStore.deleteItemAsync('refreshToken');
+            useAuthStore.getState().logout();
+
+        }catch(error){
             throw error;
         }
     }
