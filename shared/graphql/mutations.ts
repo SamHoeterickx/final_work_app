@@ -111,3 +111,22 @@ export const UPDATE_EMAIL_MUTATION = `
         })
     }
 `;
+
+export const UPDATE_PASSWORD_MUTATION = `
+    mutation ResetPassword(
+        $oldPassword: String!,
+        $newPassword: String!,
+        $repeatNewPassword: String!,
+
+    ) {
+        resetPassword(
+            input: { 
+                newPassword: $newPassword, 
+                repeatNewPassword: $repeatNewPassword, 
+                oldPassword: $oldPassword }
+        ) {
+            accessToken
+            refreshToken
+        }
+    }
+`

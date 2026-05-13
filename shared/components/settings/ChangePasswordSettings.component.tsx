@@ -1,4 +1,4 @@
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, InputField } from '@/shared/components';
 
 // HOOKS
-import { useChangePasswordWithResetCode } from '@/shared/hooks';
+import { useChangePassword, useChangePasswordWithResetCode } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
@@ -33,6 +33,8 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
 
     const { t } = useTranslation();
 
+    const router = useRouter();
+
     const {
         mutate: mutateRC,
         isError: isErrorRC,
@@ -40,13 +42,25 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
         isPending: isPendingRC,
     } = useChangePasswordWithResetCode();
 
+    const {
+        mutate: mutatePC,
+        isError: isErrorPC,
+        error: errorPC,
+        isPending: isPendingPC,
+    } = useChangePassword();
+
     useEffect(() => {
         if (isErrorRC) {
             setErrorData({
                 error: errorRC?.message,
                 isError: true,
             });
-        } else {
+        } else if(isErrorPC) {
+            setErrorData({
+                error: errorPC?.message,
+                isError: true,
+            });
+        } else  {
             setErrorData({
                 error: '',
                 isError: false,
@@ -55,9 +69,14 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
     }, [isErrorRC, errorRC]);
 
     useEffect(() => {
-        // TODO: also handle pending state for authenticated password change
-        setIsPending(isPendingRC);
-    }, [isPendingRC]);
+        if(isPendingRC){
+            setIsPending(isPendingRC);
+        }else if (isPendingPC){
+            setIsPending(isPendingPC);
+        }else {
+            setIsPending(false);
+        }
+    }, [isPendingRC, isPendingPC]);
 
     const handleFormInput = (name: string, value: string) => {
         setFormData((prev) => ({
@@ -78,9 +97,15 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
             });
         } else {
             if (formData.oldPassword === null) return;
-            // TODO: Implement authenticated password change logic
-            // e.g., using a mutation from a new hook useChangePassword
-            console.warn('Authenticated password change not implemented.');
+            mutatePC({
+                oldPassword: formData.oldPassword,
+                newPassword: formData.newPassword,
+                repeatNewPassword: formData.repeatNewPassword,
+            },{
+                onSuccess: () => {
+                    router.back();
+                }
+            })
         }
     };
 
@@ -93,87 +118,91 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
         );
     };
 
+    const renderResetPasswordWithRC = () => (
+        <>
+            <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                    {t('resetPassword.fieldLabels.newPassword')}
+                </Text>
+                <InputField
+                    onChangeText={handleFormInput}
+                    name="newPassword"
+                    placeholder={t('resetPassword.fieldLabels.newPassword')}
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    secureTextEntry={true}
+                />
+            </View>
+            <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                    {t('resetPassword.fieldLabels.repeatNewPassword')}
+                </Text>
+                <InputField
+                    onChangeText={handleFormInput}
+                    name="repeatNewPassword"
+                    placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    secureTextEntry={true}
+                />
+            </View>
+        </>
+    )
+
+    const renderResetPassword = () => (
+        <>
+            <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                    {t('resetPassword.fieldLabels.oldPassword')}
+                </Text>
+                <InputField
+                    onChangeText={handleFormInput}
+                    name="oldPassword"
+                    placeholder={t('resetPassword.fieldLabels.oldPassword')}
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    secureTextEntry={true}
+                />
+            </View>
+            <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                    {t('resetPassword.fieldLabels.newPassword')}
+                </Text>
+                <InputField
+                    onChangeText={handleFormInput}
+                    name="newPassword"
+                    placeholder={t('resetPassword.fieldLabels.newPassword')}
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    secureTextEntry={true}
+                />
+            </View>
+            <View style={styles.wInputField}>
+                <Text style={[baseStyles.h4, styles.inputLabel]}>
+                    {t('resetPassword.fieldLabels.repeatNewPassword')}
+                </Text>
+                <InputField
+                    onChangeText={handleFormInput}
+                    name="repeatNewPassword"
+                    placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    secureTextEntry={true}
+                />
+            </View>
+            <Link
+                href={'/(auth)/(forgotPassword)/requestResetCode'}
+                style={[baseStyles.p, styles.link]}
+            >
+                {t('resetPassword.buttons.forgotPassword')}
+            </Link>
+        </>
+    )
+
     return (
         <View style={styles.container}>
             <View>
-                {resetCode ? (
-                    <>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>
-                                {t('resetPassword.fieldLabels.newPassword')}
-                            </Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name="newPassword"
-                                placeholder={t('resetPassword.fieldLabels.newPassword')}
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>
-                                {t('resetPassword.fieldLabels.repeatNewPassword')}
-                            </Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name="repeatNewPassword"
-                                placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                    </>
-                ) : (
-                    <>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>
-                                {t('resetPassword.fieldLabels.oldPassword')}
-                            </Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name="oldPassword"
-                                placeholder={t('resetPassword.fieldLabels.oldPassword')}
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>
-                                {t('resetPassword.fieldLabels.newPassword')}
-                            </Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name="newPassword"
-                                placeholder={t('resetPassword.fieldLabels.newPassword')}
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                        <View style={styles.wInputField}>
-                            <Text style={[baseStyles.h4, styles.inputLabel]}>
-                                {t('resetPassword.fieldLabels.repeatNewPassword')}
-                            </Text>
-                            <InputField
-                                onChangeText={handleFormInput}
-                                name="repeatNewPassword"
-                                placeholder={t('resetPassword.fieldLabels.repeatNewPassword')}
-                                autoCapitalize="none"
-                                spellCheck={false}
-                                secureTextEntry={true}
-                            />
-                        </View>
-                        <Link
-                            href={'/(auth)/(forgotPassword)/requestResetCode'}
-                            style={[baseStyles.p, styles.link]}
-                        >
-                            {t('resetPassword.buttons.forgotPassword')}
-                        </Link>
-                    </>
-                )}
+                {resetCode ? renderResetPasswordWithRC() : renderResetPassword()}
                 {renderError()}
             </View>
 

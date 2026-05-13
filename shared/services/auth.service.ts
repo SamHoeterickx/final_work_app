@@ -8,6 +8,7 @@ import {
     IChangePasswordWithResetCodeCredentials,
     IDeleteUserCredentials,
     ILoginCredentials,
+    INewPasswordCredentials,
     IOnboardingAnswers,
     IRegisterCredentials,
     IRequestResetCodeCredentials,
@@ -28,6 +29,7 @@ import {
     REQUEST_RESET_CODE_MUTATION,
     RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
     UPDATE_EMAIL_MUTATION,
+    UPDATE_PASSWORD_MUTATION,
     UPDATE_USERNAME_MUTATION,
     VERIFY_RESET_CODE_MUTATION,
 } from '@/shared/graphql/mutations';
@@ -214,6 +216,18 @@ class AuthService {
                 throw new Error('Unknown error occured while verifying reset code');
             }
         } catch (error) {
+            throw error;
+        }
+    }
+
+    async changePassword(credentials: INewPasswordCredentials) {
+        try{
+            return await graphqlFetch(UPDATE_PASSWORD_MUTATION, {
+                oldPassword: credentials.oldPassword,
+                newPassword: credentials.newPassword,
+                repeatNewPassword: credentials.repeatNewPassword,
+            })
+        }catch(error){
             throw error;
         }
     }
