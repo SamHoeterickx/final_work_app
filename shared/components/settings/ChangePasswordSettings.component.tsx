@@ -1,4 +1,5 @@
-import { Link, useRouter } from 'expo-router';
+// import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -55,12 +56,12 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
                 error: errorRC?.message,
                 isError: true,
             });
-        } else if(isErrorPC) {
+        } else if (isErrorPC) {
             setErrorData({
                 error: errorPC?.message,
                 isError: true,
             });
-        } else  {
+        } else {
             setErrorData({
                 error: '',
                 isError: false,
@@ -69,11 +70,11 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
     }, [isErrorRC, errorRC]);
 
     useEffect(() => {
-        if(isPendingRC){
+        if (isPendingRC) {
             setIsPending(isPendingRC);
-        }else if (isPendingPC){
+        } else if (isPendingPC) {
             setIsPending(isPendingPC);
-        }else {
+        } else {
             setIsPending(false);
         }
     }, [isPendingRC, isPendingPC]);
@@ -97,15 +98,18 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
             });
         } else {
             if (formData.oldPassword === null) return;
-            mutatePC({
-                oldPassword: formData.oldPassword,
-                newPassword: formData.newPassword,
-                repeatNewPassword: formData.repeatNewPassword,
-            },{
-                onSuccess: () => {
-                    router.back();
-                }
-            })
+            mutatePC(
+                {
+                    oldPassword: formData.oldPassword,
+                    newPassword: formData.newPassword,
+                    repeatNewPassword: formData.repeatNewPassword,
+                },
+                {
+                    onSuccess: () => {
+                        router.back();
+                    },
+                },
+            );
         }
     };
 
@@ -147,7 +151,7 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
                 />
             </View>
         </>
-    )
+    );
 
     const renderResetPassword = () => (
         <>
@@ -190,14 +194,14 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
                     secureTextEntry={true}
                 />
             </View>
-            <Link
+            {/* <Link
                 href={'/(auth)/(forgotPassword)/requestResetCode'}
                 style={[baseStyles.p, styles.link]}
             >
                 {t('resetPassword.buttons.forgotPassword')}
-            </Link>
+            </Link> */}
         </>
-    )
+    );
 
     return (
         <View style={styles.container}>
@@ -228,12 +232,12 @@ const styles = StyleSheet.create({
     inputLabel: {
         marginBottom: spacing.sm,
     },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline',
-        textAlign: 'center',
-    },
+    // link: {
+    //     fontSize: 12,
+    //     color: 'blue',
+    //     textDecorationLine: 'underline',
+    //     textAlign: 'center',
+    // },
     cButton: {
         alignItems: 'center',
         marginTop: spacing.xxl,

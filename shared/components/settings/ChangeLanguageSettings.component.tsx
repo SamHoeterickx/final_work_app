@@ -1,14 +1,20 @@
-import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
-import { ELocales } from '@/shared/types/enums';
 import WheelPicker from '@quidone/react-native-wheel-picker';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
+
+// COMPONENTS
 import { Button } from '../buttons/Button.component';
+
+// CONTEXT
+import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
 
 // CONST
 import { languageData } from '@/shared/const/changeLanguage.const';
+
+// TYPES
+import { ELocales } from '@/shared/types/enums';
 
 export const ChangeLanguageSettings = () => {
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales | null>(null);

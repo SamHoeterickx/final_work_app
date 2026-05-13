@@ -3,7 +3,7 @@ import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { LoadingScreen, Chapter } from '@/shared/components';
+import { BackButton, Chapter, LoadingScreen } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -113,6 +113,13 @@ export default function HomeScreen() {
                     />
                 )}
             </ScrollView>
+            {isFocused && (
+                <BackButton
+                    isFocused={isFocused}
+                    setIsFocused={setIsFocused}
+                    style={{ zIndex: 10, elevation: 10 }}
+                />
+            )}
         </SafeAreaView>
     );
 }
@@ -121,6 +128,7 @@ const styles = StyleSheet.create({
     sHome: {
         backgroundColor: colors.background,
         flex: 1,
+        position: 'relative',
     },
     wChapter: {
         width: width,

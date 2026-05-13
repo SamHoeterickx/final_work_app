@@ -92,7 +92,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                 chapterUser={chapterUser}
                 isFocused={isFocused}
                 selectedLesson={selectedLesson}
-                setIsFocused={setIsFocused}
             />
 
             <Animated.View

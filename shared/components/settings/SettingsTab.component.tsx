@@ -1,10 +1,16 @@
-import { baseStyles, colors } from '@/shared/styles/design.system';
-import { ISettingTabProps } from '@/shared/types/types';
 import { useRouter } from 'expo-router';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+
+// COMPONENTS
 import { SvgIcon } from '../svgIcon/SvgIcon.component';
+
+// STYLES
+import { baseStyles, colors } from '@/shared/styles/design.system';
+
+// TYPES
+import { ISettingTabProps } from '@/shared/types/types';
 
 export const SettingsTab: FC<ISettingTabProps> = ({ icon, copy, path }) => {
     const router = useRouter();

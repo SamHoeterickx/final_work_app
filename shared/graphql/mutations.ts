@@ -129,4 +129,4 @@ export const UPDATE_PASSWORD_MUTATION = `
             refreshToken
         }
     }
-`
+`;

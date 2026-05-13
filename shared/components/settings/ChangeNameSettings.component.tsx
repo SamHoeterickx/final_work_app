@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -13,7 +14,6 @@ import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { IUpdateUsernameCredentials } from '@/shared/types/types';
-import { useRouter } from 'expo-router';
 
 export const ChangeNameSettings: FC = () => {
     const [formData, setFormData] = useState<IUpdateUsernameCredentials>({

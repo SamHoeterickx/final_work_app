@@ -1,5 +1,7 @@
-import { baseStyles } from '@/shared/styles/design.system';
 import { StyleSheet, Text, View } from 'react-native';
+
+// STYLES
+import { baseStyles } from '@/shared/styles/design.system';
 
 export const NotificationSettings = () => {
     return (

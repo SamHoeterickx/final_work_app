@@ -230,7 +230,6 @@ export interface IChapterHeaderProps {
     chapterUser: IChapterUser;
     isFocused: boolean;
     selectedLesson: ILessonsChapter | null;
-    setIsFocused: (state: boolean) => void;
 }
 
 export interface IChapterSceneProps {

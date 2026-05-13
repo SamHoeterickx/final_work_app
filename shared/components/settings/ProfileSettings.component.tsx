@@ -3,11 +3,11 @@ import { StyleSheet, View } from 'react-native';
 
 // COMPONENTS
 import { Button } from '../buttons/Button.component';
+import { DeleteUserModal } from '../modal/DeleteAccountModal.component';
 import { SettingsTab } from './SettingsTab.component';
 
 // CONST
 import { PROFILE_SETTINGS_OPTIONS } from '@/shared/const/settings.const';
-import { DeleteUserModal } from '../modal/DeleteAccountModal.component';
 
 export const ProfileSettings = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

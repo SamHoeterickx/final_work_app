@@ -221,13 +221,13 @@ class AuthService {
     }
 
     async changePassword(credentials: INewPasswordCredentials) {
-        try{
+        try {
             return await graphqlFetch(UPDATE_PASSWORD_MUTATION, {
                 oldPassword: credentials.oldPassword,
                 newPassword: credentials.newPassword,
                 repeatNewPassword: credentials.repeatNewPassword,
-            })
-        }catch(error){
+            });
+        } catch (error) {
             throw error;
         }
     }
