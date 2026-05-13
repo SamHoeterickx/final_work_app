@@ -2,13 +2,18 @@ import { StyleSheet, View } from "react-native"
 
 // COMPONENTS
 import { SettingsTab } from "./SettingsTab.component"
-import { PROFILE_SETTINGS_OPTIONS } from "@/shared/const/settings.const"
 import { Button } from "../buttons/Button.component"
 
+// HOOKS
+import { useDeleteUser } from "@/shared/hooks/settings/useDeleteUser.hook"
+
 // CONST
+import { PROFILE_SETTINGS_OPTIONS } from "@/shared/const/settings.const"
 
 
 export const ProfileSettings = () => {
+
+    // const { mutate, isPending, isError, error} = useDeleteUser();
 
     const renderProfileSettingTabs = () => {
         return PROFILE_SETTINGS_OPTIONS.map((setting, index) => (

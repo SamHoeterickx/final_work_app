@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -5,14 +6,22 @@ import { StyleSheet, Text, View } from 'react-native';
 // COMPONENTS
 import { Button, InputField } from '@/shared/components';
 
+// HOOKS
+import { useUpdateEmail } from '@/shared/hooks/settings/useUpdateEmail.hook';
+
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
+// TYPES
+import { IUpdateEmailCredentials } from '@/shared/types/types';
+
 export const ChangeEmailSettings: FC = () => {
-    const [formData, setFormData] = useState({
-        email: '',
+    const [formData, setFormData] = useState<IUpdateEmailCredentials>({
+        updatedEmailAdress: '',
     });
 
+    const { mutate, isPending, isError, error } = useUpdateEmail();
+    const router = useRouter();
     const { t } = useTranslation();
 
     const handleFormInput = (name: string, value: string) => {
@@ -23,9 +32,10 @@ export const ChangeEmailSettings: FC = () => {
     };
 
     const handleChangeEmail = () => {
-        if (formData.email === '') return;
-        // TODO: Implement authenticated change email logic
-        console.warn('Change email not implemented.');
+        if (formData.updatedEmailAdress === '') return;
+        mutate(formData, {
+            onSuccess: () => router.back()
+        });
     };
 
     return (
@@ -37,7 +47,7 @@ export const ChangeEmailSettings: FC = () => {
                     </Text>
                     <InputField
                         onChangeText={handleFormInput}
-                        name="email"
+                        name="updatedEmailAdress"
                         placeholder={t('register.fieldLabels.email')}
                         autoCapitalize="none"
                         spellCheck={false}
@@ -46,11 +56,13 @@ export const ChangeEmailSettings: FC = () => {
                 </View>
             </View>
 
+            {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
+
             <View style={styles.cButton}>
                 <Button
                     copy="changeLanguage.buttons.update"
                     onPress={handleChangeEmail}
-                    // disabled={isPending}
+                    disabled={isPending}
                 />
             </View>
         </View>

@@ -5,14 +5,24 @@ import { StyleSheet, Text, View } from 'react-native';
 // COMPONENTS
 import { Button, InputField } from '@/shared/components';
 
+// HOOKS
+import { useUpdateUsername } from '@/shared/hooks/settings/useUpdateUsername.hook';
+
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
+// TYPES
+import { IUpdateUsernameCredentials } from '@/shared/types/types';
+import { useRouter } from 'expo-router';
+
 export const ChangeNameSettings: FC = () => {
-    const [formData, setFormData] = useState({
-        name: '',
+    const [formData, setFormData] = useState<IUpdateUsernameCredentials>({
+        updatedUsername: '',
     });
 
+    const { mutate, isPending, isError, error } = useUpdateUsername();
+
+    const router = useRouter();
     const { t } = useTranslation();
 
     const handleFormInput = (name: string, value: string) => {
@@ -23,9 +33,10 @@ export const ChangeNameSettings: FC = () => {
     };
 
     const handleChangeName = () => {
-        if (formData.name === '') return;
-        // TODO: Implement authenticated change name logic
-        console.warn('Change name not implemented.');
+        if (formData.updatedUsername === '') return;
+        mutate(formData, {
+            onSuccess: () => router.back()
+        })
     };
 
     return (
@@ -37,18 +48,20 @@ export const ChangeNameSettings: FC = () => {
                     </Text>
                     <InputField
                         onChangeText={handleFormInput}
-                        name="name"
+                        name="updatedUsername"
                         placeholder={t('register.fieldLabels.name')}
                         spellCheck={false}
                     />
                 </View>
             </View>
 
+            {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
+
             <View style={styles.cButton}>
                 <Button
                     copy="changeLanguage.buttons.update"
                     onPress={handleChangeName}
-                    // disabled={isPending}
+                    disabled={isPending}
                 />
             </View>
         </View>

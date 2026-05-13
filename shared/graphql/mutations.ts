@@ -84,8 +84,30 @@ export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
 	}
 `;
 
-export const GENERATE_CUSTOM_ROADMAP = `
+export const GENERATE_CUSTOM_ROADMAP_MUTATION = `
     mutation GenerateCustomRoadmap {
         generateCustomRoadmap
     }
 `;
+
+export const DELETE_USER_MUTATION = `
+    mutation DeleteUser($password: String!) {
+        deleteUser(input: { 
+            password: $password
+        })
+    }
+`
+export const UPDATE_USERNAME_MUTATION = `
+    mutation updateUserName($updatedUsername: String!) {
+        updateUserName(input: { 
+            updatedUsername: $updatedUsername
+        })
+    }
+`
+export const UPDATE_EMAIL_MUTATION = `
+    mutation UpdateEmail($updatedEmailAdress: String!) {
+        updateEmail(input: { 
+            updatedEmailAdress: $updatedEmailAdress
+        })
+    }
+`

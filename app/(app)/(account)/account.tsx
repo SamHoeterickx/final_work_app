@@ -1,9 +1,10 @@
 import { SvgIcon } from '@/shared/components';
+import { useGetUserdata } from '@/shared/hooks/auth/useGetUserData.hook';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 
 import { useRouter } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const badges = [
@@ -58,6 +59,8 @@ const badges = [
 export default function AccountScreen() {
     const router = useRouter();
 
+    const { data, isPending, isError, error } = useGetUserdata();
+
     const handleOpenSettings = () => {
         router.push('/(app)/(account)/settings')
     }
@@ -77,8 +80,8 @@ export default function AccountScreen() {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.cTitle}>
-                    <Text style={baseStyles.h1}>Mike Derycke</Text>
-                    <Text style={[baseStyles.h4, styles.userLevel]}>BEGINNER</Text>
+                    <Text style={baseStyles.h1}>{data?.name}</Text>
+                    <Text style={[baseStyles.h4, styles.userLevel]}>{data?.level}</Text>
                 </View>
                 
                 {/* <View style={styles.cStats}>
@@ -96,7 +99,7 @@ export default function AccountScreen() {
                     </View>
                 </View> */}
 
-                <View style={styles.cStreaks}>
+                {/* <View style={styles.cStreaks}>
                     <Text style={[baseStyles.h2, styles.subtitle]}>Your Streaks</Text>
                     <View style={styles.cStats}>
                         <View style={styles.wStatsText}>
@@ -128,7 +131,7 @@ export default function AccountScreen() {
                             ))
                         }
                     </ScrollView>
-                </View>
+                </View> */}
             </ScrollView>
 
 

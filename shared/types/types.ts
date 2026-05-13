@@ -37,6 +37,16 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
+export interface IUpdateUsernameCredentials{
+    updatedUsername: string;
+}
+
+export interface IUpdateEmailCredentials{
+    updatedEmailAdress: string;
+}
+export interface IDeleteUserCredentials{
+    password: string;
+}
 
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
