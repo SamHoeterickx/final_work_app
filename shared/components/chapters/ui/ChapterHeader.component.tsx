@@ -26,13 +26,13 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
     };
 
     const renderTitle = () => {
-        if (!isFocused) {
+        if (!selectedLesson) {
             return (
                 <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
             );
         }
 
-        if (isFocused) {
+        if (isFocused && selectedLesson) {
             return <Text style={[baseStyles.h3, styles.lessonTitle]}>{selectedLesson?.name}</Text>;
         }
     };
