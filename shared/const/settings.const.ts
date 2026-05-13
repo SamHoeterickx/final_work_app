@@ -33,3 +33,18 @@ export const SETTINGS_OPTIONS: ISettingTabProps[] = [
         path: 'termsOfCondition',
     },
 ];
+
+export const PROFILE_SETTINGS_OPTIONS: ISettingTabProps[] = [
+    {
+        copy: 'settings.profile.tabs.changePassword',
+        path: 'changePassword',
+    },
+    {
+        copy: 'settings.profile.tabs.changeEmail',
+        path: 'changeEmail'
+    },
+    {
+        copy: 'settings.profile.tabs.changeName',
+        path: 'changeName'
+    }
+]

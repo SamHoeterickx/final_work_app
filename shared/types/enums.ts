@@ -62,5 +62,8 @@ export enum ESettingsOptions {
     NOTIFICATIONS = 'notifications',
     ABOUT = 'about',
     PRIVACY_POLICY = 'privacyPolicy',
-    TERMS_OF_CONDITION = 'termsOfCondition'
+    TERMS_OF_CONDITION = 'termsOfCondition',
+    CHANGE_PASSWORD = 'changePassword',
+    CHANGE_EMAIL = 'changeEmail',
+    CHANGE_NAME = 'changeName',
 }

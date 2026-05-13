@@ -245,10 +245,15 @@ export interface ILessonStatusProps {
 
 export interface ISettingTabProps {
     copy: string;
-    icon: ESvgIconName;
+    icon?: ESvgIconName;
     path: string;
 }
 
 export interface ISettingsOptionsWrapperProps {
     option: ESettingsOptions
+}
+
+export interface IChangePasswordSettingsProps {
+    resetCode?: string;
+    email?: string;
 }

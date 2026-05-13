@@ -220,7 +220,15 @@
             "logout": "Uitloggen"
         },
         "profile": {
-            "title": "Profiel"
+        "title": "Profiel",
+            "tabs": {
+                "changePassword": "Wachtwoord wijzigen",
+                "changeEmail": "E-mail wijzigen",
+                "changeName": "Naam wijzigen"
+            },
+            "buttons": {
+                "delete": "Account verwijderen"
+            }
         },
         "changeLanguage": {
             "title": "Taal wijzigen"

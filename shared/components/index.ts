@@ -34,3 +34,6 @@ export { ProfileSettings } from './settings/ProfileSettings.component';
 export { SettingsOptionsWrapper } from './settings/SettingsOptionsWrapper.component';
 export { SettingsTab } from './settings/SettingsTab.component';
 export { TermsOfCondition } from './settings/TermsOfCondition.component';
+export { ChangePasswordSettings } from './settings/ChangePasswordSettings.component';
+export { ChangeEmailSettings } from './settings/ChangeEmailSettings.component';
+export { ChangeNameSettings } from './settings/ChangeNameSettings.component';

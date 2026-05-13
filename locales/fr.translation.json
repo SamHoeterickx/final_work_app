@@ -220,7 +220,15 @@
             "logout": "Déconnexion"
         },
         "profile": {
-            "title": "Profil"
+        "title": "Profil",
+            "tabs": {
+                "changePassword": "Modifier le mot de passe",
+                "changeEmail": "Modifier l'e-mail",
+                "changeName": "Modifier le nom"
+            },
+            "buttons": {
+                "delete": "Supprimer le compte"
+            }
         },
         "changeLanguage": {
             "title": "Changer de langue"

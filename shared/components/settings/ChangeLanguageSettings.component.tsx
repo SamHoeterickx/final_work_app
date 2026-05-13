@@ -42,7 +42,10 @@ export const ChangeLanguageSettings = () => {
                 />
             </View>
             <View style={styles.cButton}>
-                <Button copy="changeLanguage.buttons.update" onPress={handleChangeLanguage} />
+                <Button 
+                    copy="changeLanguage.buttons.update" 
+                    onPress={handleChangeLanguage} 
+                />
             </View>
         </View>
     )

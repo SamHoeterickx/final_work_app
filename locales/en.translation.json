@@ -220,7 +220,15 @@
             "logout": "logout"
         },
         "profile": {
-            "title": "Profile"
+            "title": "Profile",
+            "tabs": {
+                "changePassword": "Change Password",
+                "changeEmail": "Change Email",
+                "changeName": "Change Name"
+            },
+            "buttons": {
+                "delete": "Delete account"
+            }
         },
         "changeLanguage": {
             "title": "Change Language"
@@ -236,6 +244,15 @@
         },
         "termsOfCondition": {
             "title": "Terms of Condition"
+        },
+        "changePassword": {
+            "title": "Change Password"
+        },
+        "changeEmail": {
+            "title": "Change Email"
+        },
+        "changeName": {
+            "title": "Change Name"
         }
     }
 }

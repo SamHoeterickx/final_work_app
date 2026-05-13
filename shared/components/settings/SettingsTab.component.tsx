@@ -20,7 +20,7 @@ export const SettingsTab: FC<ISettingTabProps> = ({ icon, copy, path }) => {
             onPress={handleOpenAccountSettings}
             style={styles.wSettingTab}
         >
-            <SvgIcon name={icon} width={32} height={32} color={'#222222'}/>
+            { icon &&  <SvgIcon name={icon} width={32} height={32} color={'#222222'}/ >}
             <Text style={[baseStyles.h2, styles.tabCopy]}>{t(copy)}</Text>
         </TouchableOpacity>
     )
