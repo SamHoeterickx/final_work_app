@@ -9,7 +9,6 @@ import { Button, InputField } from '@/shared/components';
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 export const ChangeEmailSettings: FC = () => {
-    const [isPending, setIsPending] = useState<boolean>(false);
     const [formData, setFormData] = useState({
         email: '',
     });
@@ -51,7 +50,7 @@ export const ChangeEmailSettings: FC = () => {
                 <Button
                     copy="changeLanguage.buttons.update"
                     onPress={handleChangeEmail}
-                    disabled={isPending}
+                    // disabled={isPending}
                 />
             </View>
         </View>

@@ -9,7 +9,6 @@ import { Button, InputField } from '@/shared/components';
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 export const ChangeNameSettings: FC = () => {
-    const [isPending, setIsPending] = useState<boolean>(false);
     const [formData, setFormData] = useState({
         name: '',
     });
@@ -40,7 +39,6 @@ export const ChangeNameSettings: FC = () => {
                         onChangeText={handleFormInput}
                         name="name"
                         placeholder={t('register.fieldLabels.name')}
-                        autoCapitalize="words"
                         spellCheck={false}
                     />
                 </View>
@@ -50,7 +48,7 @@ export const ChangeNameSettings: FC = () => {
                 <Button
                     copy="changeLanguage.buttons.update"
                     onPress={handleChangeName}
-                    disabled={isPending}
+                    // disabled={isPending}
                 />
             </View>
         </View>
