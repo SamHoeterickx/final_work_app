@@ -1,4 +1,4 @@
-export const GET_CHAPTERS = `
+export const GET_CHAPTERS_QUERY = `
     query GetMyChapters {
         getMyChapters {
             created_at
@@ -17,9 +17,21 @@ export const GET_CHAPTERS = `
                     status
                     name
                     order
+                    description
                 }
             }
         }
     }
 
+`;
+
+export const GET_USER_DATA_QUERY = `
+    query GetUserData {
+        getUserData {
+            role
+            name
+            level
+            email
+        }
+    }
 `;

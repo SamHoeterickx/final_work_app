@@ -2,6 +2,9 @@ import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
+import { ChapterProgress } from './ChapterProgress.component';
+import { LessonStatus } from './LessonStatus.component';
+import { LockedStatus } from './LockedStatus.component';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
@@ -9,16 +12,11 @@ import { baseStyles } from '@/shared/styles/design.system';
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
 import { IChapterHeaderProps } from '@/shared/types/types';
-import { ChapterProgress } from './ChapterProgress.component';
-import { LessonStatus } from './LessonStatus.component';
-import { LockedStatus } from './LockedStatus.component';
-import { BackButton } from '../../buttons/BackButton.component';
 
 export const ChapterHeader: FC<IChapterHeaderProps> = ({
     chapterUser,
     isFocused,
     selectedLesson,
-    setIsFocused,
 }) => {
     const renderStatus = () => {
         if (isFocused && selectedLesson) return <LessonStatus lesson={selectedLesson} />;
@@ -28,20 +26,23 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
     };
 
     const renderTitle = () => {
-        if (!isFocused) return chapterUser.chapter.name;
+        if (!selectedLesson) {
+            return (
+                <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
+            );
+        }
 
-        if (isFocused) {
-            return selectedLesson?.name;
+        if (isFocused && selectedLesson) {
+            return <Text style={[baseStyles.h3, styles.lessonTitle]}>{selectedLesson?.name}</Text>;
         }
     };
 
     return (
         <>
             <View style={styles.cTitle}>
-                <Text style={[baseStyles.h2, styles.chapterTitle]}>{renderTitle()}</Text>
+                {renderTitle()}
                 {renderStatus()}
             </View>
-            {isFocused && <BackButton isFocused={isFocused} setIsFocused={setIsFocused} />}
         </>
     );
 };
@@ -49,6 +50,10 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
 const styles = StyleSheet.create({
     chapterTitle: {
         fontSize: 48,
+        textAlign: 'center',
+    },
+    lessonTitle: {
+        fontSize: 36,
         textAlign: 'center',
     },
     cTitle: {

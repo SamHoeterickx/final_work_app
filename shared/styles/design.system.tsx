@@ -39,7 +39,7 @@ export const borderRadius = {
 
 export const typography = {
     h1: {
-        fontFamily: 'Vanguard-Heavy',
+        fontFamily: 'Vanguard-DemiBold',
         fontSize: 48,
         color: colors.text.primary,
         textTransform: 'uppercase',

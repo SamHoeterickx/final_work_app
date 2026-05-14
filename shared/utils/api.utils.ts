@@ -145,6 +145,11 @@ export const graphqlFetch = async <T = unknown>(
             });
         }
     }
+
+    if (data.errors && data.errors.length > 0) {
+        throw new Error(data.errors[0].message);
+    }
+
     return data.data;
 };
 

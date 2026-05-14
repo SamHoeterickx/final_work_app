@@ -37,6 +37,13 @@ import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 import Account from '@/assets/icons/navigation/account.svg';
 import Chapters from '@/assets/icons/navigation/chapters.svg';
 import Home from '@/assets/icons/navigation/home.svg';
+import Settings from '@/assets/icons/navigation/settings.svg';
+import Notifications from '@/assets/icons/navigation/notifications.svg';
+
+// SETTINGS
+import Legal from '@/assets/icons/settings/legal.svg';
+import Privacy from '@/assets/icons/settings/privacy.svg';
+import Info from '@/assets/icons/info.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
@@ -75,6 +82,13 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     [ESvgIconName.HOME]: Home,
     [ESvgIconName.ACCOUNT]: Account,
     [ESvgIconName.CHAPTERS]: Chapters,
+    [ESvgIconName.NOTIFICATIONS]: Notifications,
+    [ESvgIconName.SETTINGS]: Settings,
+
+    // SETTINGS
+    [ESvgIconName.LEGAL]: Legal,
+    [ESvgIconName.PRIVACY]: Privacy,
+    [ESvgIconName.INFO]: Info,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, color, ...props }) => {

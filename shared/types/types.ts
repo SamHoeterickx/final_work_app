@@ -1,7 +1,13 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
-import { ELocales, EProgressStatus, ESvgIconName, EOnboardingQuestionKind } from './enums';
+import {
+    ELocales,
+    EProgressStatus,
+    ESvgIconName,
+    EOnboardingQuestionKind,
+    ESettingsOptions,
+} from './enums';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -36,6 +42,16 @@ export interface IChangePasswordWithResetCodeCredentials {
     email: string;
     newPassword: string;
     repeatNewPassword: string;
+}
+export interface IUpdateUsernameCredentials {
+    updatedUsername: string;
+}
+
+export interface IUpdateEmailCredentials {
+    updatedEmailAdress: string;
+}
+export interface IDeleteUserCredentials {
+    password: string;
 }
 
 export interface IRegisterVariables {
@@ -214,7 +230,6 @@ export interface IChapterHeaderProps {
     chapterUser: IChapterUser;
     isFocused: boolean;
     selectedLesson: ILessonsChapter | null;
-    setIsFocused: (state: boolean) => void;
 }
 
 export interface IChapterSceneProps {
@@ -241,4 +256,24 @@ export interface IChapterProgressProps {
 
 export interface ILessonStatusProps {
     lesson: ILessonsChapter;
+}
+
+export interface ISettingTabProps {
+    copy: string;
+    icon?: ESvgIconName;
+    path: string;
+}
+
+export interface ISettingsOptionsWrapperProps {
+    option: ESettingsOptions;
+}
+
+export interface IChangePasswordSettingsProps {
+    resetCode?: string;
+    email?: string;
+}
+
+export interface IDeleteUserModalProps {
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
 }

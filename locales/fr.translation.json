@@ -205,5 +205,45 @@
             "restart": "Recommencer",
             "locked": "Verrouillé"
         }
+    },
+    "settings": {
+        "title": "Paramètres",
+        "tabs": {
+            "profile": "Profil",
+            "notifications": "Notifications",
+            "changeLanguage": "Changer de langue",
+            "about": "À propos",
+            "privacyPolicy": "Politique de confidentialité",
+            "termsOfCondition": "Conditions générales"
+        },
+        "buttons": {
+            "logout": "Déconnexion"
+        },
+        "profile": {
+        "title": "Profil",
+            "tabs": {
+                "changePassword": "Modifier le mot de passe",
+                "changeEmail": "Modifier l'e-mail",
+                "changeName": "Modifier le nom"
+            },
+            "buttons": {
+                "delete": "Supprimer le compte"
+            }
+        },
+        "changeLanguage": {
+            "title": "Changer de langue"
+        },
+        "notifications": {
+            "title": "Notifications"
+        },
+        "about": {
+            "title": "À propos de BrewLingo"
+        },
+        "privacyPolicy": {
+            "title": "Politique de confidentialité"
+        },
+        "termsOfCondition": {
+            "title": "Conditions générales"
+        }
     }
 }

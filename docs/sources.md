@@ -8,4 +8,5 @@
 - [Dockerize react native](https://dev.to/mandraketech/developing-on-expo-with-ios-using-vscode-and-docker-5hf)
 - [Enable expo interface when docker is started](https://gemini.google.com/share/08819490668c)
 - [React Native Dimensions to get window width and pagingEnabled](https://reactnative.dev/docs/dimensions)
-- [Expo router ) tab bar](https://docs.expo.dev/router/advanced/custom-tabs/)
+- [Expo router tab bar](https://docs.expo.dev/router/advanced/custom-tabs/)
+- [React native mod](https://reactnative.dev/docs/modal)

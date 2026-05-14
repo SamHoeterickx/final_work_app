@@ -205,6 +205,58 @@
             "restart": "Restart",
             "locked": "Locked"
         }
+    },
+    "settings": {
+        "title": "Settings",
+        "tabs": {
+            "profile": "Profile",
+            "notifications": "Notifications",
+            "changeLanguage": "Change Language",
+            "about": "About",
+            "privacyPolicy": "Privacy Policy",
+            "termsOfCondition": "Terms of Condition"
+        },
+        "buttons": {
+            "logout": "logout"
+        },
+        "profile": {
+            "title": "Profile",
+            "tabs": {
+                "changePassword": "Change Password",
+                "changeEmail": "Change Email",
+                "changeName": "Change Name"
+            },
+            "buttons": {
+                "delete": "Delete account",
+                "cancel": "Cancel"
+            }
+        },
+        "changeLanguage": {
+            "title": "Change Language"
+        },
+        "notifications": {
+            "title": "Notifications"
+        },
+        "about": {
+            "title": "About BrewLingo",
+            "content": "BrewLingo is your ultimate guide to discovering the world of coffee. From bean to cup, learn everything about coffee and making the perfect cup. Developed by Sam Hoeterickx."
+        },
+        "privacyPolicy": {
+            "title": "Privacy Policy",
+            "content": "Your privacy is important to us. This privacy policy explains how we collect, use, and protect your personal information when you use the BrewLingo app. We do not share your data with third parties."
+        },
+        "termsOfCondition": {
+            "title": "Terms of Condition",
+            "content": "By using the BrewLingo app, you agree to these terms of condition. The content provided in this app is for educational purposes. We reserve the right to modify or terminate the service at any time."
+        },
+        "changePassword": {
+            "title": "Change Password"
+        },
+        "changeEmail": {
+            "title": "Change Email"
+        },
+        "changeName": {
+            "title": "Change Name"
+        }
     }
-   
 }

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '@/SvgIcon.component';
+import { SvgIcon } from '../../svgIcon/SvgIcon.component';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';

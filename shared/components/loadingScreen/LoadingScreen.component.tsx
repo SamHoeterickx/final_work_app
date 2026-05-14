@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
     cLoading: {
         justifyContent: 'center',
         alignItems: 'center',
+        width: '100%',
+        height: '100%',
     },
     loader: {
         marginBottom: 16,

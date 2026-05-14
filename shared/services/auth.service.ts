@@ -1,15 +1,19 @@
 import * as SecureStore from 'expo-secure-store';
 
 // UTILS
-import { graphFetchAuth } from '@/shared/utils/api.utils';
+import { graphFetchAuth, graphqlFetch } from '@/shared/utils/api.utils';
 
 // TYPES
 import {
     IChangePasswordWithResetCodeCredentials,
+    IDeleteUserCredentials,
     ILoginCredentials,
+    INewPasswordCredentials,
     IOnboardingAnswers,
     IRegisterCredentials,
     IRequestResetCodeCredentials,
+    IUpdateEmailCredentials,
+    IUpdateUsernameCredentials,
     IVerifyResetCodeCredentials,
 } from '@/shared/types/types';
 
@@ -18,12 +22,18 @@ import { useAuthStore } from '@/shared/context/authStore.context';
 
 // MUTATIONS
 import {
+    DELETE_USER_MUTATION,
     LOGIN_USER_MUTATION,
+    LOGOUT_MUTATION,
     REGISTER_USER_MUTATION,
     REQUEST_RESET_CODE_MUTATION,
     RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
+    UPDATE_EMAIL_MUTATION,
+    UPDATE_PASSWORD_MUTATION,
+    UPDATE_USERNAME_MUTATION,
     VERIFY_RESET_CODE_MUTATION,
 } from '@/shared/graphql/mutations';
+import { GET_USER_DATA_QUERY } from '../graphql/query';
 
 class AuthService {
     constructor() {}
@@ -122,6 +132,20 @@ class AuthService {
         }
     }
 
+    async logout() {
+        try {
+            const response = await graphFetchAuth(LOGOUT_MUTATION);
+
+            if (!response) return;
+
+            await SecureStore.deleteItemAsync('accessToken');
+            await SecureStore.deleteItemAsync('refreshToken');
+            useAuthStore.getState().logout();
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async requestResetCode(credentials: IRequestResetCodeCredentials) {
         try {
             const result = await graphFetchAuth(
@@ -196,6 +220,18 @@ class AuthService {
         }
     }
 
+    async changePassword(credentials: INewPasswordCredentials) {
+        try {
+            return await graphqlFetch(UPDATE_PASSWORD_MUTATION, {
+                oldPassword: credentials.oldPassword,
+                newPassword: credentials.newPassword,
+                repeatNewPassword: credentials.repeatNewPassword,
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async changePasswordWithResetCode(credentials: IChangePasswordWithResetCodeCredentials) {
         try {
             const result = await graphFetchAuth(
@@ -239,6 +275,45 @@ class AuthService {
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
             useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getUserData() {
+        try {
+            return await graphFetchAuth(GET_USER_DATA_QUERY);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateUsername(credentials: IUpdateUsernameCredentials) {
+        try {
+            console.log(credentials);
+            return await graphqlFetch<any>(UPDATE_USERNAME_MUTATION, {
+                updatedUsername: credentials.updatedUsername,
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateEmail(credentials: IUpdateEmailCredentials) {
+        try {
+            return await graphqlFetch<any>(UPDATE_EMAIL_MUTATION, {
+                updatedEmailAdress: credentials.updatedEmailAdress,
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async deleteUser(credentials: IDeleteUserCredentials) {
+        try {
+            return await graphqlFetch<any>(DELETE_USER_MUTATION, {
+                password: credentials.password,
+            });
         } catch (error) {
             throw error;
         }
