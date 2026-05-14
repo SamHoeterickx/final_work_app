@@ -54,6 +54,10 @@ export interface IDeleteUserCredentials {
     password: string;
 }
 
+export interface IStartLessonCredentials {
+    lessonUuid: string;
+}
+
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
     onboarding: IOnboardingAnswers;

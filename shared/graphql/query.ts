@@ -35,3 +35,40 @@ export const GET_USER_DATA_QUERY = `
         }
     }
 `;
+export const START_LESSON_QUERY = `
+    query StartLesson($lessonUuid: String!) {
+        startLesson(input: { 
+            lessonUuid: $lessonUuid
+        }) {
+            content
+            created_at
+            description
+            estimatedDuration
+            name
+            order
+            status
+            uuid
+            xp
+            chapter {
+                created_at
+                description
+                name
+                slug
+                tags
+                uuid
+                lessons {
+                    content
+                    created_at
+                    description
+                    estimatedDuration
+                    name
+                    order
+                    status
+                    uuid
+                    xp
+                }
+            }
+        }
+    }
+
+`;
