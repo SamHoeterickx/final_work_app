@@ -258,5 +258,16 @@
         "changeName": {
             "title": "Change Name"
         }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Coffee Enthusiast",
+            "apprentice": "Barista Apprentice",
+            "practitioner": "Coffee Practitioner",
+            "specialist": "Coffee Specialist",
+            "virtuoso": "Flavor Virtuoso",
+            "artisan": "Coffee Artisan",
+            "legend": "Coffee Legend"
+        }
     }
 }

@@ -39,8 +39,8 @@ const InitialLayout = () => {
     useEffect(() => {
         const loadTokens = async () => {
             try {
-                SecureStore.deleteItemAsync('accessToken');
-                SecureStore.deleteItemAsync('refreshToken');
+                // SecureStore.deleteItemAsync('accessToken');
+                // SecureStore.deleteItemAsync('refreshToken');
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 

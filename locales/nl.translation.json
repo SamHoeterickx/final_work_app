@@ -248,5 +248,16 @@
             "title": "Algemene voorwaarden",
             "content": "Door de BrewLingo app te gebruiken, ga je akkoord met deze algemene voorwaarden. De inhoud van deze app is voor educatieve doeleinden. Wij behouden ons het recht voor om de dienst op elk moment te wijzigen of te beëindigen."
         }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Koffie Liefhebber",
+            "apprentice": "Barista in Opleiding",
+            "practitioner": "Koffie Beoefenaar",
+            "specialist": "Koffie Specialist",
+            "virtuoso": "Smaak Virtuoos",
+            "artisan": "Koffie Ambachtsman",
+            "legend": "Koffie Legende"
+        }
     }
 }

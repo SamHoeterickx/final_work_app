@@ -22,8 +22,8 @@ export const StartLearning: FC<IStartLearningProps> = ({ handleNext, name, descr
                 </Text>
             </View>
             <View style={styles.cContent}>
-                <Text style={[baseStyles.h2]}>{name}</Text>
-                <Text style={[baseStyles.h4]}>{description}</Text>
+                <Text style={[baseStyles.h2, styles.centeredText]}>{name}</Text>
+                <Text style={[baseStyles.h4, styles.centeredText]}>{description}</Text>
             </View>
             <Button copy="postOnboardingFlow.start.buttons.start" onPress={handleNext} />
         </>
@@ -40,4 +40,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    centeredText: {
+        textAlign: 'center'
+    }
 });

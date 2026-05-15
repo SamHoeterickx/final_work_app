@@ -245,5 +245,16 @@
         "termsOfCondition": {
             "title": "Conditions générales"
         }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Amateur de Café",
+            "apprentice": "Apprenti Barista",
+            "practitioner": "Pratiquant du Café",
+            "specialist": "Spécialiste du Café",
+            "virtuoso": "Virtuose des Saveurs",
+            "artisan": "Artisan du Café",
+            "legend": "Légende du Café"
+        }
     }
 }
