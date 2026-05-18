@@ -244,6 +244,26 @@
         },
         "termsOfCondition": {
             "title": "Conditions générales"
+        },
+        "changePassword": {
+            "title": "Modifier le mot de passe"
+        },
+        "changeEmail": {
+            "title": "Modifier l'e-mail"
+        },
+        "changeName": {
+            "title": "Modifier le nom"
+        }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Amateur de Café",
+            "apprentice": "Apprenti Barista",
+            "practitioner": "Pratiquant du Café",
+            "specialist": "Spécialiste du Café",
+            "virtuoso": "Virtuose des Saveurs",
+            "artisan": "Artisan du Café",
+            "legend": "Légende du Café"
         }
     }
 }

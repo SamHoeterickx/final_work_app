@@ -1,6 +1,6 @@
 import WheelPicker from '@quidone/react-native-wheel-picker';
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
@@ -15,24 +15,24 @@ import { languageData } from '@/shared/const/changeLanguage.const';
 
 // TYPES
 import { ELocales } from '@/shared/types/enums';
+import { useChangePreferenceLanguage } from './useChangePreferenceLanguage.hook';
 
 export const ChangeLanguageSettings = () => {
-    const [selectedLanguage, setSelectedLanguage] = useState<ELocales | null>(null);
-
     const { language, setLanguage } = useUserPreferencesStore();
+
+    const [selectedLanguage, setSelectedLanguage] = useState<ELocales>(language);
+
+    const { mutate } = useChangePreferenceLanguage();
 
     const { i18n } = useTranslation();
     const router = useRouter();
-
-    useEffect(() => {
-        setSelectedLanguage(language);
-    }, []);
 
     const handleChangeLanguage = () => {
         if (!selectedLanguage) return;
 
         i18n.changeLanguage(selectedLanguage);
         setLanguage(selectedLanguage);
+        mutate(selectedLanguage);
 
         router.back();
     };
@@ -42,7 +42,7 @@ export const ChangeLanguageSettings = () => {
             <View style={styles.pickerContainer}>
                 <WheelPicker
                     data={languageData}
-                    value={selectedLanguage || ELocales.EN}
+                    value={selectedLanguage}
                     onValueChanged={({ item: { value } }) => setSelectedLanguage(value as ELocales)}
                     enableScrollByTapOnItem={true}
                 />

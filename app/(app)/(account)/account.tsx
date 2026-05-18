@@ -1,67 +1,38 @@
-import { LoadingScreen, SvgIcon } from '@/shared/components';
-import { useGetUserdata } from '@/shared/hooks';
-import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
-import { ESvgIconName } from '@/shared/types/enums';
-
-import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// const badges = [
-//     {
-//         status: EProgressStatus.COMPLETED,
-//     },
-//     {
-//         status: EProgressStatus.COMPLETED,
-//     },
-//     {
-//         status: EProgressStatus.COMPLETED,
-//     },
-//     {
-//         status: EProgressStatus.INPROGRESS,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-//     {
-//         status: EProgressStatus.LOCKED,
-//     },
-// ];
+// COMPONENTS
+import { LoadingScreen, SvgIcon } from '@/shared/components';
+
+// HOOKS
+import { useGetUserdata } from '@/shared/hooks';
+
+// CONST
+import { PROGRESSION_LEVELS } from '@/shared/const/account.const';
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { ESvgIconName } from '@/shared/types/enums';
 
 export default function AccountScreen() {
     const router = useRouter();
 
     const { data, isPending, isError, error } = useGetUserdata();
 
+    const { t } = useTranslation();
+
     const handleOpenSettings = () => {
         router.push('/(app)/(account)/settings');
+    };
+
+    const calculateUserLevel = (userXP: number) => {
+        const currentLevel = PROGRESSION_LEVELS.find((level) => userXP >= level.threshold);
+
+        return currentLevel ? currentLevel.key : 'account.userLevels.enthusiast';
     };
 
     return (
@@ -79,7 +50,9 @@ export default function AccountScreen() {
                     ) : (
                         <>
                             <Text style={baseStyles.h1}>{data?.name}</Text>
-                            <Text style={[baseStyles.h4, styles.userLevel]}>{data?.level}</Text>
+                            <Text style={[baseStyles.h4, styles.userLevel]}>
+                                {t(calculateUserLevel(data?.level))}
+                            </Text>
                         </>
                     )}
                 </View>

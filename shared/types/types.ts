@@ -54,6 +54,10 @@ export interface IDeleteUserCredentials {
     password: string;
 }
 
+export interface IStartLessonCredentials {
+    lessonUuid: string;
+}
+
 export interface IRegisterVariables {
     credentials: IRegisterCredentials;
     onboarding: IOnboardingAnswers;
@@ -89,6 +93,7 @@ export interface IOnboardingStore {
 export interface IUserPreferencesStore {
     language: ELocales;
     setLanguage: (language: ELocales) => void;
+    fetchUserLanguage: () => Promise<void>;
 }
 
 export interface IRefreshTokensResponse {

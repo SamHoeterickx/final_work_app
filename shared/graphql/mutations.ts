@@ -97,6 +97,7 @@ export const DELETE_USER_MUTATION = `
         })
     }
 `;
+
 export const UPDATE_USERNAME_MUTATION = `
     mutation updateUserName($updatedUsername: String!) {
         updateUserName(input: { 
@@ -104,6 +105,7 @@ export const UPDATE_USERNAME_MUTATION = `
         })
     }
 `;
+
 export const UPDATE_EMAIL_MUTATION = `
     mutation UpdateEmail($updatedEmailAdress: String!) {
         updateEmail(input: { 
@@ -128,5 +130,16 @@ export const UPDATE_PASSWORD_MUTATION = `
             accessToken
             refreshToken
         }
+    }
+`;
+
+export const UPDATE_PREFERENCE_LANGUAGE_MUTATION = `
+    mutation UpdatePreferenceLanguage(
+        $language: String!
+    ) {
+        updatePreferenceLanguage(
+        input: { 
+            language: $language 
+        })
     }
 `;
