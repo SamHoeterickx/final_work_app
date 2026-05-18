@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // FONTS
 import { useFonts } from 'expo-font';
@@ -85,7 +85,8 @@ const InitialLayout = () => {
 };
 
 export default function RootLayout() {
-    const { language } = useUserPreferencesStore();
+    const { language, fetchUserLanguage } = useUserPreferencesStore();
+    const { isHydrated, accessToken } = useAuthStore();
     const { i18n } = useTranslation();
 
     useEffect(() => {
@@ -93,6 +94,12 @@ export default function RootLayout() {
             i18n.changeLanguage(language);
         }
     }, [language, i18n]);
+
+    useEffect(() => {
+        if (isHydrated && accessToken) {
+            fetchUserLanguage();
+        }
+    }, [isHydrated, accessToken]);
 
     return (
         <QueryClientProvider client={queryClient}>

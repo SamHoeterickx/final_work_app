@@ -93,6 +93,7 @@ export interface IOnboardingStore {
 export interface IUserPreferencesStore {
     language: ELocales;
     setLanguage: (language: ELocales) => void;
+    fetchUserLanguage: () => Promise<void>;
 }
 
 export interface IRefreshTokensResponse {

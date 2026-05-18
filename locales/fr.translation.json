@@ -244,6 +244,15 @@
         },
         "termsOfCondition": {
             "title": "Conditions générales"
+        },
+        "changePassword": {
+            "title": "Modifier le mot de passe"
+        },
+        "changeEmail": {
+            "title": "Modifier l'e-mail"
+        },
+        "changeName": {
+            "title": "Modifier le nom"
         }
     },
     "account": {

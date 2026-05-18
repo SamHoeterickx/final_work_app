@@ -30,7 +30,6 @@ export const GET_USER_DATA_QUERY = `
         getUserData {
             role
             name
-            level
             email
         }
     }
@@ -72,3 +71,10 @@ export const START_LESSON_QUERY = `
     }
 
 `;
+
+
+export const GET_PREFERENCE_LANGUAGE = `    
+    query GetPreferenceLanguage {
+        getPreferenceLanguage
+    }
+`
