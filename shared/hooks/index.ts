@@ -1,1 +1,11 @@
-export { useLogin } from './auth/useLogin.hook';
+export * from './auth/useGetUserData.hook';
+export * from './auth/useLogin.hook';
+export * from './auth/useRegister.hook';
+export * from './gestures/useSwipe.hook';
+export * from './passwordReset/useChangePasswordWithResetCode.hook';
+export * from './passwordReset/useChangePassword.hook';
+export * from './settings/useDeleteUser.hook';
+export * from './settings/useUpdateEmail.hook';
+export * from './settings/useUpdateUsername.hook';
+export * from './chapter/useGetChapters.hook';
+export * from './lesson/useStartLesson.hook';

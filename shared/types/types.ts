@@ -1,5 +1,14 @@
 import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
+// ENUMS
+import {
+    ELocales,
+    EProgressStatus,
+    ESvgIconName,
+    EOnboardingQuestionKind,
+    ESettingsOptions,
+} from './enums';
+
 // INTERFACES
 export interface ILoginCredentials {
     email: string;
@@ -33,6 +42,20 @@ export interface IChangePasswordWithResetCodeCredentials {
     email: string;
     newPassword: string;
     repeatNewPassword: string;
+}
+export interface IUpdateUsernameCredentials {
+    updatedUsername: string;
+}
+
+export interface IUpdateEmailCredentials {
+    updatedEmailAdress: string;
+}
+export interface IDeleteUserCredentials {
+    password: string;
+}
+
+export interface IStartLessonCredentials {
+    lessonUuid: string;
 }
 
 export interface IRegisterVariables {
@@ -70,6 +93,7 @@ export interface IOnboardingStore {
 export interface IUserPreferencesStore {
     language: ELocales;
     setLanguage: (language: ELocales) => void;
+    fetchUserLanguage: () => Promise<void>;
 }
 
 export interface IRefreshTokensResponse {
@@ -89,7 +113,7 @@ export interface ILoginUserResponse {
 export interface IOnboardingQuestions {
     title: string;
     description: string;
-    kind: OnboardingQuestionKind;
+    kind: EOnboardingQuestionKind;
     options: IQuestionOption[];
 }
 
@@ -98,25 +122,34 @@ export interface IErrorData {
     isError: boolean;
 }
 
-// ENUMS
-export enum OnboardingQuestionKind {
-    MULTIPLE_TILES = 'multiple_tiles',
-    SINGLE_CHOICE = 'single_choice',
-    SINGLE_CHOICE_TITLE = 'single_choice_title',
-    SINGLE_CHOICE_IMG = 'single_choice_img',
+export interface IChapter {
+    uuid: string;
+    name: string;
+    description: string;
+    slug: string;
+    lessons: ILessonsChapter[];
+    created_at: string;
 }
 
-export enum ELocales {
-    EN = 'en',
-    NL = 'nl',
-    FR = 'fr',
+export interface IChapterUser {
+    chapter: IChapter;
+    created_at: string;
+    order: number;
+    status: EProgressStatus;
+    uuid: string;
 }
 
-export enum EFlowStep {
-    'GENERATING',
-    'SUCCESS',
-    'CHAPTER_UNLOCKED',
-    'START_LEARNING',
+export interface ILessonsChapter {
+    uuid: string;
+    name: string;
+    status: EProgressStatus;
+}
+
+export interface IQuestionOption {
+    label: string;
+    tag: string;
+    image?: string | null;
+    description?: string | null;
 }
 
 // TYPES
@@ -124,6 +157,9 @@ export type TTokenRefreshSubscriber = (token: string | null) => void;
 
 export type TGraphQLError = {
     message: string;
+    extensions?: {
+        code?: string;
+    };
 };
 
 export type TGraphQLResponse<T = unknown> = {
@@ -134,6 +170,7 @@ export type TGraphQLResponse<T = unknown> = {
 // PROPS
 export interface IButtonProps extends TouchableOpacityProps {
     copy: string;
+    icon?: ESvgIconName;
     styles?: 'primary' | 'secundary';
     size?: 'small' | 'normal' | 'large';
     onPress: () => void;
@@ -145,15 +182,8 @@ export interface IInputFieldProps extends Omit<TextInputProps, 'onChangeText'> {
     name: string;
 }
 
-export interface IQuestionOption {
-    label: string;
-    tag: string;
-    image?: string | null;
-    description?: string | null;
-}
-
 export interface IOnboardingQuestionWrapperProps {
-    kind: OnboardingQuestionKind;
+    kind: EOnboardingQuestionKind;
     options: IQuestionOption[];
 }
 
@@ -164,6 +194,8 @@ export interface IQuestionProps {
 
 export interface IBackButtonProps {
     style?: Record<string, any>;
+    isFocused?: boolean;
+    setIsFocused?: (state: boolean) => void;
 }
 
 export interface IPostOnboardingFlowProps {
@@ -176,9 +208,77 @@ export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
 }
 export interface IStartLearningProps extends IPostOnboardingFlowProps {
     name: string;
+    description: string;
 }
 
 export interface IIslandModelProps {
     islandPath: string;
     scale?: number;
+}
+
+export interface IChapterProps {
+    chapterUser: IChapterUser;
+    isFocused: boolean;
+    setIsFocused: (state: boolean) => void;
+}
+export interface IGeneratingRoadmapProps {
+    onsuccess: () => void;
+}
+
+export interface IChapterActionsProps {
+    status: EProgressStatus;
+    isFocused: boolean;
+    onPress: () => void;
+}
+
+export interface IChapterHeaderProps {
+    chapterUser: IChapterUser;
+    isFocused: boolean;
+    selectedLesson: ILessonsChapter | null;
+}
+
+export interface IChapterSceneProps {
+    isFocused: boolean;
+    cameraPos: [number, number, number];
+    cameraTarget: [number, number, number];
+    lessons: ILessonsChapter[];
+    onLessonClick: (index: number, lesson: ILessonsChapter) => void;
+}
+
+export interface ICameraControllerProps {
+    position: [number, number, number];
+    target: [number, number, number];
+}
+
+export interface IFloatingGroupProps {
+    isFocused: boolean;
+    children: React.ReactNode;
+}
+
+export interface IChapterProgressProps {
+    lessons: ILessonsChapter[];
+}
+
+export interface ILessonStatusProps {
+    lesson: ILessonsChapter;
+}
+
+export interface ISettingTabProps {
+    copy: string;
+    icon?: ESvgIconName;
+    path: string;
+}
+
+export interface ISettingsOptionsWrapperProps {
+    option: ESettingsOptions;
+}
+
+export interface IChangePasswordSettingsProps {
+    resetCode?: string;
+    email?: string;
+}
+
+export interface IDeleteUserModalProps {
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
 }

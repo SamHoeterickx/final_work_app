@@ -35,7 +35,7 @@ export const SingleChoiceTitleQuestion: FC<IQuestionProps> = ({ options, questio
                     ]}
                 />
                 <View style={styles.textWrapper}>
-                    <Text style={baseStyles.h4}>{t(option.label)}</Text>
+                    <Text style={baseStyles.h3}>{t(option.label)}</Text>
                     <Text style={baseStyles.p}>
                         {option.description ? t(option.description) : ''}
                     </Text>

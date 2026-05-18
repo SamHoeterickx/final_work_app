@@ -72,8 +72,8 @@ export default function VerifyResetCode() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
@@ -107,7 +107,7 @@ export default function VerifyResetCode() {
                             {isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="forgotPassword.verifyResetCode.buttons.verifyCode"
                             onPress={handleVerifyResetCode}
@@ -134,9 +134,6 @@ const styles = StyleSheet.create({
     description: {
         textAlign: 'center',
         marginTop: spacing.sm,
-    },
-    logo: {
-        width: '35%',
     },
     cForm: {
         width: '85%',

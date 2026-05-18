@@ -190,5 +190,83 @@
     },
     "home": {
         "title": "Dit is een titel"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Bezoek eiland opnieuw",
+            "continue": "Ga verder",
+            "start": "Start",
+            "locked": "Vergrendeld"
+        }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Start",
+            "restart": "Herstart",
+            "locked": "Locked"
+        }
+    },
+    "settings": {
+        "title": "Instellingen",
+        "tabs": {
+            "profile": "Profiel",
+            "notifications": "Notificaties",
+            "changeLanguage": "Taal wijzigen",
+            "about": "Over",
+            "privacyPolicy": "Privacybeleid",
+            "termsOfCondition": "Algemene voorwaarden"
+        },
+        "buttons": {
+            "logout": "Uitloggen"
+        },
+        "profile": {
+        "title": "Profiel",
+            "tabs": {
+                "changePassword": "Wachtwoord wijzigen",
+                "changeEmail": "E-mail wijzigen",
+                "changeName": "Naam wijzigen"
+            },
+            "buttons": {
+                "delete": "Account verwijderen"
+            }
+        },
+        "changeLanguage": {
+            "title": "Taal wijzigen"
+        },
+        "notifications": {
+            "title": "Notificaties"
+        },
+        "about": {
+            "title": "Over BrewLingo",
+            "content": "BrewLingo is jouw ultieme gids om de wereld van koffie te ontdekken. Van boon tot kopje, leer alles over koffie en het zetten van het perfecte kopje. Ontwikkeld door Sam Hoeterickx."
+        },
+        "privacyPolicy": {
+            "title": "Privacybeleid",
+            "content": "Jouw privacy is belangrijk voor ons. Dit privacybeleid legt uit hoe we jouw persoonlijke informatie verzamelen, gebruiken en beschermen wanneer je de BrewLingo app gebruikt. We delen jouw gegevens niet met derden."
+        },
+        "termsOfCondition": {
+            "title": "Algemene voorwaarden",
+            "content": "Door de BrewLingo app te gebruiken, ga je akkoord met deze algemene voorwaarden. De inhoud van deze app is voor educatieve doeleinden. Wij behouden ons het recht voor om de dienst op elk moment te wijzigen of te beëindigen."
+        },
+        "changePassword": {
+            "title": "Wachtwoord wijzigen"
+        },
+        "changeEmail": {
+            "title": "Email wijzigen"
+        },
+        "changeName": {
+            "title": "Naam wijzigen"
+        }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Koffie Liefhebber",
+            "apprentice": "Barista in Opleiding",
+            "practitioner": "Koffie Beoefenaar",
+            "specialist": "Koffie Specialist",
+            "virtuoso": "Smaak Virtuoos",
+            "artisan": "Koffie Ambachtsman",
+            "legend": "Koffie Legende"
+        }
     }
 }

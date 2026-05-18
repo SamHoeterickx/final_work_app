@@ -30,6 +30,13 @@ export const REGISTER_USER_MUTATION = `
     }
 `;
 
+export const LOGOUT_MUTATION = `
+    mutation LogOut {
+        logOut
+    }
+
+`;
+
 export const REQUEST_RESET_CODE_MUTATION = `
     mutation LoginUser(
         $email: String!
@@ -75,4 +82,64 @@ export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
 			refreshToken
 		}
 	}
+`;
+
+export const GENERATE_CUSTOM_ROADMAP_MUTATION = `
+    mutation GenerateCustomRoadmap {
+        generateCustomRoadmap
+    }
+`;
+
+export const DELETE_USER_MUTATION = `
+    mutation DeleteUser($password: String!) {
+        deleteUser(input: { 
+            password: $password
+        })
+    }
+`;
+
+export const UPDATE_USERNAME_MUTATION = `
+    mutation updateUserName($updatedUsername: String!) {
+        updateUserName(input: { 
+            updatedUsername: $updatedUsername
+        })
+    }
+`;
+
+export const UPDATE_EMAIL_MUTATION = `
+    mutation UpdateEmail($updatedEmailAdress: String!) {
+        updateEmail(input: { 
+            updatedEmailAdress: $updatedEmailAdress
+        })
+    }
+`;
+
+export const UPDATE_PASSWORD_MUTATION = `
+    mutation ResetPassword(
+        $oldPassword: String!,
+        $newPassword: String!,
+        $repeatNewPassword: String!,
+
+    ) {
+        resetPassword(
+            input: { 
+                newPassword: $newPassword, 
+                repeatNewPassword: $repeatNewPassword, 
+                oldPassword: $oldPassword }
+        ) {
+            accessToken
+            refreshToken
+        }
+    }
+`;
+
+export const UPDATE_PREFERENCE_LANGUAGE_MUTATION = `
+    mutation UpdatePreferenceLanguage(
+        $language: String!
+    ) {
+        updatePreferenceLanguage(
+        input: { 
+            language: $language 
+        })
+    }
 `;

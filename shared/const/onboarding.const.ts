@@ -1,78 +1,79 @@
-import { IOnboardingAnswers, IOnboardingQuestions, OnboardingQuestionKind } from '../types/types';
+import { IOnboardingAnswers, IOnboardingQuestions } from '../types/types';
+import { EOnboardingQuestionKind } from '../types/enums';
 
 export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentBehaviour.title',
         description: 'onboarding.currentBehaviour.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.currentBehaviour.optionLabels.instantCoffee',
                 tag: 'instant_coffee',
-                image: 'filter_coffee.svg',
+                image: 'filter_coffee',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.work',
                 tag: 'work',
-                image: 'full_automatic_machine.svg',
+                image: 'full_automatic_machine',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.espresso',
                 tag: 'espresso',
-                image: 'espresso_machine.svg',
+                image: 'espresso_machine',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.podMachine',
                 tag: 'pod_machine',
-                image: 'cup_machine.svg',
+                image: 'cup_machine',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.frenchPress',
                 tag: 'french_press',
-                image: 'french_press.svg',
+                image: 'french_press',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.coffeeShop',
                 tag: 'coffee_shop',
-                image: 'coffee_shop.svg',
+                image: 'coffee_shop',
             },
         ],
     },
     {
         title: 'onboarding.experienceLevel.title',
         description: 'onboarding.experienceLevel.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE_IMG,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE_IMG,
         options: [
             {
                 label: 'onboarding.experienceLevel.optionLabels.tasteEnjoyer',
                 tag: 'taste_enjoyer',
                 description: 'onboarding.experienceLevel.optionDescriptions.tasteEnjoyer',
-                image: '1_bean.svg',
+                image: '1_bean',
             },
             {
                 label: 'onboarding.experienceLevel.optionLabels.curious',
                 tag: 'curious',
                 description: 'onboarding.experienceLevel.optionDescriptions.curious',
-                image: '2_beans.svg',
+                image: '2_beans',
             },
             {
                 label: 'onboarding.experienceLevel.optionLabels.connoisseur',
                 tag: 'connoisseur',
                 description: 'onboarding.experienceLevel.optionDescriptions.connoisseur',
-                image: '3_beans.svg',
+                image: '3_beans',
             },
             {
                 label: 'onboarding.experienceLevel.optionLabels.experimenter',
                 tag: 'experimenter',
                 description: 'onboarding.experienceLevel.optionDescriptions.experimenter',
-                image: '4_beans.svg',
+                image: '4_beans',
             },
         ],
     },
     {
         title: 'onboarding.goal.title',
         description: 'onboarding.goal.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
                 label: 'onboarding.goal.optionLabels.tastingSkills',
@@ -95,7 +96,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentPreferences.title',
         description: 'onboarding.currentPreferences.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE,
         options: [
             {
                 label: 'onboarding.currentPreferences.optionLabels.boldClassic',
@@ -118,7 +119,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.desiredTempo.title',
         description: 'onboarding.desiredTempo.subtitle',
-        kind: OnboardingQuestionKind.SINGLE_CHOICE_TITLE,
+        kind: EOnboardingQuestionKind.SINGLE_CHOICE_TITLE,
         options: [
             {
                 label: 'onboarding.desiredTempo.optionLabels.quickShot',
@@ -145,44 +146,44 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
     {
         title: 'onboarding.currentMethodes.title',
         description: 'onboarding.currentMethodes.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.currentMethodes.optionLabels.chemex',
                 tag: 'chemex',
-                image: 'chemex.svg',
+                image: 'chemex',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.mokaPot',
                 tag: 'moka_pot',
-                image: 'moka_pot.svg',
+                image: 'moka_pot',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.espressoMachine',
                 tag: 'espresso_machine',
-                image: 'espresso_machine.svg',
+                image: 'espresso_machine',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.pourOver',
                 tag: 'pour_over',
-                image: 'pour_over.svg',
+                image: 'pour_over',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.frenchPress',
                 tag: 'french_press',
-                image: 'french_press.svg',
+                image: 'french_press',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.none',
                 tag: 'none',
-                image: 'cross.svg',
+                image: 'cross',
             },
         ],
     },
     {
         title: 'onboarding.extraGear.title',
         description: 'onboarding.extraGear.subtitle',
-        kind: OnboardingQuestionKind.MULTIPLE_TILES,
+        kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
                 label: 'onboarding.extraGear.optionLabels.precisionScale',
@@ -192,22 +193,22 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
             {
                 label: 'onboarding.extraGear.optionLabels.gooseneckKettle',
                 tag: 'gooseneck_kettle',
-                image: 'gooseneck_kettle.svg',
+                image: 'gooseneck_kettle',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.coffeeGrinder',
                 tag: 'coffee_grinder',
-                image: 'bean_mil.svg',
+                image: 'bean_mil',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.milkFrother',
                 tag: 'milk_frother',
-                image: 'milk_foamer.svg',
+                image: 'milk_foamer',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.none',
                 tag: 'none',
-                image: 'cross.svg',
+                image: 'cross',
             },
         ],
     },

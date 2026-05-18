@@ -21,7 +21,7 @@ import { refactorOnboardingSelection } from '@/shared/const/onboarding.const';
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
 
 // HOOKS
-import { useRegister } from '@/shared/hooks/auth/useRegister.hook';
+import { useRegister } from '@/shared/hooks';
 
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
@@ -71,26 +71,26 @@ export default function Register() {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, position: 'relative' }}>
+        <SafeAreaView style={styles.cRegister}>
             <KeyboardAvoidingView
                 style={{ flex: 1 }}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
-                    style={{ flex: 1 }}
+                    style={baseStyles.cScrollView}
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
-                    <View style={styles.cInputContent}>
+                    <View style={baseStyles.cAuth}>
                         <Text style={[baseStyles.h2, styles.title]}>{t('register.title')}</Text>
                         <View style={styles.cForm}>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('register.fieldLabels.name')}
                                 </Text>
@@ -102,7 +102,7 @@ export default function Register() {
                                     spellCheck={false}
                                 />
                             </View>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('register.fieldLabels.email')}
                                 </Text>
@@ -114,7 +114,7 @@ export default function Register() {
                                     spellCheck={false}
                                 />
                             </View>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('register.fieldLabels.password')}
                                 </Text>
@@ -127,7 +127,7 @@ export default function Register() {
                                     secureTextEntry={true}
                                 />
                             </View>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('register.fieldLabels.repeatPassword')}
                                 </Text>
@@ -143,7 +143,7 @@ export default function Register() {
                             {isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="register.buttons.register"
                             onPress={handleRegister}
@@ -158,20 +158,18 @@ export default function Register() {
 }
 
 const styles = StyleSheet.create({
+    cRegister: {
+        flex: 1,
+        position: 'relative',
+        width: '100%',
+    },
     title: {
         alignItems: 'center',
         textAlign: 'center',
-        maxWidth: '65%',
         marginBottom: spacing.xl,
     },
-    logo: {
-        width: '35%',
-    },
     cForm: {
-        width: '85%',
-    },
-    wInputField: {
-        marginBottom: spacing.lg,
+        gap: spacing.md,
     },
     inputLabel: {
         marginBottom: spacing.sm,
@@ -182,10 +180,5 @@ const styles = StyleSheet.create({
         marginHorizontal: '5%',
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    cInputContent: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
     },
 });

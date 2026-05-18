@@ -1,6 +1,8 @@
-import { baseStyles, colors } from '@/shared/styles/design.system';
-import { FC } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { FC } from 'react';
+
+// STYLES
+import { baseStyles, colors } from '@/shared/styles/design.system';
 
 export const LoadingScreen: FC = () => {
     return (
@@ -15,6 +17,8 @@ const styles = StyleSheet.create({
     cLoading: {
         justifyContent: 'center',
         alignItems: 'center',
+        width: '100%',
+        height: '100%',
     },
     loader: {
         marginBottom: 16,

@@ -190,5 +190,80 @@
     },
     "home": {
         "title": "Ceci est un titre"
+    },
+    "chapter": {
+        "buttons": {
+            "completed": "Revisiter l'île",
+            "continue": "Continuer",
+            "start": "Commencer",
+            "locked": "Verrouillé"
+        }
+    },
+    "chapterLesson": {
+        "buttons": {
+            "start": "Commencer",
+            "restart": "Recommencer",
+            "locked": "Verrouillé"
+        }
+    },
+    "settings": {
+        "title": "Paramètres",
+        "tabs": {
+            "profile": "Profil",
+            "notifications": "Notifications",
+            "changeLanguage": "Changer de langue",
+            "about": "À propos",
+            "privacyPolicy": "Politique de confidentialité",
+            "termsOfCondition": "Conditions générales"
+        },
+        "buttons": {
+            "logout": "Déconnexion"
+        },
+        "profile": {
+        "title": "Profil",
+            "tabs": {
+                "changePassword": "Modifier le mot de passe",
+                "changeEmail": "Modifier l'e-mail",
+                "changeName": "Modifier le nom"
+            },
+            "buttons": {
+                "delete": "Supprimer le compte"
+            }
+        },
+        "changeLanguage": {
+            "title": "Changer de langue"
+        },
+        "notifications": {
+            "title": "Notifications"
+        },
+        "about": {
+            "title": "À propos de BrewLingo"
+        },
+        "privacyPolicy": {
+            "title": "Politique de confidentialité"
+        },
+        "termsOfCondition": {
+            "title": "Conditions générales"
+        },
+        "changePassword": {
+            "title": "Modifier le mot de passe"
+        },
+        "changeEmail": {
+            "title": "Modifier l'e-mail"
+        },
+        "changeName": {
+            "title": "Modifier le nom"
+        }
+    },
+    "account": {
+        "userLevels": {
+            "enthusiast": "Amateur de Café",
+            "apprentice": "Apprenti Barista",
+            "practitioner": "Pratiquant du Café",
+            "specialist": "Spécialiste du Café",
+            "virtuoso": "Virtuose des Saveurs",
+            "artisan": "Artisan du Café",
+            "legend": "Légende du Café"
+        }
     }
 }

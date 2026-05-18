@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 
 // TYPES
-import { ELocales } from './shared/types/types';
+import { ELocales } from './shared/types/enums';
 
 i18n.use(
     resourcesToBackend((language: string) => {

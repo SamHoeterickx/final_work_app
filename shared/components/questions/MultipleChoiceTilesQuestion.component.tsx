@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '@/shared/components/SvgIcon.component';
+import { SvgIcon } from '@/shared/components';
 
 // STORE
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
@@ -32,7 +32,7 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
                 onPress={() => handleOnPress(index)}
             >
                 {option.image && <SvgIcon name={option.image} width={60} height={60} />}
-                <Text style={[baseStyles.h4, styles.tileLabel]}>{t(option.label)}</Text>
+                <Text style={[baseStyles.h4, styles.label]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
     };
@@ -64,11 +64,7 @@ const styles = StyleSheet.create({
 
         opacity: 0.4,
     },
-    tileLabel: {
+    label: {
         textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 600,
-        textTransform: 'uppercase',
-        marginTop: spacing.lg,
     },
 });

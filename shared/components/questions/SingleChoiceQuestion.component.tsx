@@ -34,7 +34,7 @@ export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionInde
                         currentAnswers.includes(index) && { backgroundColor: colors.primary },
                     ]}
                 />
-                <Text style={[baseStyles.h4, { flex: 1 }]}>{t(option.label)}</Text>
+                <Text style={[baseStyles.h4, styles.text]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));
     };
@@ -78,5 +78,9 @@ const styles = StyleSheet.create({
         borderRadius: borderRadius.full,
         borderColor: colors.primary,
         borderWidth: 2,
+    },
+    text: {
+        flex: 1,
+        lineHeight: 22,
     },
 });

@@ -54,26 +54,26 @@ export default function LoginScreen() {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.cLogin}>
             <KeyboardAvoidingView
-                style={{ flex: 1, position: 'relative' }}
+                style={{ flex: 1 }}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             >
                 <ScrollView
-                    style={{ flex: 1 }}
+                    style={baseStyles.cScrollView}
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
-                    <View style={styles.cInputContent}>
+                    <View style={baseStyles.cAuth}>
                         <Text style={[baseStyles.h2, styles.title]}>{t('login.title')}</Text>
                         <View style={styles.cForm}>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('login.fieldLabels.email')}
                                 </Text>
@@ -85,7 +85,7 @@ export default function LoginScreen() {
                                     spellCheck={false}
                                 />
                             </View>
-                            <View style={styles.wInputField}>
+                            <View>
                                 <Text style={[baseStyles.h4, styles.inputLabel]}>
                                     {t('login.fieldLabels.password')}
                                 </Text>
@@ -98,16 +98,16 @@ export default function LoginScreen() {
                                     secureTextEntry={true}
                                 />
                             </View>
+                            <Link
+                                href={'/(auth)/(forgotPassword)/requestResetCode'}
+                                style={[baseStyles.a]}
+                            >
+                                {t('login.buttons.forgotPassword')}
+                            </Link>
                             {isError && renderError()}
                         </View>
-                        <Link
-                            href={'/(auth)/(forgotPassword)/requestResetCode'}
-                            style={[baseStyles.p, styles.link]}
-                        >
-                            {t('login.buttons.forgotPassword')}
-                        </Link>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="login.buttons.login"
                             onPress={handleLogin}
@@ -122,19 +122,18 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+    cLogin: {
+        flex: 1,
+        position: 'relative',
+        width: '100%',
+    },
     title: {
         alignItems: 'center',
         textAlign: 'center',
         marginBottom: spacing.xl,
     },
-    logo: {
-        width: '35%',
-    },
     cForm: {
-        width: '85%',
-    },
-    wInputField: {
-        marginBottom: spacing.lg,
+        gap: spacing.md,
     },
     inputLabel: {
         marginBottom: spacing.sm,
@@ -145,16 +144,5 @@ const styles = StyleSheet.create({
         marginHorizontal: '5%',
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    cInputContent: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        marginTop: 64,
-    },
-    link: {
-        fontSize: 12,
-        color: 'blue',
-        textDecorationLine: 'underline',
     },
 });

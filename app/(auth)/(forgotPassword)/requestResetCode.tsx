@@ -63,8 +63,8 @@ export default function RequestResetCode() {
                     keyboardShouldPersistTaps="handled"
                 >
                     <Image
-                        source={require('@/assets/logos/png/brewlingo_logo_black.png')}
-                        style={styles.logo}
+                        source={require('@/assets/logos/png/brewlingo_logo_v2.png')}
+                        style={baseStyles.logo}
                         resizeMode="contain"
                     />
                     <View style={styles.cInputContent}>
@@ -95,7 +95,7 @@ export default function RequestResetCode() {
                             {isError && renderError()}
                         </View>
                     </View>
-                    <View style={baseStyles.cButton}>
+                    <View style={baseStyles.xlButton}>
                         <Button
                             copy="forgotPassword.requestResetCode.buttons.requestCode"
                             onPress={handleRequestResetCode}
@@ -122,9 +122,6 @@ const styles = StyleSheet.create({
     description: {
         textAlign: 'center',
         marginTop: spacing.sm,
-    },
-    logo: {
-        width: '35%',
     },
     cForm: {
         width: '85%',

@@ -1,19 +1,11 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // FONTS
-import {
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-    Inter_900Black,
-    useFonts,
-} from '@expo-google-fonts/inter';
+import { useFonts } from 'expo-font';
 
 // TRANSLATIONS
 import '@/i18n';
@@ -21,6 +13,9 @@ import '@/i18n';
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
 import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+
+// STYLES
+import { colors } from '@/shared/styles/design.system';
 
 const queryClient = new QueryClient();
 
@@ -31,19 +26,21 @@ const InitialLayout = () => {
     const router = useRouter();
 
     const [fontsLoaded] = useFonts({
-        Inter_400Regular,
-        Inter_500Medium,
-        Inter_600SemiBold,
-        Inter_700Bold,
-        Inter_800ExtraBold,
-        Inter_900Black,
+        'Vanguard-Thin': require('../assets/fonts/vanguard/VanguardCF-Thin.otf'),
+        'Vanguard-Light': require('../assets/fonts/vanguard/VanguardCF-Light.otf'),
+        'Vanguard-Regular': require('../assets/fonts/vanguard/VanguardCF-Regular.otf'),
+        'Vanguard-Medium': require('../assets/fonts/vanguard/VanguardCF-Medium.otf'),
+        'Vanguard-DemiBold': require('../assets/fonts/vanguard/VanguardCF-DemiBold.otf'),
+        'Vanguard-Bold': require('../assets/fonts/vanguard/VanguardCF-Bold.otf'),
+        'Vanguard-ExtraBold': require('../assets/fonts/vanguard/VanguardCF-ExtraBold.otf'),
+        'Vanguard-Heavy': require('../assets/fonts/vanguard/VanguardCF-Heavy.otf'),
     });
 
     useEffect(() => {
         const loadTokens = async () => {
             try {
-                SecureStore.deleteItemAsync('accessToken');
-                SecureStore.deleteItemAsync('refreshTOken');
+                // SecureStore.deleteItemAsync('accessToken');
+                // SecureStore.deleteItemAsync('refreshToken');
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
@@ -73,15 +70,23 @@ const InitialLayout = () => {
         }
     }, [accessToken, isHydrated, segments, needsRoadmap]);
 
-    if (!isHydrated && !fontsLoaded) {
+    if (!isHydrated || !fontsLoaded) {
         return null;
     }
 
-    return <Stack screenOptions={{ headerShown: false }} />;
+    return (
+        <Stack
+            screenOptions={{
+                headerShown: false,
+                contentStyle: { backgroundColor: colors.background },
+            }}
+        />
+    );
 };
 
 export default function RootLayout() {
-    const { language } = useUserPreferencesStore();
+    const { language, fetchUserLanguage } = useUserPreferencesStore();
+    const { isHydrated, accessToken } = useAuthStore();
     const { i18n } = useTranslation();
 
     useEffect(() => {
@@ -89,6 +94,12 @@ export default function RootLayout() {
             i18n.changeLanguage(language);
         }
     }, [language, i18n]);
+
+    useEffect(() => {
+        if (isHydrated && accessToken) {
+            fetchUserLanguage();
+        }
+    }, [isHydrated, accessToken]);
 
     return (
         <QueryClientProvider client={queryClient}>

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '@/shared/components/SvgIcon.component';
+import { SvgIcon } from '@/shared/components';
 
 // STORE
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
@@ -32,7 +32,12 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
                 onPress={() => handleOnPress(index)}
             >
                 {option.image && <SvgIcon name={option.image} width={60} />}
-                <Text style={[baseStyles.h4, { flex: 1 }]}>{t(option.label)}</Text>
+                <View style={{ flex: 1 }}>
+                    <Text style={[baseStyles.h3, { fontSize: 24 }]}>{t(option.label)}</Text>
+                    {option.description && (
+                        <Text style={baseStyles.p}>{t(option.description)}</Text>
+                    )}
+                </View>
             </TouchableOpacity>
         ));
     };
@@ -40,7 +45,7 @@ export const SingleChoiceImageQuestion: FC<IQuestionProps> = ({ options, questio
     return (
         <ScrollView
             style={styles.scrollView}
-            contentContainerStyle={styles.contentContainer}
+            contentContainerStyle={styles.cContent}
             showsVerticalScrollIndicator={false}
         >
             {options && renderOptions()}
@@ -52,13 +57,13 @@ const styles = StyleSheet.create({
     scrollView: {
         width: '100%',
     },
-    contentContainer: {
+    cContent: {
         gap: spacing.lg,
     },
     option: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: spacing.lg,
+        gap: spacing.md,
         minHeight: 90,
 
         borderWidth: 2,
