@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     centeredText: {
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+    },
 });

@@ -324,13 +324,12 @@ class AuthService {
     async updatePreferenceLanguage(locale: ELocales) {
         try {
             return await graphqlFetch<any>(UPDATE_PREFERENCE_LANGUAGE_MUTATION, {
-                language: locale
+                language: locale,
             });
         } catch (error) {
             throw error;
         }
     }
-    
 }
 
 export const authService = new AuthService();

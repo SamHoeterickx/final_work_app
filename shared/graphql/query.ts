@@ -72,9 +72,8 @@ export const START_LESSON_QUERY = `
 
 `;
 
-
 export const GET_PREFERENCE_LANGUAGE = `    
     query GetPreferenceLanguage {
         getPreferenceLanguage
     }
-`
+`;

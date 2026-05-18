@@ -1,4 +1,3 @@
-
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
@@ -31,10 +30,10 @@ export default function AccountScreen() {
     };
 
     const calculateUserLevel = (userXP: number) => {
-        const currentLevel = PROGRESSION_LEVELS.find(level => userXP >= level.threshold);
-    
+        const currentLevel = PROGRESSION_LEVELS.find((level) => userXP >= level.threshold);
+
         return currentLevel ? currentLevel.key : 'account.userLevels.enthusiast';
-    }
+    };
 
     return (
         <SafeAreaView style={styles.sAccount}>
@@ -51,7 +50,9 @@ export default function AccountScreen() {
                     ) : (
                         <>
                             <Text style={baseStyles.h1}>{data?.name}</Text>
-                            <Text style={[baseStyles.h4, styles.userLevel]}>{t(calculateUserLevel(data?.level))}</Text>
+                            <Text style={[baseStyles.h4, styles.userLevel]}>
+                                {t(calculateUserLevel(data?.level))}
+                            </Text>
                         </>
                     )}
                 </View>

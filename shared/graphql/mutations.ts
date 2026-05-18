@@ -142,4 +142,4 @@ export const UPDATE_PREFERENCE_LANGUAGE_MUTATION = `
             language: $language 
         })
     }
-`
+`;
