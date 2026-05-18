@@ -15,10 +15,14 @@ import { languageData } from '@/shared/const/changeLanguage.const';
 
 // TYPES
 import { ELocales } from '@/shared/types/enums';
+import { useChangePreferenceLanguage } from './useChangePreferenceLanguage.hook';
 
 export const ChangeLanguageSettings = () => {
     const { language, setLanguage } = useUserPreferencesStore();
+
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales>(language);
+
+    const { mutate } = useChangePreferenceLanguage();
 
     const { i18n } = useTranslation();
     const router = useRouter();
@@ -28,6 +32,7 @@ export const ChangeLanguageSettings = () => {
 
         i18n.changeLanguage(selectedLanguage);
         setLanguage(selectedLanguage);
+        mutate(selectedLanguage);
 
         router.back();
     };

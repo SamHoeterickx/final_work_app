@@ -30,10 +30,12 @@ import {
     RESET_PASSWORD_WITH_RESET_CODE_MUTATION,
     UPDATE_EMAIL_MUTATION,
     UPDATE_PASSWORD_MUTATION,
+    UPDATE_PREFERENCE_LANGUAGE_MUTATION,
     UPDATE_USERNAME_MUTATION,
     VERIFY_RESET_CODE_MUTATION,
 } from '@/shared/graphql/mutations';
 import { GET_USER_DATA_QUERY } from '../graphql/query';
+import { ELocales } from '../types/enums';
 
 class AuthService {
     constructor() {}
@@ -318,6 +320,17 @@ class AuthService {
             throw error;
         }
     }
+
+    async updatePreferenceLanguage(locale: ELocales) {
+        try {
+            return await graphqlFetch<any>(UPDATE_PREFERENCE_LANGUAGE_MUTATION, {
+                language: locale
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+    
 }
 
 export const authService = new AuthService();
