@@ -15,14 +15,17 @@ export const GET_CHAPTERS_QUERY = `
                 lessons {
                     uuid
                     status
-                    name
                     order
-                    description
+                    translations {
+                        name
+                        description
+                        languageCode
+                        content
+                    }
                 }
             }
         }
     }
-
 `;
 
 export const GET_USER_DATA_QUERY = `
@@ -34,6 +37,7 @@ export const GET_USER_DATA_QUERY = `
         }
     }
 `;
+
 export const START_LESSON_QUERY = `
     query StartLesson($lessonUuid: String!) {
         startLesson(input: { 

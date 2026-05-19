@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Animated, StyleSheet } from 'react-native';
 
 // COMPONENTS
@@ -9,7 +10,7 @@ import { ChapterScene } from './ui/ChapterScene.component';
 
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
-import { IChapterProps, ILessonsChapter } from '@/shared/types/types';
+import { IChapterProps, ILessonsChapter, ILessonTranslations } from '@/shared/types/types';
 
 // CONST
 import { CAMERA_HEIGHT, CAMERA_RADIUS, LESSON_RADIUS } from '@/shared/const/chapter.const';
@@ -24,6 +25,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const [cameraPos, setCameraPos] = useState<[number, number, number]>([-2, 2.5, 5]);
     const [selectedLesson, setSelectedLesson] = useState<ILessonsChapter | null>(null);
 
+    const { i18n } = useTranslation();
     const router = useRouter();
 
     useEffect(() => {
@@ -34,7 +36,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         }
     }, [isFocused]);
 
-    const handleButton = () => {
+    const handleButton = () => {    
         console.log('pressed');
 
         if (!isFocused) {
@@ -83,7 +85,15 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         const camX = Math.cos(angle) * CAMERA_RADIUS;
         const camZ = Math.sin(angle) * CAMERA_RADIUS;
         setCameraPos([camX, CAMERA_HEIGHT, camZ]);
-        setSelectedLesson(lesson);
+
+        const lessonn = {
+            uuid: lesson.uuid,
+            status: lesson.status,
+            order: lesson.order,
+            translations: (lesson.translations.filter((translation: ILessonTranslations) => translation.languageCode === i18n.language.toUpperCase()))
+        }
+
+        setSelectedLesson(lessonn);
     };
 
     return (

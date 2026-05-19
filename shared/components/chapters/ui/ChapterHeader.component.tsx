@@ -13,7 +13,7 @@ import { baseStyles } from '@/shared/styles/design.system';
 import { EProgressStatus } from '@/shared/types/enums';
 import { IChapterHeaderProps } from '@/shared/types/types';
 
-export const ChapterHeader: FC<IChapterHeaderProps> = ({
+export const    ChapterHeader: FC<IChapterHeaderProps> = ({
     chapterUser,
     isFocused,
     selectedLesson,
@@ -33,7 +33,8 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
         }
 
         if (isFocused && selectedLesson) {
-            return <Text style={[baseStyles.h3, styles.lessonTitle]}>{selectedLesson?.name}</Text>;
+            console.log('selectedLesson', selectedLesson);
+            return <Text style={[baseStyles.h3, styles.lessonTitle]}>{selectedLesson.translations[0].name}</Text>;
         }
     };
 

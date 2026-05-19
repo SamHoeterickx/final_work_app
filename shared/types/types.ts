@@ -141,8 +141,16 @@ export interface IChapterUser {
 
 export interface ILessonsChapter {
     uuid: string;
-    name: string;
     status: EProgressStatus;
+    order: number;
+    translations: any;
+}
+
+export interface ILessonTranslations {
+    name: string;
+    description: string;
+    languageCode: ELocales;
+    content: any[]
 }
 
 export interface IQuestionOption {
