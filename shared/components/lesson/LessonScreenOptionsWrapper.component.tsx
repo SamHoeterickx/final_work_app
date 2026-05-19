@@ -13,8 +13,6 @@ import { ILessonScreenOptionsWrapperProps } from "@/shared/types/types"
 
 export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = ({ screenType, lessonContent }) => {
 
-    console.log(screenType)
-
     switch(screenType) {
         case ELessonScreenOptions.C_TITLE:
             return <TitleScreen content={lessonContent} />;
