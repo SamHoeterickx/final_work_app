@@ -29,13 +29,30 @@ export { DeleteUserModal } from './modal/DeleteAccountModal.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';
+export { ChangeEmailSettings } from './settings/ChangeEmailSettings.component';
 export { ChangeLanguageSettings } from './settings/ChangeLanguageSettings.component';
+export { ChangeNameSettings } from './settings/ChangeNameSettings.component';
+export { ChangePasswordSettings } from './settings/ChangePasswordSettings.component';
 export { NotificationSettings } from './settings/NotificationSettings.component';
 export { PrivacyPolicy } from './settings/PrivacyPolicy.component';
 export { ProfileSettings } from './settings/ProfileSettings.component';
 export { SettingsOptionsWrapper } from './settings/SettingsOptionsWrapper.component';
 export { SettingsTab } from './settings/SettingsTab.component';
 export { TermsOfCondition } from './settings/TermsOfCondition.component';
-export { ChangePasswordSettings } from './settings/ChangePasswordSettings.component';
-export { ChangeEmailSettings } from './settings/ChangeEmailSettings.component';
-export { ChangeNameSettings } from './settings/ChangeNameSettings.component';
+
+
+// LESSONS
+export { LessonHeader } from './lesson/LessonHeader.component';
+export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';
+
+// LESSON CONTENT SCREENS
+// export { DidYouKnowScreen } from './lesson/content/DidYouKnowScreen.component';
+// export { ImageWithMultipleTextScreen } from './lesson/content/ImageWithMultipleTextScreen.component';
+// export { OnlyTextScreen } from './lesson/content/OnlyTextScreen.component';
+// export { TextWithImageScreen } from './lesson/content/TextWithImageScreen.component';
+// export { TitleScreen } from './lesson/content/TitleScreen.component';
+
+// LESSON QUIZ SCREENS
+// export { MultipleChoiceQuizScreen } from './lesson/quiz/MultipleChoiceQuizScreen.component';
+// export { OpenQuestionQuizScreen } from './lesson/quiz/OpenQuestionQuizScreen.component';
+// export { RightOrWrongQuizScreen } from './lesson/quiz/RightOrWrongQuizScreen.component';

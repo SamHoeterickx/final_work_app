@@ -13,9 +13,9 @@ import { useDeleteUser } from '@/shared/hooks';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { IDeleteUserCredentials, IDeleteUserModalProps } from '@/shared/types/types';
+import { IDeleteUserCredentials, IModalProps } from '@/shared/types/types';
 
-export const DeleteUserModal: FC<IDeleteUserModalProps> = ({ isModalOpen, setIsModalOpen }) => {
+export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
     const [formData, setFormData] = useState<IDeleteUserCredentials>({
         password: '',
     });

@@ -67,3 +67,14 @@ export enum ESettingsOptions {
     CHANGE_EMAIL = 'changeEmail',
     CHANGE_NAME = 'changeName',
 }
+
+export enum ELessonScreenOptions {
+    C_TITLE = "C_TITLE",
+    C_DID_YOU_KNOW = "C_DID_YOU_KNOW",
+    C_TEXT_WITH_IMAGE = "C_TEXT_WITH_IMAGE",
+    C_ONLY_TEXT = "C_ONLY_TEXT",
+    C_IMAGE_WITH_MULTIPLE_TEXT = "C_IMAGE_WITH_MULTIPLE_TEXT",
+    Q_RIGHT_OR_WRONG = "Q_RIGHT_OR_WRONG",
+    Q_MATCH = "Q_MATCH",
+    Q_CLICK_AND_FOCUS = "Q_CLICK_AND_FOCUS"
+}

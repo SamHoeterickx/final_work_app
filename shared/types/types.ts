@@ -7,6 +7,7 @@ import {
     ESvgIconName,
     EOnboardingQuestionKind,
     ESettingsOptions,
+    ELessonScreenOptions,
 } from './enums';
 
 // INTERFACES
@@ -95,6 +96,11 @@ export interface IUserPreferencesStore {
     language: ELocales;
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
+}
+
+export interface ILessonStore {
+    screenIndex: number;
+    setScreenIndex: (index: number) => void;
 }
 
 export interface IRefreshTokensResponse {
@@ -296,7 +302,23 @@ export interface IChangePasswordSettingsProps {
     email?: string;
 }
 
-export interface IDeleteUserModalProps {
+export interface IModalProps {
     isModalOpen: boolean;
     setIsModalOpen: (state: boolean) => void;
+}
+
+export interface ILessonHeaderProps {
+    screenCount: number;
+    totalScreens: number | undefined;
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
+}
+
+export interface ILessonScreenOptionsWrapperProps {
+    screenType: ELessonScreenOptions;
+    lessonContent: any
+}
+
+export interface ILessonScreenProps {
+    content: any
 }

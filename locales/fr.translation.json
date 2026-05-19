@@ -265,5 +265,24 @@
             "artisan": "Artisan du Café",
             "legend": "Légende du Café"
         }
+    },
+    "lesson": {
+        "paused": {
+            "title": "Leçon en pause",
+            "options": {
+                "quit": "Quitter la leçon",
+                "restart": "Recommencer la leçon"
+            },
+            "quitConfirm": {
+                "title": "Êtes-vous sûr ?",
+                "subtitle": "Toute progression dans cette leçon sera perdue."
+            },
+            "buttons": {
+                "resume": "Reprendre la leçon"
+            }
+        },
+        "buttons": {
+            "continue": "Continuer"
+        }
     }
 }

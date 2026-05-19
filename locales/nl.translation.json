@@ -268,5 +268,24 @@
             "artisan": "Koffie Ambachtsman",
             "legend": "Koffie Legende"
         }
+    },
+    "lesson": {
+        "paused": {
+            "title": "Les gepauzeerd",
+            "options": {
+                "quit": "Stop les",
+                "restart": "Herstart les"
+            },
+            "quitConfirm": {
+                "title": "Weet je het zeker?",
+                "subtitle": "Alle voortgang in deze les gaat verloren."
+            },
+            "buttons": {
+                "resume": "Hervat les"
+            }
+        },
+        "buttons": {
+            "continue": "Volgende"
+        }
     }
 }

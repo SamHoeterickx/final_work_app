@@ -269,5 +269,25 @@
             "artisan": "Coffee Artisan",
             "legend": "Coffee Legend"
         }
+    },
+    "lesson": {
+        "paused": {
+            "title": "Lesson Paused",
+            "options": {
+                "quit": "Quit Lesson",
+                "restart": "Restart Lesson"
+            },
+            "quitConfirm": {
+                "title": "Are you sure?",
+                "subtitle": "All progress in this lesson will be lost."
+            },
+            "buttons": {
+                "resume": "Continue Lesson"
+
+            }
+        },
+        "buttons": {
+            "continue": "Continue"
+        }
     }
 }
