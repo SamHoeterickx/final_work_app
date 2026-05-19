@@ -56,6 +56,7 @@ export interface IDeleteUserCredentials {
 
 export interface IStartLessonCredentials {
     lessonUuid: string;
+    languageCode: ELocales;
 }
 
 export interface IRegisterVariables {
@@ -146,11 +147,20 @@ export interface ILessonsChapter {
     translations: any;
 }
 
+export interface IStartLessonResponse {
+    uuid: string;
+    estimatedDuration: number;
+    xp: number;
+    order: number;
+    content: ILessonTranslations[];
+}
+
 export interface ILessonTranslations {
+    uuid?: string | null;
+    languageCode: ELocales;
     name: string;
     description: string;
-    languageCode: ELocales;
-    content: any[]
+    content: any[],
 }
 
 export interface IQuestionOption {

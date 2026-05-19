@@ -23,12 +23,12 @@ export const getDeviceLanguage = (): ELocales => {
 
 export const getPreferenceLanguage = async (): Promise<ELocales> => {
     try {
-        const languageCode = await graphqlFetch<{ getPreferenceLanguage: string }>(
+        const response = await graphqlFetch<{ getPreferenceLanguage: string }>(
             GET_PREFERENCE_LANGUAGE,
         );
 
-        console.log('---languageCode', languageCode);
-        const pref = languageCode?.getPreferenceLanguage;
+        console.log('---languageCode', response);
+        const pref = response?.getPreferenceLanguage;
         return (pref?.toLowerCase() as ELocales) || ELocales.NL;
     } catch (error) {
         console.warn('Error fetching device language', error);

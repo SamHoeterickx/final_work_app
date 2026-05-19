@@ -39,37 +39,24 @@ export const GET_USER_DATA_QUERY = `
 `;
 
 export const START_LESSON_QUERY = `
-    query StartLesson($lessonUuid: String!) {
+    query StartLesson(
+        $lessonUuid: String!,
+        $languageCode: String!
+    ) {
         startLesson(input: { 
-            lessonUuid: $lessonUuid
+            lessonUuid: $lessonUuid,
+            languageCode: $languageCode
         }) {
-            content
-            created_at
-            description
             estimatedDuration
-            name
             order
-            status
             uuid
             xp
-            chapter {
-                created_at
+            content {
+                content
                 description
+                languageCode
                 name
-                slug
-                tags
                 uuid
-                lessons {
-                    content
-                    created_at
-                    description
-                    estimatedDuration
-                    name
-                    order
-                    status
-                    uuid
-                    xp
-                }
             }
         }
     }
