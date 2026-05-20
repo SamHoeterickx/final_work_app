@@ -44,6 +44,7 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
+
 export interface IUpdateUsernameCredentials {
     updatedUsername: string;
 }
@@ -51,11 +52,12 @@ export interface IUpdateUsernameCredentials {
 export interface IUpdateEmailCredentials {
     updatedEmailAdress: string;
 }
+
 export interface IDeleteUserCredentials {
     password: string;
 }
 
-export interface IStartLessonCredentials {
+export interface ILessonCredentials {
     lessonUuid: string;
     languageCode: ELocales;
 }
@@ -170,6 +172,14 @@ export interface IStartLessonResponse {
     order: number;
     content: ILessonTranslations[];
 }
+
+// export interface ICompleteLessonResponse {
+//     uuid: string;
+//     estimatedDuration: number;
+//     xp: number;
+//     order: number;
+//     content: ILessonTranslations[];
+// }
 
 export interface ILessonTranslations {
     uuid?: string | null;

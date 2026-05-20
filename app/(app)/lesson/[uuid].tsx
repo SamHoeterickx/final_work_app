@@ -1,7 +1,7 @@
 import { Button, LessonHeader, LessonScreenOptionsWrapper, LoadingScreen } from '@/shared/components';
 import { PauseLessonModal } from '@/shared/components/modal/PauseLessonModal.component';
 import { useLessonStore } from '@/shared/context/lessonStore.context';
-import { useStartLesson } from '@/shared/hooks';
+import { useCompleteLesson, useStartLesson } from '@/shared/hooks';
 import { colors, } from '@/shared/styles/design.system';
 import { ELocales } from '@/shared/types/enums';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -15,15 +15,16 @@ export default function LessonScreen() {
     const [subStep, setSubStep] = useState<number>(0);
 
     const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } = useLessonStore();
-
+    
     const { uuid } = useLocalSearchParams();
     const { i18n } = useTranslation();
     const router = useRouter();
-
-    const { data: lesson, isPending } = useStartLesson({ 
+    
+    const { data: lesson, isPending: isPendingStart } = useStartLesson({ 
         lessonUuid: uuid as string,
         languageCode: i18n.language as ELocales
     });
+    const { mutate: completeLesson, isPending: isPendingComplete } = useCompleteLesson();
 
     useEffect(() => {
         setIsLessonCompleted(false)
@@ -37,9 +38,11 @@ export default function LessonScreen() {
 
     if(!lesson) return;
 
-    if (isPending) return <LoadingScreen />;
+    if (isPendingStart || isPendingComplete) return <LoadingScreen />;
 
-    const handleStartLesson = () => {
+
+
+    const handleButton = () => {
         if (!lesson?.content?.[0]?.content) return;
 
         const content = lesson.content[0].content;
@@ -54,6 +57,10 @@ export default function LessonScreen() {
         if (screenIndex >= content.length - 1) {
             if (!isLessonCompleted) {
                 setIsLessonCompleted(true);
+                completeLesson({
+                    lessonUuid: uuid as string,
+                    languageCode: i18n.language as ELocales
+                })
             }
             return;
         }
@@ -102,7 +109,7 @@ export default function LessonScreen() {
         <SafeAreaView style={styles.sLesson}>
             <LessonHeader
                 screenCount={screenIndex}
-                totalScreens={lesson.content[0].content.length}
+                totalScreens={lesson.content[0].content.length - 1}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 onBackPress={handleBack}
@@ -126,7 +133,7 @@ export default function LessonScreen() {
 
             {!isLessonCompleted && (
                 <View style={styles.cButton}>
-                    <Button copy={renderButtonCopy()} onPress={handleStartLesson} />
+                    <Button copy={renderButtonCopy()} onPress={handleButton} />
                 </View>
             )}
         </SafeAreaView>

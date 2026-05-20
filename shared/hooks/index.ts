@@ -9,3 +9,4 @@ export * from './settings/useUpdateEmail.hook';
 export * from './settings/useUpdateUsername.hook';
 export * from './chapter/useGetChapters.hook';
 export * from './lesson/useStartLesson.hook';
+export * from './lesson/useCompleteLesson.hook';
