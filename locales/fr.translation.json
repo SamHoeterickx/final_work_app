@@ -283,7 +283,8 @@
             }
         },
         "buttons": {
-            "continue": "Continuer"
+            "continue": "Continuer",
+            "complete": "Terminer la leçon"
         }
     }
 }

@@ -286,7 +286,8 @@
             }
         },
         "buttons": {
-            "continue": "Volgende"
+            "continue": "Volgende",
+            "complete": "Voltooi Les"
         }
     }
 }

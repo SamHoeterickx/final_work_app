@@ -288,7 +288,8 @@
             }
         },
         "buttons": {
-            "continue": "Continue"
+            "continue": "Continue",
+            "complete": "Complete Lesson"
         }
     }
 }

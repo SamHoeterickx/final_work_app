@@ -100,7 +100,9 @@ export interface IUserPreferencesStore {
 
 export interface ILessonStore {
     screenIndex: number;
+    isLessonCompleted: boolean;
     setScreenIndex: (index: number) => void;
+    setIsLessonCompleted: (state: boolean) => void;
 }
 
 export interface IRefreshTokensResponse {

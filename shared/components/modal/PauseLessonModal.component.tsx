@@ -19,7 +19,7 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
     const [showConfirmQuit, setShowConfirmQuit] = useState<boolean>(false);
     const { t } = useTranslation();
     const router = useRouter();
-    const { setScreenIndex } = useLessonStore();
+    const { setScreenIndex, setIsLessonCompleted } = useLessonStore();
 
     useEffect(() => {
         if (!isModalOpen) {
@@ -31,10 +31,13 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
 
     const handleRestart = () => {
         setScreenIndex(0);
+        setIsLessonCompleted(false);
         setIsModalOpen(false);
     };
 
     const confirmQuit = () => {
+        setScreenIndex(0);
+        setIsLessonCompleted(false);
         setIsModalOpen(false);
         setShowConfirmQuit(false);
         router.back();
