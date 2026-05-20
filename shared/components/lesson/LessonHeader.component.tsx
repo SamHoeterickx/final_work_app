@@ -1,20 +1,17 @@
 import { borderRadius, colors, spacing } from "@/shared/styles/design.system";
 import { ILessonHeaderProps } from "@/shared/types/types";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 import { FC } from "react";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 
-export const LessonHeader: FC<ILessonHeaderProps> = ({ screenCount, totalScreens, isModalOpen, setIsModalOpen }) => {
+export const LessonHeader: FC<ILessonHeaderProps> = ({ screenCount, totalScreens, isModalOpen, setIsModalOpen, onBackPress }) => {
     if(!totalScreens) return
-
-    const router = useRouter();
 
     const handleBack = () => {
         if(isModalOpen){
             setIsModalOpen(false);
         }else {
-            router.back();
+            onBackPress();
         }
     }
 
@@ -48,6 +45,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         zIndex: 10,
         elevation: 10,
+        marginBottom: spacing.xxl
     },
     backButton: {
         flex: 1,

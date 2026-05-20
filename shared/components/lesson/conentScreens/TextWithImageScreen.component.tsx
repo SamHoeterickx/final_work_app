@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export const TextWithImageScreen: FC = () => {
-    return <View></View>;
+    return (
+        <View>
+            <Text>Text with image</Text>
+        </View>
+    );
 };

@@ -11,7 +11,7 @@ import { TitleScreen } from "./conentScreens/TitleScreen.component"
 import { ELessonScreenOptions } from "@/shared/types/enums"
 import { ILessonScreenOptionsWrapperProps } from "@/shared/types/types"
 
-export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = ({ screenType, lessonContent }) => {
+export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = ({ screenType, lessonContent, subStep }) => {
 
     switch(screenType) {
         case ELessonScreenOptions.C_TITLE:
@@ -21,7 +21,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.C_TEXT_WITH_IMAGE:
             return <TextWithImageScreen />;
         case ELessonScreenOptions.C_IMAGE_WITH_MULTIPLE_TEXT:
-            return <ImageWithMultipleTextScreen />;
+            return <ImageWithMultipleTextScreen content={lessonContent} subStep={subStep} />;
         case ELessonScreenOptions.C_ONLY_TEXT:
             return <OnlyTextScreen />;
         default:

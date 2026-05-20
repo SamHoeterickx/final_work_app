@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export const DidYouKnowScreen: FC = () => {
-    return <View></View>;
+    return (
+        <View>
+            <Text>DID YOU KNOW</Text>
+        </View>
+        );
 };

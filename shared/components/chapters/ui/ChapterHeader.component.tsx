@@ -10,25 +10,31 @@ import { LockedStatus } from './LockedStatus.component';
 import { baseStyles } from '@/shared/styles/design.system';
 
 // TYPES
-import { EProgressStatus } from '@/shared/types/enums';
+import { ELocales, EProgressStatus } from '@/shared/types/enums';
 import { IChapterHeaderProps } from '@/shared/types/types';
+import { useTranslation } from 'react-i18next';
 
 export const    ChapterHeader: FC<IChapterHeaderProps> = ({
     chapterUser,
     isFocused,
     selectedLesson,
 }) => {
+
+    const { i18n } = useTranslation();
+
     const renderStatus = () => {
         if (isFocused && selectedLesson) return <LessonStatus lesson={selectedLesson} />;
         if (chapterUser.status === EProgressStatus.LOCKED) return <LockedStatus />;
 
         return <ChapterProgress lessons={chapterUser.chapter.lessons} />;
     };
+    
+    console.log(chapterUser); 
 
     const renderTitle = () => {
         if (!selectedLesson) {
             return (
-                <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name}</Text>
+                <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name[i18n.language as ELocales] || chapterUser.chapter.name.en}</Text>
             );
         }
 

@@ -192,6 +192,7 @@
         "title": "This is a title"
     },
     "chapter": {
+        "currentStatus": "Current Lesson",
         "buttons": {
             "completed": "Revisit island",
             "continue": "Continue",

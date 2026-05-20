@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export const OnlyTextScreen: FC = () => {
-    return <View></View>;
+    return (
+            <View>
+                <Text>ONLY TEXT</Text>
+            </View>
+        );
 };

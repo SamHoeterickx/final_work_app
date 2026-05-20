@@ -2,12 +2,12 @@ import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
 import {
-    ELocales,
-    EProgressStatus,
-    ESvgIconName,
-    EOnboardingQuestionKind,
-    ESettingsOptions,
     ELessonScreenOptions,
+    ELocales,
+    EOnboardingQuestionKind,
+    EProgressStatus,
+    ESettingsOptions,
+    ESvgIconName,
 } from './enums';
 
 // INTERFACES
@@ -131,8 +131,16 @@ export interface IErrorData {
 
 export interface IChapter {
     uuid: string;
-    name: string;
-    description: string;
+    name: {
+        en: string;
+        nl: string;
+        fr: string;
+    };
+    description: {
+        en: string;
+        nl: string;
+        fr: string;
+    };
     slug: string;
     lessons: ILessonsChapter[];
     created_at: string;
@@ -312,13 +320,16 @@ export interface ILessonHeaderProps {
     totalScreens: number | undefined;
     isModalOpen: boolean;
     setIsModalOpen: (state: boolean) => void;
+    onBackPress: () => void;
 }
 
 export interface ILessonScreenOptionsWrapperProps {
     screenType: ELessonScreenOptions;
-    lessonContent: any
+    lessonContent: any;
+    subStep?: number;
 }
 
 export interface ILessonScreenProps {
-    content: any
+    content: any;
+    subStep?: number;
 }
