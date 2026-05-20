@@ -1,8 +1,13 @@
-import { Button, LessonHeader, LessonScreenOptionsWrapper, LoadingScreen } from '@/shared/components';
+import {
+    Button,
+    LessonHeader,
+    LessonScreenOptionsWrapper,
+    LoadingScreen,
+} from '@/shared/components';
 import { PauseLessonModal } from '@/shared/components/modal/PauseLessonModal.component';
 import { useLessonStore } from '@/shared/context/lessonStore.context';
 import { useStartLesson } from '@/shared/hooks';
-import { colors, } from '@/shared/styles/design.system';
+import { colors } from '@/shared/styles/design.system';
 import { ELocales } from '@/shared/types/enums';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -14,19 +19,20 @@ export default function LessonScreen() {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [subStep, setSubStep] = useState<number>(0);
 
-    const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } = useLessonStore();
+    const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } =
+        useLessonStore();
 
     const { uuid } = useLocalSearchParams();
     const { i18n } = useTranslation();
     const router = useRouter();
 
-    const { data: lesson, isPending } = useStartLesson({ 
+    const { data: lesson, isPending } = useStartLesson({
         lessonUuid: uuid as string,
-        languageCode: i18n.language as ELocales
+        languageCode: i18n.language as ELocales,
     });
 
     useEffect(() => {
-        setIsLessonCompleted(false)
+        setIsLessonCompleted(false);
     }, [uuid]);
 
     useEffect(() => {
@@ -35,7 +41,7 @@ export default function LessonScreen() {
         }
     }, [screenIndex]);
 
-    if(!lesson) return;
+    if (!lesson) return;
 
     if (isPending) return <LoadingScreen />;
 
@@ -44,7 +50,9 @@ export default function LessonScreen() {
 
         const content = lesson.content[0].content;
         const currentScreen = content[screenIndex];
-        const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [currentScreen.body];
+        const bodyArray = Array.isArray(currentScreen.body)
+            ? currentScreen.body
+            : [currentScreen.body];
 
         if (subStep < bodyArray.length - 1) {
             setSubStep(subStep + 1);
@@ -76,7 +84,9 @@ export default function LessonScreen() {
         if (screenIndex > 0) {
             const prevScreenIndex = screenIndex - 1;
             const previousScreen = lesson?.content?.[0]?.content?.[prevScreenIndex];
-            const bodyArray = Array.isArray(previousScreen?.body) ? previousScreen.body : [previousScreen?.body];
+            const bodyArray = Array.isArray(previousScreen?.body)
+                ? previousScreen.body
+                : [previousScreen?.body];
 
             setSubStep(bodyArray.length > 0 ? bodyArray.length - 1 : 0);
             setScreenIndex(prevScreenIndex);
@@ -88,15 +98,17 @@ export default function LessonScreen() {
 
     const renderButtonCopy = () => {
         const currentScreen = lesson.content?.[0].content?.[screenIndex];
-        const bodyArray = Array.isArray(currentScreen?.body) ? currentScreen.body : [currentScreen?.body];
+        const bodyArray = Array.isArray(currentScreen?.body)
+            ? currentScreen.body
+            : [currentScreen?.body];
         const isLastScreen = screenIndex >= lesson.content[0].content.length - 1;
         const isLastSubStep = subStep >= bodyArray.length - 1;
 
         if (isLastScreen && isLastSubStep) {
             return 'lesson.buttons.complete';
         }
-        return 'lesson.buttons.continue'
-    }
+        return 'lesson.buttons.continue';
+    };
 
     return (
         <SafeAreaView style={styles.sLesson}>
@@ -108,21 +120,18 @@ export default function LessonScreen() {
                 onBackPress={handleBack}
             />
 
-            { !isLessonCompleted &&  (
-                <LessonScreenOptionsWrapper 
+            {!isLessonCompleted && (
+                <LessonScreenOptionsWrapper
                     key={screenIndex}
-                    screenType={lesson.content[0].content[screenIndex].screenType} 
+                    screenType={lesson.content[0].content[screenIndex].screenType}
                     lessonContent={lesson.content[0].content[screenIndex]}
                     subStep={subStep}
-                />   
+                />
             )}
 
-            { isLessonCompleted && <Text>GOOD JOB</Text>}
+            {isLessonCompleted && <Text>GOOD JOB</Text>}
 
-            <PauseLessonModal 
-                isModalOpen={isModalOpen} 
-                setIsModalOpen={setIsModalOpen}
-            />
+            <PauseLessonModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 
             {!isLessonCompleted && (
                 <View style={styles.cButton}>
@@ -139,10 +148,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: colors.background,
         paddingHorizontal: 25,
-        // position: 'relative',
-    },
-    title: {
-        textAlign: 'center',
     },
     cButton: {
         alignItems: 'center',

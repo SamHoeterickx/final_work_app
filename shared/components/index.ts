@@ -40,7 +40,6 @@ export { SettingsOptionsWrapper } from './settings/SettingsOptionsWrapper.compon
 export { SettingsTab } from './settings/SettingsTab.component';
 export { TermsOfCondition } from './settings/TermsOfCondition.component';
 
-
 // LESSONS
 export { LessonHeader } from './lesson/LessonHeader.component';
 export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';

@@ -176,7 +176,7 @@ export interface ILessonTranslations {
     languageCode: ELocales;
     name: string;
     description: string;
-    content: any[],
+    content: any[];
 }
 
 export interface IQuestionOption {

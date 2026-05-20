@@ -6,7 +6,7 @@ import { Animated, StyleSheet, Text } from 'react-native';
 export const AnimatedTextItem: FC<{ text: string; isActive: boolean }> = ({ text, isActive }) => {
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const translateYAnim = useRef(new Animated.Value(20)).current;
-    const focusAnim = useRef(new Animated.Value(1)).current; 
+    const focusAnim = useRef(new Animated.Value(1)).current;
 
     useEffect(() => {
         Animated.parallel([
@@ -19,7 +19,7 @@ export const AnimatedTextItem: FC<{ text: string; isActive: boolean }> = ({ text
                 toValue: 0,
                 duration: 500,
                 useNativeDriver: true,
-            })
+            }),
         ]).start();
     }, []);
 
@@ -33,29 +33,26 @@ export const AnimatedTextItem: FC<{ text: string; isActive: boolean }> = ({ text
 
     const scale = focusAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [0.94, 1]
+        outputRange: [0.94, 1],
     });
 
     const activeOpacity = focusAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [0.35, 1]
+        outputRange: [0.35, 1],
     });
 
     return (
-        <Animated.View style={[
-            styles.textBlockWrapper,
-            {
-                opacity: opacityAnim,
-                transform: [
-                    { translateY: translateYAnim },
-                    { scale: scale }
-                ]
-            }
-        ]}>
+        <Animated.View
+            style={[
+                styles.textBlockWrapper,
+                {
+                    opacity: opacityAnim,
+                    transform: [{ translateY: translateYAnim }, { scale: scale }],
+                },
+            ]}
+        >
             <Animated.View style={{ opacity: activeOpacity }}>
-                <Text style={[baseStyles.p, styles.bodyText]}>
-                    {renderFormattedText(text)}
-                </Text>
+                <Text style={[baseStyles.p, styles.bodyText]}>{renderFormattedText(text)}</Text>
             </Animated.View>
         </Animated.View>
     );
@@ -70,6 +67,6 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         lineHeight: 28,
         fontSize: 16,
-        color: '#1A1A1A', 
+        color: '#1A1A1A',
     },
 });

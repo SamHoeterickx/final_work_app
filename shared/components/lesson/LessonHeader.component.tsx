@@ -1,20 +1,25 @@
-import { borderRadius, colors, spacing } from "@/shared/styles/design.system";
-import { ILessonHeaderProps } from "@/shared/types/types";
-import { Ionicons } from "@expo/vector-icons";
-import { FC } from "react";
-import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
+import { borderRadius, colors, spacing } from '@/shared/styles/design.system';
+import { ILessonHeaderProps } from '@/shared/types/types';
+import { Ionicons } from '@expo/vector-icons';
+import { FC } from 'react';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-export const LessonHeader: FC<ILessonHeaderProps> = ({ screenCount, totalScreens, isModalOpen, setIsModalOpen, onBackPress }) => {
-    if(!totalScreens) return
+export const LessonHeader: FC<ILessonHeaderProps> = ({
+    screenCount,
+    totalScreens,
+    isModalOpen,
+    setIsModalOpen,
+    onBackPress,
+}) => {
+    if (!totalScreens) return;
 
     const handleBack = () => {
-        if(isModalOpen){
+        if (isModalOpen) {
             setIsModalOpen(false);
-        }else {
+        } else {
             onBackPress();
         }
-    }
-
+    };
 
     return (
         <View style={styles.header}>
@@ -29,12 +34,15 @@ export const LessonHeader: FC<ILessonHeaderProps> = ({ screenCount, totalScreens
                     ]}
                 />
             </View>
-            <TouchableOpacity onPress={() => setIsModalOpen(!isModalOpen)} style={styles.pauseButton}>
+            <TouchableOpacity
+                onPress={() => setIsModalOpen(!isModalOpen)}
+                style={styles.pauseButton}
+            >
                 <Ionicons name="pause" size={32} color={colors.primary} />
             </TouchableOpacity>
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     header: {
@@ -45,7 +53,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         zIndex: 10,
         elevation: 10,
-        marginBottom: spacing.xxl
+        marginBottom: spacing.xxl,
     },
     backButton: {
         flex: 1,
@@ -65,6 +73,6 @@ const styles = StyleSheet.create({
     },
     pauseButton: {
         flex: 1,
-        alignItems: 'flex-end'
-    }
-})
+        alignItems: 'flex-end',
+    },
+});

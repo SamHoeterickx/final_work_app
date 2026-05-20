@@ -14,12 +14,11 @@ import { ELocales, EProgressStatus } from '@/shared/types/enums';
 import { IChapterHeaderProps } from '@/shared/types/types';
 import { useTranslation } from 'react-i18next';
 
-export const    ChapterHeader: FC<IChapterHeaderProps> = ({
+export const ChapterHeader: FC<IChapterHeaderProps> = ({
     chapterUser,
     isFocused,
     selectedLesson,
 }) => {
-
     const { i18n } = useTranslation();
 
     const renderStatus = () => {
@@ -28,19 +27,26 @@ export const    ChapterHeader: FC<IChapterHeaderProps> = ({
 
         return <ChapterProgress lessons={chapterUser.chapter.lessons} />;
     };
-    
-    console.log(chapterUser); 
+
+    console.log(chapterUser);
 
     const renderTitle = () => {
         if (!selectedLesson) {
             return (
-                <Text style={[baseStyles.h2, styles.chapterTitle]}>{chapterUser.chapter.name[i18n.language as ELocales] || chapterUser.chapter.name.en}</Text>
+                <Text style={[baseStyles.h2, styles.chapterTitle]}>
+                    {chapterUser.chapter.name[i18n.language as ELocales] ||
+                        chapterUser.chapter.name.en}
+                </Text>
             );
         }
 
         if (isFocused && selectedLesson) {
             console.log('selectedLesson', selectedLesson);
-            return <Text style={[baseStyles.h3, styles.lessonTitle]}>{selectedLesson.translations[0].name}</Text>;
+            return (
+                <Text style={[baseStyles.h3, styles.lessonTitle]}>
+                    {selectedLesson.translations[0].name}
+                </Text>
+            );
         }
     };
 

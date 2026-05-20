@@ -10,10 +10,15 @@ import { ILessonStatusProps } from '@/shared/types/types';
 import { EProgressStatus } from '@/shared/types/enums';
 
 export const LessonStatus: FC<ILessonStatusProps> = ({ lesson }) => {
-
     const { t } = useTranslation();
 
-    return <Text style={[baseStyles.h3, styles.status]}>{lesson.status === EProgressStatus.INPROGRESS ? t('chapter.currentStatus') : lesson.status}</Text>;
+    return (
+        <Text style={[baseStyles.h3, styles.status]}>
+            {lesson.status === EProgressStatus.INPROGRESS
+                ? t('chapter.currentStatus')
+                : lesson.status}
+        </Text>
+    );
 };
 
 const styles = StyleSheet.create({

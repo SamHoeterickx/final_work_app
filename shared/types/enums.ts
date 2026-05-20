@@ -69,11 +69,11 @@ export enum ESettingsOptions {
 }
 
 export enum ELessonScreenOptions {
-    C_TITLE = "C_TITLE",
-    C_DID_YOU_KNOW = "C_DID_YOU_KNOW",
-    C_TEXT_WITH_IMAGE = "C_TEXT_WITH_IMAGE",
-    C_ONLY_TEXT = "C_ONLY_TEXT",
-    Q_RIGHT_OR_WRONG = "Q_RIGHT_OR_WRONG",
-    Q_MATCH = "Q_MATCH",
-    Q_CLICK_AND_FOCUS = "Q_CLICK_AND_FOCUS"
+    C_TITLE = 'C_TITLE',
+    C_DID_YOU_KNOW = 'C_DID_YOU_KNOW',
+    C_TEXT_WITH_IMAGE = 'C_TEXT_WITH_IMAGE',
+    C_ONLY_TEXT = 'C_ONLY_TEXT',
+    Q_RIGHT_OR_WRONG = 'Q_RIGHT_OR_WRONG',
+    Q_MATCH = 'Q_MATCH',
+    Q_CLICK_AND_FOCUS = 'Q_CLICK_AND_FOCUS',
 }

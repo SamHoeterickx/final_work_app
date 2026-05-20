@@ -1,4 +1,3 @@
-
 import { FC, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -12,21 +11,18 @@ import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILessonScreenProps } from '@/shared/types/types';
 
 export const OnlyTextScreen: FC<ILessonScreenProps> = ({ content, subStep = 0 }) => {
+    const scrollViewRef = useRef<ScrollView>(null);
+
     if (!content) return null;
 
     const bodyArray = Array.isArray(content.body) ? content.body : [content.body];
     const textsToRender = bodyArray.slice(0, subStep + 1);
-    const scrollViewRef = useRef<ScrollView>(null);
 
     return (
         <View style={styles.wrapper}>
-            {content.title && (
-                <Text style={[baseStyles.h2, styles.title]}>
-                    {content.title}
-                </Text>
-            )}
-            
-            <ScrollView 
+            {content.title && <Text style={[baseStyles.h2, styles.title]}>{content.title}</Text>}
+
+            <ScrollView
                 ref={scrollViewRef}
                 contentContainerStyle={styles.contentContainer}
                 onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
@@ -34,13 +30,7 @@ export const OnlyTextScreen: FC<ILessonScreenProps> = ({ content, subStep = 0 })
             >
                 {textsToRender.map((text: string, index: number) => {
                     const isActive = index === textsToRender.length - 1;
-                    return (
-                        <AnimatedTextItem 
-                            key={index}
-                            text={text} 
-                            isActive={isActive} 
-                        />
-                    );
+                    return <AnimatedTextItem key={index} text={text} isActive={isActive} />;
                 })}
             </ScrollView>
         </View>
