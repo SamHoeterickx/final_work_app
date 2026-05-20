@@ -271,6 +271,12 @@
         }
     },
     "lesson": {
+        "titleScreen": {
+            "introduction": "Hoofdstuk Introductie"
+        },
+        "dykScreen": {
+            "title": "Wist je dat?"
+        },
         "paused": {
             "title": "Les gepauzeerd",
             "options": {

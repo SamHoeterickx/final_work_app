@@ -272,6 +272,12 @@
         }
     },
     "lesson": {
+        "titleScreen": {
+            "introduction": "Chapter Introduction"
+        },
+        "dykScreen": {
+            "title": "Did You Know?"
+        },
         "paused": {
             "title": "Lesson Paused",
             "options": {

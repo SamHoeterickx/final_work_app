@@ -20,7 +20,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.C_TEXT_WITH_IMAGE:
             return <TextWithImageScreen  content={lessonContent} subStep={subStep}/>;
         case ELessonScreenOptions.C_ONLY_TEXT:
-            return <OnlyTextScreen />;
+            return <OnlyTextScreen content={lessonContent} subStep={subStep} />;
         default:
             return null;
     }

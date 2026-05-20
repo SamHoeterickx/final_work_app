@@ -268,6 +268,12 @@
         }
     },
     "lesson": {
+        "titleScreen": {
+            "introduction": "Introduction au chapitre"
+        },
+        "dykScreen": {
+            "title": "saviez-vous?"
+        },
         "paused": {
             "title": "Leçon en pause",
             "options": {

@@ -3,7 +3,7 @@ import { PauseLessonModal } from '@/shared/components/modal/PauseLessonModal.com
 import { useLessonStore } from '@/shared/context/lessonStore.context';
 import { useStartLesson } from '@/shared/hooks';
 import { colors, } from '@/shared/styles/design.system';
-import { ELessonScreenOptions, ELocales } from '@/shared/types/enums';
+import { ELocales } from '@/shared/types/enums';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,50 +34,45 @@ export default function LessonScreen() {
     if (isPending) return <LoadingScreen />;
 
     const handleStartLesson = () => {
-        if(!lesson || !lesson.content || !lesson.content?.[0] || !lesson.content?.[0].content) return
+        if (!lesson?.content?.[0]?.content) return;
 
-        const currentScreen = lesson.content?.[0].content?.[screenIndex];
-        
-        if (currentScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE) {
-            const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [currentScreen.body];
-            if (subStep < bodyArray.length - 1) {
-                setSubStep(subStep + 1);
-                return;
-            }
-        }
+        const content = lesson.content[0].content;
+        const currentScreen = content[screenIndex];
+        const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [];
 
-        setSubStep(0);
-        if(!isLessonCompleted){
-            setScreenIndex(screenIndex + 1)
-        }
-
-        if(screenIndex === lesson.content[0].content.length - 1) {
-            setIsLessonCompleted(true);
-        }
-    };
-
-    const handleBack = () => {
-        const currentScreen = lesson?.content?.[0]?.content?.[screenIndex];
-        
-        if (currentScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE && subStep > 0) {
-            setSubStep(subStep - 1);
+        if (bodyArray.length > 1 && subStep < bodyArray.length - 1) {
+            setSubStep(subStep + 1);
             return;
         }
 
-        if(isLessonCompleted){
+        if (screenIndex >= content.length - 1) {
+            if (!isLessonCompleted) {
+                setIsLessonCompleted(true);
+            }
+            return;
+        }
+
+        setSubStep(0);
+        setScreenIndex(screenIndex + 1);
+    };
+
+    const handleBack = () => {
+        if (isLessonCompleted) {
             setIsLessonCompleted(false);
+            return;
+        }
+
+        if (subStep > 0) {
+            setSubStep(subStep - 1);
+            return;
         }
 
         if (screenIndex > 0) {
             const prevScreenIndex = screenIndex - 1;
             const previousScreen = lesson?.content?.[0]?.content?.[prevScreenIndex];
+            const bodyArray = Array.isArray(previousScreen?.body) ? previousScreen.body : [];
 
-            if (previousScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE) {
-                const bodyArray = Array.isArray(previousScreen.body) ? previousScreen.body : [previousScreen.body];
-                setSubStep(bodyArray.length - 1);
-            } else {
-                setSubStep(0);
-            }
+            setSubStep(bodyArray.length > 1 ? bodyArray.length - 1 : 0);
             setScreenIndex(prevScreenIndex);
             return;
         }
@@ -86,16 +81,13 @@ export default function LessonScreen() {
     };
 
     const renderButtonCopy = () => {
-        if(!isLessonCompleted) {
-            const currentScreen = lesson.content?.[0].content?.[screenIndex];
+        const currentScreen = lesson.content?.[0].content?.[screenIndex];
+        const bodyArray = Array.isArray(currentScreen?.body) ? currentScreen.body : [];
+        const isLastScreen = screenIndex >= lesson.content[0].content.length - 1;
+        const isLastSubStep = subStep >= bodyArray.length - 1;
 
-            const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [currentScreen.body];
-            const isLastScreen = screenIndex === lesson.content[0].content.length - 1;
-            const isLastSubStep = subStep === bodyArray.length - 1;
-
-            if (isLastScreen && isLastSubStep) {
-                return 'lesson.buttons.complete'
-            }
+        if (isLastScreen && isLastSubStep) {
+            return 'lesson.buttons.complete';
         }
         return 'lesson.buttons.continue'
     }
@@ -112,6 +104,7 @@ export default function LessonScreen() {
 
             { !isLessonCompleted &&  (
                 <LessonScreenOptionsWrapper 
+                    key={screenIndex}
                     screenType={lesson.content[0].content[screenIndex].screenType} 
                     lessonContent={lesson.content[0].content[screenIndex]}
                     subStep={subStep}
@@ -125,9 +118,11 @@ export default function LessonScreen() {
                 setIsModalOpen={setIsModalOpen}
             />
 
-            <View style={styles.cButton}>
-                <Button copy={renderButtonCopy()} onPress={handleStartLesson} />
-            </View>
+            {!isLessonCompleted && (
+                <View style={styles.cButton}>
+                    <Button copy={renderButtonCopy()} onPress={handleStartLesson} />
+                </View>
+            )}
         </SafeAreaView>
     );
 }
