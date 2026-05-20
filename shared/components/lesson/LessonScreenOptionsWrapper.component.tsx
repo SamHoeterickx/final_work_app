@@ -16,7 +16,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.C_TITLE:
             return <TitleScreen content={lessonContent} />;
         case ELessonScreenOptions.C_DID_YOU_KNOW:
-            return <DidYouKnowScreen />;
+            return <DidYouKnowScreen content={lessonContent} />;
         case ELessonScreenOptions.C_TEXT_WITH_IMAGE:
             return <TextWithImageScreen  content={lessonContent} subStep={subStep}/>;
         case ELessonScreenOptions.C_ONLY_TEXT:

@@ -7,8 +7,7 @@ import { ELessonScreenOptions, ELocales } from '@/shared/types/enums';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LessonScreen() {
@@ -34,7 +33,7 @@ export default function LessonScreen() {
         console.log('start pressed');
         const currentScreen = lesson?.content?.[0]?.content?.[screenIndex];
         
-        if (currentScreen?.screenType === ELessonScreenOptions.C_IMAGE_WITH_MULTIPLE_TEXT) {
+        if (currentScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE) {
             const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [currentScreen.body];
             if (subStep < bodyArray.length - 1) {
                 setSubStep(subStep + 1);
@@ -49,7 +48,7 @@ export default function LessonScreen() {
     const handleBack = () => {
         const currentScreen = lesson?.content?.[0]?.content?.[screenIndex];
         
-        if (currentScreen?.screenType === ELessonScreenOptions.C_IMAGE_WITH_MULTIPLE_TEXT && subStep > 0) {
+        if (currentScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE && subStep > 0) {
             setSubStep(subStep - 1);
             return;
         }
@@ -58,7 +57,7 @@ export default function LessonScreen() {
             const prevScreenIndex = screenIndex - 1;
             const previousScreen = lesson?.content?.[0]?.content?.[prevScreenIndex];
 
-            if (previousScreen?.screenType === ELessonScreenOptions.C_IMAGE_WITH_MULTIPLE_TEXT) {
+            if (previousScreen?.screenType === ELessonScreenOptions.C_TEXT_WITH_IMAGE) {
                 const bodyArray = Array.isArray(previousScreen.body) ? previousScreen.body : [previousScreen.body];
                 setSubStep(bodyArray.length - 1);
             } else {
