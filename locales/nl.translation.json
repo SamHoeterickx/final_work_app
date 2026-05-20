@@ -203,7 +203,7 @@
     "chapterLesson": {
         "buttons": {
             "start": "Start",
-            "restart": "Herstart",
+            "completed": "Herstart",
             "locked": "Locked"
         }
     },

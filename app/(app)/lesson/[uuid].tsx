@@ -29,6 +29,12 @@ export default function LessonScreen() {
         setIsLessonCompleted(false)
     }, [uuid]);
 
+    useEffect(() => {
+        if (screenIndex === 0) {
+            setSubStep(0);
+        }
+    }, [screenIndex]);
+
     if(!lesson) return;
 
     if (isPending) return <LoadingScreen />;
@@ -38,9 +44,9 @@ export default function LessonScreen() {
 
         const content = lesson.content[0].content;
         const currentScreen = content[screenIndex];
-        const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [];
+        const bodyArray = Array.isArray(currentScreen.body) ? currentScreen.body : [currentScreen.body];
 
-        if (bodyArray.length > 1 && subStep < bodyArray.length - 1) {
+        if (subStep < bodyArray.length - 1) {
             setSubStep(subStep + 1);
             return;
         }
@@ -70,9 +76,9 @@ export default function LessonScreen() {
         if (screenIndex > 0) {
             const prevScreenIndex = screenIndex - 1;
             const previousScreen = lesson?.content?.[0]?.content?.[prevScreenIndex];
-            const bodyArray = Array.isArray(previousScreen?.body) ? previousScreen.body : [];
+            const bodyArray = Array.isArray(previousScreen?.body) ? previousScreen.body : [previousScreen?.body];
 
-            setSubStep(bodyArray.length > 1 ? bodyArray.length - 1 : 0);
+            setSubStep(bodyArray.length > 0 ? bodyArray.length - 1 : 0);
             setScreenIndex(prevScreenIndex);
             return;
         }
@@ -82,7 +88,7 @@ export default function LessonScreen() {
 
     const renderButtonCopy = () => {
         const currentScreen = lesson.content?.[0].content?.[screenIndex];
-        const bodyArray = Array.isArray(currentScreen?.body) ? currentScreen.body : [];
+        const bodyArray = Array.isArray(currentScreen?.body) ? currentScreen.body : [currentScreen?.body];
         const isLastScreen = screenIndex >= lesson.content[0].content.length - 1;
         const isLastSubStep = subStep >= bodyArray.length - 1;
 
@@ -140,5 +146,6 @@ const styles = StyleSheet.create({
     },
     cButton: {
         alignItems: 'center',
+        zIndex: 10,
     },
 });

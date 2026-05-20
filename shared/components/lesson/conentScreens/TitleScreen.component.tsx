@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     wTitleScreen: {
         flex: 1,
         justifyContent: 'center',
-        paddingHorizontal: spacing.xl || 32,
+        paddingHorizontal: spacing.sm,
     },
     innerContainer: {
         alignItems: 'center',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         color: '#4A5D44',
         letterSpacing: 4,
         textTransform: 'uppercase',
-        marginBottom: 16,
+        marginBottom: spacing.md,
     },
     title: {
         textAlign: 'center',
@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
         width: '50%',
         height: 6, 
         backgroundColor: '#4A5D44',
-        marginTop: 24,
-        marginBottom: 32,
+        marginTop: spacing.lg,
+        marginBottom: spacing.xl,
         borderRadius: 2,
     },
     bodyText: {
@@ -114,6 +114,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 26,
         color: '#4A4A4A',
-        maxWidth: 300,
     }
 });
