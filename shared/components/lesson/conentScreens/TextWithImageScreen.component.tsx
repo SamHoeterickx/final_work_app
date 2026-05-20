@@ -1,5 +1,6 @@
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILessonScreenProps } from '@/shared/types/types';
+import { renderFormattedText } from '@/shared/utils/text.utils';
 import { FC, useEffect, useRef } from 'react';
 import { Animated, Easing, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -56,7 +57,7 @@ const AnimatedTextItem: FC<{ text: string; isActive: boolean }> = ({ text, isAct
         ]}>
             <Animated.View style={{ opacity: activeOpacity }}>
                 <Text style={[baseStyles.p, styles.bodyText]}>
-                    {text}
+                    {renderFormattedText(text)}
                 </Text>
             </Animated.View>
         </Animated.View>
