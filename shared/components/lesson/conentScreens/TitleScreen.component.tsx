@@ -1,4 +1,4 @@
-import { baseStyles } from '@/shared/styles/design.system';
+import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILessonScreenProps } from '@/shared/types/types';
 import { FC, useEffect, useRef } from 'react';
 import { Animated, Dimensions, Easing, StyleSheet, View } from 'react-native';
@@ -8,12 +8,12 @@ const HEIGHT = Dimensions.get('screen').height;
 export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
 
     
-    const posAnim = useRef(new Animated.Value( HEIGHT / 2)).current;
+    const posAnim = useRef(new Animated.Value( HEIGHT / 4)).current;
     const opacityAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
         Animated.timing(posAnim, {
-            toValue: 75,
+            toValue: spacing.xxl,
             easing: Easing.back(1),
             duration: 1000,
             useNativeDriver: true

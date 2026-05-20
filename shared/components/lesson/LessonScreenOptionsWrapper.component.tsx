@@ -2,9 +2,8 @@ import { FC } from "react"
 
 // COMPONENTS
 import { DidYouKnowScreen } from "./conentScreens/DidYouKnowScreen.component"
-import { ImageWithMultipleTextScreen } from "./conentScreens/ImageWithMultipleTextScreen.component"
 import { OnlyTextScreen } from "./conentScreens/OnlyTextScreen.component"
-import { TextWithImageScreen } from "./conentScreens/TextWithImageScreen.component"
+import { TextWithImageScreen } from './conentScreens/TextWithImageScreen.component'
 import { TitleScreen } from "./conentScreens/TitleScreen.component"
 
 // TYPES
@@ -19,9 +18,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.C_DID_YOU_KNOW:
             return <DidYouKnowScreen />;
         case ELessonScreenOptions.C_TEXT_WITH_IMAGE:
-            return <TextWithImageScreen />;
-        case ELessonScreenOptions.C_IMAGE_WITH_MULTIPLE_TEXT:
-            return <ImageWithMultipleTextScreen content={lessonContent} subStep={subStep} />;
+            return <TextWithImageScreen  content={lessonContent} subStep={subStep}/>;
         case ELessonScreenOptions.C_ONLY_TEXT:
             return <OnlyTextScreen />;
         default:
