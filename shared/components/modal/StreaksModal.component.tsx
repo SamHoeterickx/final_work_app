@@ -6,16 +6,38 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useUserDataStore } from '@/shared/context/userDataStore.context';
 import { SvgIcon } from '../svgIcon/SvgIcon.component';
 
+// CONST
+import { KEEP_GOING_MESSAGES, START_STREAK_MESSAGES } from '@/shared/const/account.const';
+
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { ESvgIconName } from '@/shared/types/enums';
+import { ELocales, ESvgIconName } from '@/shared/types/enums';
 import { IModalProps } from '@/shared/types/types';
 
 export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
-    const { t } = useTranslation();
+
+    const { t, i18n } = useTranslation();
     const { streaks, longestStreak } = useUserDataStore();
+
+    const renderStreaksMessage = () => {
+        const rIndex = Math.floor(Math.random() * 9);
+
+        if(streaks !== 0){
+            return KEEP_GOING_MESSAGES.map(messagesSet => {
+                if(messagesSet.lang === i18n.language){
+                    return messagesSet.options[rIndex]
+                }
+            });
+        }else {
+            return START_STREAK_MESSAGES.map(messagesSet => {
+                if(messagesSet.lang === i18n.language){
+                    return messagesSet.options[rIndex]
+                }
+            });
+        }
+    }
 
     return (
         <Modal
@@ -46,7 +68,7 @@ export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) =
                         </Text>
 
                         <Text style={[baseStyles.p, styles.streakMotivation]}>
-                            {t('streaks.keepGoing')}
+                            {renderStreaksMessage()}
                         </Text>
                     </View>
 
