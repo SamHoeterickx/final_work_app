@@ -54,10 +54,10 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                     onPress={() => setIsModalOpen(false)}
                     activeOpacity={1}
                 />
-                
+
                 <View style={styles.modalContent}>
                     <View style={styles.dragIndicator} />
-                    
+
                     {showConfirmQuit ? (
                         <View style={styles.contentWrapper}>
                             <View style={styles.cText}>
@@ -73,14 +73,11 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                             </View>
 
                             <View style={styles.cQuit}>
-                                <Button
-                                    onPress={confirmQuit}
-                                    copy='lesson.paused.options.quit'
-                                />
+                                <Button onPress={confirmQuit} copy="lesson.paused.options.quit" />
                                 <Button
                                     onPress={() => setShowConfirmQuit(false)}
-                                    copy='settings.profile.buttons.cancel'
-                                    styles='secundary'
+                                    copy="settings.profile.buttons.cancel"
+                                    styles="secundary"
                                 />
                             </View>
 
@@ -100,7 +97,9 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => setShowConfirmQuit(true)}>
-                                    <Text style={styles.optionText}>{t('lesson.paused.options.quit')}</Text>
+                                    <Text style={styles.optionText}>
+                                        {t('lesson.paused.options.quit')}
+                                    </Text>
                                 </TouchableOpacity>
                             </View>
 

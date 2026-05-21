@@ -59,10 +59,14 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
 
                 <View style={styles.modalContent}>
                     <View style={styles.dragIndicator} />
-                    
+
                     <View style={styles.cText}>
-                        <Text style={[baseStyles.h2, styles.text]}>{t('settings.deleteAccount.title')}</Text>
-                        <Text style={[baseStyles.h4, styles.text]}>{t('settings.deleteAccount.subtitle')}</Text>
+                        <Text style={[baseStyles.h2, styles.text]}>
+                            {t('settings.deleteAccount.title')}
+                        </Text>
+                        <Text style={[baseStyles.h4, styles.text]}>
+                            {t('settings.deleteAccount.subtitle')}
+                        </Text>
                     </View>
 
                     <InputField
@@ -140,5 +144,5 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-    }
+    },
 });

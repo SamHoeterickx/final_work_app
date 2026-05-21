@@ -1,10 +1,18 @@
-import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { SvgIcon } from '../svgIcon/SvgIcon.component';
-import { ESvgIconName } from '@/shared/types/enums';
-import { useUserDataStore } from '@/shared/context/userDataStore.context';
 import { useState } from 'react';
+
+// COMPONENTS
+import { SvgIcon } from '../svgIcon/SvgIcon.component';
 import { StreaksModal } from '../index';
+
+// CONTEXT
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
+
+// STYLES
+import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
+
+// TYPES
+import { ESvgIconName } from '@/shared/types/enums';
 
 export const HomeHeader = () => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
@@ -37,7 +45,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         position: 'absolute',
-        top: Platform.OS === 'ios' ? 96 : 72,
+        top: Platform.OS === 'ios' ? spacing.xxl * 2.25 : spacing.xxl * 1.6, 
         paddingHorizontal: 25,
     },
     wStreaks: {

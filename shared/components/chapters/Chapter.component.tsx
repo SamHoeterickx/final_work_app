@@ -50,13 +50,17 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     };
 
     const handleButtonChapter = () => {
-        const allCompleted = chapterUser.chapter.lessons.every((lesson: ILessonsChapter) => lesson.status === EProgressStatus.COMPLETED);
-
-        const activeIndex = allCompleted ? 0 : chapterUser.chapter.lessons.findIndex(
-            (lesson) =>
-                lesson.status === EProgressStatus.INPROGRESS ||
-                lesson.status === EProgressStatus.UNLOCKED,
+        const allCompleted = chapterUser.chapter.lessons.every(
+            (lesson: ILessonsChapter) => lesson.status === EProgressStatus.COMPLETED,
         );
+
+        const activeIndex = allCompleted
+            ? 0
+            : chapterUser.chapter.lessons.findIndex(
+                  (lesson) =>
+                      lesson.status === EProgressStatus.INPROGRESS ||
+                      lesson.status === EProgressStatus.UNLOCKED,
+              );
 
         if (activeIndex !== -1) {
             handleLessonClick(activeIndex, chapterUser.chapter.lessons[activeIndex]);
