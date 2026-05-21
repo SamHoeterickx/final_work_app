@@ -13,31 +13,30 @@ import { KEEP_GOING_MESSAGES, START_STREAK_MESSAGES } from '@/shared/const/accou
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { ELocales, ESvgIconName } from '@/shared/types/enums';
+import { ESvgIconName } from '@/shared/types/enums';
 import { IModalProps } from '@/shared/types/types';
 
 export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
-
     const { t, i18n } = useTranslation();
     const { streaks, longestStreak } = useUserDataStore();
 
     const renderStreaksMessage = () => {
         const rIndex = Math.floor(Math.random() * 9);
 
-        if(streaks !== 0){
-            return KEEP_GOING_MESSAGES.map(messagesSet => {
-                if(messagesSet.lang === i18n.language){
-                    return messagesSet.options[rIndex]
+        if (streaks !== 0) {
+            return KEEP_GOING_MESSAGES.map((messagesSet) => {
+                if (messagesSet.lang === i18n.language) {
+                    return messagesSet.options[rIndex];
                 }
             });
-        }else {
-            return START_STREAK_MESSAGES.map(messagesSet => {
-                if(messagesSet.lang === i18n.language){
-                    return messagesSet.options[rIndex]
+        } else {
+            return START_STREAK_MESSAGES.map((messagesSet) => {
+                if (messagesSet.lang === i18n.language) {
+                    return messagesSet.options[rIndex];
                 }
             });
         }
-    }
+    };
 
     return (
         <Modal

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     chapterTitle: {
         fontSize: 48,
         textAlign: 'center',
-        marginTop: spacing.lg
+        marginTop: spacing.lg,
     },
     lessonTitle: {
         fontSize: 36,

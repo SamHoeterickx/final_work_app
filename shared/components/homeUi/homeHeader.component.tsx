@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         position: 'absolute',
-        top: Platform.OS === 'ios' ? spacing.xxl * 2.25 : spacing.xxl * 1.6, 
+        top: Platform.OS === 'ios' ? spacing.xxl * 2.25 : spacing.xxl * 1.6,
         paddingHorizontal: 25,
     },
     wStreaks: {
