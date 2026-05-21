@@ -4,14 +4,14 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // CONTEXT
 import { useUserDataStore } from '@/shared/context/userDataStore.context';
+import { SvgIcon } from '../svgIcon/SvgIcon.component';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { IModalProps } from '@/shared/types/types';
-import { SvgIcon } from '../svgIcon/SvgIcon.component';
 import { ESvgIconName } from '@/shared/types/enums';
+import { IModalProps } from '@/shared/types/types';
 
 export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
     const { t } = useTranslation();
@@ -30,30 +30,26 @@ export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) =
                     onPress={() => setIsModalOpen(false)}
                     activeOpacity={1}
                 />
-                
+
                 <View style={styles.modalContent}>
                     <View style={styles.dragIndicator} />
-                    <Text style={[baseStyles.h2, styles.title]}>
-                        {t('streaks.title')}
-                    </Text>
-                    
+                    <Text style={[baseStyles.h2, styles.title]}>{t('streaks.title')}</Text>
+
                     <View style={styles.cCurrent}>
                         <View style={styles.wCurrent}>
-                            <Text style={[baseStyles.h1, styles.streakNumber]}>
-                                {streaks || 0}
-                            </Text>
+                            <Text style={[baseStyles.h1, styles.streakNumber]}>{streaks || 0}</Text>
                             <SvgIcon name={ESvgIconName.STREAKS} width={100} height={100} />
                         </View>
-                        
+
                         <Text style={[baseStyles.h2, styles.streakText]}>
                             {t('streaks.dayStreaks')}
                         </Text>
-                        
+
                         <Text style={[baseStyles.p, styles.streakMotivation]}>
                             {t('streaks.keepGoing')}
                         </Text>
                     </View>
-                       
+
                     <View style={styles.statsContainer}>
                         <View style={styles.statBox}>
                             <Text style={baseStyles.h2}>{longestStreak || 0}</Text>
@@ -62,7 +58,6 @@ export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) =
                             </Text>
                         </View>
                     </View>
-
                 </View>
             </View>
         </Modal>
@@ -105,7 +100,7 @@ const styles = StyleSheet.create({
         marginBottom: spacing.md,
         textAlign: 'center',
     },
-    
+
     cCurrent: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     wCurrent: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     streakNumber: {
         fontSize: 120,
@@ -134,7 +129,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         color: colors.text.muted,
     },
-    
+
     statsContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -142,7 +137,7 @@ const styles = StyleSheet.create({
         marginTop: spacing.xl,
         borderTopWidth: 1,
         borderColor: colors.text.muted + '40',
-        paddingTop: spacing.lg,
+        paddingTop: spacing.xxl,
     },
     statBox: {
         alignItems: 'center',

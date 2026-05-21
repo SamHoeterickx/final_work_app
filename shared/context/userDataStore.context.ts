@@ -30,8 +30,8 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
         try {
             const response = await authService.getUserData();
             console.log(response);
-            set({ 
-                userData: response?.getUserData || null, 
+            set({
+                userData: response?.getUserData || null,
                 name: response?.getUserData.name,
                 xp: response?.getUserData.xp ? parseInt(response.getUserData.xp, 10) : 0,
                 streaks: response?.getUserData.streaks.currentStreak,
@@ -40,5 +40,5 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
-    }
+    },
 }));

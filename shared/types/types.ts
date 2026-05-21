@@ -150,7 +150,7 @@ export interface IUserData {
         currentStreak: number;
         lastCompletedDate: Date;
         longestStreak: number;
-    }
+    };
 }
 
 export interface IChapter {

@@ -1,24 +1,23 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
 import { LoadingScreen, SvgIcon } from '@/shared/components';
 
-// HOOKS
-import { useGetUserdata } from '@/shared/hooks';
-
 // CONST
 import { PROGRESSION_LEVELS } from '@/shared/const/account.const';
+
+// CONTEXT
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { ESvgIconName } from '@/shared/types/enums';
-import { useUserDataStore } from '@/shared/context/userDataStore.context';
-import { useEffect, useState } from 'react';
 
 export default function AccountScreen() {
     const [isPending, setIsPending] = useState<boolean>(false);
@@ -29,17 +28,17 @@ export default function AccountScreen() {
 
     // const { data, isPending, isError, error } = useGetUserdata();
 
-    const { getUserData, name, xp, streaks, longestStreak } = useUserDataStore();
+    const { getUserData, name, xp } = useUserDataStore();
 
     useEffect(() => {
         setIsPending(true);
         setIsError(false);
         setError(null);
-        try{
+        try {
             getUserData();
-        }catch(error) {
+        } catch (error) {
             throw error;
-        }finally {
+        } finally {
             setIsPending(false);
         }
     }, []);
@@ -92,7 +91,7 @@ export default function AccountScreen() {
                         </View>
                     </View>
                 </View> */}
-{/* 
+                {/* 
                 <View style={styles.cStreaks}>
                     <Text style={[baseStyles.h2, styles.subtitle]}>Your Streaks</Text>
                     <View style={styles.cStats}>

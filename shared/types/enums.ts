@@ -48,7 +48,7 @@ export enum ESvgIconName {
     PRIVACY = 'privacy',
     INFO = 'info',
     STREAKS = 'streaks',
-    LANGUAGE = 'language'
+    LANGUAGE = 'language',
 }
 
 export enum EProgressStatus {
@@ -89,5 +89,5 @@ export enum EPostLessonFlowOptions {
 
 export enum ERoles {
     ADMIN = 'ADMIN',
-    USER = 'USER'
+    USER = 'USER',
 }

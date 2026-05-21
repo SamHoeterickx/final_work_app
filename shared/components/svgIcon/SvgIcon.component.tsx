@@ -45,7 +45,7 @@ import Streaks from '@/assets/icons/navigation/streaks.svg';
 import Legal from '@/assets/icons/settings/legal.svg';
 import Privacy from '@/assets/icons/settings/privacy.svg';
 import Info from '@/assets/icons/info.svg';
-import Language from '@/assets/icons/settings/language.svg'
+import Language from '@/assets/icons/settings/language.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
@@ -92,7 +92,7 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     [ESvgIconName.LEGAL]: Legal,
     [ESvgIconName.PRIVACY]: Privacy,
     [ESvgIconName.INFO]: Info,
-    [ESvgIconName.LANGUAGE]: Language
+    [ESvgIconName.LANGUAGE]: Language,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, color, ...props }) => {

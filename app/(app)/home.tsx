@@ -116,9 +116,7 @@ export default function HomeScreen() {
                 />
             )}
 
-            {
-                !isFocused && <HomeHeader />
-            }
+            {!isFocused && <HomeHeader />}
         </SafeAreaView>
     );
 }
