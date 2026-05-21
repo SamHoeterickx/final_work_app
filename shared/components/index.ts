@@ -30,6 +30,7 @@ export { SvgIcon } from './svgIcon/SvgIcon.component';
 // MODALS
 export { DeleteUserModal } from './modal/DeleteAccountModal.component';
 export { PauseLessonModal } from './modal/PauseLessonModal.component';
+export { StreaksModal } from './modal/StreaksModal.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';

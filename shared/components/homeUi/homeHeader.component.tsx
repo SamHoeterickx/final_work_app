@@ -3,21 +3,29 @@ import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native
 import { SvgIcon } from "../svgIcon/SvgIcon.component"
 import { ESvgIconName } from "@/shared/types/enums"
 import { useUserDataStore } from "@/shared/context/userDataStore.context"
+import { useState } from "react"
+import { StreaksModal } from "../index"
 
 export const HomeHeader = () => {
 
+    const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false)
+
     const { streaks } = useUserDataStore();
 
+
     return (
-        <View style={styles.wHeader}>
-            <TouchableOpacity style={styles.wStreaks}>
-                <Text style={baseStyles.h3}>{streaks}</Text>
-                <SvgIcon name={ESvgIconName.STREAKS} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.wStreaks}>
-                <SvgIcon name={ESvgIconName.NOTIFICATIONS} />
-            </TouchableOpacity>
-        </View>
+        <>
+            <View style={styles.wHeader}>
+                <TouchableOpacity onPress={() => setIsStreakModalOpen(true)} style={styles.wStreaks}>
+                    <Text style={baseStyles.h3}>{streaks}</Text>
+                    <SvgIcon name={ESvgIconName.STREAKS} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.wStreaks}>
+                    <SvgIcon name={ESvgIconName.NOTIFICATIONS} />
+                </TouchableOpacity>
+            </View>
+            <StreaksModal isModalOpen={isStreaksModalOpen} setIsModalOpen={setIsStreakModalOpen} />
+        </>
     )
 }
 

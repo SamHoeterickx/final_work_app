@@ -312,5 +312,12 @@
                 "tag": "Nieuw Hoofdstuk Vrijgespeeld"
             }
         }
+    },
+    "streaks": {
+        "title": "Jouw Streaks",
+        "current": "Huidige",
+        "longest": "Langste streak",
+        "dayStreaks": "Dagen Streak",
+        "keepGoing": "GEWELDIG BLIJF ZO DOORGAAN"
     }
 }

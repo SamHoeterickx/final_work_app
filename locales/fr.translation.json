@@ -309,5 +309,12 @@
                 "tag": "Nouveau Chapitre Débloqué"
             }
         }
+    },
+    "streaks": {
+        "title": "Vos Séries",
+        "current": "Actuelle",
+        "longest": "Série la plus longue",
+        "dayStreaks": "Jours de Série",
+        "keepGoing": "SUPER CONTINUEZ COMME ÇA"
     }
 }

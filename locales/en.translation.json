@@ -314,5 +314,12 @@
                 "tag": "New Chapter Unlocked"
             }
         }
+    },
+    "streaks": {
+        "title": "Your Streaks",
+        "current": "Current",
+        "longest": "Longest streak",
+        "dayStreaks": "Day Streak",
+        "keepGoing": "AWESOME KEEP IT UP"
     }
 }
