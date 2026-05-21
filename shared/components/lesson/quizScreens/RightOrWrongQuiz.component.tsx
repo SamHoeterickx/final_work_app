@@ -42,7 +42,7 @@ export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({ content, quizEr
                     { opacity: opacityAnim, transform: [{ translateY: translateYAnim }] },
                 ]}
             >
-                <Text style={styles.tag}>{t('lesson.quiz.tag', 'TEST JE KENNIS')}</Text>
+                <Text style={styles.tag}>{t('lesson.quiz.tag')}</Text>
 
                 {content.title && (
                     <Text style={[baseStyles.h2, styles.title]}>{content.title}</Text>

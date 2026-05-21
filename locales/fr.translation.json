@@ -280,6 +280,10 @@
         "dykScreen": {
             "title": "saviez-vous?"
         },
+        "quiz": {
+            "tag": "Testez vos connaissances",
+            "wrongAnswer": "Oups, réessayez"
+        },
         "paused": {
             "title": "Leçon en pause",
             "options": {

@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENETS
@@ -21,7 +21,7 @@ import { useLessonStore } from '@/shared/context/lessonStore.context';
 import { useCompleteLesson, useStartLesson } from '@/shared/hooks';
 
 // STYLES
-import { baseStyles, colors } from '@/shared/styles/design.system';
+import { colors } from '@/shared/styles/design.system';
 
 // TYPES
 import { ELocales, EPostLessonFlowOptions } from '@/shared/types/enums';
@@ -84,7 +84,7 @@ export default function LessonScreen() {
         if (isQuizScreen) {
             if (!selectedOption) return;
 
-            const isCorrect = selectedOption === currentScreen.answer;
+            const isCorrect = selectedOption === currentScreen.answer || selectedOption === 'MATCHED_ALL';
 
             if (!isCorrect) {
                 setQuizError(t('lesson.quiz.wrongAnswer', 'Fout, probeer nog eens'));

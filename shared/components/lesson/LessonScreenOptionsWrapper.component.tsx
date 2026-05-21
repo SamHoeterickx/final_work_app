@@ -6,7 +6,7 @@ import { OnlyTextScreen } from './conentScreens/OnlyTextScreen.component';
 import { TextWithImageScreen } from './conentScreens/TextWithImageScreen.component';
 import { TitleScreen } from './conentScreens/TitleScreen.component';
 import { ClickAndFocusQuizScreen } from './quizScreens/ClickAndFocusQuiz.component';
-import { MatchQuizScreen } from './quizScreens/Matchquiz.component';
+import { MatchQuizScreen } from './quizScreens/MatchQuiz.component';
 import { RightOrWrongQuizScreen } from './quizScreens/RightOrWrongQuiz.component';
 
 // TYPES
@@ -32,9 +32,9 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.Q_CLICK_AND_FOCUS:
             return <ClickAndFocusQuizScreen content={lessonContent} subStep={subStep} />;
         case ELessonScreenOptions.Q_MATCH:
-            return <MatchQuizScreen content={lessonContent} />;
-        case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
-            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} quizError={quizError} />;
+            return <MatchQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
+            case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
+            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
         default:
             return null;
     }
