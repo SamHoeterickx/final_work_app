@@ -29,7 +29,6 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log(userChapters);
 
         userChapters.forEach((userChapter: IChapterUser, index: number) => {
             console.log(userChapter.status);
@@ -41,10 +40,6 @@ export default function HomeScreen() {
             }
         });
     }, [userChapters]);
-
-    useEffect(() => {
-        console.log(currentChapterIndex);
-    }, [currentChapterIndex]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || currentChapterIndex === null) return;

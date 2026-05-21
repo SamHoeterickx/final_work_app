@@ -153,14 +153,20 @@ export const COMPLETE_LESSON_MUTATION = `
             lessonUuid: $lessonUuid,
             languageCode: $languageCode
         }) {
-            alreadyCompleted
-            isLastLesson
-            message
-            newStreak
-            newUserXP
-            prevStreak
-            prevUserXP
             success
+            alreadyCompleted
+            message
+            newUserXP
+            prevUserXP
+            isStreakUpdated
+            newStreak
+            prevStreak
+            streak {
+                currentStreak
+                lastCompletedDate
+                longestStreak
+                uuid
+            }
             newUnlockedLesson {
                 status
                 uuid
@@ -170,18 +176,13 @@ export const COMPLETE_LESSON_MUTATION = `
                     description
                 }
             }
+            isLastLesson
             newUnlockedChapter {
                 description
                 name
                 uuid
             }
-            streak {
-                currentStreak
-                lastCompletedDate
-                longestStreak
-                uuid
-            }
         }
     }
 
-`
+`;

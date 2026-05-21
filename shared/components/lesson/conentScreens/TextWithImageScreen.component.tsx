@@ -1,4 +1,3 @@
-
 import { FC, useEffect, useRef } from 'react';
 import { Animated, Easing, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -14,10 +13,6 @@ import { ILessonScreenProps } from '@/shared/types/types';
 const IMAGE_HEIGHT = 250;
 
 export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content, subStep = 0 }) => {
-    if (!content) return null;
-
-    const bodyArray = Array.isArray(content.body) ? content.body : [content.body];
-    const textsToRender = bodyArray.slice(0, subStep + 1);
     const scrollViewRef = useRef<ScrollView>(null);
 
     const transitionAnim = useRef(new Animated.Value(subStep > 0 ? 1 : 0)).current;
@@ -26,75 +21,74 @@ export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content, subStep =
         Animated.timing(transitionAnim, {
             toValue: subStep > 0 ? 1 : 0,
             duration: 600,
-            easing: Easing.out(Easing.poly(3)), 
-            useNativeDriver: true, 
+            easing: Easing.out(Easing.poly(3)),
+            useNativeDriver: true,
         }).start();
-    }, [subStep]);
+    }, [subStep, transitionAnim]);
+
+    if (!content) return null;
+
+    const bodyArray = Array.isArray(content.body) ? content.body : [content.body];
+    const textsToRender = bodyArray.slice(0, subStep + 1);
 
     const imageTranslateY = transitionAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, -IMAGE_HEIGHT - 50] 
+        outputRange: [0, -IMAGE_HEIGHT - 50],
     });
-    
+
     const imageOpacity = transitionAnim.interpolate({
         inputRange: [0, 0.5, 1],
-        outputRange: [1, 0, 0]
+        outputRange: [1, 0, 0],
     });
 
     const textTranslateY = transitionAnim.interpolate({
         inputRange: [0, 1],
-        outputRange: [IMAGE_HEIGHT, 0]
+        outputRange: [IMAGE_HEIGHT, 0],
     });
 
     return (
         <View style={styles.wrapper}>
-            {content.title && (
-                <Text style={[baseStyles.h2, styles.title]}>
-                    {content.title}
-                </Text>
-            )}
-            
+            {content.title && <Text style={[baseStyles.h2, styles.title]}>{content.title}</Text>}
+
             <View style={styles.contentContainer}>
-                
-                <Animated.View style={[
-                    styles.imageAbsoluteWrapper,
-                    { 
-                        opacity: imageOpacity, 
-                        transform: [{ translateY: imageTranslateY }] 
-                    }
-                ]}>
+                <Animated.View
+                    style={[
+                        styles.imageAbsoluteWrapper,
+                        {
+                            opacity: imageOpacity,
+                            transform: [{ translateY: imageTranslateY }],
+                        },
+                    ]}
+                >
                     <Animated.Image
                         style={styles.image}
                         source={require('@/assets/images/moka_pot_1.png')}
-                        resizeMode='contain'
+                        resizeMode="contain"
                     />
                 </Animated.View>
 
-                <Animated.View style={[
-                    styles.scrollContainerWrapper,
-                    { transform: [{ translateY: textTranslateY }] }
-                ]}>
-                    <ScrollView 
+                <Animated.View
+                    style={[
+                        styles.scrollContainerWrapper,
+                        { transform: [{ translateY: textTranslateY }] },
+                    ]}
+                >
+                    <ScrollView
                         ref={scrollViewRef}
                         contentContainerStyle={styles.scrollContent}
-                        onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+                        onContentSizeChange={() =>
+                            scrollViewRef.current?.scrollToEnd({ animated: true })
+                        }
                         showsVerticalScrollIndicator={false}
                     >
                         {textsToRender.map((text: string, index: number) => {
                             const isActive = index === textsToRender.length - 1;
-                            return (
-                                <AnimatedTextItem
-                                    key={index}
-                                    text={text} 
-                                    isActive={isActive} 
-                                />
-                            );
+                            return <AnimatedTextItem key={index} text={text} isActive={isActive} />;
                         })}
-                        
-                        <View style={{ height: 40 }} /> 
+
+                        <View style={{ height: 40 }} />
                     </ScrollView>
                 </Animated.View>
-
             </View>
         </View>
     );
@@ -115,7 +109,7 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         flex: 1,
-        position: 'relative', 
+        position: 'relative',
         overflow: 'hidden',
     },
     imageAbsoluteWrapper: {
@@ -139,6 +133,6 @@ const styles = StyleSheet.create({
     scrollContent: {
         alignItems: 'center',
         width: '100%',
-        paddingTop: spacing.md, 
+        paddingTop: spacing.md,
     },
 });

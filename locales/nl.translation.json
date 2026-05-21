@@ -294,6 +294,23 @@
         "buttons": {
             "continue": "Volgende",
             "complete": "Voltooi Les"
+        },
+        "postFlow": {
+            "xp": {
+                "congrats": "Goed Gedaan!",
+                "newTotal": "Nieuw XP Totaal"
+            },
+            "streaks": {
+                "congrats": "Lekker Bezig!",
+                "updated": "Reeks Verlengd",
+                "days": "Dagen"
+            },
+            "lessonUnlocked": {
+                "tag": "Nieuwe Les Vrijgespeeld"
+            },
+            "chapterUnlocked": {
+                "tag": "Nieuw Hoofdstuk Vrijgespeeld"
+            }
         }
     }
 }

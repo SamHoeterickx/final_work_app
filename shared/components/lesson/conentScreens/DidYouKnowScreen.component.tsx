@@ -14,7 +14,6 @@ export const DidYouKnowScreen: FC<ILessonScreenProps> = ({ content }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.card}>
-                
                 <View style={styles.badge}>
                     <Text style={[baseStyles.h4, styles.badgeText]}>
                         {t('lesson.dykScreen.title')}
@@ -23,15 +22,11 @@ export const DidYouKnowScreen: FC<ILessonScreenProps> = ({ content }) => {
 
                 <Text style={styles.decorativeQuote}>“</Text>
 
-                <Text style={[baseStyles.h2, styles.title]}>
-                    {content.title}
-                </Text>
+                <Text style={[baseStyles.h2, styles.title]}>{content.title}</Text>
 
                 <View style={styles.divider} />
 
-                <Text style={[baseStyles.p, styles.dykFact]}>
-                    {content.body}
-                </Text>
+                <Text style={[baseStyles.p, styles.dykFact]}>{content.body}</Text>
             </View>
         </View>
     );
@@ -45,7 +40,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: spacing.lg,
     },
     card: {
-        backgroundColor: colors.text.secondary, 
+        backgroundColor: colors.text.secondary,
         borderRadius: borderRadius.lg,
         paddingTop: spacing.xxl,
         paddingBottom: spacing.xl,
@@ -53,8 +48,8 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         position: 'relative',
-        
-        ...shadows
+
+        ...shadows,
     },
     badge: {
         position: 'absolute',
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         color: colors.text.primary,
         marginBottom: spacing.md,
-        zIndex: 2, 
+        zIndex: 2,
     },
     divider: {
         width: 48,
@@ -107,5 +102,5 @@ const styles = StyleSheet.create({
         lineHeight: 28,
         color: '#333333',
         fontStyle: 'italic',
-    }
+    },
 });

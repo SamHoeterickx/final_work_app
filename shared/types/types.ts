@@ -186,7 +186,7 @@ export interface ILessonTranslations {
     languageCode: ELocales;
     name: string;
     description: string;
-    content: any[],
+    content: any[];
 }
 
 export interface IQuestionOption {
@@ -344,4 +344,32 @@ export interface ILessonScreenOptionsWrapperProps {
 export interface ILessonScreenProps {
     content: any;
     subStep?: number;
+}
+
+export interface IPostLessonFlowProps {
+    data: any;
+    currentStep: string;
+}
+
+export interface IXpFlowProps {
+    newUserXP: number;
+    prevUserXP: number;
+}
+
+export interface IStreaksFlowProps {
+    newStreak: number;
+}
+
+export interface ILessonUnlockedProps {
+    lesson: {
+        status: 'UNLOCKED';
+        uuid: string;
+        translations: [
+            {
+                name: string;
+                description: string;
+                languageCode: ELocales;
+            },
+        ];
+    };
 }

@@ -291,6 +291,23 @@
         "buttons": {
             "continue": "Continuer",
             "complete": "Terminer la leçon"
+        },
+        "postFlow": {
+            "xp": {
+                "congrats": "Bien Joué !",
+                "newTotal": "Nouveau Total d'XP"
+            },
+            "streaks": {
+                "congrats": "En Pleine Forme !",
+                "updated": "Série Prolongée",
+                "days": "Jours"
+            },
+            "lessonUnlocked": {
+                "tag": "Nouvelle Leçon Débloquée"
+            },
+            "chapterUnlocked": {
+                "tag": "Nouveau Chapitre Débloqué"
+            }
         }
     }
 }

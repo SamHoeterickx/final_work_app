@@ -2,7 +2,7 @@ import { baseStyles, spacing } from '@/shared/styles/design.system';
 import { ILessonScreenProps } from '@/shared/types/types';
 import { FC, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Animated, Dimensions, Easing, StyleSheet, View, Text } from 'react-native';
+import { Animated, Dimensions, Easing, StyleSheet, View } from 'react-native';
 
 const HEIGHT = Dimensions.get('screen').height;
 
@@ -18,14 +18,14 @@ export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
             toValue: 0,
             easing: Easing.out(Easing.quad),
             duration: 900,
-            useNativeDriver: true
+            useNativeDriver: true,
         }).start();
 
         Animated.timing(scaleLineAnim, {
             toValue: 1,
             easing: Easing.out(Easing.quad),
             duration: 800,
-            useNativeDriver: true
+            useNativeDriver: true,
         }).start();
 
         const timer = setTimeout(() => {
@@ -33,7 +33,7 @@ export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
                 toValue: 1,
                 easing: Easing.linear,
                 duration: 800,
-                useNativeDriver: true
+                useNativeDriver: true,
             }).start();
         }, 600);
 
@@ -43,32 +43,23 @@ export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
     return (
         <View style={styles.wTitleScreen}>
             <View style={styles.innerContainer}>
-                
                 <Animated.Text style={[styles.chapterTag, { opacity: opacityAnim }]}>
-                    { t('lesson.titleScreen.introduction') }
+                    {t('lesson.titleScreen.introduction')}
                 </Animated.Text>
 
-                <Animated.Text style={[
-                    baseStyles.h1, 
-                    styles.title,
-                    { transform: [{ translateY: posAnim }] }
-                ]}>
+                <Animated.Text
+                    style={[baseStyles.h1, styles.title, { transform: [{ translateY: posAnim }] }]}
+                >
                     {content.title}
-                </Animated.Text>        
-                
-                <Animated.View style={[
-                    styles.accentBlock,
-                    { transform: [{ scaleX: scaleLineAnim }] }
-                ]} />
+                </Animated.Text>
 
-                <Animated.Text style={[
-                    baseStyles.p,
-                    styles.bodyText, 
-                    { opacity: opacityAnim }
-                ]}>
+                <Animated.View
+                    style={[styles.accentBlock, { transform: [{ scaleX: scaleLineAnim }] }]}
+                />
+
+                <Animated.Text style={[baseStyles.p, styles.bodyText, { opacity: opacityAnim }]}>
                     {content.body}
-                </Animated.Text>        
-                
+                </Animated.Text>
             </View>
         </View>
     );
@@ -103,7 +94,7 @@ const styles = StyleSheet.create({
     },
     accentBlock: {
         width: '50%',
-        height: 6, 
+        height: 6,
         backgroundColor: '#4A5D44',
         marginTop: spacing.lg,
         marginBottom: spacing.xl,
@@ -114,5 +105,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 26,
         color: '#4A4A4A',
-    }
+    },
 });

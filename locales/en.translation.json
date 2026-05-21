@@ -296,6 +296,23 @@
         "buttons": {
             "continue": "Continue",
             "complete": "Complete Lesson"
+        },
+        "postFlow": {
+            "xp": {
+                "congrats": "Great Job!",
+                "newTotal": "New XP Total"
+            },
+            "streaks": {
+                "congrats": "You're on a roll!",
+                "updated": "Streak Extended",
+                "days": "Days"
+            },
+            "lessonUnlocked": {
+                "tag": "New Lesson Unlocked"
+            },
+            "chapterUnlocked": {
+                "tag": "New Chapter Unlocked"
+            }
         }
     }
 }

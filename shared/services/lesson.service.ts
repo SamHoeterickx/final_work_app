@@ -6,7 +6,10 @@ import { graphqlFetch } from '../utils/api.utils';
 class LessonService {
     async startLesson(credentials: ILessonCredentials) {
         try {
-            const response = await graphqlFetch<{startLesson: IStartLessonResponse }>(START_LESSON_QUERY, { ...credentials });
+            const response = await graphqlFetch<{ startLesson: IStartLessonResponse }>(
+                START_LESSON_QUERY,
+                { ...credentials },
+            );
             console.log('---startLesson', response);
             return response?.startLesson;
         } catch (error) {
@@ -16,7 +19,9 @@ class LessonService {
 
     async completeLesson(credentials: ILessonCredentials) {
         try {
-            const response = await graphqlFetch<{completeLesson: any }>(COMPLETE_LESSON_MUTATION, { ...credentials });
+            const response = await graphqlFetch<{ completeLesson: any }>(COMPLETE_LESSON_MUTATION, {
+                ...credentials,
+            });
             return response?.completeLesson;
         } catch (error) {
             throw error;

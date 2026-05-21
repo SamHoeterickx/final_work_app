@@ -26,6 +26,7 @@ export { SvgIcon } from './svgIcon/SvgIcon.component';
 
 // MODALS
 export { DeleteUserModal } from './modal/DeleteAccountModal.component';
+export { PauseLessonModal } from './modal/PauseLessonModal.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';
@@ -40,10 +41,10 @@ export { SettingsOptionsWrapper } from './settings/SettingsOptionsWrapper.compon
 export { SettingsTab } from './settings/SettingsTab.component';
 export { TermsOfCondition } from './settings/TermsOfCondition.component';
 
-
 // LESSONS
 export { LessonHeader } from './lesson/LessonHeader.component';
 export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';
+export { PostLessonFlow } from './lesson/postLessonFlow/PostLessonFlow.component';
 
 // LESSON CONTENT SCREENS
 // export { DidYouKnowScreen } from './lesson/content/DidYouKnowScreen.component';

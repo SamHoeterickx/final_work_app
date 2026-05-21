@@ -48,9 +48,14 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
             {showConfirmQuit ? (
                 <View style={styles.cModal}>
                     <View style={styles.cText}>
-                        <Text style={baseStyles.h2}>{t('lesson.paused.quitConfirm.title', 'Are you sure?')}</Text>
+                        <Text style={baseStyles.h2}>
+                            {t('lesson.paused.quitConfirm.title', 'Are you sure?')}
+                        </Text>
                         <Text style={[baseStyles.p, styles.centeredText]}>
-                            {t('lesson.paused.quitConfirm.subtitle', 'All progress in this lesson will be lost.')}
+                            {t(
+                                'lesson.paused.quitConfirm.subtitle',
+                                'All progress in this lesson will be lost.',
+                            )}
                         </Text>
                     </View>
 
@@ -60,10 +65,12 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => setShowConfirmQuit(false)}>
-                            <Text style={styles.optionText}>{t('settings.profile.buttons.cancel', 'Cancel')}</Text>
+                            <Text style={styles.optionText}>
+                                {t('settings.profile.buttons.cancel', 'Cancel')}
+                            </Text>
                         </TouchableOpacity>
                     </View>
-                    
+
                     <View style={styles.cButton} />
                 </View>
             ) : (
@@ -74,14 +81,16 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
 
                     <View style={styles.cOptions}>
                         <TouchableOpacity onPress={handleRestart}>
-                            <Text style={styles.optionText}>{t('lesson.paused.options.restart')}</Text>
+                            <Text style={styles.optionText}>
+                                {t('lesson.paused.options.restart')}
+                            </Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => setShowConfirmQuit(true)}>
                             <Text style={styles.optionText}>{t('lesson.paused.options.quit')}</Text>
                         </TouchableOpacity>
                     </View>
-                    
+
                     <View style={styles.cButton}>
                         <Button
                             copy="lesson.paused.buttons.resume"
@@ -100,7 +109,7 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         left: -25,
-        right: -25, 
+        right: -25,
         backgroundColor: colors.background,
         zIndex: 5,
         elevation: 5,

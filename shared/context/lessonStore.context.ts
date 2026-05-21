@@ -1,9 +1,9 @@
-import { create } from "zustand";
-import { ILessonStore } from "../types/types";
+import { create } from 'zustand';
+import { ILessonStore } from '../types/types';
 
 export const useLessonStore = create<ILessonStore>((set) => ({
     screenIndex: 0,
     setScreenIndex: (index: number) => set({ screenIndex: index }),
     isLessonCompleted: false,
-    setIsLessonCompleted: (state: boolean) => set({ isLessonCompleted: state})
-}))
+    setIsLessonCompleted: (state: boolean) => set({ isLessonCompleted: state }),
+}));
