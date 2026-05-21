@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     modalContent: {
         height: '75%',
-        backgroundColor: colors.text.secondary,
+        backgroundColor: colors.background,
         borderTopLeftRadius: borderRadius.lg,
         borderTopRightRadius: borderRadius.lg,
         paddingTop: spacing.md,

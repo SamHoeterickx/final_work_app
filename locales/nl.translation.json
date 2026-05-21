@@ -220,15 +220,21 @@
         "buttons": {
             "logout": "Uitloggen"
         },
+        "deleteAccount": {
+            "title": "Ben je zeker?",
+            "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
+            "placeholder": "Wachtwoord"
+        },
         "profile": {
-        "title": "Profiel",
+            "title": "Profiel",
             "tabs": {
                 "changePassword": "Wachtwoord wijzigen",
                 "changeEmail": "E-mail wijzigen",
                 "changeName": "Naam wijzigen"
             },
             "buttons": {
-                "delete": "Account verwijderen"
+                "delete": "Account verwijderen",
+                "cancel": "Annuleren"
             }
         },
         "changeLanguage": {

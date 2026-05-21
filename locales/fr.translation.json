@@ -220,15 +220,21 @@
         "buttons": {
             "logout": "Déconnexion"
         },
+        "deleteAccount": {
+            "title": "es-tu sûr?",
+            "subtitle": "Saisissez le mot de passe pour supprimer le compte",
+            "placeholder": "Mot de passe"
+        },
         "profile": {
-        "title": "Profil",
+            "title": "Profil",
             "tabs": {
                 "changePassword": "Modifier le mot de passe",
                 "changeEmail": "Modifier l'e-mail",
                 "changeName": "Modifier le nom"
             },
             "buttons": {
-                "delete": "Supprimer le compte"
+                "delete": "Supprimer le compte",
+                "cancel": "Annuler"
             }
         },
         "changeLanguage": {

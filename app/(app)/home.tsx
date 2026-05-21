@@ -31,7 +31,6 @@ export default function HomeScreen() {
         if (!userChapters) return;
 
         userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            console.log(userChapter.status);
             if (
                 userChapter.status === EProgressStatus.INPROGRESS ||
                 userChapter.status === EProgressStatus.UNLOCKED

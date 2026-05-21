@@ -217,6 +217,11 @@
             "privacyPolicy": "Privacy Policy",
             "termsOfCondition": "Terms of Condition"
         },
+        "deleteAccount": {
+            "title": "Are you sure?",
+            "subtitle": "Enter password to delete account",
+            "placeholder": "Password"
+        },
         "buttons": {
             "logout": "logout"
         },
