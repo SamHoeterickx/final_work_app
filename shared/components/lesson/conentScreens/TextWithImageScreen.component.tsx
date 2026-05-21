@@ -86,7 +86,7 @@ export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content, subStep =
                             return <AnimatedTextItem key={index} text={text} isActive={isActive} />;
                         })}
 
-                        <View style={{ height: 40 }} />
+                        <View style={styles.bottomSpacer} />
                     </ScrollView>
                 </Animated.View>
             </View>
@@ -134,5 +134,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         paddingTop: spacing.md,
+    },
+    bottomSpacer: {
+        height: 40,
     },
 });
