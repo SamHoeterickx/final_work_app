@@ -48,3 +48,5 @@ export const PROFILE_SETTINGS_OPTIONS: ISettingTabProps[] = [
         path: 'changeName',
     },
 ];
+
+export const VIBRATION_PATTERN = [0, 100, 100, 250];

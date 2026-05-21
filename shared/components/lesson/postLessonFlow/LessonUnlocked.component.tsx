@@ -5,6 +5,9 @@ import { Animated, Easing, StyleSheet, Text, Vibration, View } from 'react-nativ
 // COMPONENTS
 import { SvgIcon } from '@/shared/components';
 
+// CONST
+import { VIBRATION_PATTERN } from '@/shared/const/settings.const';
+
 // STYLES
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
@@ -30,7 +33,7 @@ export const LessonUnlockedScreen: FC<ILessonUnlockedProps> = ({ lesson }) => {
 
     useEffect(() => {
         const timer1 = setTimeout(() => {
-            Vibration.vibrate();
+            Vibration.vibrate(VIBRATION_PATTERN);
 
             Animated.parallel([
                 Animated.timing(lockOpacity, {
@@ -58,7 +61,7 @@ export const LessonUnlockedScreen: FC<ILessonUnlockedProps> = ({ lesson }) => {
         }, 600);
 
         const timer2 = setTimeout(() => {
-            Vibration.vibrate();
+            Vibration.vibrate(VIBRATION_PATTERN);
 
             Animated.parallel([
                 Animated.timing(groupTranslateY, {
