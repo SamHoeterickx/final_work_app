@@ -72,16 +72,16 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                                 </Text>
                             </View>
 
-                            <View style={styles.cOptions}>
-                                <TouchableOpacity onPress={confirmQuit}>
-                                    <Text style={styles.optionText}>{t('lesson.paused.options.quit')}</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity onPress={() => setShowConfirmQuit(false)}>
-                                    <Text style={styles.optionText}>
-                                        {t('settings.profile.buttons.cancel', 'Cancel')}
-                                    </Text>
-                                </TouchableOpacity>
+                            <View style={styles.cQuit}>
+                                <Button
+                                    onPress={confirmQuit}
+                                    copy='lesson.paused.options.quit'
+                                />
+                                <Button
+                                    onPress={() => setShowConfirmQuit(false)}
+                                    copy='settings.profile.buttons.cancel'
+                                    styles='secundary'
+                                />
                             </View>
 
                             <View style={styles.cButton} />
@@ -162,6 +162,9 @@ const styles = StyleSheet.create({
     },
     cOptions: {
         gap: spacing.lg,
+        alignItems: 'center',
+    },
+    cQuit: {
         alignItems: 'center',
     },
     optionText: {
