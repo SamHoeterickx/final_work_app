@@ -5,6 +5,9 @@ import { DidYouKnowScreen } from './conentScreens/DidYouKnowScreen.component';
 import { OnlyTextScreen } from './conentScreens/OnlyTextScreen.component';
 import { TextWithImageScreen } from './conentScreens/TextWithImageScreen.component';
 import { TitleScreen } from './conentScreens/TitleScreen.component';
+import { ClickAndFocusQuizScreen } from './quizScreens/ClickAndFocusQuiz.component';
+import { MatchQuizScreen } from './quizScreens/Matchquiz.component';
+import { RightOrWrongQuizScreen } from './quizScreens/RightOrWrongQuiz.component';
 
 // TYPES
 import { ELessonScreenOptions } from '@/shared/types/enums';
@@ -24,6 +27,12 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
             return <TextWithImageScreen content={lessonContent} subStep={subStep} />;
         case ELessonScreenOptions.C_ONLY_TEXT:
             return <OnlyTextScreen content={lessonContent} subStep={subStep} />;
+        case ELessonScreenOptions.Q_CLICK_AND_FOCUS:
+            return <ClickAndFocusQuizScreen content={lessonContent} subStep={subStep} />;
+        case ELessonScreenOptions.Q_MATCH:
+            return <MatchQuizScreen content={lessonContent} subStep={subStep} />;
+        case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
+            return <RightOrWrongQuizScreen content={lessonContent} subStep={subStep} />;
         default:
             return null;
     }
