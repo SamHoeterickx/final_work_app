@@ -283,6 +283,10 @@
         "dykScreen": {
             "title": "Did You Know?"
         },
+        "quiz": {
+            "tag": "Test Your Knwoledge",
+            "wrongAnswer": "Oeps, please try again"
+        },
         "paused": {
             "title": "Lesson Paused",
             "options": {

@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENETS
@@ -21,7 +21,7 @@ import { useLessonStore } from '@/shared/context/lessonStore.context';
 import { useCompleteLesson, useStartLesson } from '@/shared/hooks';
 
 // STYLES
-import { colors } from '@/shared/styles/design.system';
+import { baseStyles, colors } from '@/shared/styles/design.system';
 
 // TYPES
 import { ELocales, EPostLessonFlowOptions } from '@/shared/types/enums';
@@ -33,11 +33,14 @@ export default function LessonScreen() {
     const [postFlowSteps, setPostFlowSteps] = useState<string[]>([]);
     const [subStep, setSubStep] = useState<number>(0);
 
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [quizError, setQuizError] = useState<string | null>(null);
+
     const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } =
         useLessonStore();
 
     const { uuid } = useLocalSearchParams();
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const router = useRouter();
 
     const { data: lesson, isPending: isPendingStart } = useStartLesson({
@@ -54,11 +57,15 @@ export default function LessonScreen() {
         if (screenIndex === 0) {
             setSubStep(0);
         }
+        setSelectedOption(null);
+        setQuizError(null);
     }, [screenIndex]);
 
     if (!lesson) return;
-
     if (isPendingStart || isPendingComplete) return <LoadingScreen />;
+
+    const currentScreen = lesson.content?.[0]?.content?.[screenIndex];
+    const isQuizScreen = currentScreen?.screenType?.startsWith('Q_') || currentScreen?.type === 'quiz';
 
     const handleButton = () => {
         if (isLessonCompleted) {
@@ -74,8 +81,19 @@ export default function LessonScreen() {
 
         if (!lesson?.content?.[0]?.content) return;
 
+        if (isQuizScreen) {
+            if (!selectedOption) return;
+
+            const isCorrect = selectedOption === currentScreen.answer;
+
+            if (!isCorrect) {
+                setQuizError(t('lesson.quiz.wrongAnswer', 'Fout, probeer nog eens'));
+                return;
+            }
+            setQuizError(null);
+        }
+
         const content = lesson.content[0].content;
-        const currentScreen = content[screenIndex];
         const bodyArray = Array.isArray(currentScreen.body)
             ? currentScreen.body
             : [currentScreen.body];
@@ -158,7 +176,6 @@ export default function LessonScreen() {
             return 'lesson.buttons.continue';
         }
 
-        const currentScreen = lesson.content?.[0].content?.[screenIndex];
         const bodyArray = Array.isArray(currentScreen?.body)
             ? currentScreen.body
             : [currentScreen?.body];
@@ -184,9 +201,14 @@ export default function LessonScreen() {
             {!isLessonCompleted && (
                 <LessonScreenOptionsWrapper
                     key={screenIndex}
-                    screenType={lesson.content[0].content[screenIndex].screenType}
-                    lessonContent={lesson.content[0].content[screenIndex]}
+                    screenType={currentScreen.screenType}
+                    lessonContent={currentScreen}
                     subStep={subStep}
+                    quizError={quizError}
+                    onAnswerSelect={(option: string) => {
+                        setSelectedOption(option);
+                        setQuizError(null);
+                    }}
                 />
             )}
 
@@ -198,7 +220,7 @@ export default function LessonScreen() {
             <PauseLessonModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 
             {(!isLessonCompleted || postFlowData) && (
-                <View style={styles.cButton}>
+                <View style={[styles.cButton, isQuizScreen && !selectedOption && styles.buttonDisabled]}>
                     <Button copy={renderButtonCopy()} onPress={handleButton} />
                 </View>
             )}
@@ -216,5 +238,8 @@ const styles = StyleSheet.create({
     cButton: {
         alignItems: 'center',
         zIndex: 10,
+    },
+    buttonDisabled: {
+        opacity: 0.5,
     },
 });

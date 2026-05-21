@@ -359,11 +359,15 @@ export interface ILessonScreenOptionsWrapperProps {
     screenType: ELessonScreenOptions;
     lessonContent: any;
     subStep?: number;
+    quizError: string | null;
+    onAnswerSelect?: (option: string) => void;
 }
 
 export interface ILessonScreenProps {
     content: any;
     subStep?: number;
+    quizError?: string | null;
+    onAnswerSelect?: (option: string) => void;
 }
 
 export interface IPostLessonFlowProps {

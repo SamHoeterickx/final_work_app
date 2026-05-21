@@ -17,6 +17,8 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
     screenType,
     lessonContent,
     subStep,
+    quizError,
+    onAnswerSelect
 }) => {
     switch (screenType) {
         case ELessonScreenOptions.C_TITLE:
@@ -30,9 +32,9 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.Q_CLICK_AND_FOCUS:
             return <ClickAndFocusQuizScreen content={lessonContent} subStep={subStep} />;
         case ELessonScreenOptions.Q_MATCH:
-            return <MatchQuizScreen content={lessonContent} subStep={subStep} />;
+            return <MatchQuizScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
-            return <RightOrWrongQuizScreen content={lessonContent} subStep={subStep} />;
+            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} quizError={quizError} />;
         default:
             return null;
     }
