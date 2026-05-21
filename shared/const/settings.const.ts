@@ -3,7 +3,7 @@ import { ISettingTabProps } from '../types/types';
 
 export const SETTINGS_OPTIONS: ISettingTabProps[] = [
     {
-        icon: ESvgIconName.ACCOUNT,
+        icon: ESvgIconName.LANGUAGE,
         copy: 'settings.tabs.changeLanguage',
         path: 'changeLanguage',
     },

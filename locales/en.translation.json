@@ -217,6 +217,11 @@
             "privacyPolicy": "Privacy Policy",
             "termsOfCondition": "Terms of Condition"
         },
+        "deleteAccount": {
+            "title": "Are you sure?",
+            "subtitle": "Enter password to delete account",
+            "placeholder": "Password"
+        },
         "buttons": {
             "logout": "logout"
         },
@@ -296,6 +301,30 @@
         "buttons": {
             "continue": "Continue",
             "complete": "Complete Lesson"
+        },
+        "postFlow": {
+            "xp": {
+                "congrats": "Great Job!",
+                "newTotal": "New XP Total"
+            },
+            "streaks": {
+                "congrats": "You're on a roll!",
+                "updated": "Streak Extended",
+                "days": "Days"
+            },
+            "lessonUnlocked": {
+                "tag": "New Lesson Unlocked"
+            },
+            "chapterUnlocked": {
+                "tag": "New Chapter Unlocked"
+            }
         }
+    },
+    "streaks": {
+        "title": "Your Streaks",
+        "current": "Current",
+        "longest": "Longest streak",
+        "dayStreaks": "Day Streak",
+        "keepGoing": "AWESOME KEEP IT UP"
     }
 }

@@ -7,7 +7,7 @@ import { LessonStatus } from './LessonStatus.component';
 import { LockedStatus } from './LockedStatus.component';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/design.system';
+import { baseStyles, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { ELocales, EProgressStatus } from '@/shared/types/enums';
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     chapterTitle: {
         fontSize: 48,
         textAlign: 'center',
+        marginTop: spacing.lg,
     },
     lessonTitle: {
         fontSize: 36,

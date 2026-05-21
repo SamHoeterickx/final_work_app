@@ -21,11 +21,16 @@ export { StartLearning } from './onboarding/StartLearning.component';
 export { Chapter } from './chapters/Chapter.component';
 export { ChapterUnlocked } from './chapters/ChapterUnlocked.component';
 
+// HOME UI
+export { HomeHeader } from './homeUi/homeHeader.component';
+
 // SVG ICON
 export { SvgIcon } from './svgIcon/SvgIcon.component';
 
 // MODALS
 export { DeleteUserModal } from './modal/DeleteAccountModal.component';
+export { PauseLessonModal } from './modal/PauseLessonModal.component';
+export { StreaksModal } from './modal/StreaksModal.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';
@@ -43,6 +48,7 @@ export { TermsOfCondition } from './settings/TermsOfCondition.component';
 // LESSONS
 export { LessonHeader } from './lesson/LessonHeader.component';
 export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';
+export { PostLessonFlow } from './lesson/postLessonFlow/PostLessonFlow.component';
 
 // LESSON CONTENT SCREENS
 // export { DidYouKnowScreen } from './lesson/content/DidYouKnowScreen.component';

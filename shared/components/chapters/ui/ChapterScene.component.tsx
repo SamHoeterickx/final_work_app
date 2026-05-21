@@ -23,7 +23,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
         const totalLessons = lessons.length;
 
         return lessons.map((lesson, index) => {
-            const angle = (index / totalLessons) * Math.PI * 2;
+            const angle = -(index / totalLessons) * Math.PI * 2;
             const x = Math.cos(angle) * LESSON_RADIUS;
             const z = Math.sin(angle) * LESSON_RADIUS;
 

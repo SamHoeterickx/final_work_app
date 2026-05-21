@@ -6,6 +6,7 @@ import {
     ELocales,
     EOnboardingQuestionKind,
     EProgressStatus,
+    ERoles,
     ESettingsOptions,
     ESvgIconName,
 } from './enums';
@@ -44,6 +45,7 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
+
 export interface IUpdateUsernameCredentials {
     updatedUsername: string;
 }
@@ -51,11 +53,12 @@ export interface IUpdateUsernameCredentials {
 export interface IUpdateEmailCredentials {
     updatedEmailAdress: string;
 }
+
 export interface IDeleteUserCredentials {
     password: string;
 }
 
-export interface IStartLessonCredentials {
+export interface ILessonCredentials {
     lessonUuid: string;
     languageCode: ELocales;
 }
@@ -92,10 +95,16 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
-export interface IUserPreferencesStore {
+export interface IUserDataStore {
     language: ELocales;
+    userData: IUserData | null;
+    name: string;
+    xp: number;
+    streaks: number;
+    longestStreak: number;
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
+    getUserData: () => Promise<void>;
 }
 
 export interface ILessonStore {
@@ -129,6 +138,19 @@ export interface IOnboardingQuestions {
 export interface IErrorData {
     error: string;
     isError: boolean;
+}
+
+export interface IUserData {
+    role: ERoles;
+    name: string;
+    email: string;
+    xp: string;
+    streaks: {
+        uuid: string;
+        currentStreak: number;
+        lastCompletedDate: Date;
+        longestStreak: number;
+    };
 }
 
 export interface IChapter {
@@ -170,6 +192,14 @@ export interface IStartLessonResponse {
     order: number;
     content: ILessonTranslations[];
 }
+
+// export interface ICompleteLessonResponse {
+//     uuid: string;
+//     estimatedDuration: number;
+//     xp: number;
+//     order: number;
+//     content: ILessonTranslations[];
+// }
 
 export interface ILessonTranslations {
     uuid?: string | null;
@@ -334,4 +364,32 @@ export interface ILessonScreenOptionsWrapperProps {
 export interface ILessonScreenProps {
     content: any;
     subStep?: number;
+}
+
+export interface IPostLessonFlowProps {
+    data: any;
+    currentStep: string;
+}
+
+export interface IXpFlowProps {
+    newUserXP: number;
+    prevUserXP: number;
+}
+
+export interface IStreaksFlowProps {
+    newStreak: number;
+}
+
+export interface ILessonUnlockedProps {
+    lesson: {
+        status: 'UNLOCKED';
+        uuid: string;
+        translations: [
+            {
+                name: string;
+                description: string;
+                languageCode: ELocales;
+            },
+        ];
+    };
 }

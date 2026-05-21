@@ -8,7 +8,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from '../buttons/Button.component';
 
 // CONTEXT
-import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // CONST
 import { languageData } from '@/shared/const/changeLanguage.const';
@@ -18,7 +18,7 @@ import { ELocales } from '@/shared/types/enums';
 import { useChangePreferenceLanguage } from './useChangePreferenceLanguage.hook';
 
 export const ChangeLanguageSettings = () => {
-    const { language, setLanguage } = useUserPreferencesStore();
+    const { language, setLanguage } = useUserDataStore();
 
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales>(language);
 

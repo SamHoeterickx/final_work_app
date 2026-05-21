@@ -14,6 +14,7 @@ import {
     IRequestResetCodeCredentials,
     IUpdateEmailCredentials,
     IUpdateUsernameCredentials,
+    IUserData,
     IVerifyResetCodeCredentials,
 } from '@/shared/types/types';
 
@@ -284,7 +285,7 @@ class AuthService {
 
     async getUserData() {
         try {
-            return await graphFetchAuth(GET_USER_DATA_QUERY);
+            return await graphqlFetch<{ getUserData: IUserData }>(GET_USER_DATA_QUERY);
         } catch (error) {
             throw error;
         }

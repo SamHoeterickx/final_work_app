@@ -50,11 +50,17 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     };
 
     const handleButtonChapter = () => {
-        const activeIndex = chapterUser.chapter.lessons.findIndex(
-            (lesson) =>
-                lesson.status === EProgressStatus.INPROGRESS ||
-                lesson.status === EProgressStatus.UNLOCKED,
+        const allCompleted = chapterUser.chapter.lessons.every(
+            (lesson: ILessonsChapter) => lesson.status === EProgressStatus.COMPLETED,
         );
+
+        const activeIndex = allCompleted
+            ? 0
+            : chapterUser.chapter.lessons.findIndex(
+                  (lesson) =>
+                      lesson.status === EProgressStatus.INPROGRESS ||
+                      lesson.status === EProgressStatus.UNLOCKED,
+              );
 
         if (activeIndex !== -1) {
             handleLessonClick(activeIndex, chapterUser.chapter.lessons[activeIndex]);
@@ -76,7 +82,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
         const totalLessons = chapterUser.chapter.lessons.length;
 
-        const angle = (index / totalLessons) * Math.PI * 2;
+        const angle = -(index / totalLessons) * Math.PI * 2;
 
         const lessonX = Math.cos(angle) * LESSON_RADIUS;
         const lessonZ = Math.sin(angle) * LESSON_RADIUS;

@@ -34,6 +34,13 @@ export const GET_USER_DATA_QUERY = `
             role
             name
             email
+            xp
+            streaks {
+                uuid
+                currentStreak
+                lastCompletedDate
+                longestStreak
+            }
         }
     }
 `;

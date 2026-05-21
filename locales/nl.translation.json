@@ -220,15 +220,21 @@
         "buttons": {
             "logout": "Uitloggen"
         },
+        "deleteAccount": {
+            "title": "Ben je zeker?",
+            "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
+            "placeholder": "Wachtwoord"
+        },
         "profile": {
-        "title": "Profiel",
+            "title": "Profiel",
             "tabs": {
                 "changePassword": "Wachtwoord wijzigen",
                 "changeEmail": "E-mail wijzigen",
                 "changeName": "Naam wijzigen"
             },
             "buttons": {
-                "delete": "Account verwijderen"
+                "delete": "Account verwijderen",
+                "cancel": "Annuleren"
             }
         },
         "changeLanguage": {
@@ -294,6 +300,30 @@
         "buttons": {
             "continue": "Volgende",
             "complete": "Voltooi Les"
+        },
+        "postFlow": {
+            "xp": {
+                "congrats": "Goed Gedaan!",
+                "newTotal": "Nieuw XP Totaal"
+            },
+            "streaks": {
+                "congrats": "Lekker Bezig!",
+                "updated": "Reeks Verlengd",
+                "days": "Dagen"
+            },
+            "lessonUnlocked": {
+                "tag": "Nieuwe Les Vrijgespeeld"
+            },
+            "chapterUnlocked": {
+                "tag": "Nieuw Hoofdstuk Vrijgespeeld"
+            }
         }
+    },
+    "streaks": {
+        "title": "Jouw Streaks",
+        "current": "Huidige",
+        "longest": "Langste streak",
+        "dayStreaks": "Dagen Streak",
+        "keepGoing": "GEWELDIG BLIJF ZO DOORGAAN"
     }
 }

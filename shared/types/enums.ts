@@ -47,6 +47,8 @@ export enum ESvgIconName {
     LEGAL = 'legal',
     PRIVACY = 'privacy',
     INFO = 'info',
+    STREAKS = 'streaks',
+    LANGUAGE = 'language',
 }
 
 export enum EProgressStatus {
@@ -76,4 +78,16 @@ export enum ELessonScreenOptions {
     Q_RIGHT_OR_WRONG = 'Q_RIGHT_OR_WRONG',
     Q_MATCH = 'Q_MATCH',
     Q_CLICK_AND_FOCUS = 'Q_CLICK_AND_FOCUS',
+}
+
+export enum EPostLessonFlowOptions {
+    SHOW_XP = 'SHOW_XP',
+    SHOW_STREAK = 'SHOW_STREAK',
+    SHOW_UNLOCKED_LESSON = 'SHOW_UNLOCKED_LESSON',
+    SHOW_UNLOCKED_CHAPTER = 'SHOW_UNLOCKED_CHAPTER',
+}
+
+export enum ERoles {
+    ADMIN = 'ADMIN',
+    USER = 'USER',
 }

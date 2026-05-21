@@ -143,3 +143,46 @@ export const UPDATE_PREFERENCE_LANGUAGE_MUTATION = `
         })
     }
 `;
+
+export const COMPLETE_LESSON_MUTATION = `
+    mutation CompleteLesson(
+        $lessonUuid: String!
+        $languageCode: String!
+    ) {
+        completeLesson(input: { 
+            lessonUuid: $lessonUuid,
+            languageCode: $languageCode
+        }) {
+            success
+            alreadyCompleted
+            message
+            newUserXP
+            prevUserXP
+            isStreakUpdated
+            newStreak
+            prevStreak
+            streak {
+                currentStreak
+                lastCompletedDate
+                longestStreak
+                uuid
+            }
+            newUnlockedLesson {
+                status
+                uuid
+                translations {
+                    name
+                    languageCode
+                    description
+                }
+            }
+            isLastLesson
+            newUnlockedChapter {
+                description
+                name
+                uuid
+            }
+        }
+    }
+
+`;

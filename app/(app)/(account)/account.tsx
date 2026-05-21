@@ -1,16 +1,17 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
 import { LoadingScreen, SvgIcon } from '@/shared/components';
 
-// HOOKS
-import { useGetUserdata } from '@/shared/hooks';
-
 // CONST
 import { PROGRESSION_LEVELS } from '@/shared/const/account.const';
+
+// CONTEXT
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
@@ -19,9 +20,28 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 import { ESvgIconName } from '@/shared/types/enums';
 
 export default function AccountScreen() {
+    const [isPending, setIsPending] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
+    const [error, setError] = useState<any | null>(null);
+
     const router = useRouter();
 
-    const { data, isPending, isError, error } = useGetUserdata();
+    // const { data, isPending, isError, error } = useGetUserdata();
+
+    const { getUserData, name, xp } = useUserDataStore();
+
+    useEffect(() => {
+        setIsPending(true);
+        setIsError(false);
+        setError(null);
+        try {
+            getUserData();
+        } catch (error) {
+            throw error;
+        } finally {
+            setIsPending(false);
+        }
+    }, []);
 
     const { t } = useTranslation();
 
@@ -49,9 +69,9 @@ export default function AccountScreen() {
                         <Text style={baseStyles.errorText}>{error?.message}</Text>
                     ) : (
                         <>
-                            <Text style={baseStyles.h1}>{data?.name}</Text>
+                            <Text style={baseStyles.h1}>{name}</Text>
                             <Text style={[baseStyles.h4, styles.userLevel]}>
-                                {t(calculateUserLevel(data?.level))}
+                                {t(calculateUserLevel(xp))}
                             </Text>
                         </>
                     )}
@@ -71,21 +91,21 @@ export default function AccountScreen() {
                         </View>
                     </View>
                 </View> */}
-
-                {/* <View style={styles.cStreaks}>
+                {/* 
+                <View style={styles.cStreaks}>
                     <Text style={[baseStyles.h2, styles.subtitle]}>Your Streaks</Text>
                     <View style={styles.cStats}>
                         <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>3</Text>
+                            <Text style={baseStyles.h2}>{streaks}</Text>
                             <Text style={[baseStyles.p, styles.label]}>CURRENT</Text>
                         </View>
                         <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>3</Text>
+                            <Text style={baseStyles.h2}>{longestStreak}</Text>
                             <Text style={[baseStyles.p, styles.label]}>LONGEST</Text>
                         </View>
                     </View>
-                </View>
-
+                </View> */}
+                {/* 
                 <View style={styles.cBadge}>
                     <Text style={[baseStyles.h2, styles.subtitle]}>Your Badges</Text>
                     <ScrollView 

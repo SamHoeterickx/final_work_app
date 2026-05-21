@@ -12,7 +12,7 @@ import '@/i18n';
 
 // CONTEXT AND STORE
 import { useAuthStore } from '@/shared/context/authStore.context';
-import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // STYLES
 import { colors } from '@/shared/styles/design.system';
@@ -85,7 +85,7 @@ const InitialLayout = () => {
 };
 
 export default function RootLayout() {
-    const { language, fetchUserLanguage } = useUserPreferencesStore();
+    const { language, fetchUserLanguage, getUserData } = useUserDataStore();
     const { isHydrated, accessToken } = useAuthStore();
     const { i18n } = useTranslation();
 
@@ -98,6 +98,7 @@ export default function RootLayout() {
     useEffect(() => {
         if (isHydrated && accessToken) {
             fetchUserLanguage();
+            if (getUserData) getUserData();
         }
     }, [isHydrated, accessToken]);
 

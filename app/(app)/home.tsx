@@ -3,7 +3,7 @@ import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, LoadingScreen } from '@/shared/components';
+import { BackButton, Chapter, LoadingScreen, HomeHeader } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -29,10 +29,8 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log(userChapters);
 
         userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            console.log(userChapter.status);
             if (
                 userChapter.status === EProgressStatus.INPROGRESS ||
                 userChapter.status === EProgressStatus.UNLOCKED
@@ -41,10 +39,6 @@ export default function HomeScreen() {
             }
         });
     }, [userChapters]);
-
-    useEffect(() => {
-        console.log(currentChapterIndex);
-    }, [currentChapterIndex]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || currentChapterIndex === null) return;
@@ -120,6 +114,8 @@ export default function HomeScreen() {
                     style={{ zIndex: 10, elevation: 10 }}
                 />
             )}
+
+            {!isFocused && <HomeHeader />}
         </SafeAreaView>
     );
 }

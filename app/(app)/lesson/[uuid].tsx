@@ -1,22 +1,36 @@
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+// COMPONENETS
 import {
     Button,
     LessonHeader,
     LessonScreenOptionsWrapper,
     LoadingScreen,
+    PauseLessonModal,
+    PostLessonFlow,
 } from '@/shared/components';
-import { PauseLessonModal } from '@/shared/components/modal/PauseLessonModal.component';
+
+// CONTEXT
 import { useLessonStore } from '@/shared/context/lessonStore.context';
-import { useStartLesson } from '@/shared/hooks';
+
+// HOOKS
+import { useCompleteLesson, useStartLesson } from '@/shared/hooks';
+
+// STYLES
 import { colors } from '@/shared/styles/design.system';
-import { ELocales } from '@/shared/types/enums';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
+// TYPES
+import { ELocales, EPostLessonFlowOptions } from '@/shared/types/enums';
 
 export default function LessonScreen() {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [postFlowData, setPostFlowData] = useState<any | null>(null);
+    const [postFlowCount, setPostFlowCount] = useState<number>(0);
+    const [postFlowSteps, setPostFlowSteps] = useState<string[]>([]);
     const [subStep, setSubStep] = useState<number>(0);
 
     const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } =
@@ -26,10 +40,11 @@ export default function LessonScreen() {
     const { i18n } = useTranslation();
     const router = useRouter();
 
-    const { data: lesson, isPending } = useStartLesson({
+    const { data: lesson, isPending: isPendingStart } = useStartLesson({
         lessonUuid: uuid as string,
         languageCode: i18n.language as ELocales,
     });
+    const { mutate: completeLesson, isPending: isPendingComplete } = useCompleteLesson();
 
     useEffect(() => {
         setIsLessonCompleted(false);
@@ -43,9 +58,20 @@ export default function LessonScreen() {
 
     if (!lesson) return;
 
-    if (isPending) return <LoadingScreen />;
+    if (isPendingStart || isPendingComplete) return <LoadingScreen />;
 
-    const handleStartLesson = () => {
+    const handleButton = () => {
+        if (isLessonCompleted) {
+            if (postFlowSteps.length > 0) {
+                if (postFlowCount < postFlowSteps.length - 1) {
+                    setPostFlowCount((prev) => prev + 1);
+                } else {
+                    router.replace('/(app)/home');
+                }
+            }
+            return;
+        }
+
         if (!lesson?.content?.[0]?.content) return;
 
         const content = lesson.content[0].content;
@@ -62,6 +88,35 @@ export default function LessonScreen() {
         if (screenIndex >= content.length - 1) {
             if (!isLessonCompleted) {
                 setIsLessonCompleted(true);
+                completeLesson(
+                    {
+                        lessonUuid: uuid as string,
+                        languageCode: i18n.language as ELocales,
+                    },
+                    {
+                        onSuccess: (responseData) => {
+                            const steps: string[] = [];
+                            if (responseData?.newUserXP !== responseData?.prevUserXP) {
+                                steps.push(EPostLessonFlowOptions.SHOW_XP);
+                            }
+
+                            if (responseData?.newStreak > responseData?.prevStreak) {
+                                steps.push(EPostLessonFlowOptions.SHOW_STREAK);
+                            }
+
+                            if (responseData?.newUnlockedChapter) {
+                                steps.push(EPostLessonFlowOptions.SHOW_UNLOCKED_CHAPTER);
+                            }
+
+                            if (responseData?.newUnlockedLesson) {
+                                steps.push(EPostLessonFlowOptions.SHOW_UNLOCKED_LESSON);
+                            }
+
+                            setPostFlowSteps(steps);
+                            setPostFlowData(responseData);
+                        },
+                    },
+                );
             }
             return;
         }
@@ -72,7 +127,9 @@ export default function LessonScreen() {
 
     const handleBack = () => {
         if (isLessonCompleted) {
-            setIsLessonCompleted(false);
+            if (postFlowCount > 0) {
+                setPostFlowCount((prev) => prev - 1);
+            }
             return;
         }
 
@@ -97,6 +154,10 @@ export default function LessonScreen() {
     };
 
     const renderButtonCopy = () => {
+        if (isLessonCompleted) {
+            return 'lesson.buttons.continue';
+        }
+
         const currentScreen = lesson.content?.[0].content?.[screenIndex];
         const bodyArray = Array.isArray(currentScreen?.body)
             ? currentScreen.body
@@ -114,7 +175,7 @@ export default function LessonScreen() {
         <SafeAreaView style={styles.sLesson}>
             <LessonHeader
                 screenCount={screenIndex}
-                totalScreens={lesson.content[0].content.length}
+                totalScreens={lesson.content[0].content.length - 1}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 onBackPress={handleBack}
@@ -129,13 +190,16 @@ export default function LessonScreen() {
                 />
             )}
 
-            {isLessonCompleted && <Text>GOOD JOB</Text>}
+            {isLessonCompleted && !postFlowData && <LoadingScreen />}
+            {postFlowData && !isPendingComplete && (
+                <PostLessonFlow data={postFlowData} currentStep={postFlowSteps[postFlowCount]} />
+            )}
 
             <PauseLessonModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 
-            {!isLessonCompleted && (
+            {(!isLessonCompleted || postFlowData) && (
                 <View style={styles.cButton}>
-                    <Button copy={renderButtonCopy()} onPress={handleStartLesson} />
+                    <Button copy={renderButtonCopy()} onPress={handleButton} />
                 </View>
             )}
         </SafeAreaView>
