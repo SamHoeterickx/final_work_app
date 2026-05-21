@@ -47,6 +47,8 @@ export enum ESvgIconName {
     LEGAL = 'legal',
     PRIVACY = 'privacy',
     INFO = 'info',
+    STREAKS = 'streaks',
+    LANGUAGE = 'language'
 }
 
 export enum EProgressStatus {
@@ -83,4 +85,9 @@ export enum EPostLessonFlowOptions {
     SHOW_STREAK = 'SHOW_STREAK',
     SHOW_UNLOCKED_LESSON = 'SHOW_UNLOCKED_LESSON',
     SHOW_UNLOCKED_CHAPTER = 'SHOW_UNLOCKED_CHAPTER',
+}
+
+export enum ERoles {
+    ADMIN = 'ADMIN',
+    USER = 'USER'
 }

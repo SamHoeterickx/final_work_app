@@ -6,6 +6,7 @@ import {
     ELocales,
     EOnboardingQuestionKind,
     EProgressStatus,
+    ERoles,
     ESettingsOptions,
     ESvgIconName,
 } from './enums';
@@ -94,10 +95,16 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
-export interface IUserPreferencesStore {
+export interface IUserDataStore {
     language: ELocales;
+    userData: IUserData | null;
+    name: string;
+    xp: number;
+    streaks: number;
+    longestStreak: number;
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
+    getUserData: () => Promise<void>;
 }
 
 export interface ILessonStore {
@@ -131,6 +138,19 @@ export interface IOnboardingQuestions {
 export interface IErrorData {
     error: string;
     isError: boolean;
+}
+
+export interface IUserData {
+    role: ERoles;
+    name: string;
+    email: string;
+    xp: string;
+    streaks: {
+        uuid: string;
+        currentStreak: number;
+        lastCompletedDate: Date;
+        longestStreak: number;
+    }
 }
 
 export interface IChapter {

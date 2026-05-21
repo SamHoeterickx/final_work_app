@@ -21,6 +21,9 @@ export { StartLearning } from './onboarding/StartLearning.component';
 export { Chapter } from './chapters/Chapter.component';
 export { ChapterUnlocked } from './chapters/ChapterUnlocked.component';
 
+// HOME UI
+export { HomeHeader } from './homeUi/homeHeader.component';
+
 // SVG ICON
 export { SvgIcon } from './svgIcon/SvgIcon.component';
 

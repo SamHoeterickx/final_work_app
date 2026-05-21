@@ -3,7 +3,7 @@ import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, LoadingScreen } from '@/shared/components';
+import { BackButton, Chapter, LoadingScreen, HomeHeader } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -115,6 +115,10 @@ export default function HomeScreen() {
                     style={{ zIndex: 10, elevation: 10 }}
                 />
             )}
+
+            {
+                !isFocused && <HomeHeader />
+            }
         </SafeAreaView>
     );
 }
