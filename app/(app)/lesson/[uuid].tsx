@@ -1,5 +1,5 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -36,6 +36,8 @@ export default function LessonScreen() {
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [quizError, setQuizError] = useState<string | null>(null);
 
+    const isNavigatingBack = useRef(false);
+
     const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } =
         useLessonStore();
 
@@ -49,14 +51,23 @@ export default function LessonScreen() {
     });
     const { mutate: completeLesson, isPending: isPendingComplete } = useCompleteLesson();
 
-    useEffect(() => {
-        setIsLessonCompleted(false);
-    }, [uuid]);
+    useFocusEffect(
+        useCallback(() => {
+            setIsLessonCompleted(false);
+            setScreenIndex(0);
+            setSubStep(0);
+            setPostFlowCount(0);
+            setPostFlowSteps([]);
+            setPostFlowData(null);
+            isNavigatingBack.current = false;
+        }, [uuid])
+    );
 
     useEffect(() => {
-        if (screenIndex === 0) {
+        if (screenIndex === 0 && !isNavigatingBack.current) {
             setSubStep(0);
         }
+        isNavigatingBack.current = false;
         setSelectedOption(null);
         setQuizError(null);
     }, [screenIndex]);
@@ -164,6 +175,7 @@ export default function LessonScreen() {
                 : [previousScreen?.body];
 
             setSubStep(bodyArray.length > 0 ? bodyArray.length - 1 : 0);
+        isNavigatingBack.current = true;
             setScreenIndex(prevScreenIndex);
             return;
         }

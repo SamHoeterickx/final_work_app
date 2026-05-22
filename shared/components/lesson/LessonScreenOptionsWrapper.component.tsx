@@ -34,7 +34,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.Q_MATCH:
             return <MatchQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
             case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
-            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
+            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} quizError={quizError} />;
         default:
             return null;
     }

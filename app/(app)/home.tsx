@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, LoadingScreen, HomeHeader } from '@/shared/components';
+import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -24,20 +25,28 @@ export default function HomeScreen() {
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 
-    const { data: userChapters, isPending } = useGetChapters();
+    const { data: userChapters, isPending, refetch } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
+
+    useFocusEffect(
+        useCallback(() => {
+            if (refetch) {
+                refetch();
+            }
+            setIsFocused(false);
+        }, [refetch])
+    );
 
     useEffect(() => {
         if (!userChapters) return;
 
-        userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            if (
-                userChapter.status === EProgressStatus.INPROGRESS ||
-                userChapter.status === EProgressStatus.UNLOCKED
-            ) {
-                setCurrentChapterIndex(index);
-            }
-        });
+        const activeIndex = userChapters.findIndex(
+            (chapter: IChapterUser) => chapter.status === EProgressStatus.INPROGRESS || chapter.status === EProgressStatus.UNLOCKED
+        );
+
+        if (activeIndex !== -1) {
+            setCurrentChapterIndex(activeIndex);
+        }
     }, [userChapters]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
