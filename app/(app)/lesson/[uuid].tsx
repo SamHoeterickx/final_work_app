@@ -86,6 +86,8 @@ export default function LessonScreen() {
                 } else {
                     router.replace('/(app)/home');
                 }
+            } else {
+                router.replace('/(app)/home');
             }
             return;
         }

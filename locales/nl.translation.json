@@ -306,6 +306,11 @@
             "complete": "Voltooi Les"
         },
         "postFlow": {
+            "completed": {
+                "tag": "Opgefrist",
+                "title": "Goed Gedaan!",
+                "subtitle": "Kennis herhalen is de sleutel tot meesterschap."
+            },
             "xp": {
                 "congrats": "Goed Gedaan!",
                 "newTotal": "Nieuw XP Totaal"

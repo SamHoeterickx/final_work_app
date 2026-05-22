@@ -307,6 +307,11 @@
             "complete": "Complete Lesson"
         },
         "postFlow": {
+            "completed": {
+                "tag": "Refreshed",
+                "title": "Great Job!",
+                "subtitle": "Reviewing your knowledge is the key to mastery."
+            },
             "xp": {
                 "congrats": "Great Job!",
                 "newTotal": "New XP Total"
