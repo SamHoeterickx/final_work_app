@@ -6,7 +6,7 @@ import { OnlyTextScreen } from './conentScreens/OnlyTextScreen.component';
 import { TextWithImageScreen } from './conentScreens/TextWithImageScreen.component';
 import { TitleScreen } from './conentScreens/TitleScreen.component';
 import { ClickAndFocusQuizScreen } from './quizScreens/ClickAndFocusQuiz.component';
-import { MatchQuizScreen } from './quizScreens/MatchQuiz.component';
+import { MatchQuizScreen } from './quizScreens/Matchquiz.component';
 import { RightOrWrongQuizScreen } from './quizScreens/RightOrWrongQuiz.component';
 
 // TYPES
