@@ -1,6 +1,5 @@
-import { Canvas, useFrame } from '@react-three/fiber/native';
-import { FC, useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
+import { Canvas } from '@react-three/fiber/native';
+import { FC } from 'react';
 
 // COMPONENTS
 import { CameraController } from '../../camera/CameraController.component';
@@ -32,6 +31,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             const z = Math.sin(angle) * LESSON_RADIUS;
 
             const isLocked = lesson.status === EProgressStatus.LOCKED;
+            const isCurrent = lesson.status === EProgressStatus.INPROGRESS || lesson.status === EProgressStatus.UNLOCKED;
 
             return (
                 <LessonMesh
@@ -39,6 +39,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
                     position={[x, ISLAND_HEIGHT - 0.175, z]}
                     onClick={() => onLessonClick(index, lesson)}
                     isLocked={isLocked}
+                    isCurrent={isCurrent}
                     delay={index * 150}
                 />
             );
