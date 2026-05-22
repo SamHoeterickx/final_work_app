@@ -271,6 +271,11 @@
             "virtuoso": "Virtuose des Saveurs",
             "artisan": "Artisan du Café",
             "legend": "Légende du Café"
+        },
+        "streaks": {
+            "title": "Vos Séries",
+            "current": "Actuelle",
+            "longest": "Série la plus longue"
         }
     },
     "lesson": {
