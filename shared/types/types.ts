@@ -405,3 +405,21 @@ export interface ILessonMeshProps {
     delay: number;
     onClick: () => void;
 }
+
+
+export interface IGenerateCustomRoadmapResponse {
+    uuid: string;
+    slug: string;
+    name: {
+        nl: string;
+        en: string;
+        fr: string;
+    };
+    description: {
+        nl: string;
+        en: string;
+        fr: string;
+    };
+    tags: string[]
+    created_at: Date;
+}
