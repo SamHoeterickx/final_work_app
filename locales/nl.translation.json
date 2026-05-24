@@ -192,6 +192,7 @@
         "title": "Dit is een titel"
     },
     "chapter": {
+        "currentStatus": "Huidige Les",
         "buttons": {
             "completed": "Bezoek eiland opnieuw",
             "continue": "Ga verder",
@@ -202,7 +203,7 @@
     "chapterLesson": {
         "buttons": {
             "start": "Start",
-            "restart": "Herstart",
+            "completed": "Herstart",
             "locked": "Locked"
         }
     },
@@ -219,15 +220,21 @@
         "buttons": {
             "logout": "Uitloggen"
         },
+        "deleteAccount": {
+            "title": "Ben je zeker?",
+            "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
+            "placeholder": "Wachtwoord"
+        },
         "profile": {
-        "title": "Profiel",
+            "title": "Profiel",
             "tabs": {
                 "changePassword": "Wachtwoord wijzigen",
                 "changeEmail": "E-mail wijzigen",
                 "changeName": "Naam wijzigen"
             },
             "buttons": {
-                "delete": "Account verwijderen"
+                "delete": "Account verwijderen",
+                "cancel": "Annuleren"
             }
         },
         "changeLanguage": {
@@ -267,6 +274,70 @@
             "virtuoso": "Smaak Virtuoos",
             "artisan": "Koffie Ambachtsman",
             "legend": "Koffie Legende"
+        },
+        "streaks": {
+            "title": "Jouw Streaks",
+            "current": "Huidige",
+            "longest": "Langste"
         }
+    },
+    "lesson": {
+        "titleScreen": {
+            "introduction": "Hoofdstuk Introductie"
+        },
+        "dykScreen": {
+            "title": "Wist je dat?"
+        },
+        "quiz": {
+            "tag": "Test Je Kennis",
+            "wrongAnswer": "Oeps, probeer nog eens"
+        },
+        "paused": {
+            "title": "Les gepauzeerd",
+            "options": {
+                "quit": "Stop les",
+                "restart": "Herstart les"
+            },
+            "quitConfirm": {
+                "title": "Weet je het zeker?",
+                "subtitle": "Alle voortgang in deze les gaat verloren."
+            },
+            "buttons": {
+                "resume": "Hervat les"
+            }
+        },
+        "buttons": {
+            "continue": "Volgende",
+            "complete": "Voltooi Les"
+        },
+        "postFlow": {
+            "completed": {
+                "tag": "Opgefrist",
+                "title": "Goed Gedaan!",
+                "subtitle": "Kennis herhalen is de sleutel tot meesterschap."
+            },
+            "xp": {
+                "congrats": "Goed Gedaan!",
+                "newTotal": "Nieuw XP Totaal"
+            },
+            "streaks": {
+                "congrats": "Lekker Bezig!",
+                "updated": "Reeks Verlengd",
+                "days": "Dagen"
+            },
+            "lessonUnlocked": {
+                "tag": "Nieuwe Les Vrijgespeeld"
+            },
+            "chapterUnlocked": {
+                "tag": "Nieuw Hoofdstuk Vrijgespeeld"
+            }
+        }
+    },
+    "streaks": {
+        "title": "Jouw Streaks",
+        "current": "Huidige",
+        "longest": "Langste streak",
+        "dayStreaks": "Dagen Streak",
+        "keepGoing": "GEWELDIG BLIJF ZO DOORGAAN"
     }
 }

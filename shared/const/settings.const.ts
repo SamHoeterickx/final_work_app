@@ -3,7 +3,7 @@ import { ISettingTabProps } from '../types/types';
 
 export const SETTINGS_OPTIONS: ISettingTabProps[] = [
     {
-        icon: ESvgIconName.ACCOUNT,
+        icon: ESvgIconName.LANGUAGE,
         copy: 'settings.tabs.changeLanguage',
         path: 'changeLanguage',
     },
@@ -48,3 +48,5 @@ export const PROFILE_SETTINGS_OPTIONS: ISettingTabProps[] = [
         path: 'changeName',
     },
 ];
+
+export const VIBRATION_PATTERN = [0, 100, 100, 250];

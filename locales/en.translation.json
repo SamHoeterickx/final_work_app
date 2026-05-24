@@ -192,6 +192,7 @@
         "title": "This is a title"
     },
     "chapter": {
+        "currentStatus": "Current Lesson",
         "buttons": {
             "completed": "Revisit island",
             "continue": "Continue",
@@ -215,6 +216,11 @@
             "about": "About",
             "privacyPolicy": "Privacy Policy",
             "termsOfCondition": "Terms of Condition"
+        },
+        "deleteAccount": {
+            "title": "Are you sure?",
+            "subtitle": "Enter password to delete account",
+            "placeholder": "Password"
         },
         "buttons": {
             "logout": "logout"
@@ -268,6 +274,71 @@
             "virtuoso": "Flavor Virtuoso",
             "artisan": "Coffee Artisan",
             "legend": "Coffee Legend"
+        },
+        "streaks": {
+            "title": "Your Streaks",
+            "current": "Current",
+            "longest": "Longest"
         }
+    },
+    "lesson": {
+        "titleScreen": {
+            "introduction": "Chapter Introduction"
+        },
+        "dykScreen": {
+            "title": "Did You Know?"
+        },
+        "quiz": {
+            "tag": "Test Your Knwoledge",
+            "wrongAnswer": "Oeps, please try again"
+        },
+        "paused": {
+            "title": "Lesson Paused",
+            "options": {
+                "quit": "Quit Lesson",
+                "restart": "Restart Lesson"
+            },
+            "quitConfirm": {
+                "title": "Are you sure?",
+                "subtitle": "All progress in this lesson will be lost."
+            },
+            "buttons": {
+                "resume": "Continue Lesson"
+
+            }
+        },
+        "buttons": {
+            "continue": "Continue",
+            "complete": "Complete Lesson"
+        },
+        "postFlow": {
+            "completed": {
+                "tag": "Refreshed",
+                "title": "Great Job!",
+                "subtitle": "Reviewing your knowledge is the key to mastery."
+            },
+            "xp": {
+                "congrats": "Great Job!",
+                "newTotal": "New XP Total"
+            },
+            "streaks": {
+                "congrats": "You're on a roll!",
+                "updated": "Streak Extended",
+                "days": "Days"
+            },
+            "lessonUnlocked": {
+                "tag": "New Lesson Unlocked"
+            },
+            "chapterUnlocked": {
+                "tag": "New Chapter Unlocked"
+            }
+        }
+    },
+    "streaks": {
+        "title": "Your Streaks",
+        "current": "Current",
+        "longest": "Longest streak",
+        "dayStreaks": "Day Streak",
+        "keepGoing": "AWESOME KEEP IT UP"
     }
 }

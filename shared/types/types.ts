@@ -2,11 +2,13 @@ import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
 import {
+    ELessonScreenOptions,
     ELocales,
-    EProgressStatus,
-    ESvgIconName,
     EOnboardingQuestionKind,
+    EProgressStatus,
+    ERoles,
     ESettingsOptions,
+    ESvgIconName,
 } from './enums';
 
 // INTERFACES
@@ -43,6 +45,7 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
+
 export interface IUpdateUsernameCredentials {
     updatedUsername: string;
 }
@@ -50,12 +53,14 @@ export interface IUpdateUsernameCredentials {
 export interface IUpdateEmailCredentials {
     updatedEmailAdress: string;
 }
+
 export interface IDeleteUserCredentials {
     password: string;
 }
 
-export interface IStartLessonCredentials {
+export interface ILessonCredentials {
     lessonUuid: string;
+    languageCode: ELocales;
 }
 
 export interface IRegisterVariables {
@@ -90,10 +95,23 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
-export interface IUserPreferencesStore {
+export interface IUserDataStore {
     language: ELocales;
+    userData: IUserData | null;
+    name: string;
+    xp: number;
+    streaks: number;
+    longestStreak: number;
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
+    getUserData: () => Promise<void>;
+}
+
+export interface ILessonStore {
+    screenIndex: number;
+    isLessonCompleted: boolean;
+    setScreenIndex: (index: number) => void;
+    setIsLessonCompleted: (state: boolean) => void;
 }
 
 export interface IRefreshTokensResponse {
@@ -122,10 +140,31 @@ export interface IErrorData {
     isError: boolean;
 }
 
+export interface IUserData {
+    role: ERoles;
+    name: string;
+    email: string;
+    xp: string;
+    streaks: {
+        uuid: string;
+        currentStreak: number;
+        lastCompletedDate: Date;
+        longestStreak: number;
+    };
+}
+
 export interface IChapter {
     uuid: string;
-    name: string;
-    description: string;
+    name: {
+        en: string;
+        nl: string;
+        fr: string;
+    };
+    description: {
+        en: string;
+        nl: string;
+        fr: string;
+    };
     slug: string;
     lessons: ILessonsChapter[];
     created_at: string;
@@ -141,8 +180,33 @@ export interface IChapterUser {
 
 export interface ILessonsChapter {
     uuid: string;
-    name: string;
     status: EProgressStatus;
+    order: number;
+    translations: any;
+}
+
+export interface IStartLessonResponse {
+    uuid: string;
+    estimatedDuration: number;
+    xp: number;
+    order: number;
+    content: ILessonTranslations[];
+}
+
+// export interface ICompleteLessonResponse {
+//     uuid: string;
+//     estimatedDuration: number;
+//     xp: number;
+//     order: number;
+//     content: ILessonTranslations[];
+// }
+
+export interface ILessonTranslations {
+    uuid?: string | null;
+    languageCode: ELocales;
+    name: string;
+    description: string;
+    content: any[];
 }
 
 export interface IQuestionOption {
@@ -278,7 +342,66 @@ export interface IChangePasswordSettingsProps {
     email?: string;
 }
 
-export interface IDeleteUserModalProps {
+export interface IModalProps {
     isModalOpen: boolean;
     setIsModalOpen: (state: boolean) => void;
+}
+
+export interface ILessonHeaderProps {
+    screenCount: number;
+    totalScreens: number | undefined;
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
+    onBackPress: () => void;
+}
+
+export interface ILessonScreenOptionsWrapperProps {
+    screenType: ELessonScreenOptions;
+    lessonContent: any;
+    subStep?: number;
+    quizError: string | null;
+    onAnswerSelect?: (option: string) => void;
+}
+
+export interface ILessonScreenProps {
+    content: any;
+    subStep?: number;
+    quizError?: string | null;
+    onAnswerSelect?: (option: string) => void;
+}
+
+export interface IPostLessonFlowProps {
+    data: any;
+    currentStep: string;
+}
+
+export interface IXpFlowProps {
+    newUserXP: number;
+    prevUserXP: number;
+}
+
+export interface IStreaksFlowProps {
+    newStreak: number;
+}
+
+export interface ILessonUnlockedProps {
+    lesson: {
+        status: 'UNLOCKED';
+        uuid: string;
+        translations: [
+            {
+                name: string;
+                description: string;
+                languageCode: ELocales;
+            },
+        ];
+    };
+}
+
+export interface ILessonMeshProps {
+    position: [number, number, number];
+    isLocked: boolean;
+    isCurrent: boolean;
+    delay: number;
+    onClick: () => void;
 }

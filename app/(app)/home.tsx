@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, LoadingScreen } from '@/shared/components';
+import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/components';
 
 // HOOKS
 import { useGetChapters, useSwipe } from '@/shared/hooks';
@@ -24,27 +25,31 @@ export default function HomeScreen() {
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 
-    const { data: userChapters, isPending } = useGetChapters();
+    const { data: userChapters, isPending, refetch } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
+
+    useFocusEffect(
+        useCallback(() => {
+            if (refetch) {
+                refetch();
+            }
+            setIsFocused(false);
+        }, [refetch]),
+    );
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log(userChapters);
 
-        userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            console.log(userChapter.status);
-            if (
-                userChapter.status === EProgressStatus.INPROGRESS ||
-                userChapter.status === EProgressStatus.UNLOCKED
-            ) {
-                setCurrentChapterIndex(index);
-            }
-        });
+        const activeIndex = userChapters.findIndex(
+            (chapter: IChapterUser) =>
+                chapter.status === EProgressStatus.INPROGRESS ||
+                chapter.status === EProgressStatus.UNLOCKED,
+        );
+
+        if (activeIndex !== -1) {
+            setCurrentChapterIndex(activeIndex);
+        }
     }, [userChapters]);
-
-    useEffect(() => {
-        console.log(currentChapterIndex);
-    }, [currentChapterIndex]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || currentChapterIndex === null) return;
@@ -120,6 +125,8 @@ export default function HomeScreen() {
                     style={{ zIndex: 10, elevation: 10 }}
                 />
             )}
+
+            {!isFocused && <HomeHeader />}
         </SafeAreaView>
     );
 }

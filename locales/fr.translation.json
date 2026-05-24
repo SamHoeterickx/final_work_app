@@ -192,6 +192,7 @@
         "title": "Ceci est un titre"
     },
     "chapter": {
+        "currentStatus": "Leçon en Cours",
         "buttons": {
             "completed": "Revisiter l'île",
             "continue": "Continuer",
@@ -219,15 +220,21 @@
         "buttons": {
             "logout": "Déconnexion"
         },
+        "deleteAccount": {
+            "title": "es-tu sûr?",
+            "subtitle": "Saisissez le mot de passe pour supprimer le compte",
+            "placeholder": "Mot de passe"
+        },
         "profile": {
-        "title": "Profil",
+            "title": "Profil",
             "tabs": {
                 "changePassword": "Modifier le mot de passe",
                 "changeEmail": "Modifier l'e-mail",
                 "changeName": "Modifier le nom"
             },
             "buttons": {
-                "delete": "Supprimer le compte"
+                "delete": "Supprimer le compte",
+                "cancel": "Annuler"
             }
         },
         "changeLanguage": {
@@ -264,6 +271,70 @@
             "virtuoso": "Virtuose des Saveurs",
             "artisan": "Artisan du Café",
             "legend": "Légende du Café"
+        },
+        "streaks": {
+            "title": "Vos Séries",
+            "current": "Actuelle",
+            "longest": "Série la plus longue"
         }
+    },
+    "lesson": {
+        "titleScreen": {
+            "introduction": "Introduction au chapitre"
+        },
+        "dykScreen": {
+            "title": "saviez-vous?"
+        },
+        "quiz": {
+            "tag": "Testez vos connaissances",
+            "wrongAnswer": "Oups, réessayez"
+        },
+        "paused": {
+            "title": "Leçon en pause",
+            "options": {
+                "quit": "Quitter la leçon",
+                "restart": "Recommencer la leçon"
+            },
+            "quitConfirm": {
+                "title": "Êtes-vous sûr ?",
+                "subtitle": "Toute progression dans cette leçon sera perdue."
+            },
+            "buttons": {
+                "resume": "Reprendre la leçon"
+            }
+        },
+        "buttons": {
+            "continue": "Continuer",
+            "complete": "Terminer la leçon"
+        },
+        "postFlow": {
+            "completed": {
+                "tag": "Rafraîchi",
+                "title": "Bien Joué !",
+                "subtitle": "Réviser vos connaissances est la clé de la maîtrise."
+            },
+            "xp": {
+                "congrats": "Bien Joué !",
+                "newTotal": "Nouveau Total d'XP"
+            },
+            "streaks": {
+                "congrats": "En Pleine Forme !",
+                "updated": "Série Prolongée",
+                "days": "Jours"
+            },
+            "lessonUnlocked": {
+                "tag": "Nouvelle Leçon Débloquée"
+            },
+            "chapterUnlocked": {
+                "tag": "Nouveau Chapitre Débloqué"
+            }
+        }
+    },
+    "streaks": {
+        "title": "Vos Séries",
+        "current": "Actuelle",
+        "longest": "Série la plus longue",
+        "dayStreaks": "Jours de Série",
+        "keepGoing": "SUPER CONTINUEZ COMME ÇA"
     }
 }

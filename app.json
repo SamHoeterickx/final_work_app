@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "final_work_app",
-    "slug": "final_work_app",
-    "version": "1.0.0",
+    "name": "BREWLINGO",
+    "slug": "BREWLINGO",
+    "version": "0.1.1-alpha",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "finalworkapp",
+    "scheme": "brewlingo",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.final-work-app",
+      "bundleIdentifier": "com.anonymous.brewlingo",
       "config": {
         "usesNonExemptEncryption": false
       }
