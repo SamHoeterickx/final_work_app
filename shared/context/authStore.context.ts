@@ -13,6 +13,7 @@ export const useAuthStore = create<IAuthStore>((set) => ({
         set({ accessToken, refreshToken, needsRoadmap }),
     setNeedsRoadmap: (state: boolean) => set({ needsRoadmap: state }),
     setHydrated: (state: boolean) => set({ isHydrated: state }),
-    setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) => set({ roadmapResponse: chapter }),
+    setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) =>
+        set({ roadmapResponse: chapter }),
     logout: () => set({ accessToken: null, refreshToken: null, needsRoadmap: false }),
 }));

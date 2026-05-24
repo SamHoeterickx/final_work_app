@@ -399,12 +399,11 @@ export interface ILessonMeshProps {
     onClick: () => void;
 }
 
-
 export interface IGenerateCustomRoadmapResponse {
     uuid: string;
     slug: string;
-    name: ITranslations
-    description: ITranslations
+    name: ITranslations;
+    description: ITranslations;
     tags: string[];
     lessons: {
         uuid: string;
@@ -421,5 +420,5 @@ export interface IGenerateCustomRoadmapResponse {
 export interface ITranslations {
     nl: string;
     en: string;
-    fr: string
+    fr: string;
 }

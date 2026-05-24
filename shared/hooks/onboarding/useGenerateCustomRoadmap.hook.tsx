@@ -3,7 +3,6 @@ import { onboardingService } from '@/shared/services/onboarding.service';
 import { useMutation } from '@tanstack/react-query';
 
 export const useGenerateCustomRoadmap = () => {
-
     const { setRoadmapResponse } = useAuthStore();
 
     return useMutation({
@@ -11,7 +10,7 @@ export const useGenerateCustomRoadmap = () => {
             const response = await onboardingService.generateCustomRoadmap();
 
             if (!response) {
-                throw new Error('Failed to generate custom roadMap')
+                throw new Error('Failed to generate custom roadMap');
             }
             setRoadmapResponse(response.generateCustomRoadmap);
 

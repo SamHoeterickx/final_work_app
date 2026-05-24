@@ -1,7 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import {
@@ -32,12 +30,12 @@ export default function PostOnboardingFlow() {
                 );
             case EFlowStep.CHAPTER_UNLOCKED:
                 return (
-                    <ChapterUnlockedOnboardingWrapper handleNext={() => setCurrentStep(EFlowStep.START_LEARNING) } />
+                    <ChapterUnlockedOnboardingWrapper
+                        handleNext={() => setCurrentStep(EFlowStep.START_LEARNING)}
+                    />
                 );
             case EFlowStep.START_LEARNING:
-                return (
-                    <StartLearning />
-                );
+                return <StartLearning />;
             default:
                 return null;
         }

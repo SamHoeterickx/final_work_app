@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         letterSpacing: 1.5,
         textTransform: 'uppercase',
         color: colors.text.muted,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     statsContainer: {
