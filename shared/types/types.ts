@@ -10,6 +10,7 @@ import {
     ESettingsOptions,
     ESvgIconName,
 } from './enums';
+import { IGenerateCustomRoadmapResponse } from './response.type';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -116,20 +117,6 @@ export interface ILessonStore {
     setIsLessonCompleted: (state: boolean) => void;
 }
 
-export interface IRefreshTokensResponse {
-    refreshTokens: {
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-export interface ILoginUserResponse {
-    loginUser: {
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
 export interface IOnboardingQuestions {
     title: string;
     description: string;
@@ -187,22 +174,6 @@ export interface ILessonsChapter {
     translations: any;
 }
 
-export interface IStartLessonResponse {
-    uuid: string;
-    estimatedDuration: number;
-    xp: number;
-    order: number;
-    content: ILessonTranslations[];
-}
-
-// export interface ICompleteLessonResponse {
-//     uuid: string;
-//     estimatedDuration: number;
-//     xp: number;
-//     order: number;
-//     content: ILessonTranslations[];
-// }
-
 export interface ILessonTranslations {
     uuid?: string | null;
     languageCode: ELocales;
@@ -226,11 +197,6 @@ export type TGraphQLError = {
     extensions?: {
         code?: string;
     };
-};
-
-export type TGraphQLResponse<T = unknown> = {
-    data?: T;
-    errors?: TGraphQLError[];
 };
 
 // PROPS
@@ -397,24 +363,6 @@ export interface ILessonMeshProps {
     isCurrent: boolean;
     delay: number;
     onClick: () => void;
-}
-
-export interface IGenerateCustomRoadmapResponse {
-    uuid: string;
-    slug: string;
-    name: ITranslations;
-    description: ITranslations;
-    tags: string[];
-    lessons: {
-        uuid: string;
-        order: number;
-        translations: {
-            languageCode: ELocales;
-            name: string;
-            description: string;
-        }[];
-    }[];
-    created_at: Date;
 }
 
 export interface ITranslations {
