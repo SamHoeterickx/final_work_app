@@ -6,8 +6,11 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 import { ILessonScreenProps } from '@/shared/types/types';
 import { renderFormattedText } from '@/shared/utils/text.utils';
 
-
-export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({ content, quizError, onAnswerSelect }) => {
+export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({
+    content,
+    quizError,
+    onAnswerSelect,
+}) => {
     const { t } = useTranslation();
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
@@ -54,9 +57,7 @@ export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({ content, quizEr
                     </Text>
                 )}
 
-                {quizError && (
-                    <Text style={[baseStyles.p, styles.errorText]}>{quizError}</Text>
-                )}
+                {quizError && <Text style={[baseStyles.p, styles.errorText]}>{quizError}</Text>}
 
                 <View style={styles.optionsContainer}>
                     {options.map((option: string, index: number) => {
@@ -64,11 +65,19 @@ export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({ content, quizEr
                         return (
                             <TouchableOpacity
                                 key={index}
-                                style={[styles.optionButton, isSelected && styles.optionButtonSelected]}
+                                style={[
+                                    styles.optionButton,
+                                    isSelected && styles.optionButtonSelected,
+                                ]}
                                 onPress={() => handleSelect(option)}
                                 activeOpacity={0.7}
                             >
-                                <Text style={[styles.optionText, isSelected && styles.optionTextSelected]}>
+                                <Text
+                                    style={[
+                                        styles.optionText,
+                                        isSelected && styles.optionTextSelected,
+                                    ]}
+                                >
                                     {option}
                                 </Text>
                             </TouchableOpacity>

@@ -22,7 +22,6 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const totalTranslateYAnim = useRef(new Animated.Value(40)).current;
 
     useEffect(() => {
-
         Vibration.vibrate(VIBRATION_PATTERN);
 
         Animated.parallel([

@@ -60,7 +60,7 @@ export default function LessonScreen() {
             setPostFlowSteps([]);
             setPostFlowData(null);
             isNavigatingBack.current = false;
-        }, [uuid])
+        }, [uuid]),
     );
 
     useEffect(() => {
@@ -76,7 +76,8 @@ export default function LessonScreen() {
     if (isPendingStart || isPendingComplete) return <LoadingScreen />;
 
     const currentScreen = lesson.content?.[0]?.content?.[screenIndex];
-    const isQuizScreen = currentScreen?.screenType?.startsWith('Q_') || currentScreen?.type === 'quiz';
+    const isQuizScreen =
+        currentScreen?.screenType?.startsWith('Q_') || currentScreen?.type === 'quiz';
 
     const handleButton = () => {
         if (isLessonCompleted) {
@@ -97,7 +98,8 @@ export default function LessonScreen() {
         if (isQuizScreen) {
             if (!selectedOption) return;
 
-            const isCorrect = selectedOption === currentScreen.answer || selectedOption === 'MATCHED_ALL';
+            const isCorrect =
+                selectedOption === currentScreen.answer || selectedOption === 'MATCHED_ALL';
 
             if (!isCorrect) {
                 setQuizError(t('lesson.quiz.wrongAnswer', 'Fout, probeer nog eens'));
@@ -177,7 +179,7 @@ export default function LessonScreen() {
                 : [previousScreen?.body];
 
             setSubStep(bodyArray.length > 0 ? bodyArray.length - 1 : 0);
-        isNavigatingBack.current = true;
+            isNavigatingBack.current = true;
             setScreenIndex(prevScreenIndex);
             return;
         }
@@ -234,7 +236,12 @@ export default function LessonScreen() {
             <PauseLessonModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
 
             {(!isLessonCompleted || postFlowData) && (
-                <View style={[styles.cButton, isQuizScreen && !selectedOption && styles.buttonDisabled]}>
+                <View
+                    style={[
+                        styles.cButton,
+                        isQuizScreen && !selectedOption && styles.buttonDisabled,
+                    ]}
+                >
                     <Button copy={renderButtonCopy()} onPress={handleButton} />
                 </View>
             )}

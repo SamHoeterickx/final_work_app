@@ -6,7 +6,7 @@ import { OnlyTextScreen } from './conentScreens/OnlyTextScreen.component';
 import { TextWithImageScreen } from './conentScreens/TextWithImageScreen.component';
 import { TitleScreen } from './conentScreens/TitleScreen.component';
 import { ClickAndFocusQuizScreen } from './quizScreens/ClickAndFocusQuiz.component';
-import { MatchQuizScreen } from './quizScreens/Matchquiz.component';
+import { MatchQuizScreen } from './quizScreens/MatchQuiz.component';
 import { RightOrWrongQuizScreen } from './quizScreens/RightOrWrongQuiz.component';
 
 // TYPES
@@ -18,7 +18,7 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
     lessonContent,
     subStep,
     quizError,
-    onAnswerSelect
+    onAnswerSelect,
 }) => {
     switch (screenType) {
         case ELessonScreenOptions.C_TITLE:
@@ -33,8 +33,14 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
             return <ClickAndFocusQuizScreen content={lessonContent} subStep={subStep} />;
         case ELessonScreenOptions.Q_MATCH:
             return <MatchQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
-            case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
-            return <RightOrWrongQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} quizError={quizError} />;
+        case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
+            return (
+                <RightOrWrongQuizScreen
+                    content={lessonContent}
+                    onAnswerSelect={onAnswerSelect}
+                    quizError={quizError}
+                />
+            );
         default:
             return null;
     }

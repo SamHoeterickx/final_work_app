@@ -34,14 +34,16 @@ export default function HomeScreen() {
                 refetch();
             }
             setIsFocused(false);
-        }, [refetch])
+        }, [refetch]),
     );
 
     useEffect(() => {
         if (!userChapters) return;
 
         const activeIndex = userChapters.findIndex(
-            (chapter: IChapterUser) => chapter.status === EProgressStatus.INPROGRESS || chapter.status === EProgressStatus.UNLOCKED
+            (chapter: IChapterUser) =>
+                chapter.status === EProgressStatus.INPROGRESS ||
+                chapter.status === EProgressStatus.UNLOCKED,
         );
 
         if (activeIndex !== -1) {

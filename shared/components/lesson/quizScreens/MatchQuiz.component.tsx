@@ -14,15 +14,14 @@ import { renderFormattedText } from '@/shared/utils/text.utils';
 const shuffleArray = (array: any[]) => [...array].sort(() => Math.random() - 0.5);
 
 export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelect }) => {
-    
     const [shuffledItems, setShuffledItems] = useState<string[]>([]);
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const [matchedItems, setMatchedItems] = useState<string[]>([]);
     const [isError, setIsError] = useState(false);
-    
+
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const translateYAnim = useRef(new Animated.Value(20)).current;
-    
+
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -32,7 +31,7 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
                 allItems.push(p.item);
                 allItems.push(p.match);
             });
-            
+
             setShuffledItems(shuffleArray(allItems));
         }
 
@@ -53,21 +52,21 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
     useEffect(() => {
         if (selectedItems.length === 2) {
             const [first, second] = selectedItems;
-            
+
             const isCorrect = content?.pairs?.some(
-                (p: any) => 
-                    (p.item === first && p.match === second) || 
-                    (p.item === second && p.match === first)
+                (p: any) =>
+                    (p.item === first && p.match === second) ||
+                    (p.item === second && p.match === first),
             );
 
             if (isCorrect) {
                 const newMatched = [...matchedItems, first, second];
                 setMatchedItems(newMatched);
                 setSelectedItems([]);
-                
+
                 if (newMatched.length === content?.pairs?.length * 2) {
                     if (onAnswerSelect) {
-                        onAnswerSelect(content.answer || "MATCHED_ALL");
+                        onAnswerSelect(content.answer || 'MATCHED_ALL');
                     }
                 }
             } else {
@@ -76,7 +75,7 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
                 setTimeout(() => {
                     setSelectedItems([]);
                     setIsError(false);
-                }, 500); 
+                }, 500);
             }
         }
     }, [selectedItems, content]);
@@ -137,10 +136,7 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
                                 activeOpacity={0.7}
                             >
                                 <Text
-                                    style={[
-                                        styles.cardText,
-                                        isSelected && styles.cardTextSelected,
-                                    ]}
+                                    style={[styles.cardText, isSelected && styles.cardTextSelected]}
                                 >
                                     {renderFormattedText(item)}
                                 </Text>
@@ -155,13 +151,13 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1, 
+        flex: 1,
         paddingHorizontal: spacing.sm,
     },
     contentContainer: {
         flex: 1,
         width: '100%',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         paddingBottom: spacing.lg,
     },
     headerSection: {
@@ -191,19 +187,19 @@ const styles = StyleSheet.create({
         color: colors.text.primary,
         paddingHorizontal: spacing.sm,
     },
-    
+
     gridContainer: {
         width: '100%',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-    
-        marginBottom: -spacing.sm, 
+
+        marginBottom: -spacing.sm,
     },
     card: {
-        width: '48%', 
+        width: '48%',
         minHeight: 110,
-        marginBottom: spacing.sm, 
+        marginBottom: spacing.sm,
         padding: spacing.md,
         borderRadius: borderRadius.md,
         borderWidth: 2,
@@ -217,8 +213,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
     },
     cardText: {
-        fontSize: 14, 
-        lineHeight: 20, 
+        fontSize: 14,
+        lineHeight: 20,
         color: colors.text.primary,
         textAlign: 'center',
     },
@@ -226,14 +222,14 @@ const styles = StyleSheet.create({
         color: colors.text.secondary,
         fontWeight: 'bold',
     },
-    
+
     errorBorder: {
         borderColor: '#D9534F',
         backgroundColor: 'transparent',
     },
     matchedItem: {
-        opacity: 0.25, 
-        borderColor: 'transparent', 
+        opacity: 0.25,
+        borderColor: 'transparent',
         backgroundColor: 'transparent',
     },
 });

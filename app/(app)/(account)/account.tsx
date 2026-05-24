@@ -44,7 +44,7 @@ export default function AccountScreen() {
                 }
             };
             fetchData();
-        }, [getUserData])
+        }, [getUserData]),
     );
 
     const { t } = useTranslation();
@@ -63,7 +63,6 @@ export default function AccountScreen() {
         <SafeAreaView style={styles.sAccount}>
             {isPending && <LoadingScreen />}
             <ScrollView style={styles.svAccount} showsVerticalScrollIndicator={false}>
-                
                 <View style={styles.cHeader}>
                     <TouchableOpacity style={styles.cSettings} onPress={handleOpenSettings}>
                         <SvgIcon name={ESvgIconName.SETTINGS} />
@@ -91,25 +90,20 @@ export default function AccountScreen() {
                         <Text style={[baseStyles.h2, styles.sectionTitle]}>
                             {t('account.streaks.title')}
                         </Text>
-                        
+
                         <View style={styles.statsGrid}>
                             <View style={styles.statCard}>
                                 <Text style={styles.statNumber}>{streaks || 0}</Text>
-                                <Text style={styles.statLabel}>
-                                    {t('account.streaks.current')}
-                                </Text>
+                                <Text style={styles.statLabel}>{t('account.streaks.current')}</Text>
                             </View>
 
                             <View style={styles.statCard}>
                                 <Text style={styles.statNumber}>{longestStreak || 0}</Text>
-                                <Text style={styles.statLabel}>
-                                    {t('account.streaks.longest')}
-                                </Text>
+                                <Text style={styles.statLabel}>{t('account.streaks.longest')}</Text>
                             </View>
                         </View>
                     </View>
                 )}
-
             </ScrollView>
         </SafeAreaView>
     );
@@ -183,18 +177,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     statNumber: {
-        fontSize: 56, 
+        fontSize: 56,
         fontWeight: '900',
         color: colors.text.primary,
-        marginBottom: 4, 
+        marginBottom: 4,
     },
     statLabel: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: colors.primary, 
+        color: colors.primary,
         textTransform: 'uppercase',
         letterSpacing: 2,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     xpText: {
         color: colors.text.muted,

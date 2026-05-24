@@ -13,8 +13,6 @@ import { IChapterSceneProps } from '@/shared/types/types';
 import { ISLAND_HEIGHT, LESSON_RADIUS } from '@/shared/const/chapter.const';
 import { LessonMesh } from './LessonMesh.component';
 
-
-
 export const ChapterScene: FC<IChapterSceneProps> = ({
     isFocused,
     cameraPos,
@@ -31,7 +29,9 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             const z = Math.sin(angle) * LESSON_RADIUS;
 
             const isLocked = lesson.status === EProgressStatus.LOCKED;
-            const isCurrent = lesson.status === EProgressStatus.INPROGRESS || lesson.status === EProgressStatus.UNLOCKED;
+            const isCurrent =
+                lesson.status === EProgressStatus.INPROGRESS ||
+                lesson.status === EProgressStatus.UNLOCKED;
 
             return (
                 <LessonMesh
