@@ -26,7 +26,7 @@ export default function AccountScreen() {
 
     const router = useRouter();
 
-    const { getUserData, name, xp } = useUserDataStore();
+    const { getUserData, name, xp, streaks, longestStreak } = useUserDataStore();
 
     useFocusEffect(
         useCallback(() => {
@@ -63,11 +63,13 @@ export default function AccountScreen() {
         <SafeAreaView style={styles.sAccount}>
             {isPending && <LoadingScreen />}
             <ScrollView style={styles.svAccount} showsVerticalScrollIndicator={false}>
+                
                 <View style={styles.cHeader}>
                     <TouchableOpacity style={styles.cSettings} onPress={handleOpenSettings}>
                         <SvgIcon name={ESvgIconName.SETTINGS} />
                     </TouchableOpacity>
                 </View>
+
                 <View style={styles.cTitle}>
                     {isError ? (
                         <Text style={baseStyles.errorText}>{error?.message}</Text>
@@ -77,69 +79,38 @@ export default function AccountScreen() {
                             <Text style={[baseStyles.h4, styles.userLevel]}>
                                 {t(calculateUserLevel(xp))}
                             </Text>
+                            <Text style={styles.xpText}>{xp} XP</Text>
                         </>
                     )}
                 </View>
 
-                {/* <View style={styles.cStats}>
-                    <View style={styles.wStats}>
-                        <SvgIcon name={ESvgIconName.BEAN_1} style={styles.statsIcon} />
-                        <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>3</Text>
-                        </View>
-                    </View>
-                    <View style={styles.wStats}>
-                        <SvgIcon name={ESvgIconName.BEAN_1} style={styles.statsIcon} />
-                        <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>3</Text>
-                        </View>
-                    </View>
-                </View> */}
-                {/* 
-                <View style={styles.cStreaks}>
-                    <Text style={[baseStyles.h2, styles.subtitle]}>Your Streaks</Text>
-                    <View style={styles.cStats}>
-                        <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>{streaks}</Text>
-                            <Text style={[baseStyles.p, styles.label]}>CURRENT</Text>
-                        </View>
-                        <View style={styles.wStatsText}>
-                            <Text style={baseStyles.h2}>{longestStreak}</Text>
-                            <Text style={[baseStyles.p, styles.label]}>LONGEST</Text>
-                        </View>
-                    </View>
-                </View> */}
-                {/* 
-                <View style={styles.cBadge}>
-                    <Text style={[baseStyles.h2, styles.subtitle]}>Your Badges</Text>
-                    <ScrollView 
-                        contentContainerStyle={styles.svBadges}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                    >
-                        {
-                            badges && badges.map((badge, index) => (
-                                <Image
-                                    style={[styles.badge, { opacity: badge.status === EProgressStatus.LOCKED ? 0.1 : badge.status === EProgressStatus.INPROGRESS || badge.status === EProgressStatus.UNLOCKED ? 0.5 : 1 }]}
-                                    source={require("@/assets/images/moka_pot_island.png")}
-                                    resizeMode='contain'
-                                    key={index}
-                                />
-                            ))
-                        }
-                    </ScrollView>
-                </View> */}
-            </ScrollView>
+                {!isError && <View style={styles.divider} />}
 
-            {/* 
-                <View style={styles.wStats}>
-                    <SvgIcon name={ESvgIconName.BEAN_1} style={styles.statsIcon} />
-                    <View style={styles.wStatsText}>
-                        <Text style={baseStyles.h2}>3</Text>
-                        <Text style={[baseStyles.h4, styles.label]}>BEGINNER</Text>
+                {!isError && (
+                    <View style={styles.cStreaks}>
+                        <Text style={[baseStyles.h2, styles.sectionTitle]}>
+                            {t('account.streaks.title')}
+                        </Text>
+                        
+                        <View style={styles.statsGrid}>
+                            <View style={styles.statCard}>
+                                <Text style={styles.statNumber}>{streaks || 0}</Text>
+                                <Text style={styles.statLabel}>
+                                    {t('account.streaks.current')}
+                                </Text>
+                            </View>
+
+                            <View style={styles.statCard}>
+                                <Text style={styles.statNumber}>{longestStreak || 0}</Text>
+                                <Text style={styles.statLabel}>
+                                    {t('account.streaks.longest')}
+                                </Text>
+                            </View>
+                        </View>
                     </View>
-                </View>
-            */}
+                )}
+
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -172,5 +143,63 @@ const styles = StyleSheet.create({
     },
     userLevel: {
         fontSize: 26,
+    },
+    divider: {
+        width: 50,
+        height: 3,
+        backgroundColor: colors.primary,
+        borderRadius: 2,
+        alignSelf: 'center',
+        marginBottom: spacing.xxl,
+        opacity: 0.8,
+    },
+    cStreaks: {
+        width: '100%',
+        paddingHorizontal: spacing.lg,
+        alignItems: 'center',
+        marginBottom: spacing.xxl,
+    },
+    sectionTitle: {
+        textAlign: 'center',
+        textTransform: 'uppercase',
+        letterSpacing: 1.5,
+        marginBottom: spacing.lg,
+        color: colors.primary,
+    },
+    statsGrid: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    statCard: {
+        width: '48%',
+        paddingVertical: spacing.xl,
+        paddingHorizontal: spacing.md,
+        borderRadius: borderRadius.md,
+        borderWidth: 2,
+        borderColor: colors.text.muted + '40',
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    statNumber: {
+        fontSize: 56, 
+        fontWeight: '900',
+        color: colors.text.primary,
+        marginBottom: 4, 
+    },
+    statLabel: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: colors.primary, 
+        textTransform: 'uppercase',
+        letterSpacing: 2,
+        textAlign: 'center'
+    },
+    xpText: {
+        color: colors.text.muted,
+        fontSize: 14,
+        fontFamily: 'Vanguard-DemiBold',
+        letterSpacing: 1,
     },
 });

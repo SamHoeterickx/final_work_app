@@ -274,6 +274,11 @@
             "virtuoso": "Flavor Virtuoso",
             "artisan": "Coffee Artisan",
             "legend": "Coffee Legend"
+        },
+        "streaks": {
+            "title": "Your Streaks",
+            "current": "Current",
+            "longest": "Longest"
         }
     },
     "lesson": {

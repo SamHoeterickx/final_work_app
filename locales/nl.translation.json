@@ -274,6 +274,11 @@
             "virtuoso": "Smaak Virtuoos",
             "artisan": "Koffie Ambachtsman",
             "legend": "Koffie Legende"
+        },
+        "streaks": {
+            "title": "Jouw Streaks",
+            "current": "Huidige",
+            "longest": "Langste"
         }
     },
     "lesson": {

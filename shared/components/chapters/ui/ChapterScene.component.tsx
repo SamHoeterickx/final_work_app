@@ -11,6 +11,9 @@ import { IChapterSceneProps } from '@/shared/types/types';
 
 // CONST
 import { ISLAND_HEIGHT, LESSON_RADIUS } from '@/shared/const/chapter.const';
+import { LessonMesh } from './LessonMesh.component';
+
+
 
 export const ChapterScene: FC<IChapterSceneProps> = ({
     isFocused,
@@ -28,16 +31,17 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             const z = Math.sin(angle) * LESSON_RADIUS;
 
             const isLocked = lesson.status === EProgressStatus.LOCKED;
+            const isCurrent = lesson.status === EProgressStatus.INPROGRESS || lesson.status === EProgressStatus.UNLOCKED;
 
             return (
-                <mesh
+                <LessonMesh
                     key={lesson.uuid}
                     position={[x, ISLAND_HEIGHT - 0.175, z]}
-                    onPointerDown={() => onLessonClick(index, lesson)}
-                >
-                    <cylinderGeometry args={[0.09, 0.09, 0.05]} />
-                    <meshBasicMaterial color="darkgreen" transparent opacity={isLocked ? 0.3 : 1} />
-                </mesh>
+                    onClick={() => onLessonClick(index, lesson)}
+                    isLocked={isLocked}
+                    isCurrent={isCurrent}
+                    delay={index * 150}
+                />
             );
         });
     };

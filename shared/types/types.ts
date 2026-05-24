@@ -397,3 +397,11 @@ export interface ILessonUnlockedProps {
         ];
     };
 }
+
+export interface ILessonMeshProps {
+    position: [ number, number, number ];
+    isLocked: boolean;
+    isCurrent: boolean;
+    delay: number;
+    onClick: () => void;
+}
