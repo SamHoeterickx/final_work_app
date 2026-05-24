@@ -280,6 +280,10 @@
         "dykScreen": {
             "title": "saviez-vous?"
         },
+        "quiz": {
+            "tag": "Testez vos connaissances",
+            "wrongAnswer": "Oups, réessayez"
+        },
         "paused": {
             "title": "Leçon en pause",
             "options": {
@@ -299,6 +303,11 @@
             "complete": "Terminer la leçon"
         },
         "postFlow": {
+            "completed": {
+                "tag": "Rafraîchi",
+                "title": "Bien Joué !",
+                "subtitle": "Réviser vos connaissances est la clé de la maîtrise."
+            },
             "xp": {
                 "congrats": "Bien Joué !",
                 "newTotal": "Nouveau Total d'XP"

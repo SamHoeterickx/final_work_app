@@ -1,5 +1,5 @@
-import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -26,22 +26,26 @@ export default function AccountScreen() {
 
     const router = useRouter();
 
-    // const { data, isPending, isError, error } = useGetUserdata();
-
     const { getUserData, name, xp } = useUserDataStore();
 
-    useEffect(() => {
-        setIsPending(true);
-        setIsError(false);
-        setError(null);
-        try {
-            getUserData();
-        } catch (error) {
-            throw error;
-        } finally {
-            setIsPending(false);
-        }
-    }, []);
+    useFocusEffect(
+        useCallback(() => {
+            const fetchData = async () => {
+                setIsPending(true);
+                setIsError(false);
+                setError(null);
+                try {
+                    await getUserData();
+                } catch (err) {
+                    setIsError(true);
+                    setError(err);
+                } finally {
+                    setIsPending(false);
+                }
+            };
+            fetchData();
+        }, [getUserData])
+    );
 
     const { t } = useTranslation();
 

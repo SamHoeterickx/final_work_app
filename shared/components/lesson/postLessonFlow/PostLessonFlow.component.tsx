@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 // COMPONENTS
 import { ChapterUnlockedScreen } from './ChapterUnlocked.component';
+import { CompletedLessonScreen } from './CompletedLesson.component';
 import { LessonUnlockedScreen } from './LessonUnlocked.component';
 import { StreaksFlowScreen } from './SteaksFlow.component';
 import { XpFlowScreens } from './XpFlow.component';
@@ -21,6 +22,6 @@ export const PostLessonFlow: FC<IPostLessonFlowProps> = ({ data, currentStep }) 
         case EPostLessonFlowOptions.SHOW_UNLOCKED_CHAPTER:
             return <ChapterUnlockedScreen chapter={data.newUnlockedChapter} />;
         default:
-            return null;
+            return <CompletedLessonScreen />;
     }
 };

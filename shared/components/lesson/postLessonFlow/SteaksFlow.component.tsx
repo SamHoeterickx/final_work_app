@@ -2,6 +2,9 @@ import { FC, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Easing, StyleSheet, Text, Vibration, View } from 'react-native';
 
+// CONST
+import { VIBRATION_PATTERN } from '@/shared/const/settings.const';
+
 // STYLES
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
@@ -19,7 +22,8 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const totalTranslateYAnim = useRef(new Animated.Value(40)).current;
 
     useEffect(() => {
-        Vibration.vibrate();
+
+        Vibration.vibrate(VIBRATION_PATTERN);
 
         Animated.parallel([
             Animated.spring(earnedScaleAnim, {
@@ -36,7 +40,7 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
         ]).start();
 
         const timer = setTimeout(() => {
-            Vibration.vibrate();
+            Vibration.vibrate(VIBRATION_PATTERN);
 
             Animated.parallel([
                 Animated.timing(earnedTranslateYAnim, {
