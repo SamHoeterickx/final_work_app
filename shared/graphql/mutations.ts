@@ -85,8 +85,24 @@ export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
 `;
 
 export const GENERATE_CUSTOM_ROADMAP_MUTATION = `
-    mutation GenerateCustomRoadmap {
-        generateCustomRoadmap
+   mutation GenerateCustomRoadmap {
+        generateCustomRoadmap {
+            uuid
+            slug
+            name
+            description
+            tags
+            lessons {
+                uuid
+                order
+                translations {
+                    languageCode
+                    name
+                    description
+                }
+            }
+            created_at
+        }
     }
 `;
 

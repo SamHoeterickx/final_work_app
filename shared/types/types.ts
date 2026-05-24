@@ -83,8 +83,10 @@ export interface IAuthStore {
     refreshToken: string | null;
     isHydrated: boolean;
     needsRoadmap: boolean;
+    roadmapResponse: IGenerateCustomRoadmapResponse | null;
     setTokens: (accessToken: string, refreshToken: string, needsRoadmap: boolean) => void;
     setNeedsRoadmap: (state: boolean) => void;
+    setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) => void;
     setHydrated: (state: boolean) => void;
     logout: () => void;
 }
@@ -266,15 +268,6 @@ export interface IPostOnboardingFlowProps {
     handleNext: () => void;
 }
 
-export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
-    chapter: string;
-    islandPath: string;
-}
-export interface IStartLearningProps extends IPostOnboardingFlowProps {
-    name: string;
-    description: string;
-}
-
 export interface IIslandModelProps {
     islandPath: string;
     scale?: number;
@@ -404,4 +397,28 @@ export interface ILessonMeshProps {
     isCurrent: boolean;
     delay: number;
     onClick: () => void;
+}
+
+export interface IGenerateCustomRoadmapResponse {
+    uuid: string;
+    slug: string;
+    name: ITranslations;
+    description: ITranslations;
+    tags: string[];
+    lessons: {
+        uuid: string;
+        order: number;
+        translations: {
+            languageCode: ELocales;
+            name: string;
+            description: string;
+        }[];
+    }[];
+    created_at: Date;
+}
+
+export interface ITranslations {
+    nl: string;
+    en: string;
+    fr: string;
 }

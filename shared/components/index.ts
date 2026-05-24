@@ -19,7 +19,7 @@ export { StartLearning } from './onboarding/StartLearning.component';
 
 // CHAPTERS
 export { Chapter } from './chapters/Chapter.component';
-export { ChapterUnlocked } from './chapters/ChapterUnlocked.component';
+export { ChapterUnlockedOnboardingWrapper } from './chapters/ChapterUnlockedOnboardingWrapper.component';
 
 // HOME UI
 export { HomeHeader } from './homeUi/homeHeader.component';
