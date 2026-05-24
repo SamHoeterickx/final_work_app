@@ -92,6 +92,15 @@ export const GENERATE_CUSTOM_ROADMAP_MUTATION = `
             name
             description
             tags
+            lessons {
+                uuid
+                order
+                translations {
+                    languageCode
+                    name
+                    description
+                }
+            }
             created_at
         }
     }

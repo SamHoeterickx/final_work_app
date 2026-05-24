@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 
 // COMPONENTS
 import {
-    ChapterUnlocked,
+    ChapterUnlockedOnboardingWrapper,
     GeneratingRoadmap,
     GeneratingSuccessfull,
     StartLearning,
@@ -14,24 +14,11 @@ import {
 // TYPES
 import { EFlowStep } from '@/shared/types/enums';
 
-// STORE
-import { useAuthStore } from '@/shared/context/authStore.context';
-
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 
 export default function PostOnboardingFlow() {
     const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.GENERATING);
-
-    const { setNeedsRoadmap } = useAuthStore();
-    const { i18n } = useTranslation();
-
-    const router = useRouter();
-
-    const handleStartLesson = () => {
-        setNeedsRoadmap(false);
-        router.replace('/(app)/home');
-    };
 
     const renderCurrentStep = () => {
         switch (currentStep) {
@@ -45,19 +32,11 @@ export default function PostOnboardingFlow() {
                 );
             case EFlowStep.CHAPTER_UNLOCKED:
                 return (
-                    <ChapterUnlocked
-                        chapter={(DUMMYDATA as any)[i18n.language].name}
-                        islandPath={DUMMYDATA.path}
-                        handleNext={() => setCurrentStep(EFlowStep.START_LEARNING)}
-                    />
+                    <ChapterUnlockedOnboardingWrapper handleNext={() => setCurrentStep(EFlowStep.START_LEARNING) } />
                 );
             case EFlowStep.START_LEARNING:
                 return (
-                    <StartLearning
-                        name={(DUMMYDATA as any).lessons[0][i18n.language].name}
-                        description={(DUMMYDATA as any).lessons[0][i18n.language].description}
-                        handleNext={handleStartLesson}
-                    />
+                    <StartLearning />
                 );
             default:
                 return null;

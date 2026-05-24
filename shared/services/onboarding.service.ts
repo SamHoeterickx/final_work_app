@@ -5,13 +5,7 @@ import { graphqlFetch } from '../utils/api.utils';
 class OnboardingService {
     async generateCustomRoadmap() {
         try {
-            const response = await graphqlFetch<{ generateCustomRoadmap: IGenerateCustomRoadmapResponse}>(GENERATE_CUSTOM_ROADMAP_MUTATION);
-            console.log(response);
-
-            const success = response;
-
-            if (!success) throw new Error('Failed to generate custom roadmap');
-            return success;
+            return await graphqlFetch<{ generateCustomRoadmap: IGenerateCustomRoadmapResponse}>(GENERATE_CUSTOM_ROADMAP_MUTATION);
         } catch (error) {
             throw error;
         }
