@@ -1,6 +1,6 @@
 import { COMPLETE_LESSON_MUTATION } from '../graphql/mutations';
 import { START_LESSON_QUERY } from '../graphql/query';
-import { IStartLessonResponse } from '../types/response.type';
+import { ICompleteLessonResponse, IStartLessonResponse } from '../types/response.type';
 import { ILessonCredentials } from '../types/types';
 import { graphqlFetch } from '../utils/api.utils';
 
@@ -20,7 +20,7 @@ class LessonService {
 
     async completeLesson(credentials: ILessonCredentials) {
         try {
-            const response = await graphqlFetch<{ completeLesson: any }>(COMPLETE_LESSON_MUTATION, {
+            const response = await graphqlFetch<{ completeLesson: ICompleteLessonResponse }>(COMPLETE_LESSON_MUTATION, {
                 ...credentials,
             });
             return response?.completeLesson;

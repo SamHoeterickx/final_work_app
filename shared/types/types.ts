@@ -174,6 +174,23 @@ export interface ILessonsChapter {
     translations: any;
 }
 
+export interface IUnlockedLesson {
+    uuid: string;
+    status: EProgressStatus;
+    order: number;
+    translations: {
+        name: string;
+        languageCode: ELocales;
+        description: string;
+    };
+}
+
+export interface IUnlockedChapter {
+    uuid: string;
+    name: string;
+    description: string;
+}
+
 export interface ILessonTranslations {
     uuid?: string | null;
     languageCode: ELocales;

@@ -1,8 +1,8 @@
-// RESPONSES
-
 import { ELocales } from "./enums";
-import { ILessonTranslations, ITranslations, TGraphQLError } from "./types";
+import { ILessonsChapter, ILessonTranslations, ITranslations, TGraphQLError } from "./t |ypes";
+import { IUnlockedChapter, IUnlockedLesson } from "./types";
 
+// RESPONSES
 export interface IRefreshTokensResponse {
     refreshTokens: {
         accessToken: string;
@@ -51,4 +51,24 @@ export interface IGenerateCustomRoadmapResponse {
 export interface IResetPasswordResponse {
     accessToken: string;
     resfreshToken: string;   
+}
+
+export interface ICompleteLessonResponse  {
+    success: boolean;
+    alreadyCompleted: boolean;
+    message: string;
+    newStreak: number;
+    prevStreak: number;
+    isStreakUpdated: boolean;
+    newUserXP: number;
+    prevUserXP: number;
+    isLastLesson: boolean;
+    newUnlockedLesson: IUnlockedLesson | null;
+    newUnlockedChapter:  IUnlockedChapter | null;
+    streak: {
+        uuid: string;
+        currentStreak: number;  
+        longestStreak: number;
+        lastCompletedDate: Date
+    };
 }
