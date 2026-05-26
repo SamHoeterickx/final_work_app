@@ -133,7 +133,7 @@ export default function LessonScreen() {
                                 steps.push(EPostLessonFlowOptions.SHOW_XP);
                             }
 
-                            if (responseData?.newStreak > responseData?.prevStreak) {
+                            if (responseData && responseData?.newStreak > responseData?.prevStreak) {
                                 steps.push(EPostLessonFlowOptions.SHOW_STREAK);
                             }
 
