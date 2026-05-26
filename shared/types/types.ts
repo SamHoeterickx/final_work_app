@@ -102,6 +102,7 @@ export interface IUserDataStore {
     language: ELocales;
     userData: IUserData | null;
     name: string;
+    email: string;
     xp: number;
     streaks: number;
     longestStreak: number;

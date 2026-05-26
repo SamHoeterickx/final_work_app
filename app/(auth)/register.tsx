@@ -65,7 +65,7 @@ export default function Register() {
     const renderError = () => {
         return (
             <View>
-                <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
+                <Text style={[baseStyles.p, baseStyles.errorText]}>{error?.message}</Text>
             </View>
         );
     };

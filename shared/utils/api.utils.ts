@@ -109,7 +109,7 @@ export const graphqlFetch = async <T = unknown>(
 
                 if (!refreshRes.ok) throw new Error('Refresh failed');
 
-                const refreshData: TGraphQLResponse<IRefreshTokensResponse> =
+                const refreshData: TGraphQLResponse<{ refreshTokens: IRefreshTokensResponse}> =
                     await refreshRes.json();
 
                 const newAccessToken = refreshData.data?.refreshTokens?.accessToken;

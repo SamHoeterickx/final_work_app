@@ -1,5 +1,5 @@
 // import { Link, useRouter } from 'expo-router';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -117,7 +117,7 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
         if (!errorData.isError) return null;
         return (
             <View>
-                <Text style={[baseStyles.p, baseStyles.error]}>{errorData.error}</Text>
+                <Text style={[baseStyles.p, baseStyles.errorText]}>{errorData.error}</Text>
             </View>
         );
     };
@@ -194,12 +194,6 @@ export const ChangePasswordSettings: FC<IChangePasswordSettingsProps> = ({ reset
                     secureTextEntry={true}
                 />
             </View>
-            {/* <Link
-                href={'/(auth)/(forgotPassword)/requestResetCode'}
-                style={[baseStyles.p, styles.link]}
-            >
-                {t('resetPassword.buttons.forgotPassword')}
-            </Link> */}
         </>
     );
 

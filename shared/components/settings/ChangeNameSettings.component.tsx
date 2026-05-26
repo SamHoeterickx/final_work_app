@@ -9,6 +9,9 @@ import { Button, InputField } from '@/shared/components';
 // HOOKS
 import { useUpdateUsername } from '@/shared/hooks';
 
+// CONTEXT
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
+
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
@@ -21,6 +24,7 @@ export const ChangeNameSettings: FC = () => {
     });
 
     const { mutate, isPending, isError, error } = useUpdateUsername();
+    const { name } = useUserDataStore();
 
     const router = useRouter();
     const { t } = useTranslation();
@@ -51,11 +55,11 @@ export const ChangeNameSettings: FC = () => {
                         name="updatedUsername"
                         placeholder={t('register.fieldLabels.name')}
                         spellCheck={false}
+                        defaultValue={name}
                     />
                 </View>
+                {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
             </View>
-
-            {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
 
             <View style={styles.cButton}>
                 <Button

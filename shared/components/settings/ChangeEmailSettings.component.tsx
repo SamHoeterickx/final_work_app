@@ -9,6 +9,9 @@ import { Button, InputField } from '@/shared/components';
 // HOOKS
 import { useUpdateEmail } from '@/shared/hooks';
 
+// CONTEXT
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
+
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
@@ -21,6 +24,8 @@ export const ChangeEmailSettings: FC = () => {
     });
 
     const { mutate, isPending, isError, error } = useUpdateEmail();
+    const { email } = useUserDataStore();
+
     const router = useRouter();
     const { t } = useTranslation();
 
@@ -52,11 +57,11 @@ export const ChangeEmailSettings: FC = () => {
                         autoCapitalize="none"
                         spellCheck={false}
                         inputMode="email"
+                        defaultValue={email}
                     />
                 </View>
+                {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
             </View>
-
-            {isError && <Text style={baseStyles.errorText}>{String(error)}</Text>}
 
             <View style={styles.cButton}>
                 <Button
