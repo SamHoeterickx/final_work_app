@@ -1,6 +1,6 @@
-import { ELocales } from "./enums";
-import { ILessonsChapter, ILessonTranslations, ITranslations, TGraphQLError } from "./t |ypes";
-import { IUnlockedChapter, IUnlockedLesson } from "./types";
+import { ELocales, EProgressStatus } from "./enums";
+import { ILessonTranslations, ITranslations, TGraphQLError } from "./types";
+import { IChapter, IUnlockedChapter, IUnlockedLesson } from "./types";
 
 // RESPONSES
 export interface IRefreshTokensResponse {
@@ -71,4 +71,12 @@ export interface ICompleteLessonResponse  {
         longestStreak: number;
         lastCompletedDate: Date
     };
+}
+
+export interface IGetMyChaptersResponse  {
+    uuid: string;
+    order: number;
+    status: EProgressStatus;
+    chapter: IChapter
+    created_at: Date;
 }

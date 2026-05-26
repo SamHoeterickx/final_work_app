@@ -10,7 +10,7 @@ import {
     ESettingsOptions,
     ESvgIconName,
 } from './enums';
-import { IGenerateCustomRoadmapResponse } from './response.type';
+import { IGenerateCustomRoadmapResponse, IGetMyChaptersResponse } from './response.type';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -144,16 +144,9 @@ export interface IUserData {
 
 export interface IChapter {
     uuid: string;
-    name: {
-        en: string;
-        nl: string;
-        fr: string;
-    };
-    description: {
-        en: string;
-        nl: string;
-        fr: string;
-    };
+    name: ITranslations;
+    description: ITranslations;
+    tags: string[];
     slug: string;
     lessons: ILessonsChapter[];
     created_at: string;
@@ -171,8 +164,10 @@ export interface ILessonsChapter {
     uuid: string;
     status: EProgressStatus;
     order: number;
-    translations: any;
+    translations: ILessonTranslations | ILessonTranslations[];
 }
+
+
 
 export interface IUnlockedLesson {
     uuid: string;
@@ -193,9 +188,9 @@ export interface IUnlockedChapter {
 
 export interface ILessonTranslations {
     uuid?: string | null;
-    languageCode: ELocales;
     name: string;
     description: string;
+    languageCode: ELocales;
     content: any[];
 }
 
@@ -257,7 +252,7 @@ export interface IIslandModelProps {
 }
 
 export interface IChapterProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     setIsFocused: (state: boolean) => void;
 }
@@ -272,7 +267,7 @@ export interface IChapterActionsProps {
 }
 
 export interface IChapterHeaderProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     selectedLesson: ILessonsChapter | null;
 }

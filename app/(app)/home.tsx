@@ -14,7 +14,7 @@ import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
-import { IChapterUser } from '@/shared/types/types';
+import { IGetMyChaptersResponse } from '@/shared/types/response.type';
 
 const { width } = Dimensions.get('window');
 
@@ -39,9 +39,10 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
+        console.log('---USERCHAPTERS', userChapters)
 
         const activeIndex = userChapters.findIndex(
-            (chapter: IChapterUser) =>
+            (chapter: IGetMyChaptersResponse) =>
                 chapter.status === EProgressStatus.INPROGRESS ||
                 chapter.status === EProgressStatus.UNLOCKED,
         );
@@ -112,6 +113,7 @@ export default function HomeScreen() {
                 scrollEnabled={false}
                 style={{
                     opacity:
+                        userChapters &&
                         currentChapterIndex !== null &&
                         userChapters[currentChapterIndex].status === EProgressStatus.LOCKED
                             ? 0.3
