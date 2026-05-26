@@ -3,21 +3,6 @@ import * as SecureStore from 'expo-secure-store';
 // UTILS
 import { graphFetchAuth, graphqlFetch } from '@/shared/utils/api.utils';
 
-// TYPES
-import {
-    IChangePasswordWithResetCodeCredentials,
-    IDeleteUserCredentials,
-    ILoginCredentials,
-    INewPasswordCredentials,
-    IOnboardingAnswers,
-    IRegisterCredentials,
-    IRequestResetCodeCredentials,
-    IUpdateEmailCredentials,
-    IUpdateUsernameCredentials,
-    IUserData,
-    IVerifyResetCodeCredentials,
-} from '@/shared/types/types';
-
 // CONTEXT
 import { useAuthStore } from '@/shared/context/authStore.context';
 
@@ -35,8 +20,32 @@ import {
     UPDATE_USERNAME_MUTATION,
     VERIFY_RESET_CODE_MUTATION,
 } from '@/shared/graphql/mutations';
+
+//QUERIES
 import { GET_USER_DATA_QUERY } from '../graphql/query';
+
+// TYPES
+import {
+    IChangePasswordWithResetCodeCredentials,
+    IDeleteUserCredentials,
+    ILoginCredentials,
+    INewPasswordCredentials,
+    IOnboardingAnswers,
+    IRegisterCredentials,
+    IRequestResetCodeCredentials,
+    IUpdateEmailCredentials,
+    IUpdateUsernameCredentials,
+    IVerifyResetCodeCredentials,
+} from '@/shared/types/types';
 import { ELocales } from '../types/enums';
+import {
+    IDeleteUserResponse,
+    IGetUserDataResponse,
+    IResetPasswordResponse,
+    IUpdateEmailResponse,
+    IUpdatePreferenceLanguageResponse,
+    IUpdateUsernameResponse,
+} from '../types/response.type';
 
 class AuthService {
     constructor() {}
@@ -225,11 +234,14 @@ class AuthService {
 
     async changePassword(credentials: INewPasswordCredentials) {
         try {
-            return await graphqlFetch(UPDATE_PASSWORD_MUTATION, {
-                oldPassword: credentials.oldPassword,
-                newPassword: credentials.newPassword,
-                repeatNewPassword: credentials.repeatNewPassword,
-            });
+            return await graphqlFetch<{ resetPassword: IResetPasswordResponse }>(
+                UPDATE_PASSWORD_MUTATION,
+                {
+                    oldPassword: credentials.oldPassword,
+                    newPassword: credentials.newPassword,
+                    repeatNewPassword: credentials.repeatNewPassword,
+                },
+            );
         } catch (error) {
             throw error;
         }
@@ -285,7 +297,7 @@ class AuthService {
 
     async getUserData() {
         try {
-            return await graphqlFetch<{ getUserData: IUserData }>(GET_USER_DATA_QUERY);
+            return await graphqlFetch<{ getUserData: IGetUserDataResponse }>(GET_USER_DATA_QUERY);
         } catch (error) {
             throw error;
         }
@@ -293,8 +305,7 @@ class AuthService {
 
     async updateUsername(credentials: IUpdateUsernameCredentials) {
         try {
-            console.log(credentials);
-            return await graphqlFetch<any>(UPDATE_USERNAME_MUTATION, {
+            return await graphqlFetch<IUpdateUsernameResponse>(UPDATE_USERNAME_MUTATION, {
                 updatedUsername: credentials.updatedUsername,
             });
         } catch (error) {
@@ -304,7 +315,7 @@ class AuthService {
 
     async updateEmail(credentials: IUpdateEmailCredentials) {
         try {
-            return await graphqlFetch<any>(UPDATE_EMAIL_MUTATION, {
+            return await graphqlFetch<IUpdateEmailResponse>(UPDATE_EMAIL_MUTATION, {
                 updatedEmailAdress: credentials.updatedEmailAdress,
             });
         } catch (error) {
@@ -314,7 +325,7 @@ class AuthService {
 
     async deleteUser(credentials: IDeleteUserCredentials) {
         try {
-            return await graphqlFetch<any>(DELETE_USER_MUTATION, {
+            return await graphqlFetch<IDeleteUserResponse>(DELETE_USER_MUTATION, {
                 password: credentials.password,
             });
         } catch (error) {
@@ -324,9 +335,12 @@ class AuthService {
 
     async updatePreferenceLanguage(locale: ELocales) {
         try {
-            return await graphqlFetch<any>(UPDATE_PREFERENCE_LANGUAGE_MUTATION, {
-                language: locale,
-            });
+            return await graphqlFetch<IUpdatePreferenceLanguageResponse>(
+                UPDATE_PREFERENCE_LANGUAGE_MUTATION,
+                {
+                    language: locale,
+                },
+            );
         } catch (error) {
             throw error;
         }

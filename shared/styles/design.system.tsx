@@ -15,7 +15,7 @@ export const colors = {
 
     success: '#',
     warning: '#',
-    error: '#',
+    error: '#A63C3C',
 
     border: '#465E3C',
     shadow: '#000000',
@@ -159,12 +159,10 @@ export const baseStyles = StyleSheet.create({
         ...typography.bodySmall,
         color: colors.error,
         marginTop: spacing.xs,
+        textAlign: 'center',
     } as TextStyle,
 
     wrapper: {},
-    error: {
-        color: 'red',
-    },
 
     // ==================/==================
     // ============BUTTON STYLING===========

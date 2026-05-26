@@ -44,7 +44,8 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
             console.log('selectedLesson', selectedLesson);
             return (
                 <Text style={[baseStyles.h3, styles.lessonTitle]}>
-                    {selectedLesson.translations[0].name}
+                    {Array.isArray(selectedLesson.translations) &&
+                        selectedLesson.translations[0].name}
                 </Text>
             );
         }

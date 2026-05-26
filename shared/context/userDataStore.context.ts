@@ -16,6 +16,7 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
     language: deviceLanguage,
     userData: null,
     name: '',
+    email: '',
     streaks: 0,
     longestStreak: 0,
     xp: 0,
@@ -33,6 +34,7 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
             set({
                 userData: response?.getUserData || null,
                 name: response?.getUserData.name,
+                email: response?.getUserData.email,
                 xp: response?.getUserData.xp ? parseInt(response.getUserData.xp, 10) : 0,
                 streaks: response?.getUserData.streaks.currentStreak,
                 longestStreak: response?.getUserData.streaks.longestStreak,

@@ -1,5 +1,5 @@
 import { GENERATE_CUSTOM_ROADMAP_MUTATION } from '../graphql/mutations';
-import { IGenerateCustomRoadmapResponse } from '../types/types';
+import { IGenerateCustomRoadmapResponse } from '../types/response.type';
 import { graphqlFetch } from '../utils/api.utils';
 
 class OnboardingService {

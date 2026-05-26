@@ -10,6 +10,7 @@ import {
     ESettingsOptions,
     ESvgIconName,
 } from './enums';
+import { IGenerateCustomRoadmapResponse, IGetMyChaptersResponse } from './response.type';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -101,6 +102,7 @@ export interface IUserDataStore {
     language: ELocales;
     userData: IUserData | null;
     name: string;
+    email: string;
     xp: number;
     streaks: number;
     longestStreak: number;
@@ -114,20 +116,6 @@ export interface ILessonStore {
     isLessonCompleted: boolean;
     setScreenIndex: (index: number) => void;
     setIsLessonCompleted: (state: boolean) => void;
-}
-
-export interface IRefreshTokensResponse {
-    refreshTokens: {
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-export interface ILoginUserResponse {
-    loginUser: {
-        accessToken: string;
-        refreshToken: string;
-    };
 }
 
 export interface IOnboardingQuestions {
@@ -157,16 +145,9 @@ export interface IUserData {
 
 export interface IChapter {
     uuid: string;
-    name: {
-        en: string;
-        nl: string;
-        fr: string;
-    };
-    description: {
-        en: string;
-        nl: string;
-        fr: string;
-    };
+    name: ITranslations;
+    description: ITranslations;
+    tags: string[];
     slug: string;
     lessons: ILessonsChapter[];
     created_at: string;
@@ -184,30 +165,31 @@ export interface ILessonsChapter {
     uuid: string;
     status: EProgressStatus;
     order: number;
-    translations: any;
+    translations: ILessonTranslations | ILessonTranslations[];
 }
 
-export interface IStartLessonResponse {
+export interface IUnlockedLesson {
     uuid: string;
-    estimatedDuration: number;
-    xp: number;
+    status: EProgressStatus;
     order: number;
-    content: ILessonTranslations[];
+    translations: {
+        name: string;
+        languageCode: ELocales;
+        description: string;
+    };
 }
 
-// export interface ICompleteLessonResponse {
-//     uuid: string;
-//     estimatedDuration: number;
-//     xp: number;
-//     order: number;
-//     content: ILessonTranslations[];
-// }
+export interface IUnlockedChapter {
+    uuid: string;
+    name: string;
+    description: string;
+}
 
 export interface ILessonTranslations {
     uuid?: string | null;
-    languageCode: ELocales;
     name: string;
     description: string;
+    languageCode: ELocales;
     content: any[];
 }
 
@@ -226,11 +208,6 @@ export type TGraphQLError = {
     extensions?: {
         code?: string;
     };
-};
-
-export type TGraphQLResponse<T = unknown> = {
-    data?: T;
-    errors?: TGraphQLError[];
 };
 
 // PROPS
@@ -274,7 +251,7 @@ export interface IIslandModelProps {
 }
 
 export interface IChapterProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     setIsFocused: (state: boolean) => void;
 }
@@ -289,7 +266,7 @@ export interface IChapterActionsProps {
 }
 
 export interface IChapterHeaderProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     selectedLesson: ILessonsChapter | null;
 }
@@ -397,24 +374,6 @@ export interface ILessonMeshProps {
     isCurrent: boolean;
     delay: number;
     onClick: () => void;
-}
-
-export interface IGenerateCustomRoadmapResponse {
-    uuid: string;
-    slug: string;
-    name: ITranslations;
-    description: ITranslations;
-    tags: string[];
-    lessons: {
-        uuid: string;
-        order: number;
-        translations: {
-            languageCode: ELocales;
-            name: string;
-            description: string;
-        }[];
-    }[];
-    created_at: Date;
 }
 
 export interface ITranslations {

@@ -1,17 +1,15 @@
 export const GET_CHAPTERS_QUERY = `
     query GetMyChapters {
         getMyChapters {
-            created_at
+            uuid
             order
             status
-            uuid
             chapter {
-                created_at
-                description
+                uuid
                 name
+                description
                 tags
                 slug
-                uuid
                 lessons {
                     uuid
                     status
@@ -24,6 +22,7 @@ export const GET_CHAPTERS_QUERY = `
                     }
                 }
             }
+            created_at
         }
     }
 `;

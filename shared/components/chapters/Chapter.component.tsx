@@ -96,10 +96,10 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
             uuid: lesson.uuid,
             status: lesson.status,
             order: lesson.order,
-            translations: lesson.translations.filter(
+            translations: (Array.isArray(lesson.translations) ? lesson.translations : []).filter(
                 (translation: ILessonTranslations) =>
                     translation.languageCode === i18n.language.toUpperCase(),
-            ),
+            ) as ILessonTranslations[],
         };
 
         setSelectedLesson(lessonn);

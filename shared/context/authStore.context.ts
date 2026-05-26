@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 
 // TYPES
-import { IAuthStore, IGenerateCustomRoadmapResponse } from '../types/types';
+import { IAuthStore } from '../types/types';
+import { IGenerateCustomRoadmapResponse } from '../types/response.type';
 
 export const useAuthStore = create<IAuthStore>((set) => ({
     accessToken: null,

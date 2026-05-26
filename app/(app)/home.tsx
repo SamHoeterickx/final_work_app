@@ -1,6 +1,6 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
+import { Animated, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
@@ -10,11 +10,11 @@ import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/compone
 import { useGetChapters, useSwipe } from '@/shared/hooks';
 
 // STYLES
-import { colors, spacing } from '@/shared/styles/design.system';
+import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
-import { IChapterUser } from '@/shared/types/types';
+import { IGetMyChaptersResponse } from '@/shared/types/response.type';
 
 const { width } = Dimensions.get('window');
 
@@ -25,7 +25,7 @@ export default function HomeScreen() {
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 
-    const { data: userChapters, isPending, refetch } = useGetChapters();
+    const { data: userChapters, isPending, refetch, isError, error } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
 
     useFocusEffect(
@@ -39,9 +39,10 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
+        console.log('---USERCHAPTERS', userChapters);
 
         const activeIndex = userChapters.findIndex(
-            (chapter: IChapterUser) =>
+            (chapter: IGetMyChaptersResponse) =>
                 chapter.status === EProgressStatus.INPROGRESS ||
                 chapter.status === EProgressStatus.UNLOCKED,
         );
@@ -93,9 +94,18 @@ export default function HomeScreen() {
         animateTransition(currentChapterIndex + 1, 'left');
     }
 
+    const renderError = () => {
+        return (
+            <View style={styles.error}>
+                <Text style={[baseStyles.h2, styles.errorMessage]}>{String(error)}</Text>
+            </View>
+        );
+    };
+
     return (
         <SafeAreaView style={styles.sHome}>
             {isPending && <LoadingScreen />}
+            {isError && renderError()}
             <ScrollView
                 contentContainerStyle={styles.wChapter}
                 onTouchStart={onTouchStart}
@@ -103,6 +113,7 @@ export default function HomeScreen() {
                 scrollEnabled={false}
                 style={{
                     opacity:
+                        userChapters &&
                         currentChapterIndex !== null &&
                         userChapters[currentChapterIndex].status === EProgressStatus.LOCKED
                             ? 0.3
@@ -141,5 +152,14 @@ const styles = StyleSheet.create({
         width: width,
         marginTop: spacing.xxl * 2,
         flex: 1,
+    },
+    error: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: spacing.lg,
+    },
+    errorMessage: {
+        textAlign: 'center',
     },
 });
