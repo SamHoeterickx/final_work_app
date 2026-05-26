@@ -168,8 +168,6 @@ export interface ILessonsChapter {
     translations: ILessonTranslations | ILessonTranslations[];
 }
 
-
-
 export interface IUnlockedLesson {
     uuid: string;
     status: EProgressStatus;

@@ -20,9 +20,12 @@ class LessonService {
 
     async completeLesson(credentials: ILessonCredentials) {
         try {
-            const response = await graphqlFetch<{ completeLesson: ICompleteLessonResponse }>(COMPLETE_LESSON_MUTATION, {
-                ...credentials,
-            });
+            const response = await graphqlFetch<{ completeLesson: ICompleteLessonResponse }>(
+                COMPLETE_LESSON_MUTATION,
+                {
+                    ...credentials,
+                },
+            );
             return response?.completeLesson;
         } catch (error) {
             throw error;

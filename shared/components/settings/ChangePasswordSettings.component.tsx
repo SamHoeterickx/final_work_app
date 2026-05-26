@@ -1,5 +1,4 @@
-// import { Link, useRouter } from 'expo-router';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';

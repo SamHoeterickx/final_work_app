@@ -1,6 +1,6 @@
-import { ELocales, EProgressStatus, ERoles } from "./enums";
-import { ILessonTranslations, ITranslations, TGraphQLError } from "./types";
-import { IChapter, IUnlockedChapter, IUnlockedLesson } from "./types";
+import { ELocales, EProgressStatus, ERoles } from './enums';
+import { ILessonTranslations, ITranslations, TGraphQLError } from './types';
+import { IChapter, IUnlockedChapter, IUnlockedLesson } from './types';
 
 export type TGraphQLResponse<T = unknown> = {
     data?: T;
@@ -15,7 +15,7 @@ export interface IRefreshTokensResponse {
 
 export interface IResetPasswordResponse {
     accessToken: string;
-    resfreshToken: string;   
+    resfreshToken: string;
 }
 
 export interface IGetUserDataResponse {
@@ -32,19 +32,19 @@ export interface IGetUserDataResponse {
 }
 
 export interface IUpdateUsernameResponse {
-    updateUserName: boolean
+    updateUserName: boolean;
 }
 
 export interface IUpdateEmailResponse {
-    updateEmail: boolean
+    updateEmail: boolean;
 }
 
 export interface IDeleteUserResponse {
-    deleteUser: boolean
+    deleteUser: boolean;
 }
 
 export interface IUpdatePreferenceLanguageResponse {
-    updatePreferenceLanguage: boolean
+    updatePreferenceLanguage: boolean;
 }
 
 // CHAPTER RESPONSES
@@ -66,11 +66,11 @@ export interface IGenerateCustomRoadmapResponse {
     created_at: Date;
 }
 
-export interface IGetMyChaptersResponse  {
+export interface IGetMyChaptersResponse {
     uuid: string;
     order: number;
     status: EProgressStatus;
-    chapter: IChapter
+    chapter: IChapter;
     created_at: Date;
 }
 
@@ -83,7 +83,7 @@ export interface IStartLessonResponse {
     content: ILessonTranslations[];
 }
 
-export interface ICompleteLessonResponse  {
+export interface ICompleteLessonResponse {
     success: boolean;
     alreadyCompleted: boolean;
     message: string;
@@ -94,11 +94,11 @@ export interface ICompleteLessonResponse  {
     prevUserXP: number;
     isLastLesson: boolean;
     newUnlockedLesson: IUnlockedLesson | null;
-    newUnlockedChapter:  IUnlockedChapter | null;
+    newUnlockedChapter: IUnlockedChapter | null;
     streak: {
         uuid: string;
-        currentStreak: number;  
+        currentStreak: number;
         longestStreak: number;
-        lastCompletedDate: Date
+        lastCompletedDate: Date;
     };
 }

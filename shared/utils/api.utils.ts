@@ -4,10 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useAuthStore } from '@/shared/context/authStore.context';
 
 // TYPES
-import {
-    TGraphQLError,
-    TTokenRefreshSubscriber,
-} from '@/shared/types/types';
+import { TGraphQLError, TTokenRefreshSubscriber } from '@/shared/types/types';
 import { IRefreshTokensResponse, TGraphQLResponse } from '../types/response.type';
 
 // const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
@@ -109,7 +106,7 @@ export const graphqlFetch = async <T = unknown>(
 
                 if (!refreshRes.ok) throw new Error('Refresh failed');
 
-                const refreshData: TGraphQLResponse<{ refreshTokens: IRefreshTokensResponse}> =
+                const refreshData: TGraphQLResponse<{ refreshTokens: IRefreshTokensResponse }> =
                     await refreshRes.json();
 
                 const newAccessToken = refreshData.data?.refreshTokens?.accessToken;

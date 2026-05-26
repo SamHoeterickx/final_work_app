@@ -39,7 +39,7 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log('---USERCHAPTERS', userChapters)
+        console.log('---USERCHAPTERS', userChapters);
 
         const activeIndex = userChapters.findIndex(
             (chapter: IGetMyChaptersResponse) =>
@@ -99,8 +99,8 @@ export default function HomeScreen() {
             <View style={styles.error}>
                 <Text style={[baseStyles.h2, styles.errorMessage]}>{String(error)}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     return (
         <SafeAreaView style={styles.sHome}>
@@ -161,5 +161,5 @@ const styles = StyleSheet.create({
     },
     errorMessage: {
         textAlign: 'center',
-    }
+    },
 });

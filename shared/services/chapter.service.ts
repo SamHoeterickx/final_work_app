@@ -10,7 +10,9 @@ import { IGetMyChaptersResponse } from '../types/response.type';
 class ChapterService {
     async getMyChapters() {
         try {
-            const response = await graphqlFetch<{ getMyChapters: IGetMyChaptersResponse[] }>(GET_CHAPTERS_QUERY);
+            const response = await graphqlFetch<{ getMyChapters: IGetMyChaptersResponse[] }>(
+                GET_CHAPTERS_QUERY,
+            );
             const chapters = response?.getMyChapters;
             return chapters || [];
         } catch (error) {
