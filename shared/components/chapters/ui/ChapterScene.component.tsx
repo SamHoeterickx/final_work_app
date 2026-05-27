@@ -1,25 +1,26 @@
 import { Canvas } from '@react-three/fiber/native';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 
 // COMPONENTS
 import { CameraController } from '../../camera/CameraController.component';
 import { FloatingGroup } from './FloatingGroup.component';
 
 // TYPES
-import { EProgressStatus } from '@/shared/types/enums';
+import { EIslandModels, EProgressStatus } from '@/shared/types/enums';
 import { IChapterSceneProps } from '@/shared/types/types';
 
 // CONST
 import { ISLAND_HEIGHT, LESSON_RADIUS } from '@/shared/const/chapter.const';
-import { LessonMesh } from './LessonMesh.component';
 import { FloatingIsland } from '../../modelLoader/FloatingIsland.component';
+import { LessonMesh } from './LessonMesh.component';
 
-export const ChapterScene: FC<IChapterSceneProps> = ({
+export const ChapterScene: FC<IChapterSceneProps & { modelUrl?: EIslandModels | null }> = ({
     isFocused,
     cameraPos,
     cameraTarget,
     lessons,
     onLessonClick,
+    modelUrl,
 }) => {
     const renderLessons = () => {
         const totalLessons = lessons.length;
@@ -37,7 +38,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             return (
                 <LessonMesh
                     key={lesson.uuid}
-                    position={[x, ISLAND_HEIGHT - 0.175, z]}
+                    position={[x, ISLAND_HEIGHT + .625, z]}
                     onClick={() => onLessonClick(index, lesson)}
                     isLocked={isLocked}
                     isCurrent={isCurrent}
@@ -56,21 +57,17 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             }}
         >
             <CameraController position={cameraPos} target={cameraTarget} />
-            <ambientLight intensity={0.7} />
+            <ambientLight intensity={1.2} />
+            <hemisphereLight groundColor="#465E3C" intensity={0.8} />
+            <spotLight />
             <directionalLight position={[10, 10, 10]} intensity={1.5} />
             <directionalLight position={[-10, 10, -10]} intensity={0.5} />
 
             <FloatingGroup isFocused={isFocused}>
-                {/* <mesh>
-                    <boxGeometry args={[1, ISLAND_HEIGHT, 1]} />
-                    <meshBasicMaterial color="gray" />
-                </mesh> */}
-
-                {/* <Model size={[.5, .5, .5]} position={[0, .25, 0]}/> */}
-
-                <FloatingIsland animation={false} />
-
-                {isFocused && renderLessons()}
+                <Suspense fallback={null}>
+                    <FloatingIsland animation={false} modelUrl={modelUrl} />
+                    {isFocused && renderLessons()}
+                </Suspense>
             </FloatingGroup>
         </Canvas>
     );

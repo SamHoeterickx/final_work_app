@@ -3,13 +3,23 @@
  * Source: https://claude.ai/share/acf4890f-328e-4f25-bd1e-905e6ee78e57
  */
 
+import { ISLAND_HEIGHT } from '@/shared/const/chapter.const';
+import { EIslandModels } from '@/shared/types/enums';
 import { IFloatingIslandProps } from '@/shared/types/types';
-import { useFrame } from '@react-three/fiber';
-import { FC, useMemo, useRef } from "react";
+import { useFrame } from '@react-three/fiber/native';
+import { FC, useMemo, useRef } from 'react';
 import * as THREE from 'three';
+import { Model } from './Model.component';
 
-export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) => {
+const modelAssets = {
+    coffee_bag: require('../../../assets/models/coffee_bag.glb'),
+    coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
+};
+
+export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({ scale, position, animation = true, modelUrl }) => {
     const groupRef = useRef<THREE.Group>(null!);
+
+    const modelSrc = (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) || modelAssets.coffee_tamper;
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
@@ -22,17 +32,13 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
     const islandGeometry = useMemo(() => {
         const segments = 12;
         const heightSegments = 8;
-        const geo = new THREE.ConeGeometry(1.6, 2.4, segments, heightSegments, false);
+        let geo: THREE.BufferGeometry = new THREE.ConeGeometry(1.6, 2.4, segments, heightSegments, false);
         geo.rotateX(Math.PI);
+
+        geo = geo.toNonIndexed();
 
         const posAttr = geo.attributes.position;
         const vertex = new THREE.Vector3();
-
-        let seed = 42;
-        const rand = () => {
-            seed = (seed * 16807 + 0) % 2147483647;
-            return (seed - 1) / 2147483646;
-        };
 
         for (let i = 0; i < posAttr.count; i++) {
             vertex.fromBufferAttribute(posAttr, i);
@@ -45,7 +51,8 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
             const bulgeFactor = Math.sin(normalizedY * Math.PI) * 0.25;
             const angle = Math.atan2(vertex.z, vertex.x);
 
-            const edgeNoise = (rand() - 0.5) * 0.18 * (1 - normalizedY * 0.5);
+            const pseudoRand = Math.sin(angle * 10 + normalizedY * 20); 
+            const edgeNoise = pseudoRand * 0.09 * (1 - normalizedY * 0.5);
 
             const angularVariation = Math.sin(angle * 3 + 1.2) * 0.08 + Math.cos(angle * 5) * 0.05;
 
@@ -55,7 +62,8 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
             vertex.z += (vertex.z / (distFromAxis + 0.001)) * radialOffset;
 
             if (normalizedY > 0.1 && normalizedY < 0.95) {
-                vertex.y += (rand() - 0.5) * 0.12;
+                const yNoise = Math.cos(angle * 8 - normalizedY * 15);
+                vertex.y += yNoise * 0.06;
             }
 
             posAttr.setXYZ(i, vertex.x, vertex.y, vertex.z);
@@ -79,7 +87,12 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
             vertex.fromBufferAttribute(posAttr, i);
             const normalizedY = (vertex.y + 1.2) / 2.4;
             const heightBias = normalizedY < 0.3 ? 0 : Math.floor(normalizedY * 4) % palette.length;
-            const c = palette[(heightBias + Math.floor(rand() * 3)) % palette.length];
+            
+            const angle = Math.atan2(vertex.z, vertex.x);
+            const faceRandom = Math.abs(Math.sin(angle * 12 + normalizedY * 34));
+
+            const c = palette[(heightBias + Math.floor(faceRandom * 3)) % palette.length];
+            
             for (let j = 0; j < 3; j++) {
                 colors.push(c[0], c[1], c[2]);
             }
@@ -90,29 +103,13 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
     }, []);
 
     const rimGeometry = useMemo(() => {
-        const geo = new THREE.CylinderGeometry(1.7, 1.8, 0.16, 32);
-        const posAttr = geo.attributes.position;
-        let seed = 99;
-        const rand = () => {
-            seed = (seed * 16807) % 2147483647;
-            return (seed - 1) / 2147483646;
-        };
-        for (let i = 0; i < posAttr.count; i++) {
-            const x = posAttr.getX(i);
-            const y = posAttr.getY(i);
-            const z = posAttr.getZ(i);
-            const r = Math.sqrt(x * x + z * z);
-            if (r > 0.5) {
-                const bump = (rand() - 0.5) * 0;
-                posAttr.setXYZ(i, x + (x / r) * bump, y, z + (z / r) * bump);
-            }
-        }
+        const geo = new THREE.CylinderGeometry(1.75, 1.85, 0.16, 32);
         geo.computeVertexNormals();
         return geo;
     }, []);
 
     return (
-        <group scale={[0.5, 0.5, 0.5]} ref={groupRef}>
+        <group scale={scale || [0.5, 0.5, 0.5]} position={position || [0, ISLAND_HEIGHT, 0]} ref={groupRef}>
 
             <mesh position={[0, 0, 0]} geometry={islandGeometry}>
                 <meshStandardMaterial
@@ -121,15 +118,17 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
                     roughness={0.92}
                     metalness={0.0}
                 />
-            </mesh>
+            </mesh> 
 
-            <mesh position={[0, 1.15, 0]} geometry={rimGeometry}>
+             <mesh position={[0, 1.15, 0]} geometry={rimGeometry}>
                 <meshStandardMaterial
                     color="#6b4423"
                     roughness={0.88}
                     flatShading
                 />
             </mesh>
+
+            <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, Math.PI * 1.5, 0]} />
 
             <group position={[0, -1.4, 0]} scale={[1, 1, 0.6]}>
                 <mesh rotation={[-Math.PI / 2, 0, 0]}>

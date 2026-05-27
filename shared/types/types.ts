@@ -377,6 +377,8 @@ export interface ILessonMeshProps {
 }
 
 export interface IFloatingIslandProps {
+    scale?: [number, number, number] | number;
+    position?: [number, number, number];
     animation: boolean
 }
 

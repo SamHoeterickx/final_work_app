@@ -91,3 +91,9 @@ export enum ERoles {
     ADMIN = 'ADMIN',
     USER = 'USER',
 }
+
+
+export enum EIslandModels {
+    COFFEE_BAG = "coffee_bag",
+    COFFEE_TAMPER = "coffee_tamper",
+}

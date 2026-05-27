@@ -9,7 +9,7 @@ import { ChapterHeader } from './ui/ChapterHeader.component';
 import { ChapterScene } from './ui/ChapterScene.component';
 
 // TYPES
-import { EProgressStatus } from '@/shared/types/enums';
+import { EIslandModels, EProgressStatus } from '@/shared/types/enums';
 import { IChapterProps, ILessonsChapter, ILessonTranslations } from '@/shared/types/types';
 
 // CONST
@@ -43,8 +43,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
             handleButtonChapter();
         } else {
             if (!selectedLesson) return;
-
-            console.log('---LESSON');
             router.navigate(`/(app)/lesson/${selectedLesson.uuid}`);
         }
     };
@@ -125,6 +123,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                     cameraTarget={cameraTarget}
                     lessons={chapterUser.chapter.lessons}
                     onLessonClick={handleLessonClick}
+                    modelUrl={chapterUser.chapter.slug as EIslandModels} 
                 />
             </Animated.View>
             <ChapterActions

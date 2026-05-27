@@ -1,4 +1,4 @@
-export const ISLAND_HEIGHT: number = .8;
+export const ISLAND_HEIGHT: number = -0.25;
 
 export const LESSON_RADIUS = 0.5;
 

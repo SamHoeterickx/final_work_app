@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber/native';
-import { FC, useEffect, useRef } from 'react';
+import { FC, Suspense, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Easing, StyleSheet, Text, Vibration, View } from 'react-native';
 
@@ -22,6 +22,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
 
     const cName = chapter?.name?.[locale] || chapter?.name?.en || 'Nieuw Hoofdstuk';
     const cDescription = chapter?.description?.[locale] || chapter?.description?.en || '';
+    const cModelUrl = chapter?.modelUrl || null;
 
     const lockOpacity = useRef(new Animated.Value(1)).current;
     const lockScale = useRef(new Animated.Value(1)).current;
@@ -138,10 +139,19 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                 ]}
             >
                 <Canvas camera={{ position: [0, 3, 6], fov: 40 }}>
-                    <ambientLight intensity={0.7} />
+                    <ambientLight intensity={1.2} />
+                    <hemisphereLight groundColor="#465E3C" intensity={0.8} />
                     <directionalLight position={[10, 10, 10]} intensity={1.5} />
                     <directionalLight position={[-10, 10, -10]} intensity={0.5} />
-                    <FloatingIsland animation={true} />
+                    <group position={[0, -1, 0]}>
+                        <Suspense fallback={null}>
+                            <FloatingIsland 
+                                scale={.5} 
+                                animation={true} 
+                                modelUrl={cModelUrl}
+                            />
+                        </Suspense>
+                    </group>
                 </Canvas>
             </Animated.View>
 
@@ -181,7 +191,7 @@ const styles = StyleSheet.create({
     },
     canvasContainer: {
         width: '100%',
-        height: 350,
+        height: 450,
         marginTop: -50,
         zIndex: 5,
     },
