@@ -376,6 +376,10 @@ export interface ILessonMeshProps {
     onClick: () => void;
 }
 
+export interface IFloatingIslandProps {
+    animation: boolean
+}
+
 export interface ITranslations {
     nl: string;
     en: string;

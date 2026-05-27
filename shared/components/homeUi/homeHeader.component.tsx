@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 // COMPONENTS
 import { SvgIcon } from '../svgIcon/SvgIcon.component';
@@ -14,7 +14,7 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 // TYPES
 import { ESvgIconName } from '@/shared/types/enums';
 
-export const HomeHeader = () => {
+export const HomeHeader: FC = () => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
 
     const { streaks } = useUserDataStore();

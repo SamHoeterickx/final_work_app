@@ -39,7 +39,6 @@ export default function HomeScreen() {
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log('---USERCHAPTERS', userChapters);
 
         const activeIndex = userChapters.findIndex(
             (chapter: IGetMyChaptersResponse) =>
