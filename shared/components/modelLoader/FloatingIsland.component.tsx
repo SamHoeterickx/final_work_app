@@ -21,10 +21,14 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
 
     const modelSrc = (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) || modelAssets.coffee_tamper;
 
+    // Het 3D model is waarschijnlijk standaard een kwartslag gedraaid door de 3D software (Blender).
+    // -Math.PI / 2 draait de basis 90 graden naar links. Pas dit aan (bijv. -Math.PI / 4) als het net niet perfect is!
+    const baseRotationY = -(Math.PI / 2);
+
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
         if (groupRef.current && animation) {
-            groupRef.current.rotation.y = t * 0.4;
+            groupRef.current.rotation.y = baseRotationY + (t * 0.4);
             groupRef.current.position.y = Math.sin(t * 1.5) * 0.08;
         }
     });
@@ -109,7 +113,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     }, []);
 
     return (
-        <group scale={scale || [0.5, 0.5, 0.5]} position={position || [0, ISLAND_HEIGHT, 0]} ref={groupRef}>
+        <group scale={scale || [0.5, 0.5, 0.5]} position={position || [0, ISLAND_HEIGHT, 0]} rotation={[0, baseRotationY, 0]} ref={groupRef}>
 
             <mesh position={[0, 0, 0]} geometry={islandGeometry}>
                 <meshStandardMaterial
@@ -128,7 +132,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
                 />
             </mesh>
 
-            <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, Math.PI * 1.5, 0]} />
+            <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, 0, 0]} />
 
             <group position={[0, -1.4, 0]} scale={[1, 1, 0.6]}>
                 <mesh rotation={[-Math.PI / 2, 0, 0]}>
