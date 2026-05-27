@@ -146,7 +146,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                     <group position={[0, -1, 0]}>
                         <Suspense fallback={null}>
                             <FloatingIsland 
-                                scale={.5} 
+                                scale={.75} 
                                 animation={true} 
                                 modelUrl={cModelUrl}
                             />
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     },
     canvasContainer: {
         width: '100%',
-        height: 450,
+        height: 350,
         marginTop: -50,
         zIndex: 5,
     },

@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 
 // COMPONENTS
 import { ChapterActions } from './ui/ChapterActions.component';
@@ -14,6 +14,9 @@ import { IChapterProps, ILessonsChapter, ILessonTranslations } from '@/shared/ty
 
 // CONST
 import { CAMERA_HEIGHT, CAMERA_RADIUS, LESSON_RADIUS } from '@/shared/const/chapter.const';
+
+// STYLES
+import { spacing } from '@/shared/styles/design.system';
 
 export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     chapterUser,
@@ -105,12 +108,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     return (
         <>
-            <ChapterHeader
-                chapterUser={chapterUser}
-                isFocused={isFocused}
-                selectedLesson={selectedLesson}
-            />
-
             <Animated.View
                 style={[
                     styles.cChapterScene,
@@ -126,17 +123,31 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                     modelUrl={chapterUser.chapter.slug as EIslandModels} 
                 />
             </Animated.View>
-            <ChapterActions
-                status={handlePassButtonStatus()}
-                isFocused={isFocused}
-                onPress={handleButton}
-            />
+            <View style={styles.uiContainer} pointerEvents="box-none">
+                <ChapterHeader
+                    chapterUser={chapterUser}
+                    isFocused={isFocused}
+                    selectedLesson={selectedLesson}
+                />
+                <ChapterActions
+                    status={handlePassButtonStatus()}
+                    isFocused={isFocused}
+                    onPress={handleButton}
+                />
+            </View>
         </>
     );
 };
 
 const styles = StyleSheet.create({
     cChapterScene: {
+        ...StyleSheet.absoluteFillObject,
+        zIndex: -1,
+    },
+    uiContainer: {
         flex: 1,
+        justifyContent: 'space-between',
+        marginTop: spacing.xxl * 2,
+        pointerEvents: 'box-none',
     },
 });
