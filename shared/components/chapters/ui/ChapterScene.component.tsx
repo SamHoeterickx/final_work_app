@@ -12,6 +12,7 @@ import { IChapterSceneProps } from '@/shared/types/types';
 // CONST
 import { ISLAND_HEIGHT, LESSON_RADIUS } from '@/shared/const/chapter.const';
 import { LessonMesh } from './LessonMesh.component';
+import { FloatingIsland } from '../../modelLoader/FloatingIsland.component';
 
 export const ChapterScene: FC<IChapterSceneProps> = ({
     isFocused,
@@ -54,13 +55,19 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
             }}
         >
             <CameraController position={cameraPos} target={cameraTarget} />
-            <pointLight position={[0, 20, 10]} intensity={1.5} />
+            <ambientLight intensity={0.7} />
+            <directionalLight position={[10, 10, 10]} intensity={1.5} />
+            <directionalLight position={[-10, 10, -10]} intensity={0.5} />
 
             <FloatingGroup isFocused={isFocused}>
-                <mesh>
+                {/* <mesh>
                     <boxGeometry args={[1, ISLAND_HEIGHT, 1]} />
                     <meshBasicMaterial color="gray" />
-                </mesh>
+                </mesh> */}
+
+                {/* <Model size={[.5, .5, .5]} position={[0, .25, 0]}/> */}
+
+                <FloatingIsland animation={false} />
 
                 {isFocused && renderLessons()}
             </FloatingGroup>

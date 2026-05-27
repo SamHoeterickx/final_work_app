@@ -11,3 +11,4 @@
 - [Expo router tab bar](https://docs.expo.dev/router/advanced/custom-tabs/)
 - [React native modal](https://reactnative.dev/docs/modal)
 - [React native vibrations](https://reactnative.dev/docs/vibration)
+- [Floating island Claude AI](https://claude.ai/share/acf4890f-328e-4f25-bd1e-905e6ee78e57)
