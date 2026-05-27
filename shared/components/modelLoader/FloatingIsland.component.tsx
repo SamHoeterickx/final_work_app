@@ -112,7 +112,7 @@ export const FloatingIsland: FC<IFloatingIslandProps> = ({ animation = true }) =
     }, []);
 
     return (
-        <group scale={[0.65, 0.65, 0.65]} ref={groupRef}>
+        <group scale={[0.5, 0.5, 0.5]} ref={groupRef}>
 
             <mesh position={[0, 0, 0]} geometry={islandGeometry}>
                 <meshStandardMaterial

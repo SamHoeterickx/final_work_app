@@ -50,6 +50,7 @@ export const ChapterScene: FC<IChapterSceneProps> = ({
     return (
         <Canvas
             camera={{
+                position: cameraPos,
                 fov: 30,
                 near: 0.1,
             }}
