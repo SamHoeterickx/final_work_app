@@ -10,6 +10,7 @@ import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { IStreaksFlowProps } from '@/shared/types/types';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const { t } = useTranslation();
@@ -21,8 +22,12 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const totalOpacityAnim = useRef(new Animated.Value(0)).current;
     const totalTranslateYAnim = useRef(new Animated.Value(40)).current;
 
+    const { setStreaks } = useUserDataStore();
+
     useEffect(() => {
         Vibration.vibrate(VIBRATION_PATTERN);
+
+        setStreaks(newStreak)
 
         Animated.parallel([
             Animated.spring(earnedScaleAnim, {
@@ -85,7 +90,7 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
                     },
                 ]}
             >
-                <Text style={styles.tag}>{t('lesson.postFlow.streaks.congrats')}N</Text>
+                <Text style={styles.tag}>{t('lesson.postFlow.streaks.congrats')}</Text>
                 <Text style={[baseStyles.h1, styles.earnedText]}>+ 1</Text>
             </Animated.View>
 

@@ -109,6 +109,7 @@ export interface IUserDataStore {
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
     getUserData: () => Promise<void>;
+    setStreaks: (streak: number) => void;
 }
 
 export interface ILessonStore {
