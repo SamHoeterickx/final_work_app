@@ -62,8 +62,10 @@ export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content, subStep =
                 >
                     <Animated.Image
                         style={styles.image}
-                        source={require('@/assets/images/moka_pot_1.png')}
-                        resizeMode="contain"
+                        source={{
+                            uri: `https://raw.githubusercontent.com/SamHoeterickx/BREWLINGO_public/refs/heads/main/img/${content.imgPath}.png`,
+                        }}
+                        resizeMode="cover"
                     />
                 </Animated.View>
 

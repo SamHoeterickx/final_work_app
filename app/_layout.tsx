@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
+import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +18,12 @@ import { useUserDataStore } from '@/shared/context/userDataStore.context';
 // STYLES
 import { colors } from '@/shared/styles/design.system';
 
+// UTILS
+import { isTokenExpired } from '@/shared/utils/api.utils';
+
 const queryClient = new QueryClient();
+
+SplashScreen.preventAutoHideAsync();
 
 const InitialLayout = () => {
     const { accessToken, isHydrated, needsRoadmap, setHydrated, setTokens } = useAuthStore();
@@ -39,13 +45,16 @@ const InitialLayout = () => {
     useEffect(() => {
         const loadTokens = async () => {
             try {
-                // SecureStore.deleteItemAsync('accessToken');
-                // SecureStore.deleteItemAsync('refreshToken');
                 const secureAccessToken = await SecureStore.getItemAsync('accessToken');
                 const secureRefreshToken = await SecureStore.getItemAsync('refreshToken');
 
                 if (secureAccessToken && secureRefreshToken) {
-                    setTokens(secureAccessToken, secureRefreshToken, false);
+                    if (isTokenExpired(secureRefreshToken)) {
+                        await SecureStore.deleteItemAsync('accessToken');
+                        await SecureStore.deleteItemAsync('refreshToken');
+                    } else {
+                        setTokens(secureAccessToken, secureRefreshToken, false);
+                    }
                 }
             } catch (error) {
                 console.error('Failed to load tokens', error);
@@ -57,7 +66,7 @@ const InitialLayout = () => {
     }, []);
 
     useEffect(() => {
-        if (!isHydrated) return;
+        if (!isHydrated || !fontsLoaded) return;
 
         const inAuthGroup = segments[0] === '(auth)';
 
@@ -68,7 +77,9 @@ const InitialLayout = () => {
         } else if (accessToken && inAuthGroup && !needsRoadmap) {
             router.replace('/(app)/home');
         }
-    }, [accessToken, isHydrated, segments, needsRoadmap]);
+
+        SplashScreen.hideAsync();
+    }, [accessToken, isHydrated, fontsLoaded, segments, needsRoadmap]);
 
     if (!isHydrated || !fontsLoaded) {
         return null;

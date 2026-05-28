@@ -23,6 +23,28 @@ const onRefreshed = (token: string | null): void => {
 };
 
 /**
+ * Decodes the JWT token and checks if it's expired locally.
+ */
+export const isTokenExpired = (token: string): boolean => {
+    try {
+        const payloadBase64 = token.split('.')[1];
+        if (!payloadBase64) return false;
+
+        const base64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonString = atob(base64);
+        const payload = JSON.parse(jsonString);
+
+        if (payload && payload.exp) {
+            const currentTime = Math.floor(Date.now() / 1000);
+            return payload.exp < currentTime + 5;
+        }
+    } catch (e) {
+        return false;
+    }
+    return false;
+};
+
+/**
  * Fetch GraphQL Query or Mutation with authentication
  * Gets the AccessToken and RefreshToken from authStore
  *
