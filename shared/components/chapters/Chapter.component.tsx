@@ -120,7 +120,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                     cameraTarget={cameraTarget}
                     lessons={chapterUser.chapter.lessons}
                     onLessonClick={handleLessonClick}
-                    modelUrl={chapterUser.chapter.slug as EIslandModels} 
+                    modelUrl={chapterUser.chapter.slug as EIslandModels}
                 />
             </Animated.View>
             <View style={styles.uiContainer} pointerEvents="box-none">

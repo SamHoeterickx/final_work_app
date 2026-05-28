@@ -15,7 +15,6 @@ import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 // TYPES
 import { ELocales, ESvgIconName } from '@/shared/types/enums';
 
-
 export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
     const { t, i18n } = useTranslation();
     const locale = (i18n.language as ELocales) || ELocales.NL;
@@ -145,11 +144,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                     <directionalLight position={[-10, 10, -10]} intensity={0.5} />
                     <group position={[0, -1, 0]}>
                         <Suspense fallback={null}>
-                            <FloatingIsland 
-                                scale={.75} 
-                                animation={true} 
-                                modelUrl={cModelUrl}
-                            />
+                            <FloatingIsland scale={0.75} animation={true} modelUrl={cModelUrl} />
                         </Suspense>
                     </group>
                 </Canvas>

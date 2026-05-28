@@ -8,12 +8,12 @@ export const CameraController: FC<ICameraControllerProps> = ({ position, target 
 
     const targetPosition = useMemo(() => new THREE.Vector3(...position), [position]);
     const finalTarget = useMemo(() => new THREE.Vector3(...target), [target]);
-    
+
     const currentLookAt = useRef(new THREE.Vector3(...target));
 
-    useFrame((state, delta) => {
+    useFrame(() => {
         camera.position.lerp(targetPosition, 0.01);
-        
+
         currentLookAt.current.lerp(finalTarget, 0.01);
         camera.lookAt(currentLookAt.current);
     });

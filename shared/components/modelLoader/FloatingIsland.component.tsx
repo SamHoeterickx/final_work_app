@@ -16,10 +16,17 @@ const modelAssets = {
     coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
 };
 
-export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({ scale, position, animation = true, modelUrl }) => {
+export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({
+    scale,
+    position,
+    animation = true,
+    modelUrl,
+}) => {
     const groupRef = useRef<THREE.Group>(null!);
 
-    const modelSrc = (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) || modelAssets.coffee_tamper;
+    const modelSrc =
+        (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) ||
+        modelAssets.coffee_tamper;
 
     // Het 3D model is waarschijnlijk standaard een kwartslag gedraaid door de 3D software (Blender).
     // -Math.PI / 2 draait de basis 90 graden naar links. Pas dit aan (bijv. -Math.PI / 4) als het net niet perfect is!
@@ -28,7 +35,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
         if (groupRef.current && animation) {
-            groupRef.current.rotation.y = baseRotationY + (t * 0.4);
+            groupRef.current.rotation.y = baseRotationY + t * 0.4;
             groupRef.current.position.y = Math.sin(t * 1.5) * 0.08;
         }
     });
@@ -36,7 +43,13 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     const islandGeometry = useMemo(() => {
         const segments = 12;
         const heightSegments = 8;
-        let geo: THREE.BufferGeometry = new THREE.ConeGeometry(1.6, 2.4, segments, heightSegments, false);
+        let geo: THREE.BufferGeometry = new THREE.ConeGeometry(
+            1.6,
+            2.4,
+            segments,
+            heightSegments,
+            false,
+        );
         geo.rotateX(Math.PI);
 
         geo = geo.toNonIndexed();
@@ -55,7 +68,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
             const bulgeFactor = Math.sin(normalizedY * Math.PI) * 0.25;
             const angle = Math.atan2(vertex.z, vertex.x);
 
-            const pseudoRand = Math.sin(angle * 10 + normalizedY * 20); 
+            const pseudoRand = Math.sin(angle * 10 + normalizedY * 20);
             const edgeNoise = pseudoRand * 0.09 * (1 - normalizedY * 0.5);
 
             const angularVariation = Math.sin(angle * 3 + 1.2) * 0.08 + Math.cos(angle * 5) * 0.05;
@@ -79,24 +92,24 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
         const palette = [
             [0.42, 0.28, 0.18],
             [0.55, 0.38, 0.24],
-            [0.62, 0.44, 0.30],
-            [0.48, 0.33, 0.20],
+            [0.62, 0.44, 0.3],
+            [0.48, 0.33, 0.2],
             [0.38, 0.25, 0.16],
-            [0.70, 0.52, 0.36],
+            [0.7, 0.52, 0.36],
             [0.52, 0.36, 0.22],
-            [0.45, 0.30, 0.17],
+            [0.45, 0.3, 0.17],
         ];
 
         for (let i = 0; i < posAttr.count; i += 3) {
             vertex.fromBufferAttribute(posAttr, i);
             const normalizedY = (vertex.y + 1.2) / 2.4;
             const heightBias = normalizedY < 0.3 ? 0 : Math.floor(normalizedY * 4) % palette.length;
-            
+
             const angle = Math.atan2(vertex.z, vertex.x);
             const faceRandom = Math.abs(Math.sin(angle * 12 + normalizedY * 34));
 
             const c = palette[(heightBias + Math.floor(faceRandom * 3)) % palette.length];
-            
+
             for (let j = 0; j < 3; j++) {
                 colors.push(c[0], c[1], c[2]);
             }
@@ -113,23 +126,18 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     }, []);
 
     return (
-        <group scale={scale || [0.5, 0.5, 0.5]} position={position || [0, ISLAND_HEIGHT, 0]} rotation={[0, baseRotationY, 0]} ref={groupRef}>
-
+        <group
+            scale={scale || [0.5, 0.5, 0.5]}
+            position={position || [0, ISLAND_HEIGHT, 0]}
+            rotation={[0, baseRotationY, 0]}
+            ref={groupRef}
+        >
             <mesh position={[0, 0, 0]} geometry={islandGeometry}>
-                <meshStandardMaterial
-                    vertexColors
-                    flatShading
-                    roughness={0.92}
-                    metalness={0.0}
-                />
-            </mesh> 
+                <meshStandardMaterial vertexColors flatShading roughness={0.92} metalness={0.0} />
+            </mesh>
 
-             <mesh position={[0, 1.15, 0]} geometry={rimGeometry}>
-                <meshStandardMaterial
-                    color="#6b4423"
-                    roughness={0.88}
-                    flatShading
-                />
+            <mesh position={[0, 1.15, 0]} geometry={rimGeometry}>
+                <meshStandardMaterial color="#6b4423" roughness={0.88} flatShading />
             </mesh>
 
             <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, 0, 0]} />

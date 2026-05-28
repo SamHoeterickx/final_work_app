@@ -33,7 +33,7 @@ export { PauseLessonModal } from './modal/PauseLessonModal.component';
 export { StreaksModal } from './modal/StreaksModal.component';
 
 // MODELS
-export { FloatingIsland } from './modelLoader/FloatingIsland.component'
+export { FloatingIsland } from './modelLoader/FloatingIsland.component';
 
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';

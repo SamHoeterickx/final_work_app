@@ -43,5 +43,5 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
             console.error('Error fetching user data:', error);
         }
     },
-    setStreaks: (streak: number) => set({ streaks: streak })
+    setStreaks: (streak: number) => set({ streaks: streak }),
 }));

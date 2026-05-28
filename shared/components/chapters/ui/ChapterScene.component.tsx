@@ -38,7 +38,7 @@ export const ChapterScene: FC<IChapterSceneProps & { modelUrl?: EIslandModels | 
             return (
                 <LessonMesh
                     key={lesson.uuid}
-                    position={[x, ISLAND_HEIGHT + .375, z]}
+                    position={[x, ISLAND_HEIGHT + 0.375, z]}
                     onClick={() => onLessonClick(index, lesson)}
                     isLocked={isLocked}
                     isCurrent={isCurrent}
@@ -65,7 +65,7 @@ export const ChapterScene: FC<IChapterSceneProps & { modelUrl?: EIslandModels | 
 
             <FloatingGroup isFocused={isFocused}>
                 <Suspense fallback={null}>
-                    <FloatingIsland animation={false} modelUrl={modelUrl} scale={.3} />
+                    <FloatingIsland animation={false} modelUrl={modelUrl} scale={0.3} />
                     {isFocused && renderLessons()}
                 </Suspense>
             </FloatingGroup>

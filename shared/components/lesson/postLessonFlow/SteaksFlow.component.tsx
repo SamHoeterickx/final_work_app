@@ -27,7 +27,7 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     useEffect(() => {
         Vibration.vibrate(VIBRATION_PATTERN);
 
-        setStreaks(newStreak)
+        setStreaks(newStreak);
 
         Animated.parallel([
             Animated.spring(earnedScaleAnim, {
