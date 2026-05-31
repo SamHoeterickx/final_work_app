@@ -1,4 +1,5 @@
-import { SvgIcon } from '@/shared/components';
+import { LoadingScreen, SvgIcon } from '@/shared/components';
+import { usePreloadModels } from '@/shared/hooks';
 import { borderRadius, colors } from '@/shared/styles/design.system';
 import { ESvgIconName } from '@/shared/types/enums';
 import { Tabs } from 'expo-router';
@@ -33,6 +34,11 @@ const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
 };
 
 export default function AppLayout() {
+    const { isReady } = usePreloadModels();
+
+    if(!isReady){
+        return <LoadingScreen loadingFor='preloading models' message='models are loading'/>
+    }
     return (
         <Tabs
             screenOptions={{

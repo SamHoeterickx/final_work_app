@@ -55,6 +55,7 @@ export const ChapterScene: FC<IChapterSceneProps & { modelUrl?: EIslandModels | 
                 fov: 30,
                 near: 0.1,
             }}
+            gl={{ antialias: false, powerPreference: 'high-performance' }}
         >
             <CameraController position={cameraPos} target={cameraTarget} />
             <ambientLight intensity={1.2} />

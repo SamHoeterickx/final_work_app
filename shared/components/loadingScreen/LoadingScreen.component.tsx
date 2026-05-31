@@ -4,11 +4,17 @@ import { FC } from 'react';
 // STYLES
 import { baseStyles, colors } from '@/shared/styles/design.system';
 
-export const LoadingScreen: FC = () => {
+interface ILoadingScreenProps {
+    loadingFor?: string;
+    message?: string;
+}
+
+export const LoadingScreen: FC<ILoadingScreenProps> = ({ loadingFor, message }) => {
     return (
         <View style={styles.cLoading}>
             <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
             <Text style={[baseStyles.h3, styles.text]}>Loading...</Text>
+            <Text style={[baseStyles.h4, styles.text]}>{loadingFor && loadingFor} {message}</Text>
         </View>
     );
 };

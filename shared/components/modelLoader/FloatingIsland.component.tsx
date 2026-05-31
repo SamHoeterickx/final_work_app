@@ -39,6 +39,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     const baseRotationY = -(Math.PI / 2);
 
     useFrame((state) => {
+        if (!animation ) return;
         const t = state.clock.getElapsedTime();
         if (groupRef.current && animation) {
             groupRef.current.rotation.y = baseRotationY + t * 0.4;
@@ -47,8 +48,8 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     });
 
     const islandGeometry = useMemo(() => {
-        const segments = 12;
-        const heightSegments = 8;
+        const segments = 10;
+        const heightSegments = 6;
         let geo: THREE.BufferGeometry = new THREE.ConeGeometry(
             1.6,
             2.4,
@@ -126,7 +127,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     }, []);
 
     const rimGeometry = useMemo(() => {
-        const geo = new THREE.CylinderGeometry(1.75, 1.85, 0.16, 32);
+        const geo = new THREE.CylinderGeometry(1.75, 1.85, 0.16, 16);
         geo.computeVertexNormals();
         return geo;
     }, []);

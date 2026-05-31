@@ -1,3 +1,18 @@
+if (typeof global.Image === 'undefined') {
+    // @ts-ignore
+    global.Image = class Image {
+        width = 0;
+        height = 0;
+        onload: (() => void) | null = null;
+        onerror: (() => void) | null = null;
+        set src(_: string) {
+            // React Native doesn't support WebP detection via Image
+            // so we just immediately call onerror to fall back to PNG/JPEG
+            setTimeout(() => this.onerror?.(), 0);
+        }
+    };
+}
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
