@@ -194,9 +194,10 @@ export const COMPLETE_LESSON_MUTATION = `
             }
             isLastLesson
             newUnlockedChapter {
-                description
-                name
                 uuid
+                slug
+                name
+                description
             }
         }
     }

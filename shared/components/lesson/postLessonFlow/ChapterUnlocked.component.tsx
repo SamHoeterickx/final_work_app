@@ -21,7 +21,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
 
     const cName = chapter?.name?.[locale] || chapter?.name?.en || 'Nieuw Hoofdstuk';
     const cDescription = chapter?.description?.[locale] || chapter?.description?.en || '';
-    const cModelUrl = chapter?.modelUrl || null;
+    const cModelUrl = chapter?.slug || null;
 
     const lockOpacity = useRef(new Animated.Value(1)).current;
     const lockScale = useRef(new Animated.Value(1)).current;

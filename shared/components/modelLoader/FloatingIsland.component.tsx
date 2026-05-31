@@ -14,6 +14,7 @@ import { Model } from './Model.component';
 const modelAssets = {
     coffee_bag: require('../../../assets/models/coffee_bag.glb'),
     coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
+    coffee_fruit: require('../../../assets/models/coffee_fruit.glb'),
 };
 
 export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({
@@ -23,13 +24,11 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     modelUrl,
 }) => {
     const groupRef = useRef<THREE.Group>(null!);
-
+    
     const modelSrc =
         (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) ||
         modelAssets.coffee_tamper;
 
-    // Het 3D model is waarschijnlijk standaard een kwartslag gedraaid door de 3D software (Blender).
-    // -Math.PI / 2 draait de basis 90 graden naar links. Pas dit aan (bijv. -Math.PI / 4) als het net niet perfect is!
     const baseRotationY = -(Math.PI / 2);
 
     useFrame((state) => {

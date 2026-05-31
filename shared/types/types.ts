@@ -183,6 +183,7 @@ export interface IUnlockedLesson {
 export interface IUnlockedChapter {
     uuid: string;
     name: string;
+    slug: string;
     description: string;
 }
 

@@ -4,6 +4,9 @@ import { FC, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Dimensions, Easing, StyleSheet, View } from 'react-native';
 
+// UTILS
+import { renderFormattedText } from '@/shared/utils/text.utils';
+
 const HEIGHT = Dimensions.get('screen').height;
 
 export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
@@ -58,7 +61,7 @@ export const TitleScreen: FC<ILessonScreenProps> = ({ content }) => {
                 />
 
                 <Animated.Text style={[baseStyles.p, styles.bodyText, { opacity: opacityAnim }]}>
-                    {content.body}
+                    {renderFormattedText(content.body as string)}
                 </Animated.Text>
             </View>
         </View>

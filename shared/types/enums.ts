@@ -95,4 +95,5 @@ export enum ERoles {
 export enum EIslandModels {
     COFFEE_BAG = 'coffee_bag',
     COFFEE_TAMPER = 'coffee_tamper',
+    COFFEE_FRUIT = 'coffee_fruit'
 }
