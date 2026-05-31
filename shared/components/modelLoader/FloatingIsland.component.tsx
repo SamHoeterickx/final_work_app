@@ -15,6 +15,7 @@ const modelAssets = {
     coffee_bag: require('../../../assets/models/coffee_bag.glb'),
     coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
     coffee_fruit: require('../../../assets/models/coffee_fruit.glb'),
+    introduction: require('../../../assets/models/introduction.glb'),
 };
 
 export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({

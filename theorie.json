@@ -1,61 +1,47 @@
 [
     {
-        "body": "Het perkament (Parchment) fungeert als het robuuste schild van de koffieboon, dat hem maandenlang veilig houdt.",
+        "body": "The biological armor.",
         "type": "info",
-        "title": "Het Perkament",
+        "title": "The Exocarp",
         "screen": 1,
         "screenType": "C_TITLE"
     },
     {
         "body": [
-            "Het eigenlijke zaad heeft een beschermende buitenlaag genaamd het ***perkament*** (of pergamino).",
-            "Bij bijna alle verwerkingsmethoden blijft deze laag als een jasje om de boon zitten totdat de koffie klaargemaakt wordt voor export."
+            "The exocarp forms the tough outer skin of the coffee cherry. This layer consists of a single row of strong parenchyma cells.",
+            "It functions as the ultimate biological armor against harmful external influences. Pests like the coffee berry borer are effectively kept out."
         ],
         "type": "info",
-        "title": "De Beschermende Laag",
+        "title": "The Outer Protective Layer",
         "screen": 2,
-        "imgPath": "8e374266_coffee_parchment_layer",
-        "screenType": "C_TEXT_WITH_IMAGE"
+        "screenType": "C_INFO"
     },
     {
         "body": [
-            "Wanneer de koffie de 'wet mill' (natte molen) verlaat en volledig is gedroogd, is het vochtgehalte teruggebracht naar ongeveer 11 tot 12 procent.",
-            "Hierdoor kunnen de bonen, omsloten door hun perkament, veilig in opslag worden geplaatst zonder enig risico op rotten."
+            "During ripening, this skin undergoes a fascinating chemical change. The chloroplasts present slowly break down as the cherry ages.",
+            "Subsequently, anthocyanins take over within the cell structure. These substances provide the striking, deep red or yellow color of a ripe cherry."
         ],
         "type": "info",
-        "title": "Opslag na de Wet Mill",
+        "title": "The Color Transformation",
         "screen": 3,
-        "screenType": "C_ONLY_TEXT"
-    },
-    {
-        "body": "Traditioneel wordt koffie opzettelijk 30 tot 60 dagen in dit perkament opgeslagen, een belangrijke periode die men ***reposo*** (rust) noemt. Anekdotisch bewijs suggereert dat de koffie zonder deze rustperiode groen en onplezierig kan smaken.",
-        "type": "fact",
-        "title": "Reposo (Rustperiode)",
-        "screen": 4,
-        "screenType": "C_DID_YOU_KNOW"
-    },
-    {
-        "body": [
-            "Vlak voordat de koffie verscheept wordt, wordt hij 'gehuld' in een dry mill (droge molen).",
-            "Dit is een mechanisch proces waarbij het perkament wordt gestript, wat veel gewicht en volume scheelt en de uiteindelijke verzendkosten verlaagt.",
-            "Bij het ***Semi-Washed*** proces in Indonesië (giling basah) wordt het perkament al verwijderd wanneer de bonen nog 30-35% vocht bevatten."
-        ],
-        "type": "info",
-        "title": "Het Verwijderen (Hullen)",
-        "screen": 5,
-        "screenType": "C_ONLY_TEXT"
+        "screenType": "C_INFO"
     },
     {
         "type": "quiz",
-        "title": "Kennischeck",
-        "answer": "Het biedt een beschermende laag tijdens opslag, en het verwijderen net voor export bespaart gewicht en transportkosten.",
-        "screen": 6,
-        "options": [
-            "Het biedt een beschermende laag tijdens opslag, en het verwijderen net voor export bespaart gewicht en transportkosten.",
-            "Het perkament is nodig om de bonen sneller te laten fermenteren tijdens het verschepen naar Europa.",
-            "Zonder het perkament verdwijnt de cafeïne direct uit de bonen tijdens de opslag."
-        ],
-        "question": "Wat is de belangrijkste reden dat het perkament pas vlak voor de uiteindelijke export wordt verwijderd (gehuld)?",
+        "title": "Biological Coloring",
+        "answer": "Anthocyanins",
+        "screen": 4,
+        "options": ["Pectin", "Anthocyanins", "Cellulose"],
+        "question": "Which chemical component in the exocarp's cell structure is responsible for the color change to red or yellow during ripening?",
+        "screenType": "Q_RIGHT_OR_WRONG"
+    },
+    {
+        "type": "quiz",
+        "title": "The Protector",
+        "answer": "The coffee berry borer",
+        "screen": 5,
+        "options": ["The coffee berry borer", "Aphids", "Fungi"],
+        "question": "Against which specific pest does the exocarp primarily provide a solid biological armor?",
         "screenType": "Q_RIGHT_OR_WRONG"
     }
 ]
