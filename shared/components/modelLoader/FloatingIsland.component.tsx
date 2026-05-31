@@ -22,6 +22,12 @@ const modelAssets = {
     milk_pitcher: require('../../../assets/models/milk_pitcher.glb'),
     moka_pot: require('../../../assets/models/moka_pot.glb'),
     portafilter: require('../../../assets/models/portafilter.glb'),
+    aeropress: require('../../../assets/models/aeropress.glb'),
+    pour_over: require('../../../assets/models/pour_over.glb'),
+    gooseneck_kettle: require('../../../assets/models/gooseneck_kettle.glb'),
+    puck_prep: require('../../../assets/models/puck_prep.glb'),
+    coffee_cup: require('../../../assets/models/coffee_cup.glb'),
+    
 };
 
 export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({
@@ -34,12 +40,12 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
 
     const modelSrc =
         (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) ||
-        modelAssets.coffee_tamper;
+        modelAssets.coffee_cup;
 
-    const baseRotationY = -(Math.PI / 2);
+    const baseRotationY = 0;
 
     useFrame((state) => {
-        if (!animation ) return;
+        if (!animation) return;
         const t = state.clock.getElapsedTime();
         if (groupRef.current && animation) {
             groupRef.current.rotation.y = baseRotationY + t * 0.4;
@@ -147,7 +153,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
                 <meshStandardMaterial color="#6b4423" roughness={0.88} flatShading />
             </mesh>
 
-            <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, 0, 0]} />
+            <Model src={modelSrc} position={[0, 1.2, 0]} size={1} rotation={[0, Math.PI, 0]} />
 
             <group position={[0, -1.4, 0]} scale={[1, 1, 0.6]}>
                 <mesh rotation={[-Math.PI / 2, 0, 0]}>

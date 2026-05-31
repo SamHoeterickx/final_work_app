@@ -12,6 +12,11 @@ const modelAssets = [
     require('../../../assets/models/milk_pitcher.glb'),
     require('../../../assets/models/moka_pot.glb'),
     require('../../../assets/models/portafilter.glb'),
+    require('../../../assets/models/aeropress.glb'),
+    require('../../../assets/models/pour_over.glb'),
+    require('../../../assets/models/gooseneck_kettle.glb'),
+    require('../../../assets/models/puck_prep.glb'),
+    require('../../../assets/models/coffee_cup.glb'),
 ];
 
 export function usePreloadModels() {
@@ -32,8 +37,7 @@ export function usePreloadModels() {
                                     useGLTF(asset);
                                     clearInterval(interval);
                                     resolve();
-                                } catch {
-                                }
+                                } catch {}
                             }, 100);
                         }),
                 ),
@@ -46,7 +50,9 @@ export function usePreloadModels() {
         };
 
         preload();
-        return () => { cancelled = true; };
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
     return { isReady };

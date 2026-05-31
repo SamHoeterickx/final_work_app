@@ -103,4 +103,9 @@ export enum EIslandModels {
     MILK_PITCHER = 'milk_pitcher',
     MOKA_POT = 'moka_pot',
     PORTAFILTER = 'portafilter',
+    AEROPRESS = 'aeropress',
+    POUR_OVER = 'pour_over',
+    GOOSENECK_KETTLE = 'gooseneck_kettle',
+    PUCK_PREP = 'puck_prep',
+    COFFEE_CUP = 'coffee_cup'
 }

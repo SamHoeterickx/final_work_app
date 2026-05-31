@@ -60,7 +60,7 @@ export const ChapterScene: FC<IChapterSceneProps & { modelUrl?: EIslandModels | 
             <CameraController position={cameraPos} target={cameraTarget} />
             <ambientLight intensity={1.2} />
             <hemisphereLight groundColor="#465E3C" intensity={0.8} />
-            <spotLight />
+            <spotLight position={[0, 4, 4]} intensity={2.5} angle={0.5} penumbra={1} />
             <directionalLight position={[10, 10, 10]} intensity={1.5} />
             <directionalLight position={[-10, 10, -10]} intensity={0.5} />
 

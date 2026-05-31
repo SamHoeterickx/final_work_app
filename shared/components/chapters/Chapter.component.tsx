@@ -51,6 +51,13 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     };
 
     const handleButtonChapter = () => {
+        if (!chapterUser.chapter.lessons || chapterUser.chapter.lessons.length === 0) {
+            setCameraPos([0, CAMERA_HEIGHT, 1.5]);
+            setCameraTarget([0, -0.5, 0]);
+            setIsFocused(true);
+            return;
+        }
+
         const allCompleted = chapterUser.chapter.lessons.every(
             (lesson: ILessonsChapter) => lesson.status === EProgressStatus.COMPLETED,
         );
