@@ -66,90 +66,87 @@
     },
     "onboarding": {
         "currentBehaviour": {
-            "title": "Hoe zet je momenteel koffie?",
-            "subtitle": "Kies de manieren waarop jij koffie drinkt.",
+            "title": "Hoe koop of drink je je koffie meestal?",
+            "subtitle": "Dit helpt ons je startpunt te begrijpen.",
             "optionLabels": {
-                "instantCoffee": "Oploskoffie",
-                "work": "Op het werk",
-                "espresso": "Espresso",
-                "podMachine": "Cup machine",
-                "frenchPress": "French press",
-                "coffeeShop": "Coffee shop"
+                "wholeBeans": "Hele koffiebonen",
+                "preGround": "Voorgemalen koffie",
+                "convenience": "Capsules / oploskoffie",
+                "coffeeShop": "Koffiebars"
             }
         },
         "experienceLevel": {
-            "title": "Wat is jouw koffie ervaring?",
+            "title": "Wat is je koffie-ervaring?",
             "subtitle": "We passen je leertraject aan op basis van wat je al weet.",
             "optionLabels": {
-                "tasteEnjoyer": "De Smaakgenieter",
+                "tasteEnjoyer": "De Genieter",
                 "curious": "De Nieuwsgierige",
-                "connoisseur": "De Kenner",
-                "experimenter": "De Smaakmaker"
+                "connoisseur": "De Kenner"
             },
             "optionDescriptions": {
-                "tasteEnjoyer": "Ik drink koffie vooral voor de gezelligheid.",
-                "curious": "Ik heb termen als maalgraad of branding wel eens gehoord",
-                "connoisseur": "Een Arabica / Robusta is niets nieuws voor mij",
-                "experimenter": "Ik experimenteer met zetmethodes"
+                "tasteEnjoyer": "Ik drink koffie vooral voor de smaak en gezelligheid. Ik ben een beginner.",
+                "curious": "Ik heb weleens gehoord van termen als maalgraad, extractie of brandprofielen.",
+                "connoisseur": "Ik experimenteer actief met variabelen, zetmethoden en specialty coffee."
             }
         },
         "goal": {
-            "title": "Wat wil je graag bereiken?",
-            "subtitle": "Kies je hoofddoel. Geen zorgen, we behandelen alles, maar we passen je leertraject hierop aan",
+            "title": "Wat wil je bereiken?",
+            "subtitle": "Kies je hoofddoel. Maak je geen zorgen, we behandelen alles, maar we geven hier prioriteit aan.",
             "optionLabels": {
-                "tastingSkills": "Ik wil smaken leren herkennen en omschrijven",
-                "perfectEspresso": "Ik wil de perfecte espresso leren maken",
-                "latteArt": "Ik wil de focus leggen op melktextuur en prachtige figuren maken.",
-                "beanToCup": "Ik wil het hele proces leren, van de plantage tot in het kopje."
+                "tastingSkills": "Ik wil unieke koffiesmaken leren herkennen, beschrijven en ontdekken.",
+                "perfectEspresso": "Ik wil leren hoe ik de perfecte espresso afstel en zet.",
+                "latteArt": "Ik wil het opschuimen van melk onder de knie krijgen en prachtige latte art maken.",
+                "beanToCup": "Ik wil het hele proces begrijpen, van de koffieplantage tot het branden."
             }
         },
         "currentPreferences": {
-            "title": "Wat voor koffiedrinker ben jij?",
-            "subtitle": "Houd je van een stevige klassieker of zoek je liever de fruitige smaken op?",
+            "title": "Welk smaakprofiel heeft je voorkeur?",
+            "subtitle": "Houd je van donkere, zoete klassiekers of juist van lichte, sappige en fruitige smaken?",
             "optionLabels": {
-                "boldClassic": "Ik houd van een krachtige, volle smaak met tonen",
-                "milkBalanced": "Voor mij draait het om de balans tussen zachte koffie en perfecte melk.",
-                "versatile": "Ik wil alles leren: van aards en kruidig tot bloemig en fris",
-                "fruityAcidic": "Ik zoek naar lichte, frisse en fruitige smaken met een beetje aciditeit."
+                "boldClassic": "Sterke, intense en volle smaken met diepe chocoladetonen.",
+                "milkBalanced": "Een zachte balans tussen rijk en zoet, met romig opgeschuimde melk.",
+                "fruityAcidic": "Lichte, bloemige en fruitige smaken met een verfrissende zuurgraad.",
+                "versatile": "Ik wil alle smaken van specialty coffee ervaren en ontdekken."
             }
         },
         "desiredTempo": {
-            "title": "Wat is jouw tempo?",
-            "subtitle": "Hoe en hoeveel tijd wil je dagelijks besteden aan je koffiereis?",
+            "title": "Wat is je tempo?",
+            "subtitle": "Hoeveel tijd wil je dagelijks besteden aan je koffiereis?",
             "optionLabels": {
-                "quickShot": "De snelle shot",
+                "quickShot": "De snelle espresso",
                 "dailyRoutine": "De dagelijkse routine",
-                "weekendLover": "De weekend liefhebber",
-                "ownPace": "Op eigen tempo"
+                "weekendLover": "De weekendliefhebber",
+                "ownPace": "Op mijn eigen tempo"
             },
             "optionDescriptions": {
-                "quickShot": "Snel en krachtig, leer me de belangrijkste zaken.",
-                "dailyRoutine": "Ik neem de tijd voor een korte les tijdens het drinken van mijn koffie.",
-                "weekendLover": "In het weekend duik ik graag in de leerstof.",
-                "ownPace": "Geen vaste tijd, ik doe het liever op mijn eigen tempo."
+                "quickShot": "Snel en krachtig, leer me alleen de absolute basis.",
+                "dailyRoutine": "Ik neem de tijd voor een korte les tijdens het drinken van mijn ochtendkoffie.",
+                "weekendLover": "In het weekend duik ik graag diep in de lesstof.",
+                "ownPace": "Geen vaste planning, ik kijk liever rond op mijn eigen tempo."
             }
         },
         "currentMethodes": {
-            "title": "Welke zetmethodes heb je al?",
-            "subtitle": "Selecteer de methodes waar je materiaal voor hebt.",
+            "title": "Welke zetmethoden gebruik je momenteel?",
+            "subtitle": "Selecteer de methoden waarvoor je apparatuur hebt.",
             "optionLabels": {
-                "chemex": "Chemex",
-                "mokaPot": "Moka pot",
-                "espressoMachine": "Espresso",
-                "pourOver": "Pour over",
-                "frenchPress": "French press",
-                "none": "Heb nog niets"
+                "espressoMachine": "Espressomachine",
+                "pourOver": "Pour Over (Filter)",
+                "mokaPot": "Moka Pot",
+                "immersion": "AeroPress",
+                "frenchPress": "French Press",
+                "none": "Geen"
             }
         },
         "extraGear": {
-            "title": "Wat staat er nog in je keuken?",
-            "subtitle": "Selecteer de extra gear dat je al hebt.",
+            "title": "Welke extra apparatuur heb je in je keuken?",
+            "subtitle": "Selecteer de spullen die je al bezit.",
             "optionLabels": {
-                "precisionScale": "Precisie weegschaal",
-                "gooseneckKettle": "Goosneck Kettle",
-                "coffeeGrinder": "Bonenmaler",
-                "milkFrother": "Melk opschuimer",
-                "none": "Heb nog niets"
+                "coffeeGrinder": "Koffiemolen",
+                "precisionScale": "Precisieweegschaal",
+                "gooseneckKettle": "Zwanenhalswaterkoker",
+                "milkFrother": "Stoompijpje / Melkopschuimer",
+                "puckPrep": "WDT / Tamper",
+                "none": "Geen"
             }
         },
         "buttons": {
@@ -188,8 +185,8 @@
             }
         }
     },
-    "home": {
-        "title": "Dit is een titel"
+    "homeHeader": {
+        "backToCurrent": "Terug"
     },
     "chapter": {
         "currentStatus": "Huidige Les",

@@ -98,6 +98,16 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
+export interface IHomeStore {
+    allChapters: IGetMyChaptersResponse[] | null;
+    chapterIndex: number;
+    activeChapterIndex: number;
+    aChapterStatus: EProgressStatus | null;
+    returnToCurrentChapter: () => void;
+    updateChapterIndex: (index: number) => void;
+    setAllChapters: (chapters: IGetMyChaptersResponse[]) => void;
+}
+
 export interface IUserDataStore {
     language: ELocales;
     userData: IUserData | null;

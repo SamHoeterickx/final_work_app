@@ -11,7 +11,7 @@ import { FC, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import { Model } from './Model.component';
 
-const modelAssets = {
+export const modelAssets = {
     coffee_bag: require('../../../assets/models/coffee_bag.glb'),
     coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
     coffee_fruit: require('../../../assets/models/coffee_fruit.glb'),
@@ -27,7 +27,6 @@ const modelAssets = {
     gooseneck_kettle: require('../../../assets/models/gooseneck_kettle.glb'),
     puck_prep: require('../../../assets/models/puck_prep.glb'),
     coffee_cup: require('../../../assets/models/coffee_cup.glb'),
-    
 };
 
 export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({
@@ -39,8 +38,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     const groupRef = useRef<THREE.Group>(null!);
 
     const modelSrc =
-        (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) ||
-        modelAssets.coffee_cup;
+        (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) || modelAssets.coffee_cup;
 
     const baseRotationY = 0;
 

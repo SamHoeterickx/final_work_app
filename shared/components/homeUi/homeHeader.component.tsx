@@ -12,12 +12,27 @@ import { useUserDataStore } from '@/shared/context/userDataStore.context';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { ESvgIconName } from '@/shared/types/enums';
+import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
+import { useHomeStore } from '@/shared/context/homeStore.context';
+import { useTranslation } from 'react-i18next';
 
 export const HomeHeader: FC = () => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
 
+    const { aChapterStatus, returnToCurrentChapter } = useHomeStore();
     const { streaks } = useUserDataStore();
+
+    const { t } = useTranslation();
+
+    const renderReturnButton = () => {
+        if(aChapterStatus === EProgressStatus.LOCKED || aChapterStatus === EProgressStatus.COMPLETED){
+            return (
+                <TouchableOpacity style={styles.wStreaks} onPress={() => returnToCurrentChapter()}>
+                    <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text>
+                </TouchableOpacity>
+            )
+        }
+    }
 
     return (
         <>
@@ -29,9 +44,7 @@ export const HomeHeader: FC = () => {
                     <Text style={baseStyles.h3}>{streaks}</Text>
                     <SvgIcon name={ESvgIconName.STREAKS} />
                 </TouchableOpacity>
-                {/* <TouchableOpacity style={styles.wStreaks}>
-                    <SvgIcon name={ESvgIconName.NOTIFICATIONS} />
-                </TouchableOpacity> */}
+                {renderReturnButton()}
             </View>
             <StreaksModal isModalOpen={isStreaksModalOpen} setIsModalOpen={setIsStreakModalOpen} />
         </>

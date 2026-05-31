@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Animated, StyleSheet, View } from 'react-native';
 
 // COMPONENTS
+import { useHomeStore } from '@/shared/context/homeStore.context';
 import { ChapterActions } from './ui/ChapterActions.component';
 import { ChapterHeader } from './ui/ChapterHeader.component';
 import { ChapterScene } from './ui/ChapterScene.component';
@@ -30,6 +31,8 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     const { i18n } = useTranslation();
     const router = useRouter();
+
+    const { aChapterStatus } = useHomeStore();
 
     useEffect(() => {
         if (!isFocused) {
@@ -79,12 +82,13 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         setIsFocused(true);
     };
 
-    const handlePassButtonStatus = (): EProgressStatus => {
+    const handlePassButtonStatus = (): EProgressStatus | undefined => {
         if (!isFocused) {
-            return chapterUser.status;
-        } else {
-            return selectedLesson?.status ?? EProgressStatus.INPROGRESS;
+            return aChapterStatus ?? chapterUser.status;
+        } else if (selectedLesson) {
+            return selectedLesson.status;
         }
+        return undefined;
     };
 
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
