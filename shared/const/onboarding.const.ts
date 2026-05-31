@@ -10,7 +10,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
             {
                 label: 'onboarding.currentBehaviour.optionLabels.wholeBeans',
                 tag: 'coffee_whole_beans',
-                image: 'beans_bag',
+                image: 'whole_beans',
             },
             {
                 label: 'onboarding.currentBehaviour.optionLabels.preGround',
@@ -150,12 +150,12 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
             {
                 label: 'onboarding.currentMethodes.optionLabels.immersion',
                 tag: 'method_immersion',
-                image: 'aeroPress',
+                image: 'aero_press',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.frenchPress',
                 tag: 'method_immersion',
-                image: 'french_press',
+                image: 'aero_press',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.none',
@@ -177,7 +177,7 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
             {
                 label: 'onboarding.extraGear.optionLabels.precisionScale',
                 tag: 'gear_scale',
-                image: 'scale',
+                image: 'precision_scale',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.gooseneckKettle',

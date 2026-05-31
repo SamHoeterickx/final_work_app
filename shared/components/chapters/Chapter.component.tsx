@@ -82,13 +82,13 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
         setIsFocused(true);
     };
 
-    const handlePassButtonStatus = (): EProgressStatus | undefined => {
+    const handlePassButtonStatus = (): EProgressStatus => {
         if (!isFocused) {
             return aChapterStatus ?? chapterUser.status;
         } else if (selectedLesson) {
             return selectedLesson.status;
         }
-        return undefined;
+        return chapterUser.status;
     };
 
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
