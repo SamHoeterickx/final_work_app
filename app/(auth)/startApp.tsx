@@ -56,7 +56,7 @@ export default function StartAppScreen() {
                             ],
                         },
                     ]}
-                    source={require('@/assets/images/moka_pot_1.png')}
+                    source={require('@/assets/images/moka_pot_island.png')}
                     resizeMode="contain"
                 />
                 <Animated.View
