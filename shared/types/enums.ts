@@ -96,5 +96,11 @@ export enum EIslandModels {
     COFFEE_BAG = 'coffee_bag',
     COFFEE_TAMPER = 'coffee_tamper',
     COFFEE_FRUIT = 'coffee_fruit',
-    INTRODUCTION = 'introduction'
+    TURKISH_COFFEE_POT = 'turkish_coffee_pot',
+    ESPRESSO = 'espresso',
+    FRENCH_PRESS = 'french_press',
+    GRIND_SIZE = 'grind_size',
+    MILK_PITCHER = 'milk_pitcher',
+    MOKA_POT = 'moka_pot',
+    PORTAFILTER = 'portafilter',
 }

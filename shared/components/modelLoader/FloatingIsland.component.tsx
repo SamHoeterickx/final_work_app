@@ -15,7 +15,13 @@ const modelAssets = {
     coffee_bag: require('../../../assets/models/coffee_bag.glb'),
     coffee_tamper: require('../../../assets/models/coffee_tamper.glb'),
     coffee_fruit: require('../../../assets/models/coffee_fruit.glb'),
-    introduction: require('../../../assets/models/introduction.glb'),
+    turkish_coffee_pot: require('../../../assets/models/turkish_coffee_pot.glb'),
+    espresso: require('../../../assets/models/espresso.glb'),
+    french_press: require('../../../assets/models/french_press.glb'),
+    grind_size: require('../../../assets/models/grind_size.glb'),
+    milk_pitcher: require('../../../assets/models/milk_pitcher.glb'),
+    moka_pot: require('../../../assets/models/moka_pot.glb'),
+    portafilter: require('../../../assets/models/portafilter.glb'),
 };
 
 export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModels | null }> = ({
@@ -25,7 +31,7 @@ export const FloatingIsland: FC<IFloatingIslandProps & { modelUrl?: EIslandModel
     modelUrl,
 }) => {
     const groupRef = useRef<THREE.Group>(null!);
-    
+
     const modelSrc =
         (modelUrl && modelAssets[modelUrl as keyof typeof modelAssets]) ||
         modelAssets.coffee_tamper;
