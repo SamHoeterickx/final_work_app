@@ -1,6 +1,7 @@
 import { LoadingScreen, SvgIcon } from '@/shared/components';
 import { usePreloadModels } from '@/shared/hooks';
 import { borderRadius, colors } from '@/shared/styles/design.system';
+import { useAuthStore } from '@/shared/context/authStore.context';
 import { ESvgIconName } from '@/shared/types/enums';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
@@ -34,7 +35,10 @@ const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
 };
 
 export default function AppLayout() {
-    const { isReady } = usePreloadModels();
+    const { accessToken, refreshToken } = useAuthStore();
+    const shouldPreload = !!(accessToken || refreshToken);
+
+    const { isReady } = usePreloadModels(shouldPreload);
 
     if (!isReady) {
         return <LoadingScreen loadingFor="preloading models" message="models are loading" />;

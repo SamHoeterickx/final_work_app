@@ -20,11 +20,16 @@ const modelAssets = [
     require('../../../assets/models/coffee_cup.glb'),
 ];
 
-export function usePreloadModels() {
-    const [isReady, setIsReady] = useState(false);
+export function usePreloadModels(enabled: boolean = true) {
+    const [isReady, setIsReady] = useState(!enabled);
 
     useEffect(() => {
         let cancelled = false;
+
+        if (!enabled) {
+            setIsReady(true);
+            return;
+        }
 
         const preload = async () => {
             modelAssets.forEach((asset) => useGLTF.preload(asset));
@@ -54,7 +59,7 @@ export function usePreloadModels() {
         return () => {
             cancelled = true;
         };
-    }, []);
+    }, [enabled]);
 
     return { isReady };
 }
