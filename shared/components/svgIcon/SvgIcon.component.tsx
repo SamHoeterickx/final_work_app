@@ -40,6 +40,7 @@ import Home from '@/assets/icons/navigation/home.svg';
 import Settings from '@/assets/icons/navigation/settings.svg';
 import Notifications from '@/assets/icons/navigation/notifications.svg';
 import Streaks from '@/assets/icons/navigation/streaks.svg';
+import Return from '@/assets/icons/navigation/return.svg'
 
 // SETTINGS
 import Legal from '@/assets/icons/settings/legal.svg';
@@ -93,6 +94,7 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     [ESvgIconName.PRIVACY]: Privacy,
     [ESvgIconName.INFO]: Info,
     [ESvgIconName.LANGUAGE]: Language,
+    [ESvgIconName.RETURN]: Return,
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({ name, color, ...props }) => {

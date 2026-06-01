@@ -28,7 +28,8 @@ export const HomeHeader: FC = () => {
         if(aChapterStatus === EProgressStatus.LOCKED || aChapterStatus === EProgressStatus.COMPLETED){
             return (
                 <TouchableOpacity style={styles.wStreaks} onPress={() => returnToCurrentChapter()}>
-                    <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text>
+                    {/* <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text> */}
+                    <SvgIcon name={ESvgIconName.RETURN} />
                 </TouchableOpacity>
             )
         }

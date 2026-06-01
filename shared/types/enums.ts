@@ -49,6 +49,7 @@ export enum ESvgIconName {
     INFO = 'info',
     STREAKS = 'streaks',
     LANGUAGE = 'language',
+    RETURN = 'return'
 }
 
 export enum EProgressStatus {
