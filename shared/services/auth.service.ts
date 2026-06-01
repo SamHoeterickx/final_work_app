@@ -5,6 +5,7 @@ import { graphFetchAuth, graphqlFetch } from '@/shared/utils/api.utils';
 
 // CONTEXT
 import { useAuthStore } from '@/shared/context/authStore.context';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // MUTATIONS
 import {
@@ -100,7 +101,8 @@ class AuthService {
 
     async register(credentials: IRegisterCredentials, onboarding: IOnboardingAnswers) {
         try {
-            const variables = { ...credentials, onboarding };
+            const language = useUserDataStore.getState().language;
+            const variables = { ...credentials, onboarding, language };
             const result = await graphFetchAuth(REGISTER_USER_MUTATION, variables);
 
             if (!result || !result.data) {

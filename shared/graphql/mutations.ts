@@ -13,7 +13,8 @@ export const REGISTER_USER_MUTATION = `
         $name: String!,
         $password: String!,
         $repeatPassword: String!,
-        $onboarding: OnboardingInput!
+        $onboarding: OnboardingInput!,
+        $language: String!
     ) {
         registerUser(
             input: {
@@ -21,7 +22,8 @@ export const REGISTER_USER_MUTATION = `
                 name: $name,
                 password: $password,
                 repeatPassword: $repeatPassword,
-                onboarding: $onboarding
+                onboarding: $onboarding,
+                language: $language
             }
         ) {
             accessToken
