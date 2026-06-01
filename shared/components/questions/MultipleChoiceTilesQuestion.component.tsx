@@ -44,7 +44,7 @@ const getImageSource = (imageName: string) => {
         case 'cup_machine':
             return require('../../../assets/images/onboarding/cup_machine.png');
         default:
-            return ;
+            return;
     }
 };
 

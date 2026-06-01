@@ -40,7 +40,8 @@ export const isTokenExpired = (token: string): boolean => {
             const currentTime = Math.floor(Date.now() / 1000);
             return payload.exp < currentTime + 5;
         }
-    } catch (e) {
+    } catch (error) {
+        console.error(error);
         return true;
     }
     return false;

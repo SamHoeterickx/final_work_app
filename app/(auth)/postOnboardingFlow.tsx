@@ -18,8 +18,8 @@ import { baseStyles } from '@/shared/styles/design.system';
 // UTILS & STORE
 import { modelAssets } from '@/shared/components/modelLoader/FloatingIsland.component';
 import { useAuthStore } from '@/shared/context/authStore.context';
-import { useGLTF } from '@react-three/drei/native';
 import { IGenerateCustomRoadmapResponse } from '@/shared/types/response.type';
+import { useGLTF as loadGLTF, useGLTF } from '@react-three/drei/native';
 
 export default function PostOnboardingFlow() {
     const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.GENERATING);
@@ -36,7 +36,7 @@ export default function PostOnboardingFlow() {
         await new Promise<void>((resolve) => {
             const interval = setInterval(() => {
                 try {
-                    useGLTF(asset);
+                    loadGLTF(asset);
                     clearInterval(interval);
                     resolve();
                 } catch {}

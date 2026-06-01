@@ -49,7 +49,7 @@ export enum ESvgIconName {
     INFO = 'info',
     STREAKS = 'streaks',
     LANGUAGE = 'language',
-    RETURN = 'return'
+    RETURN = 'return',
 }
 
 export enum EProgressStatus {
@@ -108,5 +108,5 @@ export enum EIslandModels {
     POUR_OVER = 'pour_over',
     GOOSENECK_KETTLE = 'gooseneck_kettle',
     PUCK_PREP = 'puck_prep',
-    COFFEE_CUP = 'coffee_cup'
+    COFFEE_CUP = 'coffee_cup',
 }

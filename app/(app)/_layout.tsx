@@ -36,8 +36,8 @@ const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
 export default function AppLayout() {
     const { isReady } = usePreloadModels();
 
-    if(!isReady){
-        return <LoadingScreen loadingFor='preloading models' message='models are loading'/>
+    if (!isReady) {
+        return <LoadingScreen loadingFor="preloading models" message="models are loading" />;
     }
     return (
         <Tabs

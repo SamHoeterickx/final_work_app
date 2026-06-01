@@ -7,14 +7,13 @@ import { StreaksModal } from '../index';
 
 // CONTEXT
 import { useUserDataStore } from '@/shared/context/userDataStore.context';
+import { useHomeStore } from '@/shared/context/homeStore.context';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
-import { useHomeStore } from '@/shared/context/homeStore.context';
-import { useTranslation } from 'react-i18next';
 
 export const HomeHeader: FC = () => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
@@ -22,18 +21,19 @@ export const HomeHeader: FC = () => {
     const { aChapterStatus, returnToCurrentChapter } = useHomeStore();
     const { streaks } = useUserDataStore();
 
-    const { t } = useTranslation();
-
     const renderReturnButton = () => {
-        if(aChapterStatus === EProgressStatus.LOCKED || aChapterStatus === EProgressStatus.COMPLETED){
+        if (
+            aChapterStatus === EProgressStatus.LOCKED ||
+            aChapterStatus === EProgressStatus.COMPLETED
+        ) {
             return (
                 <TouchableOpacity style={styles.wStreaks} onPress={() => returnToCurrentChapter()}>
                     {/* <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text> */}
                     <SvgIcon name={ESvgIconName.RETURN} />
                 </TouchableOpacity>
-            )
+            );
         }
-    }
+    };
 
     return (
         <>

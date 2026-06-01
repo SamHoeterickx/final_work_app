@@ -137,7 +137,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                     { opacity: canvasOpacity, transform: [{ scale: canvasScale }] },
                 ]}
             >
-                <Canvas 
+                <Canvas
                     camera={{ position: [0, 3, 6], fov: 40 }}
                     gl={{ antialias: false, powerPreference: 'high-performance' }}
                 >
@@ -147,7 +147,7 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                     <directionalLight position={[-10, 10, -10]} intensity={0.5} />
                     <group position={[0, -1, 0]}>
                         <Suspense fallback={null}>
-                            <FloatingIsland scale={0.75} animation={true} modelUrl={cModelUrl}/>
+                            <FloatingIsland scale={0.75} animation={true} modelUrl={cModelUrl} />
                         </Suspense>
                     </group>
                 </Canvas>

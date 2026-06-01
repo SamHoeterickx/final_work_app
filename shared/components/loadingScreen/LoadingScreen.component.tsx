@@ -14,7 +14,9 @@ export const LoadingScreen: FC<ILoadingScreenProps> = ({ loadingFor, message }) 
         <View style={styles.cLoading}>
             <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
             <Text style={[baseStyles.h3, styles.text]}>Loading...</Text>
-            <Text style={[baseStyles.h4, styles.text]}>{loadingFor && loadingFor} {message}</Text>
+            <Text style={[baseStyles.h4, styles.text]}>
+                {loadingFor && loadingFor} {message}
+            </Text>
         </View>
     );
 };

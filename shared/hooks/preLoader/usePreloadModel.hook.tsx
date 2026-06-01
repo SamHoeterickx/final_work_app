@@ -1,4 +1,5 @@
-import { useGLTF } from '@react-three/drei/native';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import { useGLTF as loadGLTF, useGLTF } from '@react-three/drei/native';
 import { useEffect, useState } from 'react';
 
 const modelAssets = [
@@ -34,7 +35,7 @@ export function usePreloadModels() {
                         new Promise<void>((resolve) => {
                             const interval = setInterval(() => {
                                 try {
-                                    useGLTF(asset);
+                                    loadGLTF(asset);
                                     clearInterval(interval);
                                     resolve();
                                 } catch {}
