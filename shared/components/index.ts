@@ -32,6 +32,9 @@ export { DeleteUserModal } from './modal/DeleteAccountModal.component';
 export { PauseLessonModal } from './modal/PauseLessonModal.component';
 export { StreaksModal } from './modal/StreaksModal.component';
 
+// MODELS
+export { FloatingIsland } from './modelLoader/FloatingIsland.component';
+
 // SETTINGS
 export { AboutBrewlingo } from './settings/AboutBrewlingo.component';
 export { ChangeEmailSettings } from './settings/ChangeEmailSettings.component';

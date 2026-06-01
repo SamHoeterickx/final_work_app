@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 
-export const NotificationSettings = () => {
+export const NotificationSettings: FC = () => {
     return (
         <View style={styles.container}>
             <Text style={[baseStyles.h1, styles.subtitle]}>Comming soon</Text>

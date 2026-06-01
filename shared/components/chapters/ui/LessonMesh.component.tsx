@@ -38,7 +38,7 @@ export const LessonMesh: FC<ILessonMeshProps> = ({
 
     return (
         <mesh ref={meshRef} position={position} onPointerDown={onClick} scale={[0, 0, 0]}>
-            <cylinderGeometry args={[0.09, 0.09, 0.05]} />
+            <cylinderGeometry args={[0.095, 0.095, 0.05]} />
             <meshBasicMaterial color="darkgreen" transparent opacity={isLocked ? 0.3 : 1} />
         </mesh>
     );

@@ -207,6 +207,10 @@ export default function LessonScreen() {
         return 'lesson.buttons.continue';
     };
 
+    if (!currentScreen) {
+        return <LoadingScreen />;
+    }
+
     return (
         <SafeAreaView style={styles.sLesson}>
             <LessonHeader

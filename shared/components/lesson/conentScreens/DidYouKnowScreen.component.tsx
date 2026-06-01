@@ -8,6 +8,9 @@ import { baseStyles, borderRadius, colors, shadows, spacing } from '@/shared/sty
 import { ILessonScreenProps } from '@/shared/types/types';
 import { useTranslation } from 'react-i18next';
 
+// UTILS
+import { renderFormattedText } from '@/shared/utils/text.utils';
+
 export const DidYouKnowScreen: FC<ILessonScreenProps> = ({ content }) => {
     const { t } = useTranslation();
 
@@ -26,7 +29,9 @@ export const DidYouKnowScreen: FC<ILessonScreenProps> = ({ content }) => {
 
                 <View style={styles.divider} />
 
-                <Text style={[baseStyles.p, styles.dykFact]}>{content.body}</Text>
+                <Text style={[baseStyles.p, styles.dykFact]}>
+                    {renderFormattedText(content.body as string)}
+                </Text>
             </View>
         </View>
     );

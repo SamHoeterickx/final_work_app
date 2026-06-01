@@ -49,6 +49,7 @@ export enum ESvgIconName {
     INFO = 'info',
     STREAKS = 'streaks',
     LANGUAGE = 'language',
+    RETURN = 'return',
 }
 
 export enum EProgressStatus {
@@ -90,4 +91,22 @@ export enum EPostLessonFlowOptions {
 export enum ERoles {
     ADMIN = 'ADMIN',
     USER = 'USER',
+}
+
+export enum EIslandModels {
+    COFFEE_BAG = 'coffee_bag',
+    COFFEE_TAMPER = 'coffee_tamper',
+    COFFEE_FRUIT = 'coffee_fruit',
+    TURKISH_COFFEE_POT = 'turkish_coffee_pot',
+    ESPRESSO = 'espresso',
+    FRENCH_PRESS = 'french_press',
+    GRIND_SIZE = 'grind_size',
+    MILK_PITCHER = 'milk_pitcher',
+    MOKA_POT = 'moka_pot',
+    PORTAFILTER = 'portafilter',
+    AEROPRESS = 'aeropress',
+    POUR_OVER = 'pour_over',
+    GOOSENECK_KETTLE = 'gooseneck_kettle',
+    PUCK_PREP = 'puck_prep',
+    COFFEE_CUP = 'coffee_cup',
 }

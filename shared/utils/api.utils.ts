@@ -23,16 +23,41 @@ const onRefreshed = (token: string | null): void => {
 };
 
 /**
- * Fetch GraphQL Query or Mutation with authentication
- * Gets the AccessToken and RefreshToken from authStore
+ * Decodes the JWT token and checks if it's expired locally.
+ * Returns true (treat as expired) when the token is malformed or unreadable,
+ * so a broken token never silently passes through as valid.
+ */
+export const isTokenExpired = (token: string): boolean => {
+    try {
+        const payloadBase64 = token.split('.')[1];
+        if (!payloadBase64) return true;
+
+        const base64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonString = atob(base64);
+        const payload = JSON.parse(jsonString);
+
+        if (payload && payload.exp) {
+            const currentTime = Math.floor(Date.now() / 1000);
+            return payload.exp < currentTime + 5;
+        }
+    } catch (error) {
+        console.error(error);
+        return true;
+    }
+    return false;
+};
+
+/**
+ * Fetch GraphQL Query or Mutation with authentication.
+ * Gets the AccessToken and RefreshToken from authStore.
+ * Handles transparent token refresh with a subscriber queue so that
+ * concurrent requests during a refresh all retry once the new token arrives.
  *
- * @param query - string;
- * @param variables - (optional) object containing the variables for the query
+ * @param query     - GraphQL query/mutation string
+ * @param variables - optional variables object
  *
- * @returns
- * a Promise
- *
- * @throws an Error if session is Expired
+ * @returns the `data` field of the GraphQL response, typed as T
+ * @throws  if the session cannot be refreshed or the request fails
  */
 export const graphqlFetch = async <T = unknown>(
     query: string,
@@ -63,8 +88,7 @@ export const graphqlFetch = async <T = unknown>(
 
     const currentToken = useAuthStore.getState().accessToken;
     if (!currentToken) {
-        // router.replace('/login');
-        throw new Error(`Unauthorized: failed to find token`);
+        throw new Error('Unauthorized: failed to find token');
     }
 
     const { response, data } = await performRequest(currentToken);
@@ -81,16 +105,16 @@ export const graphqlFetch = async <T = unknown>(
 
             try {
                 const currentRefreshToken = useAuthStore.getState().refreshToken;
-                if (!currentRefreshToken) throw new Error('No refreshtoken available');
+                if (!currentRefreshToken) throw new Error('No refresh token available');
 
                 const refreshQuery = `
-					mutation RefreshTokens($refreshToken: String!) {
-						refreshTokens(input: { refreshToken: $refreshToken }) {
-							accessToken
-							refreshToken
-						}
-					}
-				`;
+                    mutation RefreshTokens($refreshToken: String!) {
+                        refreshTokens(input: { refreshToken: $refreshToken }) {
+                            accessToken
+                            refreshToken
+                        }
+                    }
+                `;
 
                 const refreshRes = await fetch(GRAPHQL_ENDPOINT, {
                     method: 'POST',
@@ -104,42 +128,61 @@ export const graphqlFetch = async <T = unknown>(
                     }),
                 });
 
-                if (!refreshRes.ok) throw new Error('Refresh failed');
+                if (!refreshRes.ok) throw new Error('Token refresh request failed');
 
                 const refreshData: TGraphQLResponse<{ refreshTokens: IRefreshTokensResponse }> =
                     await refreshRes.json();
 
+                if (refreshData.errors && refreshData.errors.length > 0) {
+                    throw new Error(refreshData.errors[0].message);
+                }
+
                 const newAccessToken = refreshData.data?.refreshTokens?.accessToken;
                 const newRefreshToken = refreshData.data?.refreshTokens?.refreshToken;
-                if (!newAccessToken || !newRefreshToken)
-                    throw new Error('Failed to recieve new token');
+                if (!newAccessToken || !newRefreshToken) {
+                    throw new Error('Token refresh succeeded but no tokens were returned');
+                }
 
                 await SecureStore.setItemAsync('accessToken', newAccessToken);
                 await SecureStore.setItemAsync('refreshToken', newRefreshToken);
                 useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
-                isRefreshing = false;
+
                 onRefreshed(newAccessToken);
+                isRefreshing = false;
 
                 const retryResult = await performRequest(newAccessToken);
+
+                if (retryResult.data.errors && retryResult.data.errors.length > 0) {
+                    throw new Error(retryResult.data.errors[0].message);
+                }
+
                 return retryResult.data.data;
             } catch (error) {
                 isRefreshing = false;
                 useAuthStore.getState().logout();
                 onRefreshed(null);
-                throw new Error(`${error instanceof Error ? error.message : String(error)}`);
+                throw new Error(error instanceof Error ? error.message : String(error));
             }
-        } else {
-            return new Promise<T | undefined>((resolve, reject) => {
-                addTokenRefreshSubscriber(async (newToken) => {
-                    if (newToken) {
-                        const retryResult = await performRequest(newToken);
-                        resolve(retryResult.data.data);
-                    } else {
-                        reject(new Error('Session Expired'));
-                    }
-                });
-            });
         }
+
+        return new Promise<T | undefined>((resolve, reject) => {
+            addTokenRefreshSubscriber(async (newToken) => {
+                if (!newToken) {
+                    reject(new Error('Session expired'));
+                    return;
+                }
+                try {
+                    const retryResult = await performRequest(newToken);
+                    if (retryResult.data.errors && retryResult.data.errors.length > 0) {
+                        reject(new Error(retryResult.data.errors[0].message));
+                    } else {
+                        resolve(retryResult.data.data);
+                    }
+                } catch (err) {
+                    reject(err instanceof Error ? err : new Error(String(err)));
+                }
+            });
+        });
     }
 
     if (data.errors && data.errors.length > 0) {
@@ -150,15 +193,15 @@ export const graphqlFetch = async <T = unknown>(
 };
 
 /**
- * Fetch GraphQL authentication Query or Mutation
+ * Fetch GraphQL authentication Query or Mutation (no token refresh logic).
+ * Used for auth flows (login, register, password reset) where the caller
+ * needs access to the raw response and errors.
  *
- * @param query - string;
- * @param variables - (optional) object containing the variables for the query
+ * @param query     - GraphQL query/mutation string
+ * @param variables - optional variables object
  *
- * @returns
- * a Promise
- *
- * @throws an Error if the request has failed
+ * @returns `{ response, data }` or undefined
+ * @throws  if the network request itself fails
  */
 export const graphFetchAuth = async (
     query: string,

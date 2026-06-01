@@ -98,6 +98,16 @@ export interface IOnboardingStore {
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
+export interface IHomeStore {
+    allChapters: IGetMyChaptersResponse[] | null;
+    chapterIndex: number;
+    activeChapterIndex: number;
+    aChapterStatus: EProgressStatus | null;
+    returnToCurrentChapter: () => void;
+    updateChapterIndex: (index: number) => void;
+    setAllChapters: (chapters: IGetMyChaptersResponse[]) => void;
+}
+
 export interface IUserDataStore {
     language: ELocales;
     userData: IUserData | null;
@@ -109,6 +119,7 @@ export interface IUserDataStore {
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
     getUserData: () => Promise<void>;
+    setStreaks: (streak: number) => void;
 }
 
 export interface ILessonStore {
@@ -182,6 +193,7 @@ export interface IUnlockedLesson {
 export interface IUnlockedChapter {
     uuid: string;
     name: string;
+    slug: string;
     description: string;
 }
 
@@ -374,6 +386,12 @@ export interface ILessonMeshProps {
     isCurrent: boolean;
     delay: number;
     onClick: () => void;
+}
+
+export interface IFloatingIslandProps {
+    scale?: [number, number, number] | number;
+    position?: [number, number, number];
+    animation: boolean;
 }
 
 export interface ITranslations {

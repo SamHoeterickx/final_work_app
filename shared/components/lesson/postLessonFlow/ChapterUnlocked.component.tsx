@@ -1,11 +1,10 @@
-import { Canvas, useFrame } from '@react-three/fiber/native';
-import { FC, useEffect, useRef } from 'react';
+import { Canvas } from '@react-three/fiber/native';
+import { FC, Suspense, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Animated, Easing, StyleSheet, Text, Vibration, View } from 'react-native';
-import * as THREE from 'three';
 
 // COMPONENTS
-import { SvgIcon } from '@/shared/components';
+import { FloatingIsland, SvgIcon } from '@/shared/components';
 
 // CONST
 import { VIBRATION_PATTERN } from '@/shared/const/settings.const';
@@ -16,37 +15,13 @@ import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 // TYPES
 import { ELocales, ESvgIconName } from '@/shared/types/enums';
 
-const FloatingIsland = () => {
-    const groupRef = useRef<THREE.Group>(null!);
-
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
-        if (groupRef.current) {
-            groupRef.current.rotation.y = t * 0.5;
-            groupRef.current.position.y = Math.sin(t * 2) * 0.1;
-        }
-    });
-
-    return (
-        <group ref={groupRef}>
-            <mesh position={[0, -0.2, 0]}>
-                <cylinderGeometry args={[1.5, 1.2, 0.4, 16]} />
-                <meshStandardMaterial color="#4A5D44" />
-            </mesh>
-            <mesh position={[0, 0.2, 0]}>
-                <boxGeometry args={[0.6, 0.6, 0.6]} />
-                <meshStandardMaterial color="#D6D0C9" />
-            </mesh>
-        </group>
-    );
-};
-
 export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
     const { t, i18n } = useTranslation();
     const locale = (i18n.language as ELocales) || ELocales.NL;
 
     const cName = chapter?.name?.[locale] || chapter?.name?.en || 'Nieuw Hoofdstuk';
     const cDescription = chapter?.description?.[locale] || chapter?.description?.en || '';
+    const cModelUrl = chapter?.slug || null;
 
     const lockOpacity = useRef(new Animated.Value(1)).current;
     const lockScale = useRef(new Animated.Value(1)).current;
@@ -162,11 +137,19 @@ export const ChapterUnlockedScreen: FC<{ chapter: any }> = ({ chapter }) => {
                     { opacity: canvasOpacity, transform: [{ scale: canvasScale }] },
                 ]}
             >
-                <Canvas camera={{ position: [0, 3, 6], fov: 40 }}>
-                    <ambientLight intensity={0.7} />
+                <Canvas
+                    camera={{ position: [0, 3, 6], fov: 40 }}
+                    gl={{ antialias: false, powerPreference: 'high-performance' }}
+                >
+                    <ambientLight intensity={1.2} />
+                    <hemisphereLight groundColor="#465E3C" intensity={0.8} />
                     <directionalLight position={[10, 10, 10]} intensity={1.5} />
                     <directionalLight position={[-10, 10, -10]} intensity={0.5} />
-                    <FloatingIsland />
+                    <group position={[0, -1, 0]}>
+                        <Suspense fallback={null}>
+                            <FloatingIsland scale={0.75} animation={true} modelUrl={cModelUrl} />
+                        </Suspense>
+                    </group>
                 </Canvas>
             </Animated.View>
 

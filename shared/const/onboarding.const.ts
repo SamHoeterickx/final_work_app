@@ -8,33 +8,23 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
-                label: 'onboarding.currentBehaviour.optionLabels.instantCoffee',
-                tag: 'instant_coffee',
-                image: 'filter_coffee',
+                label: 'onboarding.currentBehaviour.optionLabels.wholeBeans',
+                tag: 'coffee_whole_beans',
+                image: 'whole_beans',
             },
             {
-                label: 'onboarding.currentBehaviour.optionLabels.work',
-                tag: 'work',
-                image: 'full_automatic_machine',
+                label: 'onboarding.currentBehaviour.optionLabels.preGround',
+                tag: 'coffee_pre_ground',
+                image: 'ground_coffee',
             },
             {
-                label: 'onboarding.currentBehaviour.optionLabels.espresso',
-                tag: 'espresso',
-                image: 'espresso_machine',
-            },
-            {
-                label: 'onboarding.currentBehaviour.optionLabels.podMachine',
-                tag: 'pod_machine',
+                label: 'onboarding.currentBehaviour.optionLabels.convenience',
+                tag: 'coffee_convenience',
                 image: 'cup_machine',
             },
             {
-                label: 'onboarding.currentBehaviour.optionLabels.frenchPress',
-                tag: 'french_press',
-                image: 'french_press',
-            },
-            {
                 label: 'onboarding.currentBehaviour.optionLabels.coffeeShop',
-                tag: 'coffee_shop',
+                tag: 'coffee_shop_lover',
                 image: 'coffee_shop',
             },
         ],
@@ -46,27 +36,21 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         options: [
             {
                 label: 'onboarding.experienceLevel.optionLabels.tasteEnjoyer',
-                tag: 'taste_enjoyer',
+                tag: 'level_beginner',
                 description: 'onboarding.experienceLevel.optionDescriptions.tasteEnjoyer',
                 image: '1_bean',
             },
             {
                 label: 'onboarding.experienceLevel.optionLabels.curious',
-                tag: 'curious',
+                tag: 'level_intermediate',
                 description: 'onboarding.experienceLevel.optionDescriptions.curious',
                 image: '2_beans',
             },
             {
                 label: 'onboarding.experienceLevel.optionLabels.connoisseur',
-                tag: 'connoisseur',
+                tag: 'level_advanced',
                 description: 'onboarding.experienceLevel.optionDescriptions.connoisseur',
                 image: '3_beans',
-            },
-            {
-                label: 'onboarding.experienceLevel.optionLabels.experimenter',
-                tag: 'experimenter',
-                description: 'onboarding.experienceLevel.optionDescriptions.experimenter',
-                image: '4_beans',
             },
         ],
     },
@@ -77,19 +61,19 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         options: [
             {
                 label: 'onboarding.goal.optionLabels.tastingSkills',
-                tag: 'tasting_skills',
+                tag: 'goal_tasting',
             },
             {
                 label: 'onboarding.goal.optionLabels.perfectEspresso',
-                tag: 'perfect_espresso',
+                tag: 'goal_espresso',
             },
             {
                 label: 'onboarding.goal.optionLabels.latteArt',
-                tag: 'latte_art',
+                tag: 'goal_latte_art',
             },
             {
                 label: 'onboarding.goal.optionLabels.beanToCup',
-                tag: 'bean_to_cup',
+                tag: 'goal_bean_to_cup',
             },
         ],
     },
@@ -100,19 +84,19 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         options: [
             {
                 label: 'onboarding.currentPreferences.optionLabels.boldClassic',
-                tag: 'bold_classic',
+                tag: 'pref_bold_classic',
             },
             {
                 label: 'onboarding.currentPreferences.optionLabels.milkBalanced',
-                tag: 'milk_balanced',
-            },
-            {
-                label: 'onboarding.currentPreferences.optionLabels.versatile',
-                tag: 'versatile',
+                tag: 'pref_milk_balanced',
             },
             {
                 label: 'onboarding.currentPreferences.optionLabels.fruityAcidic',
-                tag: 'fruity_acidic',
+                tag: 'pref_fruity_acidic',
+            },
+            {
+                label: 'onboarding.currentPreferences.optionLabels.versatile',
+                tag: 'pref_versatile',
             },
         ],
     },
@@ -149,29 +133,29 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
-                label: 'onboarding.currentMethodes.optionLabels.chemex',
-                tag: 'chemex',
-                image: 'chemex',
-            },
-            {
-                label: 'onboarding.currentMethodes.optionLabels.mokaPot',
-                tag: 'moka_pot',
-                image: 'moka_pot',
-            },
-            {
                 label: 'onboarding.currentMethodes.optionLabels.espressoMachine',
-                tag: 'espresso_machine',
+                tag: 'method_espresso',
                 image: 'espresso_machine',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.pourOver',
-                tag: 'pour_over',
+                tag: 'method_pour_over',
                 image: 'pour_over',
             },
             {
+                label: 'onboarding.currentMethodes.optionLabels.mokaPot',
+                tag: 'method_moka_pot',
+                image: 'moka_pot',
+            },
+            {
+                label: 'onboarding.currentMethodes.optionLabels.immersion',
+                tag: 'method_immersion',
+                image: 'aero_press',
+            },
+            {
                 label: 'onboarding.currentMethodes.optionLabels.frenchPress',
-                tag: 'french_press',
-                image: 'french_press',
+                tag: 'method_immersion',
+                image: 'aero_press',
             },
             {
                 label: 'onboarding.currentMethodes.optionLabels.none',
@@ -186,24 +170,29 @@ export const onboardingQuestions: IOnboardingQuestions[] = [
         kind: EOnboardingQuestionKind.MULTIPLE_TILES,
         options: [
             {
+                label: 'onboarding.extraGear.optionLabels.coffeeGrinder',
+                tag: 'gear_grinder',
+                image: 'bean_mill',
+            },
+            {
                 label: 'onboarding.extraGear.optionLabels.precisionScale',
-                tag: 'precision_scale',
-                image: '',
+                tag: 'gear_scale',
+                image: 'precision_scale',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.gooseneckKettle',
-                tag: 'gooseneck_kettle',
+                tag: 'gear_kettle',
                 image: 'gooseneck_kettle',
             },
             {
-                label: 'onboarding.extraGear.optionLabels.coffeeGrinder',
-                tag: 'coffee_grinder',
-                image: 'bean_mil',
+                label: 'onboarding.extraGear.optionLabels.milkFrother',
+                tag: 'gear_milk_frother',
+                image: 'milk_foamer',
             },
             {
-                label: 'onboarding.extraGear.optionLabels.milkFrother',
-                tag: 'milk_frother',
-                image: 'milk_foamer',
+                label: 'onboarding.extraGear.optionLabels.puckPrep',
+                tag: 'gear_puck_prep',
+                image: 'puck_prep',
             },
             {
                 label: 'onboarding.extraGear.optionLabels.none',

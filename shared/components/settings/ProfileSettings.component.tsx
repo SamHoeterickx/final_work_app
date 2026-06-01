@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 // COMPONENTS
@@ -9,7 +9,7 @@ import { SettingsTab } from './SettingsTab.component';
 // CONST
 import { PROFILE_SETTINGS_OPTIONS } from '@/shared/const/settings.const';
 
-export const ProfileSettings = () => {
+export const ProfileSettings: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const renderProfileSettingTabs = () => {

@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/components';
 
 // HOOKS
+import { useHomeStore } from '@/shared/context/homeStore.context';
 import { useGetChapters, useSwipe } from '@/shared/hooks';
 
 // STYLES
@@ -14,14 +15,20 @@ import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
-import { IGetMyChaptersResponse } from '@/shared/types/response.type';
 
 const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
-    const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isAnimating, setIsAnimating] = useState(false);
+
+    const {
+        activeChapterIndex,
+        allChapters,
+        setAllChapters,
+        updateChapterIndex,
+        returnToCurrentChapter,
+    } = useHomeStore();
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 
@@ -34,26 +41,17 @@ export default function HomeScreen() {
                 refetch();
             }
             setIsFocused(false);
-        }, [refetch]),
+            returnToCurrentChapter();
+        }, [refetch, returnToCurrentChapter]),
     );
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log('---USERCHAPTERS', userChapters);
-
-        const activeIndex = userChapters.findIndex(
-            (chapter: IGetMyChaptersResponse) =>
-                chapter.status === EProgressStatus.INPROGRESS ||
-                chapter.status === EProgressStatus.UNLOCKED,
-        );
-
-        if (activeIndex !== -1) {
-            setCurrentChapterIndex(activeIndex);
-        }
-    }, [userChapters]);
+        setAllChapters(userChapters);
+    }, [userChapters, setAllChapters]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
-        if (isAnimating || currentChapterIndex === null) return;
+        if (isAnimating || allChapters === null) return;
         setIsAnimating(true);
 
         const outValue = swipeDirection === 'left' ? -width : width;
@@ -64,7 +62,7 @@ export default function HomeScreen() {
             duration: 200,
             useNativeDriver: true,
         }).start(() => {
-            setCurrentChapterIndex(newIndex);
+            updateChapterIndex(newIndex);
             slideAnim.setValue(inValue);
 
             Animated.timing(slideAnim, {
@@ -79,19 +77,14 @@ export default function HomeScreen() {
 
     function onSwipeRight() {
         if (isFocused) return;
-        if (currentChapterIndex === null || currentChapterIndex <= 0) return;
-        animateTransition(currentChapterIndex - 1, 'right');
+        if (allChapters === null || activeChapterIndex <= 0) return;
+        animateTransition(activeChapterIndex - 1, 'right');
     }
 
     function onSwipeLeft() {
         if (isFocused) return;
-        if (
-            currentChapterIndex === null ||
-            !userChapters ||
-            currentChapterIndex >= userChapters.length - 1
-        )
-            return;
-        animateTransition(currentChapterIndex + 1, 'left');
+        if (allChapters === null || activeChapterIndex >= allChapters.length - 1) return;
+        animateTransition(activeChapterIndex + 1, 'left');
     }
 
     const renderError = () => {
@@ -113,16 +106,15 @@ export default function HomeScreen() {
                 scrollEnabled={false}
                 style={{
                     opacity:
-                        userChapters &&
-                        currentChapterIndex !== null &&
-                        userChapters[currentChapterIndex].status === EProgressStatus.LOCKED
+                        allChapters &&
+                        allChapters[activeChapterIndex]?.status === EProgressStatus.LOCKED
                             ? 0.3
                             : 1,
                 }}
             >
-                {!isPending && currentChapterIndex !== null && userChapters && (
+                {!isPending && allChapters && allChapters[activeChapterIndex] && (
                     <Chapter
-                        chapterUser={userChapters[currentChapterIndex]}
+                        chapterUser={allChapters[activeChapterIndex]}
                         slideAnim={slideAnim}
                         isFocused={isFocused}
                         setIsFocused={setIsFocused}
@@ -150,7 +142,6 @@ const styles = StyleSheet.create({
     },
     wChapter: {
         width: width,
-        marginTop: spacing.xxl * 2,
         flex: 1,
     },
     error: {

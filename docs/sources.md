@@ -11,3 +11,8 @@
 - [Expo router tab bar](https://docs.expo.dev/router/advanced/custom-tabs/)
 - [React native modal](https://reactnative.dev/docs/modal)
 - [React native vibrations](https://reactnative.dev/docs/vibration)
+- [Floating island Claude AI](https://claude.ai/share/acf4890f-328e-4f25-bd1e-905e6ee78e57) 
+- [3D Model optimalisation Claude AI](https://claude.ai/share/dc89a0f8-6a28-4861-9fb2-98a1c8078142)
+- [DRACO Compression possible with React-three/drei/native | didnt find much online so asked ai](https://gemini.google.com/share/42a909c25e5e)
+- [Gemini generated images for 3D models](https://gemini.google.com/share/8ef1866c8fa2)
+- [Meshy AI to generate 3D models from images](https://www.meshy.ai/workspace)

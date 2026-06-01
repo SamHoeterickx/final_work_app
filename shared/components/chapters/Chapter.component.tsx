@@ -1,19 +1,23 @@
 import { useRouter } from 'expo-router';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 
 // COMPONENTS
+import { useHomeStore } from '@/shared/context/homeStore.context';
 import { ChapterActions } from './ui/ChapterActions.component';
 import { ChapterHeader } from './ui/ChapterHeader.component';
 import { ChapterScene } from './ui/ChapterScene.component';
 
 // TYPES
-import { EProgressStatus } from '@/shared/types/enums';
+import { EIslandModels, EProgressStatus } from '@/shared/types/enums';
 import { IChapterProps, ILessonsChapter, ILessonTranslations } from '@/shared/types/types';
 
 // CONST
 import { CAMERA_HEIGHT, CAMERA_RADIUS, LESSON_RADIUS } from '@/shared/const/chapter.const';
+
+// STYLES
+import { spacing } from '@/shared/styles/design.system';
 
 export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     chapterUser,
@@ -27,6 +31,8 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     const { i18n } = useTranslation();
     const router = useRouter();
+
+    const { aChapterStatus } = useHomeStore();
 
     useEffect(() => {
         if (!isFocused) {
@@ -43,13 +49,18 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
             handleButtonChapter();
         } else {
             if (!selectedLesson) return;
-
-            console.log('---LESSON');
             router.navigate(`/(app)/lesson/${selectedLesson.uuid}`);
         }
     };
 
     const handleButtonChapter = () => {
+        if (!chapterUser.chapter.lessons || chapterUser.chapter.lessons.length === 0) {
+            setCameraPos([0, CAMERA_HEIGHT, 1.5]);
+            setCameraTarget([0, -0.5, 0]);
+            setIsFocused(true);
+            return;
+        }
+
         const allCompleted = chapterUser.chapter.lessons.every(
             (lesson: ILessonsChapter) => lesson.status === EProgressStatus.COMPLETED,
         );
@@ -73,10 +84,11 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     const handlePassButtonStatus = (): EProgressStatus => {
         if (!isFocused) {
-            return chapterUser.status;
-        } else {
-            return selectedLesson?.status ?? EProgressStatus.INPROGRESS;
+            return aChapterStatus ?? chapterUser.status;
+        } else if (selectedLesson) {
+            return selectedLesson.status;
         }
+        return chapterUser.status;
     };
 
     const handleLessonClick = (index: number, lesson: ILessonsChapter) => {
@@ -107,12 +119,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
 
     return (
         <>
-            <ChapterHeader
-                chapterUser={chapterUser}
-                isFocused={isFocused}
-                selectedLesson={selectedLesson}
-            />
-
             <Animated.View
                 style={[
                     styles.cChapterScene,
@@ -125,19 +131,34 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
                     cameraTarget={cameraTarget}
                     lessons={chapterUser.chapter.lessons}
                     onLessonClick={handleLessonClick}
+                    modelUrl={chapterUser.chapter.slug as EIslandModels}
                 />
             </Animated.View>
-            <ChapterActions
-                status={handlePassButtonStatus()}
-                isFocused={isFocused}
-                onPress={handleButton}
-            />
+            <View style={styles.uiContainer} pointerEvents="box-none">
+                <ChapterHeader
+                    chapterUser={chapterUser}
+                    isFocused={isFocused}
+                    selectedLesson={selectedLesson}
+                />
+                <ChapterActions
+                    status={handlePassButtonStatus()}
+                    isFocused={isFocused}
+                    onPress={handleButton}
+                />
+            </View>
         </>
     );
 };
 
 const styles = StyleSheet.create({
     cChapterScene: {
+        ...StyleSheet.absoluteFillObject,
+        zIndex: -1,
+    },
+    uiContainer: {
         flex: 1,
+        justifyContent: 'space-between',
+        marginTop: spacing.xxl * 2,
+        pointerEvents: 'box-none',
     },
 });

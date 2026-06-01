@@ -1,9 +1,8 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '@/shared/components';
 
 // STORE
 import { useOnboardingStore } from '@/shared/context/onboardingStore.context';
@@ -13,6 +12,41 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 
 // TYPES
 import { IQuestionProps } from '@/shared/types/types';
+
+const getImageSource = (imageName: string) => {
+    switch (imageName) {
+        case 'espresso_machine':
+            return require('../../../assets/images/onboarding/espresso_machine.png');
+        case 'pour_over':
+            return require('../../../assets/images/onboarding/pour_over.png');
+        case 'moka_pot':
+            return require('../../../assets/images/onboarding/moka_pot.png');
+        case 'aero_press':
+            return require('../../../assets/images/onboarding/immersion.png');
+        case 'french_press':
+            return require('../../../assets/images/onboarding/french_press.png');
+        case 'bean_mill':
+            return require('../../../assets/images/onboarding/coffee_grinder.png');
+        case 'gooseneck_kettle':
+            return require('../../../assets/images/onboarding/gooseneck_kettle.png');
+        case 'puck_prep':
+            return require('../../../assets/images/onboarding/puck_prep.png');
+        case 'ground_coffee':
+            return require('../../../assets/images/onboarding/ground_coffee.png');
+        case 'whole_beans':
+            return require('../../../assets/images/onboarding/whole_beans.png');
+        case 'milk_foamer':
+            return require('../../../assets/images/onboarding/milk_foamer.png');
+        case 'coffee_shop':
+            return require('../../../assets/images/onboarding/coffee_shop.png');
+        case 'precision_scale':
+            return require('../../../assets/images/onboarding/precision_scale.png');
+        case 'cup_machine':
+            return require('../../../assets/images/onboarding/cup_machine.png');
+        default:
+            return;
+    }
+};
 
 export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
     const { answers, toggleMultipleChoiceAnswer } = useOnboardingStore();
@@ -31,7 +65,14 @@ export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, quest
                 style={[styles.tileOption, currentAnswers.includes(index) && { opacity: 1 }]}
                 onPress={() => handleOnPress(index)}
             >
-                {option.image && <SvgIcon name={option.image} width={60} height={60} />}
+                {/* {option.image && <SvgIcon name={option.image} width={60} height={60} />} */}
+                {option.image && (
+                    <Image
+                        source={getImageSource(option.image)}
+                        style={{ width: 80, height: 80 }}
+                        resizeMode="cover"
+                    />
+                )}
                 <Text style={[baseStyles.h4, styles.label]}>{t(option.label)}</Text>
             </TouchableOpacity>
         ));

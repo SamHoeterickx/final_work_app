@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 // COMPONENTS
 import { SvgIcon } from '../svgIcon/SvgIcon.component';
@@ -7,17 +7,33 @@ import { StreaksModal } from '../index';
 
 // CONTEXT
 import { useUserDataStore } from '@/shared/context/userDataStore.context';
+import { useHomeStore } from '@/shared/context/homeStore.context';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { ESvgIconName } from '@/shared/types/enums';
+import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 
-export const HomeHeader = () => {
+export const HomeHeader: FC = () => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
 
+    const { aChapterStatus, returnToCurrentChapter } = useHomeStore();
     const { streaks } = useUserDataStore();
+
+    const renderReturnButton = () => {
+        if (
+            aChapterStatus === EProgressStatus.LOCKED ||
+            aChapterStatus === EProgressStatus.COMPLETED
+        ) {
+            return (
+                <TouchableOpacity style={styles.wStreaks} onPress={() => returnToCurrentChapter()}>
+                    {/* <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text> */}
+                    <SvgIcon name={ESvgIconName.RETURN} />
+                </TouchableOpacity>
+            );
+        }
+    };
 
     return (
         <>
@@ -29,9 +45,7 @@ export const HomeHeader = () => {
                     <Text style={baseStyles.h3}>{streaks}</Text>
                     <SvgIcon name={ESvgIconName.STREAKS} />
                 </TouchableOpacity>
-                {/* <TouchableOpacity style={styles.wStreaks}>
-                    <SvgIcon name={ESvgIconName.NOTIFICATIONS} />
-                </TouchableOpacity> */}
+                {renderReturnButton()}
             </View>
             <StreaksModal isModalOpen={isStreaksModalOpen} setIsModalOpen={setIsStreakModalOpen} />
         </>

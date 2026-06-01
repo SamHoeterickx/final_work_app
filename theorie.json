@@ -1,212 +1,47 @@
-// CHAPTER 1 - INTRODUCTION TO COFFEE
-// LESSON 1 - INTRODUCTION
 [
     {
+        "body": "The biological armor.",
+        "type": "info",
+        "title": "The Exocarp",
         "screen": 1,
-        "screenType": "C_TITLE",
-        "type": "info",
-        "title": "Introductie tot koffie",
-        "body": "Er zijn 2 verschillende types van koffie..."
+        "screenType": "C_TITLE"
     },
     {
+        "body": [
+            "The exocarp forms the tough outer skin of the coffee cherry. This layer consists of a single row of strong parenchyma cells.",
+            "It functions as the ultimate biological armor against harmful external influences. Pests like the coffee berry borer are effectively kept out."
+        ],
+        "type": "info",
+        "title": "The Outer Protective Layer",
         "screen": 2,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Product Koffie",
-        "imgPath": "",
+        "screenType": "C_INFO"
+    },
+    {
         "body": [
-            "Dit wordt ook vaan Commodity Coffee genoemd. Commodity Coffee is de koffie die je bij je oma en opa vaak tegenkomt",
-            "Product koffie is het generieke product, dus simpel weg gewoon koffie. Deze koffie wordt vaak gedronken om wakker te worden, caffeine binnen te krijgen, gedachten helder te maken en zoveel meer."
-        ]
-    },
-    {
-        "screen": 3,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
+            "During ripening, this skin undergoes a fascinating chemical change. The chloroplasts present slowly break down as the cherry ages.",
+            "Subsequently, anthocyanins take over within the cell structure. These substances provide the striking, deep red or yellow color of a ripe cherry."
+        ],
         "type": "info",
-        "title": "Specialty Coffee",
-        "imgPath": "",
-        "body": [
-            "Specialty coffee is koffie dat bepaald wordt aan de hand van enkele factoren zoals de kwaliteit, smaak, afkomst, oogst, productie, ...",
-            "Dit type koffie wordt meer gedronken om te genieten van een zeer lekkere kop koffie."
-        ]
-    },
-    {
+        "title": "The Color Transformation",
         "screen": 3,
-        "screenType": "C_TEXT_WITH_IMAGE",
-        "type": "info",
-        "title": "Het magische getal: 80",
-        "imgPath": "https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.hatillocoffee.com%2F2021%2F07%2F27%2Fwhat-is-sca-cup-score%2F&ved=0CBYQjRxqFwoTCPDym9mzx5QDFQAAAAAdAAAAABAH&opi=89978449",
-        "body": "Niet elke koffie mag zomaar 'specialty' genoemd worden. Gecertificeerde koffie-experts (Q-graders) proeven de koffie en geven een score op 100. Pas bij een score van 80 of hoger krijgt een koffie officieel het label 'Specialty Coffee'."
+        "screenType": "C_INFO"
     },
     {
+        "type": "quiz",
+        "title": "Biological Coloring",
+        "answer": "Anthocyanins",
+        "screen": 4,
+        "options": ["Pectin", "Anthocyanins", "Cellulose"],
+        "question": "Which chemical component in the exocarp's cell structure is responsible for the color change to red or yellow during ripening?",
+        "screenType": "Q_RIGHT_OR_WRONG"
+    },
+    {
+        "type": "quiz",
+        "title": "The Protector",
+        "answer": "The coffee berry borer",
         "screen": 5,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Hoe herken je het aan de zak?",
-        "imgPath": "coffee_bag_details",
-        "body": [
-            "De branddatum (Roast Date): Specialty branders vermelden altijd wanneer de koffie is gebrand, in plaats van alleen een vage houdbaarheidsdatum tot ergens volgend jaar. Versheid is cruciaal!",
-            "Traceerbaarheid: Waar commerciële koffie vaak alleen 'Zuid-Amerika' vermeldt, vertelt een specialty zak je het land, de regio, de specifieke boerderij, de hoogte waarop de plant groeide en het type koffieboon."
-        ]
-    },
-    {
-        "screen": 6,
-        "screenType": "C_DID_YOU_KNOW",
-        "type": "fact",
-        "title": "Wist je dat?",
-        "body": "Als koffiebonen heel donker zijn, glimmen of vettig aanvoelen, zijn ze vaak te ver doorgebrand om een lage kwaliteit te verbergen. Specialty bonen worden lichter gebrand, zien er matter uit en behouden zo hun unieke smaken."
-    }
-]
-
-// LESSON 2 _ DE KOFFIEBES
-[
-    {
-        "screen": 1,
-        "screenType": "C_TITLE",
-        "type": "info",
-        "title": "De Koffieplant",
-        "body": "Voordat het in je kopje belandt, groeit koffie aan een boom. Laten we kijken naar de bron van jouw dagelijkse cafeïne."
-    },
-    {
-        "screen": 2,
-        "screenType": "C_TEXT_WITH_IMAGE",
-        "type": "info",
-        "title": "Koffie is een fruit",
-        "imgPath": "coffee_cherry_branch",
-        "body": "De koffieboon zoals wij die kennen, is eigenlijk helemaal geen boon! Het is het zaadje of de pit van een fruitsoort die we de 'koffiebes' (coffee cherry) noemen."
-    },
-    {
-        "screen": 3,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Anatomie van de bes",
-        "imgPath": "cherry_anatomy_diagram",
-        "body": [
-            "Buitenkant: Een rijpe koffiebes is meestal helderrood, al zijn er ook variëteiten die geel of oranje kleuren als ze rijp zijn.",
-            "Binnenkant: Onder de schil en het zoete vruchtvlees zitten meestal twee zaden (de koffiebonen) met hun platte kanten tegen elkaar aangedrukt."
-        ]
-    },
-    {
-        "screen": 4,
-        "screenType": "C_DID_YOU_KNOW",
-        "type": "fact",
-        "title": "Wist je dat?",
-        "body": "In ongeveer 5% van de koffiebessen groeit er maar één rond zaadje in plaats van twee platte. Dit noemen we een 'Peaberry' (of parelboon). Veel branders geloven dat deze rondere bonen een zoetere en intensere smaak hebben!"
-    }
-]
-// LESSON 3 - ARABICA VS ROBUSTA
-[
-    {
-        "screen": 1,
-        "screenType": "C_TITLE",
-        "type": "info",
-        "title": "Arabica & Robusta",
-        "body": "Er bestaan meer dan 120 soorten koffieplanten, maar er zijn twee absolute giganten die de markt domineren."
-    },
-    {
-        "screen": 2,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Arabica: De Fijnproever",
-        "imgPath": "arabica_bean_profile",
-        "body": [
-            "Arabica is goed voor zo'n 60-70% van de wereldwijde koffieproductie. Deze plant groeit het best op grote hoogtes (boven 1000m) en heeft een koeler klimaat nodig.",
-            "Smaak: Arabica staat bekend om zijn complexe, zachte en vaak fruitige of bloemige smaken. Vrijwel alle Specialty Coffee is Arabica."
-        ]
-    },
-    {
-        "screen": 3,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Robusta: De Krachtpatser",
-        "imgPath": "robusta_bean_profile",
-        "body": [
-            "Zoals de naam al zegt, is Robusta een robuuste plant. Hij groeit op lagere hoogtes, is beter bestand tegen ziektes en insecten, en is makkelijker te verbouwen.",
-            "Smaak & Cafeïne: Robusta heeft een veel hardere, aardse en soms bittere smaak. Bovendien bevat het bijna dubbel zoveel cafeïne als Arabica!"
-        ]
-    },
-    {
-        "screen": 4,
-        "screenType": "C_DID_YOU_KNOW",
-        "type": "fact",
-        "title": "Waarom zoveel cafeïne?",
-        "body": "Cafeïne is eigenlijk een natuurlijk bestrijdingsmiddel! Omdat de Robusta plant meer cafeïne produceert, is hij van nature beter beschermd tegen insecten en ongedierte."
-    }
-]
-
-// LESSON 4 - REIS VAN DE BOON
-[
-    {
-        "screen": 1,
-        "screenType": "C_TITLE",
-        "type": "info",
-        "title": "Van struik tot mok",
-        "body": "De reis die een koffieboon aflegt is enorm lang. Zelfs een simpele kop koffie is het resultaat van een wereldwijde samenwerking."
-    },
-    {
-        "screen": 2,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Stap 1: Oogsten & Verwerken",
-        "imgPath": "harvest_process",
-        "body": [
-            "Specialty koffiebessen worden vaak met de hand geplukt, zodat alleen de perfect rijpe bessen geselecteerd worden.",
-            "Daarna moeten de zaden uit het fruit gehaald worden. Dit proces (bijvoorbeeld 'washed' of 'natural') heeft een enorme impact op de uiteindelijke smaak van de koffie."
-        ]
-    },
-    {
-        "screen": 3,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Stap 2: Branden (Roasting)",
-        "imgPath": "roasting_process",
-        "body": [
-            "Groene koffiebonen smaken naar gras en meel. Pas tijdens het branden (roosten) vinden er chemische reacties plaats die de honderden aroma's en smaken vrijmaken.",
-            "De koffiebrander beslist hoe lang en hoe heet de bonen gebrand worden om het perfecte smaakprofiel te creëren."
-        ]
-    },
-    {
-        "screen": 4,
-        "screenType": "C_DID_YOU_KNOW",
-        "type": "fact",
-        "title": "Mensenwerk",
-        "body": "Gemiddeld gaat een koffieboon door de handen van wel 40 verschillende mensen – van de plukker en verwerker tot de exporteur, brander en barista – voordat jij hem drinkt!"
-    }
-]
-
-// LESSON 5 - BASIS VAN HET PROEVEN
-[
-    {
-        "screen": 1,
-        "screenType": "C_TITLE",
-        "type": "info",
-        "title": "Hoe proef je koffie?",
-        "body": "Nu we weten wat specialty coffee is, is het tijd om onze zintuigen te openen. Proeven is een kunst die je kunt trainen."
-    },
-    {
-        "screen": 2,
-        "screenType": "C_TEXT_WITH_IMAGE",
-        "type": "info",
-        "title": "Aroma is koning",
-        "imgPath": "smelling_coffee",
-        "body": "Je tong kan eigenlijk alleen zoet, zuur, zout, bitter en umami proeven. De complexe smaken van koffie (zoals blauwe bes, chocolade of jasmijn) neem je eigenlijk voor 80% waar met je neus, via het aroma!"
-    },
-    {
-        "screen": 3,
-        "screenType": "C_IMAGE_WITH_MULTIPLE_TEXT",
-        "type": "info",
-        "title": "Twee belangrijke termen",
-        "imgPath": "tasting_terms",
-        "body": [
-            "Zuurgraad (Acidity): Dit is geen negatief zuur zoals azijn, maar juist een frisse, sprankelende levendigheid. Denk aan de frisse beet van een groene appel of citrusfruit.",
-            "Body (Mondgevoel): Dit beschrijft hoe zwaar de koffie in je mond voelt. Is het licht en theekleurig, of zwaar en stroperig zoals volle melk?"
-        ]
-    },
-    {
-        "screen": 4,
-        "screenType": "C_DID_YOU_KNOW",
-        "type": "fact",
-        "title": "Slurpen mag!",
-        "body": "Professionele koffieproevers slurpen hun koffie heel luidruchtig van een lepel. Dit doen ze om de koffie te mengen met zuurstof en als een spray over hun hele tong te verspreiden, waardoor de smaak veel intenser wordt."
+        "options": ["The coffee berry borer", "Aphids", "Fungi"],
+        "question": "Against which specific pest does the exocarp primarily provide a solid biological armor?",
+        "screenType": "Q_RIGHT_OR_WRONG"
     }
 ]

@@ -66,90 +66,87 @@
     },
     "onboarding": {
         "currentBehaviour": {
-            "title": "Comment préparez-vous actuellement votre café ?",
-            "subtitle": "Choisissez les façons dont vous buvez du café.",
+            "title": "Comment achetez-vous ou buvez-vous habituellement votre café ?",
+            "subtitle": "Cela nous aide à comprendre votre point de départ.",
             "optionLabels": {
-                "instantCoffee": "Café instantané",
-                "work": "Au travail",
-                "espresso": "Expresso",
-                "podMachine": "Machine à capsules",
-                "frenchPress": "Presse française",
-                "coffeeShop": "Au café"
+                "wholeBeans": "Grains de café entiers",
+                "preGround": "Café prémoulu",
+                "convenience": "Dosettes / Café instantané",
+                "coffeeShop": "Cafés / Coffee shops"
             }
         },
         "experienceLevel": {
             "title": "Quelle est votre expérience avec le café ?",
             "subtitle": "Nous adaptons votre parcours d'apprentissage en fonction de ce que vous savez déjà.",
             "optionLabels": {
-                "tasteEnjoyer": "L'Amateur de goût",
+                "tasteEnjoyer": "L'Amateur de Goût",
                 "curious": "Le Curieux",
-                "connoisseur": "Le Connaisseur",
-                "experimenter": "L'Expérimentateur"
+                "connoisseur": "Le Connaisseur"
             },
             "optionDescriptions": {
-                "tasteEnjoyer": "Je bois du café principalement pour la convivialité.",
-                "curious": "J'ai déjà entendu des termes comme taille de mouture ou torréfaction.",
-                "connoisseur": "Un Arabica / Robusta n'a rien de nouveau pour moi.",
-                "experimenter": "J'expérimente avec les méthodes de préparation."
+                "tasteEnjoyer": "Je bois du café principalement pour le goût et l'aspect social. Je suis débutant.",
+                "curious": "J'ai déjà entendu des termes comme taille de mouture, extraction ou profils de torréfaction.",
+                "connoisseur": "J'expérimente activement avec les variables, les méthodes de préparation et le café de spécialité."
             }
         },
         "goal": {
-            "title": "Que souhaitez-vous accomplir ?",
-            "subtitle": "Choisissez votre objectif principal. Pas d'inquiétude, nous couvrons tout, mais nous adaptons votre parcours.",
+            "title": "Qu'aimeriez-vous accomplir ?",
+            "subtitle": "Choisissez votre objectif principal. Ne vous inquiétez pas, nous couvrons tout, mais nous donnerons la priorité à cela.",
             "optionLabels": {
-                "tastingSkills": "Je veux apprendre à reconnaître et décrire les saveurs.",
-                "perfectEspresso": "Je veux apprendre à préparer l'expresso parfait.",
-                "latteArt": "Je veux me concentrer sur la texture du lait et créer de beaux motifs.",
-                "beanToCup": "Je veux apprendre tout le processus, de la plantation à la tasse."
+                "tastingSkills": "Je veux reconnaître, décrire et découvrir des saveurs de café uniques.",
+                "perfectEspresso": "Je veux apprendre à régler et préparer l'espresso parfait.",
+                "latteArt": "Je veux maîtriser la texture du lait et créer un magnifique latte art.",
+                "beanToCup": "Je veux comprendre tout le processus, de la plantation de grains verts à la torréfaction."
             }
         },
         "currentPreferences": {
-            "title": "Quel type de buveur de café êtes-vous ?",
-            "subtitle": "Aimez-vous un grand classique corsé ou préférez-vous chercher des saveurs fruitées ?",
+            "title": "Quel type de profil de saveur préférez-vous ?",
+            "subtitle": "Préférez-vous les classiques noirs et doux ou les saveurs fruitées et légères ?",
             "optionLabels": {
-                "boldClassic": "J'aime un goût puissant et corsé avec des notes profondes.",
-                "milkBalanced": "Pour moi, tout est question d'équilibre entre un café doux et un lait parfait.",
-                "versatile": "Je veux tout apprendre : de terreux et épicé à floral et frais.",
-                "fruityAcidic": "Je recherche des saveurs légères, fraîches et fruitées avec un peu d'acidité."
+                "boldClassic": "Des saveurs fortes, intenses et corsées avec de profondes notes chocolatées.",
+                "milkBalanced": "Un équilibre doux entre richesse et douceur, avec une texture de lait crémeuse.",
+                "fruityAcidic": "Des saveurs légères, florales et fruitées avec une acidité rafraîchissante.",
+                "versatile": "Je veux expérimenter et explorer les saveurs du café de spécialité."
             }
         },
         "desiredTempo": {
             "title": "Quel est votre rythme ?",
-            "subtitle": "Comment et combien de temps souhaitez-vous consacrer chaque jour à votre voyage autour du café ?",
+            "subtitle": "Combien de temps voulez-vous consacrer à votre parcours café quotidien ?",
             "optionLabels": {
                 "quickShot": "Le shot rapide",
                 "dailyRoutine": "La routine quotidienne",
-                "weekendLover": "L'amoureux du week-end",
+                "weekendLover": "L'amateur du week-end",
                 "ownPace": "À mon propre rythme"
             },
             "optionDescriptions": {
-                "quickShot": "Rapide et intense, apprenez-moi l'essentiel.",
-                "dailyRoutine": "Je prends le temps pour une courte leçon en buvant mon café.",
-                "weekendLover": "Le week-end, j'adore me plonger dans la matière.",
-                "ownPace": "Pas d'horaire fixe, je préfère le faire à mon rythme."
+                "quickShot": "Rapide et fort, apprenez-moi l'essentiel absolu.",
+                "dailyRoutine": "Je prends le temps pour une courte leçon en buvant mon café du matin.",
+                "weekendLover": "Le week-end, j'adore me plonger profondément dans le matériel d'apprentissage.",
+                "ownPace": "Pas d'horaire fixe, je préfère naviguer à mon propre rythme."
             }
         },
         "currentMethodes": {
-            "title": "Quelles méthodes de préparation possédez-vous déjà ?",
-            "subtitle": "Sélectionnez les méthodes pour lesquelles vous êtes équipé.",
+            "title": "Quelles méthodes de préparation utilisez-vous actuellement ?",
+            "subtitle": "Sélectionnez les méthodes pour lesquelles vous avez l'équipement.",
             "optionLabels": {
-                "chemex": "Chemex",
+                "espressoMachine": "Machine à expresso",
+                "pourOver": "Pour Over (Filtre)",
                 "mokaPot": "Cafetière Moka",
-                "espressoMachine": "Expresso",
-                "pourOver": "Pour over (filtre manuel)",
-                "frenchPress": "Presse française",
-                "none": "Je n'ai encore rien"
+                "immersion": "AeroPress",
+                "frenchPress": "Cafetière à piston (French Press)",
+                "none": "Aucun"
             }
         },
         "extraGear": {
-            "title": "Qu'y a-t-il d'autre dans votre cuisine ?",
-            "subtitle": "Sélectionnez l'équipement supplémentaire que vous possédez déjà.",
+            "title": "Quel équipement supplémentaire est disponible dans votre cuisine ?",
+            "subtitle": "Sélectionnez les outils que vous possédez déjà.",
             "optionLabels": {
+                "coffeeGrinder": "Moulin à café",
                 "precisionScale": "Balance de précision",
                 "gooseneckKettle": "Bouilloire col de cygne",
-                "coffeeGrinder": "Moulin à café",
-                "milkFrother": "Mousseur à lait",
-                "none": "Je n'ai encore rien"
+                "milkFrother": "Buse vapeur / Mousseur à lait",
+                "puckPrep": "WDT / Tamper",
+                "none": "Aucun"
             }
         },
         "buttons": {
@@ -164,7 +161,7 @@
     },
     "postOnboardingFlow": {
         "generating": {
-            "title": "Création de votre parcours personnalisé..."  
+            "title": "Création de votre parcours personnalisé..."
         },
         "success": {
             "title": "Votre parcours est prêt !",
@@ -188,8 +185,8 @@
             }
         }
     },
-    "home": {
-        "title": "Ceci est un titre"
+    "homeHeader": {
+        "backToCurrent": "return"
     },
     "chapter": {
         "currentStatus": "Leçon en Cours",
