@@ -159,9 +159,9 @@
             "update": "Wijzigingen opslaan"
         }
     },
-   "postOnboardingFlow": {
+    "postOnboardingFlow": {
         "generating": {
-            "title": "Jouw persoonlijke traject samenstellen..."  
+            "title": "Jouw persoonlijke traject samenstellen..."
         },
         "success": {
             "title": "Jouw traject staat klaar!",
@@ -336,5 +336,36 @@
         "longest": "Langste streak",
         "dayStreaks": "Dagen Streak",
         "keepGoing": "GEWELDIG BLIJF ZO DOORGAAN"
+    },
+    "loadingScreen": {
+        "messages": {
+            "worldSetup": "Je wereld wordt opgebouwd",
+            "loadingModels": "3D modellen laden",
+            "preparingApp": "App voorbereiden",
+            "loadingChapters": "Hoofdstukken laden",
+            "buildingIslands": "Eilanden aan het bouwen"
+        },
+        "didYouKnow": {
+            "1": "Brazilië is in zijn eentje verantwoordelijk voor ongeveer een derde van de wereldwijde koffieproductie.",
+            "2": "Finland is het land waar per inwoner de meeste koppen koffie ter wereld worden gedronken.",
+            "3": "Het Italiaanse woord espresso betekent letterlijk vertaald \"uitgeperst\".",
+            "4": "De allereerste webcam werd in 1991 in Cambridge gebouwd om in de gaten te houden of de gezamenlijke koffiepot leeg was.",
+            "5": "Na ruwe olie is koffie één van de meest verhandelde grondstoffen ter wereld.",
+            "6": "In 2017 kreeg het internationale ruimtestation ISS zijn eerste speciale espressomachine, genaamd de \"ISSpresso\".",
+            "7": "Hawaii is de enige Amerikaanse staat waar het klimaat geschikt is om commercieel koffie te verbouwen.",
+            "8": "Vóór de uitvinding van koffie als drank, kauwden Oost-Afrikaanse stammen op de geplette bessen voor een energieboost.",
+            "9": "De cappuccino is vernoemd naar de kapucijnermonniken, omdat de kleur van de drank exact leek op hun bruine gewaden.",
+            "10": "Een kopje pure, zwarte koffie bevat vrijwel geen calorieën, totdat je er melk of suiker aan toevoegt.",
+            "11": "Het duurt gemiddeld drie tot vier jaar voordat een nieuw geplante koffieboom voor het eerst bessen produceert.",
+            "12": "Alleen al de geur van koffie kan stress verminderen door de activiteit van specifieke genen in de hersenen te veranderen.",
+            "13": "Oploskoffie bestaat al sinds 1890, maar werd pas een wereldwijd succes tijdens de Eerste Wereldoorlog.",
+            "14": "Afgekoeld koffiedik is een uitstekende en duurzame meststof voor planten die van een zure bodem houden, zoals hortensia's.",
+            "15": "De \"Americano\" ontstond in de Tweede Wereldoorlog toen Amerikaanse soldaten in Italië water aan hun sterke espresso toevoegden.",
+            "16": "Zowel Australië als Nieuw-Zeeland beweren de uitvinders te zijn van de populaire \"flat white\" koffie in de jaren tachtig.",
+            "17": "Macchiato betekent letterlijk \"gevlekt\" in het Italiaans, wat verwijst naar het kleine scheutje melk dat de espresso markeert.",
+            "18": "Om een standaardzak van 60 kilo koffiebonen te produceren, zijn ongeveer 600.000 met de hand geplukte bessen nodig.",
+            "19": "De beroemde componist Ludwig van Beethoven nam zijn koffie uiterst serieus en telde voor elk kopje altijd exact 60 koffiebonen af.",
+            "20": "In de 17e eeuw probeerde de Engelse koning Charles II alle koffiehuizen te sluiten uit angst dat er politieke opstanden werden gesmeed."
+        }
     }
 }

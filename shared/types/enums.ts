@@ -110,3 +110,10 @@ export enum EIslandModels {
     PUCK_PREP = 'puck_prep',
     COFFEE_CUP = 'coffee_cup',
 }
+
+export enum ELoadingMessages {
+    WORLD_SETUP = 'world_setup',
+    LOADING_MODELS = 'loading_models',
+    PREPARING_APP = 'preparing_app',
+    LOADING_CHAPTERS = 'loading_chapters',
+}

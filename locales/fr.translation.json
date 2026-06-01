@@ -333,5 +333,36 @@
         "longest": "Série la plus longue",
         "dayStreaks": "Jours de Série",
         "keepGoing": "SUPER CONTINUEZ COMME ÇA"
+    },
+    "loadingScreen": {
+        "messages": {
+            "worldSetup": "Configuration de votre monde",
+            "loadingModels": "Chargement des modèles 3D",
+            "preparingApp": "Préparation de l'application",
+            "loadingChapters": "Chargement de vos chapitres",
+            "buildingIslands": "Construction des îles"
+        },
+        "didYouKnow": {
+            "1": "Le Brésil est à lui seul responsable d'environ un tiers de la production mondiale de café.",
+            "2": "La Finlande est le pays où l'on consomme le plus de tasses de café par habitant au monde.",
+            "3": "Le mot italien espresso signifie littéralement \"pressé\".",
+            "4": "La toute première webcam a été construite à Cambridge en 1991 pour surveiller si la cafetière commune était vide.",
+            "5": "Après le pétrole brut, le café est l'une des matières premières les plus échangées au monde.",
+            "6": "En 2017, la Station spatiale internationale (ISS) a reçu sa première machine à espresso spéciale, baptisée \"ISSpresso\".",
+            "7": "Hawaï est le seul État américain où le climat est propice à la culture commerciale du café.",
+            "8": "Avant l'invention du café en tant que boisson, les tribus d'Afrique de l'Est mâchaient les baies écrasées pour obtenir un regain d'énergie.",
+            "9": "Le cappuccino doit son nom aux moines capucins, car la couleur de la boisson ressemblait exactement à celle de leurs robes brunes.",
+            "10": "Une tasse de café noir pur ne contient pratiquement aucune calorie, jusqu'à ce que vous y ajoutiez du lait ou du sucre.",
+            "11": "Il faut en moyenne trois à quatre ans pour qu'un caféier nouvellement planté produise des baies pour la première fois.",
+            "12": "L'odeur du café à elle seule peut réduire le stress en modifiant l'activité de gènes spécifiques dans le cerveau.",
+            "13": "Le café instantané existe depuis 1890, mais il n'a connu un succès mondial que pendant la Première Guerre mondiale.",
+            "14": "Le marc de café refroidi est un excellent engrais durable pour les plantes qui aiment les sols acides, comme les hortensias.",
+            "15": "L'« Americano » est né pendant la Seconde Guerre mondiale lorsque les soldats américains en Italie ont ajouté de l'eau à leur espresso fort.",
+            "16": "L'Australie et la Nouvelle-Zélande prétendent toutes deux être les inventeurs du célèbre café « flat white » dans les années 1980.",
+            "17": "Macchiato signifie littéralement « tâché » en italien, ce qui fait référence à la petite larme de lait qui marque l'espresso.",
+            "18": "Pour produire un sac standard de 60 kilos de grains de café, environ 600 000 baies cueillies à la main sont nécessaires.",
+            "19": "Le célèbre compositeur Ludwig van Beethoven prenait son café très au sérieux et comptait toujours exactement 60 grains de café pour chaque tasse.",
+            "20": "Au XVIIe siècle, le roi d'Angleterre Charles II a tenté de fermer tous les cafés par crainte que des révoltes politiques n'y soient complotées."
+        }
     }
 }

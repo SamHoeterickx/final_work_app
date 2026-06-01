@@ -20,6 +20,9 @@ import { useLessonStore } from '@/shared/context/lessonStore.context';
 // HOOKS
 import { useCompleteLesson, useStartLesson } from '@/shared/hooks';
 
+// CONST
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+
 // STYLES
 import { colors } from '@/shared/styles/design.system';
 
@@ -73,7 +76,8 @@ export default function LessonScreen() {
     }, [screenIndex]);
 
     if (!lesson) return;
-    if (isPendingStart || isPendingComplete) return <LoadingScreen />;
+    if (isPendingStart || isPendingComplete)
+        return <LoadingScreen message={LOADING_MESSAGE_KEYS.PREPARING_APP} />;
 
     const currentScreen = lesson.content?.[0]?.content?.[screenIndex];
     const isQuizScreen =
@@ -208,7 +212,7 @@ export default function LessonScreen() {
     };
 
     if (!currentScreen) {
-        return <LoadingScreen />;
+        return <LoadingScreen message={LOADING_MESSAGE_KEYS.PREPARING_APP} />;
     }
 
     return (
@@ -235,7 +239,9 @@ export default function LessonScreen() {
                 />
             )}
 
-            {isLessonCompleted && !postFlowData && <LoadingScreen />}
+            {isLessonCompleted && !postFlowData && (
+                <LoadingScreen message={LOADING_MESSAGE_KEYS.PREPARING_APP} />
+            )}
             {postFlowData && !isPendingComplete && (
                 <PostLessonFlow data={postFlowData} currentStep={postFlowSteps[postFlowCount]} />
             )}

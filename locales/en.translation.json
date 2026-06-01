@@ -49,7 +49,7 @@
         },
         "buttons": {
             "resetPassword": "Reset password",
-            "forgotPassword":"Forgot password?"
+            "forgotPassword": "Forgot password?"
         }
     },
     "register": {
@@ -161,7 +161,7 @@
     },
     "postOnboardingFlow": {
         "generating": {
-            "title": "Crafting your personalized roadmap..."  
+            "title": "Crafting your personalized roadmap..."
         },
         "success": {
             "title": "Your Roadmap is Ready!",
@@ -301,7 +301,6 @@
             },
             "buttons": {
                 "resume": "Continue Lesson"
-
             }
         },
         "buttons": {
@@ -337,5 +336,36 @@
         "longest": "Longest streak",
         "dayStreaks": "Day Streak",
         "keepGoing": "AWESOME KEEP IT UP"
+    },
+    "loadingScreen": {
+        "messages": {
+            "worldSetup": "Setting up your world",
+            "loadingModels": "Loading 3D models",
+            "preparingApp": "Preparing app",
+            "loadingChapters": "Loading your chapters",
+            "buildingIslands": "Building islands"
+        },
+        "didYouKnow": {
+            "1": "Brazil alone is responsible for about one-third of global coffee production.",
+            "2": "Finland is the country where the most cups of coffee per capita are consumed in the world.",
+            "3": "The Italian word espresso literally translates to \"squeezed out\".",
+            "4": "The very first webcam was built in Cambridge in 1991 to keep an eye on whether the shared coffee pot was empty.",
+            "5": "After crude oil, coffee is one of the most traded commodities in the world.",
+            "6": "In 2017, the International Space Station ISS received its first special espresso machine, called the \"ISSpresso\".",
+            "7": "Hawaii is the only American state where the climate is suitable for growing coffee commercially.",
+            "8": "Before the invention of coffee as a drink, East African tribes chewed on the crushed berries for an energy boost.",
+            "9": "The cappuccino is named after the Capuchin friars, because the color of the drink exactly resembled their brown robes.",
+            "10": "A cup of pure, black coffee contains virtually no calories, until you add milk or sugar to it.",
+            "11": "It takes an average of three to four years for a newly planted coffee tree to produce berries for the first time.",
+            "12": "Just the smell of coffee can reduce stress by altering the activity of specific genes in the brain.",
+            "13": "Instant coffee has existed since 1890, but it only became a worldwide success during the First World War.",
+            "14": "Cooled coffee grounds are an excellent and sustainable fertilizer for plants that love acidic soil, such as hydrangeas.",
+            "15": "The \"Americano\" originated during World War II when American soldiers in Italy added water to their strong espresso.",
+            "16": "Both Australia and New Zealand claim to be the inventors of the popular \"flat white\" coffee in the 1980s.",
+            "17": "Macchiato literally means \"stained\" or \"spotted\" in Italian, referring to the small splash of milk that marks the espresso.",
+            "18": "To produce a standard 60-kilogram bag of coffee beans, approximately 600,000 hand-picked berries are needed.",
+            "19": "The famous composer Ludwig van Beethoven took his coffee extremely seriously and always counted out exactly 60 coffee beans for each cup.",
+            "20": "In the 17th century, the English King Charles II tried to close all coffee houses out of fear that political rebellions were being plotted."
+        }
     }
 }

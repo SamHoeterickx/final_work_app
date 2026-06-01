@@ -1,7 +1,8 @@
 import { LoadingScreen, SvgIcon } from '@/shared/components';
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+import { useAuthStore } from '@/shared/context/authStore.context';
 import { usePreloadModels } from '@/shared/hooks';
 import { borderRadius, colors } from '@/shared/styles/design.system';
-import { useAuthStore } from '@/shared/context/authStore.context';
 import { ESvgIconName } from '@/shared/types/enums';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
@@ -41,7 +42,7 @@ export default function AppLayout() {
     const { isReady } = usePreloadModels(shouldPreload);
 
     if (!isReady) {
-        return <LoadingScreen loadingFor="preloading models" message="models are loading" />;
+        return <LoadingScreen message={LOADING_MESSAGE_KEYS.WORLD_SETUP} />;
     }
     return (
         <Tabs

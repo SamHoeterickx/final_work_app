@@ -10,6 +10,9 @@ import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/compone
 import { useHomeStore } from '@/shared/context/homeStore.context';
 import { useGetChapters, useSwipe } from '@/shared/hooks';
 
+// CONST
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+
 // STYLES
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
@@ -106,7 +109,7 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.sHome}>
-            {isPending && <LoadingScreen />}
+            {isPending && <LoadingScreen message={LOADING_MESSAGE_KEYS.LOADING_CHAPTERS} />}
             {isError && renderError()}
             <ScrollView
                 contentContainerStyle={styles.wChapter}

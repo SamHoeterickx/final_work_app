@@ -399,3 +399,8 @@ export interface ITranslations {
     en: string;
     fr: string;
 }
+
+export interface ILoadingScreenProps {
+    loadingFor?: string;
+    message?: string;
+}

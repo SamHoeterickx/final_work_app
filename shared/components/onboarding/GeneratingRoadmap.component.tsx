@@ -8,6 +8,9 @@ import { LoadingScreen } from '../index';
 // HOOKS
 import { useGenerateCustomRoadmap } from '@/shared/hooks/onboarding/useGenerateCustomRoadmap.hook';
 
+// CONST
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 import { IGeneratingRoadmapProps } from '@/shared/types/types';
@@ -35,7 +38,7 @@ export const GeneratingRoadmap: FC<IGeneratingRoadmapProps> = ({ onsuccess }) =>
                 </Text>
             </View>
             <View style={styles.cContent}>
-                <LoadingScreen />
+                <LoadingScreen message={LOADING_MESSAGE_KEYS.WORLD_SETUP} />
             </View>
             <View style={styles.cFooter} />
         </>

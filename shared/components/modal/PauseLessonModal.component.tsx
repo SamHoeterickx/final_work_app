@@ -73,16 +73,16 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                             </View>
 
                             <View style={styles.cQuit}>
-                                <Button 
-                                    onPress={confirmQuit} 
-                                    copy="lesson.paused.options.quit" 
-                                    size='large'
+                                <Button
+                                    onPress={confirmQuit}
+                                    copy="lesson.paused.options.quit"
+                                    size="large"
                                 />
                                 <Button
                                     onPress={() => setShowConfirmQuit(false)}
                                     copy="settings.profile.buttons.cancel"
                                     styles="secundary"
-                                    size='large'
+                                    size="large"
                                 />
                             </View>
 
@@ -112,7 +112,7 @@ export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen 
                                 <Button
                                     copy="lesson.paused.buttons.resume"
                                     onPress={() => setIsModalOpen(false)}
-                                    size='large'
+                                    size="large"
                                 />
                             </View>
                         </View>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     },
     cQuit: {
         alignItems: 'center',
-        width: '75%'
+        width: '75%',
     },
     optionText: {
         ...baseStyles.h3,
