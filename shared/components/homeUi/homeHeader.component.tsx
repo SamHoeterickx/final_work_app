@@ -1,13 +1,13 @@
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FC, useState } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // COMPONENTS
-import { SvgIcon } from '../svgIcon/SvgIcon.component';
 import { StreaksModal } from '../index';
+import { SvgIcon } from '../svgIcon/SvgIcon.component';
 
 // CONTEXT
-import { useUserDataStore } from '@/shared/context/userDataStore.context';
 import { useHomeStore } from '@/shared/context/homeStore.context';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
@@ -15,10 +15,14 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 
-export const HomeHeader: FC = () => {
+interface IHomeHeaderProps {
+    onReturnPress?: () => void;
+}
+
+export const HomeHeader: FC<IHomeHeaderProps> = ({ onReturnPress }) => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
 
-    const { aChapterStatus, returnToCurrentChapter } = useHomeStore();
+    const { aChapterStatus } = useHomeStore();
     const { streaks } = useUserDataStore();
 
     const renderReturnButton = () => {
@@ -27,7 +31,7 @@ export const HomeHeader: FC = () => {
             aChapterStatus === EProgressStatus.COMPLETED
         ) {
             return (
-                <TouchableOpacity style={styles.wStreaks} onPress={() => returnToCurrentChapter()}>
+                <TouchableOpacity style={styles.wStreaks} onPress={onReturnPress}>
                     {/* <Text style={baseStyles.a}>{t('homeHeader.backToCurrent')}</Text> */}
                     <SvgIcon name={ESvgIconName.RETURN} />
                 </TouchableOpacity>

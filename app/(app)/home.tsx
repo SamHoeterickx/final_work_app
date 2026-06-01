@@ -24,6 +24,7 @@ export default function HomeScreen() {
 
     const {
         activeChapterIndex,
+        chapterIndex,
         allChapters,
         setAllChapters,
         updateChapterIndex,
@@ -87,6 +88,14 @@ export default function HomeScreen() {
         animateTransition(activeChapterIndex + 1, 'left');
     }
 
+    function handleReturnAnimated() {
+        if (activeChapterIndex > chapterIndex) {
+            animateTransition(chapterIndex, 'right');
+        } else if (activeChapterIndex < chapterIndex) {
+            animateTransition(chapterIndex, 'left');
+        }
+    }
+
     const renderError = () => {
         return (
             <View style={styles.error}>
@@ -129,7 +138,7 @@ export default function HomeScreen() {
                 />
             )}
 
-            {!isFocused && <HomeHeader />}
+            {!isFocused && <HomeHeader onReturnPress={handleReturnAnimated} />}
         </SafeAreaView>
     );
 }
