@@ -33,8 +33,8 @@ export default function SettingsScreen() {
             </ScrollView>
 
             <View style={styles.cButton}>
-                <Text style={styles.appVersion}>v.{version}</Text>
                 <Button copy="settings.buttons.logout" onPress={handleLogout} />
+                <Text style={styles.appVersion}>v.{version}</Text>
             </View>
         </SafeAreaView>
     );
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         right: 0,
     },
     appVersion: {
-        marginTop: spacing.md,
+        // marginTop: spacing.md,
         color: colors.text.muted,
         fontStyle: 'italic',
         textAlign: 'center',
