@@ -20,3 +20,5 @@
 - [Github CI / CD Pipeline docs](https://docs.github.com/en/actions/get-started/understand-github-actions)
 - [How to build a CI / CD Pipeline with Github Actions](https://github.blog/enterprise-software/ci-cd/build-ci-cd-pipeline-github-actions-four-steps/)
 - [Defaults for tanstack query](https://tanstack.com/query/v4/docs/framework/react/guides/important-defaults)
+- [How to get a version from package.json in the app](https://stackoverflow.com/questions/38240859/how-to-get-a-versionname-in-react-native-app-on-android)
+- [Gemini CLI is used to bugs when i didn't understand them](https://gemini.google.com/app)
