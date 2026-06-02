@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
@@ -9,11 +9,35 @@ export const PrivacyPolicy: FC = () => {
     const { t } = useTranslation();
 
     return (
-        <View style={styles.container}>
-            <Text style={[baseStyles.p, styles.content]}>
-                {t('settings.privacyPolicy.content')}
+        <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
+            <Text style={[baseStyles.p, styles.intro]}>
+                {t('settings.privacyPolicy.intro')}
             </Text>
-        </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section1Title')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section1Content')}</Text>
+            </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section2Title')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section2Content')}</Text>
+            </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section3Title')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section3Content')}</Text>
+            </View>
+
+            <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section4Title')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section4Content')}</Text>
+            </View>
+
+            <Text style={styles.footer}>
+                {t('settings.privacyPolicy.footer')}
+            </Text>
+        </ScrollView>
     );
 };
 
@@ -21,7 +45,30 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    scrollContent: {
+        padding: 16,
+        paddingBottom: 32,
+    },
+    intro: {
+        marginBottom: 20,
+        lineHeight: 22,
+    },
+    section: {
+        marginBottom: 20,
+    },
+    sectionTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginBottom: 6,
+        color: '#333', 
+    },
     content: {
-        lineHeight: 24,
+        lineHeight: 22,
+    },
+    footer: {
+        fontSize: 12,
+        color: '#666',
+        marginTop: 16,
+        fontStyle: 'italic',
     },
 });

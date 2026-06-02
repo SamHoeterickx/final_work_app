@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { version } from '@/package.json';
+
 export default function SettingsScreen() {
     const { t } = useTranslation();
 
@@ -28,6 +30,7 @@ export default function SettingsScreen() {
                 </View>
 
                 <View style={styles.cSettingTabs}>{renderSettingTabs()}</View>
+                <Text style={styles.appVersion}>v.{version}</Text>
             </ScrollView>
 
             <View style={styles.cButton}>
@@ -64,5 +67,12 @@ const styles = StyleSheet.create({
         bottom: 10,
         left: 0,
         right: 0,
+    },
+    appVersion: {
+        marginTop: spacing.md,
+        color: colors.text.muted,
+        fontStyle: 'italic',
+        textAlign: 'center',
+        fontSize: 10,
     },
 });

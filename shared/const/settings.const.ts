@@ -12,11 +12,11 @@ export const SETTINGS_OPTIONS: ISettingTabProps[] = [
         copy: 'settings.tabs.profile',
         path: 'profile',
     },
-    {
-        icon: ESvgIconName.NOTIFICATIONS,
-        copy: 'settings.tabs.notifications',
-        path: 'notifications',
-    },
+    // {
+    //     icon: ESvgIconName.NOTIFICATIONS,
+    //     copy: 'settings.tabs.notifications',
+    //     path: 'notifications',
+    // },
     {
         icon: ESvgIconName.INFO,
         copy: 'settings.tabs.about',

@@ -244,10 +244,30 @@
             "title": "À propos de BrewLingo"
         },
         "privacyPolicy": {
-            "title": "Politique de confidentialité"
+            "title": "Politique de confidentialité",
+            "intro": "Chez BrewLingo, nous prenons votre vie privée au sérieux. Cette politique de confidentialité explique quelles données nous collectons, comment nous les utilisons et comment nous les protégeons.",
+            "section1Title": "1. Données que nous collectons",
+            "section1Content": "Lorsque vous créez un compte, nous collectons votre adresse e-mail et votre nom d'utilisateur. Nous suivons également votre progression (comme les leçons terminées et votre série quotidienne) afin de vous offrir la meilleure expérience d'apprentissage.",
+            "section2Title": "2. Comment nous utilisons vos données",
+            "section2Content": "Nous utilisons vos données exclusivement pour faire fonctionner l'application, sauvegarder votre progression et améliorer l'application via des analyses anonymes. Nous ne vendons jamais vos données à des tiers.",
+            "section3Title": "3. Sécurité et stockage",
+            "section3Content": "Vos données sont stockées en toute sécurité et protégées contre tout accès non autorisé. Nous ne conservons pas vos données plus longtemps que nécessaire aux fins pour lesquelles elles ont été collectées.",
+            "section4Title": "4. Vos droits (RGPD)",
+            "section4Content": "Vous avez le droit d'accéder à vos données, de les corriger ou de les supprimer complètement à tout moment. Vous pouvez le faire directement via les paramètres de votre compte dans l'application ou en nous contactant.",
+            "footer": "Dernière mise à jour : juin 2026."
         },
         "termsOfCondition": {
-            "title": "Conditions générales"
+            "title": "Conditions générales d'utilisation",
+            "intro": "Bienvenue sur BrewLingo ! En utilisant notre application, vous acceptez ces conditions générales d'utilisation. Veuillez les lire attentivement.",
+            "section1Title": "1. Utilisation de l'application",
+            "section1Content": "BrewLingo propose du contenu éducatif sur le café, les méthodes d'extraction et la théorie. L'application est destinée à un usage personnel et non commercial. Vous êtes responsable de l'exactitude des informations que vous saisissez (comme vos identifiants).",
+            "section2Title": "2. Propriété intellectuelle",
+            "section2Content": "Tout le contenu de BrewLingo—y compris les textes, logos, leçons interactives et designs—est la propriété de BrewLingo et est protégé par le droit d'auteur. Il est interdit de copier ou de distribuer ce contenu sans autorisation préalable.",
+            "section3Title": "3. Modifications et disponibilité",
+            "section3Content": "Nous nous efforçons d'assurer le bon fonctionnement de l'application, mais nous ne pouvons garantir que le service sera toujours en ligne sans interruption. Nous nous réservons le droit de modifier, de mettre à jour ou de suspendre (temporairement) les fonctionnalités de l'application à tout moment.",
+            "section4Title": "4. Limites de responsabilité",
+            "section4Content": "Les informations contenues dans cette application sont purement éducatives. Bien que nous visions la plus haute qualité et précision dans notre science du café, nous ne saurions être tenus responsables des erreurs d'extraction, des espressos ratés ou des dommages matériels causés par le suivi de nos guides.",
+            "footer": "Dernière mise à jour : juin 2026."
         },
         "changePassword": {
             "title": "Modifier le mot de passe"

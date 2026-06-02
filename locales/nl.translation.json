@@ -246,11 +246,29 @@
         },
         "privacyPolicy": {
             "title": "Privacybeleid",
-            "content": "Jouw privacy is belangrijk voor ons. Dit privacybeleid legt uit hoe we jouw persoonlijke informatie verzamelen, gebruiken en beschermen wanneer je de BrewLingo app gebruikt. We delen jouw gegevens niet met derden."
+            "intro": "Bij BrewLingo nemen we jouw privacy serieus. In dit privacybeleid leggen we uit welke gegevens we verzamelen, hoe we ze gebruiken en hoe we ze beschermen.",
+            "section1Title": "1. Gegevens die we verzamelen",
+            "section1Content": "Wanneer je een account aanmaakt, verzamelen we je e-mailadres en gebruikersnaam. Daarnaast houden we je app-voortgang bij (zoals voltooide lessen en je daily streak) om je de beste leerervaring te bieden.",
+            "section2Title": "2. Hoe we je gegevens gebruiken",
+            "section2Content": "We gebruiken je gegevens uitsluitend om de app te laten functioneren, je voortgang op te slaan en om de app te verbeteren via anonieme analytics. We verkopen jouw gegevens nooit aan derden.",
+            "section3Title": "3. Beveiliging en opslag",
+            "section3Content": "Jouw gegevens worden veilig opgeslagen en beschermd tegen ongeoorloofde toegang. We bewaren je gegevens niet langer dan nodig is voor de doeleinden waarvoor ze zijn verzameld.",
+            "section4Title": "4. Jouw rechten (GDPR)",
+            "section4Content": "Je hebt altijd het recht om je gegevens in te zien, te corrigeren of volledig te laten verwijderen. Dit kun je direct doen via de accountinstellingen in de app of door contact met ons op te nemen.",
+            "footer": "Laatst bijgewerkt: juni 2026."
         },
         "termsOfCondition": {
             "title": "Algemene voorwaarden",
-            "content": "Door de BrewLingo app te gebruiken, ga je akkoord met deze algemene voorwaarden. De inhoud van deze app is voor educatieve doeleinden. Wij behouden ons het recht voor om de dienst op elk moment te wijzigen of te beëindigen."
+            "intro": "Welkom bij BrewLingo! Door onze app te gebruiken, ga je akkoord met deze algemene voorwaarden. Lees ze zorgvuldig door.",
+            "section1Title": "1. Gebruik van de app",
+            "section1Content": "BrewLingo biedt educatieve content over koffie, zetmethoden en theorie. De app is bedoeld voor persoonlijk, niet-commercieel gebruik. Je bent zelf verantwoordelijk voor de juistheid van de gegevens die je invoert (zoals je accountgegevens).",
+            "section2Title": "2. Intellectueel eigendom",
+            "section2Content": "Alle content binnen BrewLingo—inclusief teksten, logo's, interactieve lessen en designs—is eigendom van BrewLingo en wordt beschermd door auteursrecht. Het is niet toegestaan om content te kopiëren of te verspreiden zonder toestemming.",
+            "section3Title": "3. Wijzigingen en beschikbaarheid",
+            "section3Content": "We streven naar een perfecte werking van de app, maar we kunnen niet garanderen dat de dienst altijd zonder onderbrekingen online is. Wij behouden ons het recht voor om de functionaliteiten van de app op elk moment aan te passen, te updaten of (tijdelijk) stop te zetten.",
+            "section4Title": "4. Disclaimers",
+            "section4Content": "De informatie in deze app is puur educatief. Hoewel we streven naar de hoogste kwaliteit en accuraatheid in onze koffiewetenschap, zijn we niet aansprakelijk voor eventuele zetfouten, mislukte espresso-extracties of schade aan apparatuur door het opvolgen van gidsen.",
+            "footer": "Laatst bijgewerkt: juni 2026."
         },
         "changePassword": {
             "title": "Wachtwoord wijzigen"

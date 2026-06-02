@@ -6,7 +6,6 @@ import { ChangeEmailSettings } from './ChangeEmailSettings.component';
 import { ChangeLanguageSettings } from './ChangeLanguageSettings.component';
 import { ChangeNameSettings } from './ChangeNameSettings.component';
 import { ChangePasswordSettings } from './ChangePasswordSettings.component';
-import { NotificationSettings } from './NotificationSettings.component';
 import { PrivacyPolicy } from './PrivacyPolicy.component';
 import { ProfileSettings } from './ProfileSettings.component';
 import { TermsOfCondition } from './TermsOfCondition.component';
@@ -22,8 +21,8 @@ export const SettingsOptionsWrapper: FC<ISettingsOptionsWrapperProps> = ({ optio
             return <ProfileSettings />;
         case ESettingsOptions.CHANGE_LANGUAGE:
             return <ChangeLanguageSettings />;
-        case ESettingsOptions.NOTIFICATIONS:
-            return <NotificationSettings />;
+        // case ESettingsOptions.NOTIFICATIONS:
+        //     return <NotificationSettings />;
         case ESettingsOptions.ABOUT:
             return <AboutBrewlingo />;
         case ESettingsOptions.PRIVACY_POLICY:

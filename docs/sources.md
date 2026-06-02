@@ -16,3 +16,5 @@
 - [DRACO Compression possible with React-three/drei/native | didnt find much online so asked ai](https://gemini.google.com/share/42a909c25e5e)
 - [Gemini generated images for 3D models](https://gemini.google.com/share/8ef1866c8fa2)
 - [Meshy AI to generate 3D models from images](https://www.meshy.ai/workspace)
+- [Github CI / CD Pipeline docs](https://docs.github.com/en/actions/get-started/understand-github-actions)
+- [How to build a CI / CD Pipeline with Github Actions](https://github.blog/enterprise-software/ci-cd/build-ci-cd-pipeline-github-actions-four-steps/)
