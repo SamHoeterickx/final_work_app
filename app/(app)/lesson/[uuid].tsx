@@ -41,7 +41,6 @@ export default function LessonScreen() {
     const isLessonCompleted = useLessonStore((state) => state.isLessonCompleted);
     const subStep = useLessonStore((state) => state.subStep || 0);
     const selectedOption = useLessonStore((state) => state.selectedOption || null);
-    const quizError = useLessonStore((state) => state.quizError || null);
 
     const setScreenIndex = useLessonStore((state) => state.setScreenIndex);
     const setIsLessonCompleted = useLessonStore((state) => state.setIsLessonCompleted);

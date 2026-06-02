@@ -9,7 +9,9 @@ export const useOnboardingStore = create<IOnboardingStore>((set) => ({
     setOnboardingCount: (countOrUpdater) =>
         set((state) => ({
             onboardingCount:
-                typeof countOrUpdater === 'function' ? countOrUpdater(state.onboardingCount) : countOrUpdater,
+                typeof countOrUpdater === 'function'
+                    ? countOrUpdater(state.onboardingCount)
+                    : countOrUpdater,
         })),
     toggleMultipleChoiceAnswer: (questionIndex: number, optionIndex: number) =>
         set((state) => {
