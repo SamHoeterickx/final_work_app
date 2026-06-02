@@ -4,8 +4,12 @@
         "subtitle": "Du grain à la tasse, apprenez tout sur le café et comment préparer la tasse parfaite.",
         "buttons": {
             "onboarding": "Commencer mon voyage",
-            "login": "Reprendre mon voyage"
-        }
+            "login": "Reprendre mon voyage",
+            "privacyPolicy": "Politique de confidentialité",
+            "termsOfCondition": "Conditions générales"
+        },
+        "footer": "En continuant, vous acceptez notre",
+        "and": "et"
     },
     "login": {
         "title": "Connexion",

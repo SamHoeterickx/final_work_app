@@ -4,8 +4,12 @@
         "subtitle": "From bean to cup, learn everything about coffee and making the perfect cup.",
         "buttons": {
             "onboarding": "Start my journey",
-            "login": "Resume my journey"
-        }
+            "login": "Resume my journey",
+            "privacyPolicy": "Privacy Policy",
+            "termsOfCondition": "Terms and Conditions"
+        },
+        "footer": "By continuing, you agree to our",
+        "and": "and"
     },
     "login": {
         "title": "Login",

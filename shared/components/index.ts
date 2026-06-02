@@ -1,6 +1,7 @@
 // BUTTONS
 export { BackButton } from './buttons/BackButton.component';
 export { Button } from './buttons/Button.component';
+export { HyperLink } from './buttons/HyperLink.component';
 export { LanguageButton } from './buttons/LanguageButton.component';
 
 // INPUT FIELDS
@@ -53,14 +54,3 @@ export { LessonHeader } from './lesson/LessonHeader.component';
 export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';
 export { PostLessonFlow } from './lesson/postLessonFlow/PostLessonFlow.component';
 
-// LESSON CONTENT SCREENS
-// export { DidYouKnowScreen } from './lesson/content/DidYouKnowScreen.component';
-// export { ImageWithMultipleTextScreen } from './lesson/content/ImageWithMultipleTextScreen.component';
-// export { OnlyTextScreen } from './lesson/content/OnlyTextScreen.component';
-// export { TextWithImageScreen } from './lesson/content/TextWithImageScreen.component';
-// export { TitleScreen } from './lesson/content/TitleScreen.component';
-
-// LESSON QUIZ SCREENS
-// export { MultipleChoiceQuizScreen } from './lesson/quiz/MultipleChoiceQuizScreen.component';
-// export { OpenQuestionQuizScreen } from './lesson/quiz/OpenQuestionQuizScreen.component';
-// export { RightOrWrongQuizScreen } from './lesson/quiz/RightOrWrongQuizScreen.component';

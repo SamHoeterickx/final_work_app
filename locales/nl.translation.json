@@ -4,8 +4,12 @@
         "subtitle": "Van boon tot cup, leer alles over koffie en het maken van de perfecte cup.",
         "buttons": {
             "onboarding": "Start mijn reis",
-            "login": "Hervat mijn reis"
-        }
+            "login": "Hervat mijn reis",
+            "privacyPolicy": "Privacybeleid",
+            "termsOfCondition":"Voorwaarden"
+        },
+        "footer": "Door verder te gaan, ga je akkoord met onze",
+        "and": "en"
     },
     "login": {
         "title": "Inloggen",

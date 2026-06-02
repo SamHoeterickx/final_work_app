@@ -405,3 +405,9 @@ export interface ILoadingScreenProps {
     loadingFor?: string;
     message?: string;
 }
+
+
+export interface IHyperLinkProps {
+    path: string;
+    copy: string;
+}

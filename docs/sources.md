@@ -22,3 +22,4 @@
 - [Defaults for tanstack query](https://tanstack.com/query/v4/docs/framework/react/guides/important-defaults)
 - [How to get a version from package.json in the app](https://stackoverflow.com/questions/38240859/how-to-get-a-versionname-in-react-native-app-on-android)
 - [Gemini CLI is used to bugs when i didn't understand them](https://gemini.google.com/app)
+- [React Native linking to web](https://stackoverflow.com/questions/30540252/how-does-one-display-a-hyperlink-in-react-native-app)
