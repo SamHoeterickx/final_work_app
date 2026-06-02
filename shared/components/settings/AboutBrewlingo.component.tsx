@@ -36,9 +36,10 @@ export const AboutBrewlingo: FC = () => {
                 </Text>
             </View>
 
-
             <View style={styles.cFooter}>
-                <Text style={[baseStyles.caption, styles.footer]}>{t('settings.about.footer')} - v.{version}</Text>
+                <Text style={[baseStyles.caption, styles.footer]}>
+                    {t('settings.about.footer')} - v.{version}
+                </Text>
             </View>
         </View>
     );

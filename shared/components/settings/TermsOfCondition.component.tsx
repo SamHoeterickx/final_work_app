@@ -55,9 +55,7 @@ export const TermsOfCondition: FC = () => {
                 <Text style={[baseStyles.caption, styles.footer]}>
                     {t('settings.termsOfCondition.footer')}
                 </Text>
-                <Text style={[baseStyles.caption, styles.footer]}>
-                    v.{version}
-                </Text>
+                <Text style={[baseStyles.caption, styles.footer]}>v.{version}</Text>
             </View>
         </View>
     );
