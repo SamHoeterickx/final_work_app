@@ -7,12 +7,16 @@ import { AnimatedTextItem } from './AnimatedTextItem.component';
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
+// STORE
+import { useLessonStore } from '@/shared/context/lessonStore.context';
+
 // TYPES
 import { ILessonScreenProps } from '@/shared/types/types';
 
 const IMAGE_HEIGHT = 250;
 
-export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content, subStep = 0 }) => {
+export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content }) => {
+    const subStep = useLessonStore((state) => state.subStep || 0);
     const scrollViewRef = useRef<ScrollView>(null);
 
     const transitionAnim = useRef(new Animated.Value(subStep > 0 ? 1 : 0)).current;

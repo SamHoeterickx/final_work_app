@@ -18,7 +18,8 @@ import { ELocales } from '@/shared/types/enums';
 import { useChangePreferenceLanguage } from './useChangePreferenceLanguage.hook';
 
 export const ChangeLanguageSettings: FC = () => {
-    const { language, setLanguage } = useUserDataStore();
+    const language = useUserDataStore((state) => state.language);
+    const setLanguage = useUserDataStore((state) => state.setLanguage);
 
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales>(language);
 

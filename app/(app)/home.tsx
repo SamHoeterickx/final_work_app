@@ -25,14 +25,12 @@ export default function HomeScreen() {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    const {
-        activeChapterIndex,
-        chapterIndex,
-        allChapters,
-        setAllChapters,
-        updateChapterIndex,
-        returnToCurrentChapter,
-    } = useHomeStore();
+    const activeChapterIndex = useHomeStore((state) => state.activeChapterIndex);
+    const chapterIndex = useHomeStore((state) => state.chapterIndex);
+    const allChapters = useHomeStore((state) => state.allChapters);
+    const setAllChapters = useHomeStore((state) => state.setAllChapters);
+    const updateChapterIndex = useHomeStore((state) => state.updateChapterIndex);
+    const returnToCurrentChapter = useHomeStore((state) => state.returnToCurrentChapter);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
 

@@ -7,10 +7,14 @@ import { AnimatedTextItem } from './AnimatedTextItem.component';
 // STYLES
 import { baseStyles, spacing } from '@/shared/styles/design.system';
 
+// STORE
+import { useLessonStore } from '@/shared/context/lessonStore.context';
+
 // TYPES
 import { ILessonScreenProps } from '@/shared/types/types';
 
-export const OnlyTextScreen: FC<ILessonScreenProps> = ({ content, subStep = 0 }) => {
+export const OnlyTextScreen: FC<ILessonScreenProps> = ({ content }) => {
+    const subStep = useLessonStore((state) => state.subStep || 0);
     const scrollViewRef = useRef<ScrollView>(null);
 
     if (!content) return null;

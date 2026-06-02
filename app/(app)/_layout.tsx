@@ -36,7 +36,8 @@ const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
 };
 
 export default function AppLayout() {
-    const { accessToken, refreshToken } = useAuthStore();
+    const accessToken = useAuthStore((state) => state.accessToken);
+    const refreshToken = useAuthStore((state) => state.refreshToken);
     const shouldPreload = !!(accessToken || refreshToken);
 
     const { isReady } = usePreloadModels(shouldPreload);

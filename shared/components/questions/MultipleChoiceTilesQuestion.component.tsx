@@ -48,8 +48,12 @@ const getImageSource = (imageName: string) => {
     }
 };
 
-export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-    const { answers, toggleMultipleChoiceAnswer } = useOnboardingStore();
+export const MultipleChoiceTilesQuestion: FC<IQuestionProps> = ({ options }) => {
+    const answers = useOnboardingStore((state) => state.answers);
+    const toggleMultipleChoiceAnswer = useOnboardingStore(
+        (state) => state.toggleMultipleChoiceAnswer,
+    );
+    const questionIndex = useOnboardingStore((state) => state.onboardingCount);
     const { t } = useTranslation();
 
     const currentAnswers = answers[questionIndex] || [];

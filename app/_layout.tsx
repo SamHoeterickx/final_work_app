@@ -41,7 +41,11 @@ const queryClient = new QueryClient();
 SplashScreen.preventAutoHideAsync();
 
 const InitialLayout = () => {
-    const { accessToken, isHydrated, needsRoadmap, setHydrated, setTokens } = useAuthStore();
+    const accessToken = useAuthStore((state) => state.accessToken);
+    const isHydrated = useAuthStore((state) => state.isHydrated);
+    const needsRoadmap = useAuthStore((state) => state.needsRoadmap);
+    const setHydrated = useAuthStore((state) => state.setHydrated);
+    const setTokens = useAuthStore((state) => state.setTokens);
 
     const segments = useSegments();
     const router = useRouter();
@@ -111,8 +115,11 @@ const InitialLayout = () => {
 };
 
 export default function RootLayout() {
-    const { language, fetchUserLanguage, getUserData } = useUserDataStore();
-    const { isHydrated, accessToken } = useAuthStore();
+    const language = useUserDataStore((state) => state.language);
+    const fetchUserLanguage = useUserDataStore((state) => state.fetchUserLanguage);
+    const getUserData = useUserDataStore((state) => state.getUserData);
+    const isHydrated = useAuthStore((state) => state.isHydrated);
+    const accessToken = useAuthStore((state) => state.accessToken);
     const { i18n } = useTranslation();
 
     useEffect(() => {

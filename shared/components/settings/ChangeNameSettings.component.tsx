@@ -24,7 +24,7 @@ export const ChangeNameSettings: FC = () => {
     });
 
     const { mutate, isPending, isError, error } = useUpdateUsername();
-    const { name } = useUserDataStore();
+    const name = useUserDataStore((state) => state.name);
 
     const router = useRouter();
     const { t } = useTranslation();

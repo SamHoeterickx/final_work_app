@@ -93,7 +93,9 @@ export interface IAuthStore {
 }
 
 export interface IOnboardingStore {
+    onboardingCount: number;
     answers: Record<number, number[]>;
+    setOnboardingCount: (count: number | ((prev: number) => number)) => void;
     toggleMultipleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
@@ -125,8 +127,14 @@ export interface IUserDataStore {
 export interface ILessonStore {
     screenIndex: number;
     isLessonCompleted: boolean;
+    subStep: number;
+    selectedOption: string | null;
+    quizError: string | null;
     setScreenIndex: (index: number) => void;
     setIsLessonCompleted: (state: boolean) => void;
+    setSubStep: (step: number | ((prev: number) => number)) => void;
+    setSelectedOption: (option: string | null) => void;
+    setQuizError: (error: string | null) => void;
 }
 
 export interface IOnboardingQuestions {
@@ -244,7 +252,6 @@ export interface IOnboardingQuestionWrapperProps {
 
 export interface IQuestionProps {
     options: IQuestionOption[];
-    questionIndex: number;
 }
 
 export interface IBackButtonProps {
@@ -340,16 +347,10 @@ export interface ILessonHeaderProps {
 export interface ILessonScreenOptionsWrapperProps {
     screenType: ELessonScreenOptions;
     lessonContent: any;
-    subStep?: number;
-    quizError: string | null;
-    onAnswerSelect?: (option: string) => void;
 }
 
 export interface ILessonScreenProps {
     content: any;
-    subStep?: number;
-    quizError?: string | null;
-    onAnswerSelect?: (option: string) => void;
 }
 
 export interface IPostLessonFlowProps {

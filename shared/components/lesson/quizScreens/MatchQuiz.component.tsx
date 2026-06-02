@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import { Animated, StyleSheet, Text, TouchableOpacity, Vibration, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Animated, StyleSheet, Text, TouchableOpacity, Vibration, View } from 'react-native';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
@@ -8,16 +8,21 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 // TYPES
 import { ILessonScreenProps } from '@/shared/types/types';
 
+// STORE
+import { useLessonStore } from '@/shared/context/lessonStore.context';
+
 // UTILS
 import { renderFormattedText } from '@/shared/utils/text.utils';
 
 const shuffleArray = (array: any[]) => [...array].sort(() => Math.random() - 0.5);
 
-export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelect }) => {
+export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content }) => {
     const [shuffledItems, setShuffledItems] = useState<string[]>([]);
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const [matchedItems, setMatchedItems] = useState<string[]>([]);
     const [isError, setIsError] = useState(false);
+    const setSelectedOption = useLessonStore((state) => state.setSelectedOption);
+    const setQuizError = useLessonStore((state) => state.setQuizError);
 
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const translateYAnim = useRef(new Animated.Value(20)).current;
@@ -65,9 +70,8 @@ export const MatchQuizScreen: FC<ILessonScreenProps> = ({ content, onAnswerSelec
                 setSelectedItems([]);
 
                 if (newMatched.length === content?.pairs?.length * 2) {
-                    if (onAnswerSelect) {
-                        onAnswerSelect(content.answer || 'MATCHED_ALL');
-                    }
+                    setSelectedOption(content.answer || 'MATCHED_ALL');
+                    setQuizError(null);
                 }
             } else {
                 Vibration.vibrate();

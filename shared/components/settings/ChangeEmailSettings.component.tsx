@@ -24,7 +24,7 @@ export const ChangeEmailSettings: FC = () => {
     });
 
     const { mutate, isPending, isError, error } = useUpdateEmail();
-    const { email } = useUserDataStore();
+    const email = useUserDataStore((state) => state.email);
 
     const router = useRouter();
     const { t } = useTranslation();

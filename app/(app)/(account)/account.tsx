@@ -26,7 +26,11 @@ export default function AccountScreen() {
 
     const router = useRouter();
 
-    const { getUserData, name, xp, streaks, longestStreak } = useUserDataStore();
+    const getUserData = useUserDataStore((state) => state.getUserData);
+    const name = useUserDataStore((state) => state.name);
+    const xp = useUserDataStore((state) => state.xp);
+    const streaks = useUserDataStore((state) => state.streaks);
+    const longestStreak = useUserDataStore((state) => state.longestStreak);
 
     useFocusEffect(
         useCallback(() => {

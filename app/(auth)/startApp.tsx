@@ -1,4 +1,4 @@
-import { Animated, Easing, Image, StyleSheet, View } from 'react-native';
+import { Animated, Easing, Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'expo-router';
@@ -92,6 +92,7 @@ export default function StartAppScreen() {
                     styles="secundary"
                     size="large"
                 />
+                {/* <Text>Door in te loggen of een account aan te maken ga je akkoord met de algemene voorwaarden en privacy policy</Text> */}
             </View>
         </SafeAreaView>
     );

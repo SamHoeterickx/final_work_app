@@ -34,15 +34,20 @@ export default function LessonScreen() {
     const [postFlowData, setPostFlowData] = useState<any | null>(null);
     const [postFlowCount, setPostFlowCount] = useState<number>(0);
     const [postFlowSteps, setPostFlowSteps] = useState<string[]>([]);
-    const [subStep, setSubStep] = useState<number>(0);
-
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
-    const [quizError, setQuizError] = useState<string | null>(null);
 
     const isNavigatingBack = useRef(false);
 
-    const { screenIndex, isLessonCompleted, setScreenIndex, setIsLessonCompleted } =
-        useLessonStore();
+    const screenIndex = useLessonStore((state) => state.screenIndex);
+    const isLessonCompleted = useLessonStore((state) => state.isLessonCompleted);
+    const subStep = useLessonStore((state) => state.subStep || 0);
+    const selectedOption = useLessonStore((state) => state.selectedOption || null);
+    const quizError = useLessonStore((state) => state.quizError || null);
+
+    const setScreenIndex = useLessonStore((state) => state.setScreenIndex);
+    const setIsLessonCompleted = useLessonStore((state) => state.setIsLessonCompleted);
+    const setSubStep = useLessonStore((state) => state.setSubStep);
+    const setSelectedOption = useLessonStore((state) => state.setSelectedOption);
+    const setQuizError = useLessonStore((state) => state.setQuizError);
 
     const { uuid } = useLocalSearchParams();
     const { i18n, t } = useTranslation();
@@ -230,12 +235,6 @@ export default function LessonScreen() {
                     key={screenIndex}
                     screenType={currentScreen.screenType}
                     lessonContent={currentScreen}
-                    subStep={subStep}
-                    quizError={quizError}
-                    onAnswerSelect={(option: string) => {
-                        setSelectedOption(option);
-                        setQuizError(null);
-                    }}
                 />
             )}
 

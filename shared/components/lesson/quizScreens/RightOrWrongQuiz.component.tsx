@@ -1,18 +1,19 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { useLessonStore } from '@/shared/context/lessonStore.context';
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 import { ILessonScreenProps } from '@/shared/types/types';
 import { renderFormattedText } from '@/shared/utils/text.utils';
 
-export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({
-    content,
-    quizError,
-    onAnswerSelect,
-}) => {
+export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({ content }) => {
     const { t } = useTranslation();
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
+    const quizError = useLessonStore((state) => state.quizError);
+    const setSelectedOption = useLessonStore((state) => state.setSelectedOption);
+    const setQuizError = useLessonStore((state) => state.setQuizError);
 
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const translateYAnim = useRef(new Animated.Value(20)).current;
@@ -29,9 +30,8 @@ export const RightOrWrongQuizScreen: FC<ILessonScreenProps> = ({
     const handleSelect = (option: string) => {
         setSelectedAnswer(option);
 
-        if (onAnswerSelect) {
-            onAnswerSelect(option);
-        }
+        setSelectedOption(option);
+        setQuizError(null);
     };
 
     const questionText = content.question || content.body;

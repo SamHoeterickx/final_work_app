@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { useRouter } from 'expo-router';
+import { FC } from 'react';
 
 // COMPONENTS
 import { Button } from '../index';
@@ -9,7 +9,8 @@ import { LessonUnlockedScreen } from '../lesson/postLessonFlow/LessonUnlocked.co
 import { useAuthStore } from '@/shared/context/authStore.context';
 
 export const StartLearning: FC = () => {
-    const { roadmapResponse, setNeedsRoadmap } = useAuthStore();
+    const roadmapResponse = useAuthStore((state) => state.roadmapResponse);
+    const setNeedsRoadmap = useAuthStore((state) => state.setNeedsRoadmap);
     const router = useRouter();
 
     const firstLesson = roadmapResponse?.lessons?.[0];

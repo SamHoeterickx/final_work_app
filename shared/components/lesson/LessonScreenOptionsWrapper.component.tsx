@@ -16,9 +16,6 @@ import { ILessonScreenOptionsWrapperProps } from '@/shared/types/types';
 export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = ({
     screenType,
     lessonContent,
-    subStep,
-    quizError,
-    onAnswerSelect,
 }) => {
     switch (screenType) {
         case ELessonScreenOptions.C_TITLE:
@@ -26,21 +23,15 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
         case ELessonScreenOptions.C_DID_YOU_KNOW:
             return <DidYouKnowScreen content={lessonContent} />;
         case ELessonScreenOptions.C_TEXT_WITH_IMAGE:
-            return <TextWithImageScreen content={lessonContent} subStep={subStep} />;
+            return <TextWithImageScreen content={lessonContent} />;
         case ELessonScreenOptions.C_ONLY_TEXT:
-            return <OnlyTextScreen content={lessonContent} subStep={subStep} />;
+            return <OnlyTextScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_CLICK_AND_FOCUS:
-            return <ClickAndFocusQuizScreen content={lessonContent} subStep={subStep} />;
+            return <ClickAndFocusQuizScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_MATCH:
-            return <MatchQuizScreen content={lessonContent} onAnswerSelect={onAnswerSelect} />;
+            return <MatchQuizScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_RIGHT_OR_WRONG:
-            return (
-                <RightOrWrongQuizScreen
-                    content={lessonContent}
-                    onAnswerSelect={onAnswerSelect}
-                    quizError={quizError}
-                />
-            );
+            return <RightOrWrongQuizScreen content={lessonContent} />;
         default:
             return null;
     }
