@@ -2,6 +2,9 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
+// VERSION
+import { version } from '@/package.json';
+
 // STYLES
 import { baseStyles, colors } from '@/shared/styles/design.system';
 
@@ -40,9 +43,14 @@ export const PrivacyPolicy: FC = () => {
                 </Text>
             </View>
 
-            <Text style={[baseStyles.caption, styles.footer]}>
-                {t('settings.privacyPolicy.footer')}
-            </Text>
+            <View style={styles.cFooter}>
+                <Text style={[baseStyles.caption, styles.footer]}>
+                    {t('settings.privacyPolicy.footer')}
+                </Text>
+                <Text style={[baseStyles.caption, styles.footer]}>
+                    v.{version}
+                </Text>
+            </View>
         </View>
     );
 };
@@ -68,8 +76,10 @@ const styles = StyleSheet.create({
     content: {
         lineHeight: 22,
     },
-    footer: {
+    cFooter: {
         marginVertical: 16,
+    },
+    footer: {
         fontStyle: 'italic',
         textAlign: 'center',
     },

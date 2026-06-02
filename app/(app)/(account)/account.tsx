@@ -31,7 +31,9 @@ export default function AccountScreen() {
     useFocusEffect(
         useCallback(() => {
             const fetchData = async () => {
-                setIsPending(true);
+                if (!name) {
+                    setIsPending(true);
+                }
                 setIsError(false);
                 setError(null);
                 try {
@@ -44,7 +46,7 @@ export default function AccountScreen() {
                 }
             };
             fetchData();
-        }, [getUserData]),
+        }, [getUserData, name]),
     );
 
     const { t } = useTranslation();

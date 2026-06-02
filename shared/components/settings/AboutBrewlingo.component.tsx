@@ -2,6 +2,9 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
+// VERSION
+import { version } from '@/package.json';
+
 // STYLES
 import { baseStyles, colors } from '@/shared/styles/design.system';
 
@@ -33,7 +36,10 @@ export const AboutBrewlingo: FC = () => {
                 </Text>
             </View>
 
-            <Text style={[baseStyles.caption, styles.footer]}>{t('settings.about.footer')}</Text>
+
+            <View style={styles.cFooter}>
+                <Text style={[baseStyles.caption, styles.footer]}>{t('settings.about.footer')} - v.{version}</Text>
+            </View>
         </View>
     );
 };
@@ -60,9 +66,11 @@ const styles = StyleSheet.create({
     content: {
         lineHeight: 22,
     },
-    footer: {
+    cFooter: {
         marginVertical: 16,
-        textAlign: 'center',
+    },
+    footer: {
         fontStyle: 'italic',
+        textAlign: 'center',
     },
 });
