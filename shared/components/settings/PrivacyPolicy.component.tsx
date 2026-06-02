@@ -1,50 +1,53 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/design.system';
+import { baseStyles, colors } from '@/shared/styles/design.system';
 
 export const PrivacyPolicy: FC = () => {
     const { t } = useTranslation();
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
-            <Text style={[baseStyles.p, styles.intro]}>
-                {t('settings.privacyPolicy.intro')}
-            </Text>
+        <View style={styles.scrollContent}>
+            <Text style={[baseStyles.p, styles.intro]}>{t('settings.privacyPolicy.intro')}</Text>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section1Title')}</Text>
-                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section1Content')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>
+                    {t('settings.privacyPolicy.section1Content')}
+                </Text>
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section2Title')}</Text>
-                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section2Content')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>
+                    {t('settings.privacyPolicy.section2Content')}
+                </Text>
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section3Title')}</Text>
-                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section3Content')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>
+                    {t('settings.privacyPolicy.section3Content')}
+                </Text>
             </View>
 
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('settings.privacyPolicy.section4Title')}</Text>
-                <Text style={[baseStyles.p, styles.content]}>{t('settings.privacyPolicy.section4Content')}</Text>
+                <Text style={[baseStyles.p, styles.content]}>
+                    {t('settings.privacyPolicy.section4Content')}
+                </Text>
             </View>
 
-            <Text style={styles.footer}>
+            <Text style={[baseStyles.caption, styles.footer]}>
                 {t('settings.privacyPolicy.footer')}
             </Text>
-        </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     scrollContent: {
         padding: 16,
         paddingBottom: 32,
@@ -60,15 +63,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 6,
-        color: '#333', 
+        color: colors.text.primary,
     },
     content: {
         lineHeight: 22,
     },
     footer: {
-        fontSize: 12,
-        color: '#666',
-        marginTop: 16,
+        marginVertical: 16,
         fontStyle: 'italic',
+        textAlign: 'center',
     },
 });

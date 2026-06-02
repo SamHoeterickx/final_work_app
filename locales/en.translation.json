@@ -242,7 +242,14 @@
         },
         "about": {
             "title": "About BrewLingo",
-            "content": "BrewLingo is your ultimate guide to discovering the world of coffee. From bean to cup, learn everything about coffee and making the perfect cup. Developed by Sam Hoeterickx."
+            "intro": "BrewLingo is your ultimate, interactive guide to exploring the fascinating world of specialty coffee. From the rich history of the coffee bean to the fine science behind the perfect extraction: we turn you into a true home barista.",
+            "missionTitle": "Our Mission",
+            "missionContent": "Coffee theory can be complex and intimidating. BrewLingo changes this by making education accessible, visual, and above all, fun. No dry walls of text, but bite-sized lessons perfectly tailored to your skill level.",
+            "featuresTitle": "Personalized Learning",
+            "featuresContent": "Featuring interactive 3D experiences, quizzes, and a custom roadmap, you learn exactly what you need for your specific coffee setup. Whether you swear by a quick espresso, experiment with a Moka pot, or want to master the perfect pour-over.",
+            "creatorTitle": "The Creator",
+            "creatorContent": "BrewLingo was designed and developed by Sam Hoeterickx, a passionate full-stack developer and coffee enthusiast, with the goal of opening up the world of specialty coffee to everyone, one step at a time.",
+            "footer": "BrewLingo — Crafted with a passion for coffee and code © 2026"
         },
         "privacyPolicy": {
             "title": "Privacy Policy",

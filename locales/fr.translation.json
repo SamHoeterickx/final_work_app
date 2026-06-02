@@ -241,7 +241,15 @@
             "title": "Notifications"
         },
         "about": {
-            "title": "À propos de BrewLingo"
+            "title": "À propos de BrewLingo",
+            "intro": "BrewLingo est votre guide interactif ultime pour explorer l'univers fascinant du café de spécialité. De l'histoire riche du grain de café à la science précise de l'extraction parfaite : nous faisons de vous un véritable barista à la maison.",
+            "missionTitle": "Notre Mission",
+            "missionContent": "La théorie du café peut être complexe et intimidante. BrewLingo change la donne en rendant l'apprentissage accessible, visuel et surtout amusant. Pas de longs textes ennuyeux, mais des leçons interactives adaptées à votre niveau.",
+            "featuresTitle": "Apprentissage Personnalisé",
+            "featuresContent": "Grâce à des expériences en 3D, des quiz et un parcours sur mesure, vous apprenez exactement ce dont vous avez besoin pour votre propre équipement. Que vous ne juriez que par un espresso rapide, que vous expérimentiez avec une cafetière Moka, ou que vous souhaitiez maîtriser le pour-over parfait.",
+            "creatorTitle": "Le Créateur",
+            "creatorContent": "BrewLingo a été conçu et développé par Sam Hoeterickx, un développeur full-stack passionné et amateur de café, avec pour objectif d'ouvrir le monde du café de spécialité à tout le monde, une étape à la fois.",
+            "footer": "BrewLingo — Créé avec passion pour le café et le code © 2026"
         },
         "privacyPolicy": {
             "title": "Politique de confidentialité",

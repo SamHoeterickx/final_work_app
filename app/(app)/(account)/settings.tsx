@@ -30,10 +30,10 @@ export default function SettingsScreen() {
                 </View>
 
                 <View style={styles.cSettingTabs}>{renderSettingTabs()}</View>
-                <Text style={styles.appVersion}>v.{version}</Text>
             </ScrollView>
 
             <View style={styles.cButton}>
+                <Text style={styles.appVersion}>v.{version}</Text>
                 <Button copy="settings.buttons.logout" onPress={handleLogout} />
             </View>
         </SafeAreaView>

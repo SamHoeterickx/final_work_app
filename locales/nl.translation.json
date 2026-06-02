@@ -242,7 +242,14 @@
         },
         "about": {
             "title": "Over BrewLingo",
-            "content": "BrewLingo is jouw ultieme gids om de wereld van koffie te ontdekken. Van boon tot kopje, leer alles over koffie en het zetten van het perfecte kopje. Ontwikkeld door Sam Hoeterickx."
+            "intro": "BrewLingo is jouw ultieme, interactieve gids om de fascinerende wereld van specialty coffee te ontdekken. Van de rijke geschiedenis van de koffieboon tot de fijne wetenschap achter de perfecte extractie: wij maken van jou een echte thuisbarista.",
+            "missionTitle": "Onze Missie",
+            "missionContent": "Koffietheorie kan complex en intimiderend zijn. BrewLingo brengt hier verandering in door educatie toegankelijk, visueel en vooral leuk te maken. Geen droge lappen tekst, maar behapbare lessen die perfect aansluiten op jouw niveau.",
+            "featuresTitle": "Gepersonaliseerd Leren",
+            "featuresContent": "Met interactieve 3D-ervaringen, quizzen en een op maat gemaakte roadmap leer je precies wat jij nodig hebt voor jouw koffie-setup. Of je nu zweert bij een snelle espresso, experimenteert met een Moka pot, of de perfecte pour-over wilt beheersen.",
+            "creatorTitle": "De Maker",
+            "creatorContent": "BrewLingo is ontworpen en ontwikkeld door Sam Hoeterickx, een gepassioneerde full-stack ontwikkelaar én koffieliefhebber, met als doel om de wereld van specialty coffee stap voor stap voor iedereen te openen.",
+            "footer": "BrewLingo — Gemaakt met passie voor koffie en code © 2026"
         },
         "privacyPolicy": {
             "title": "Privacybeleid",
