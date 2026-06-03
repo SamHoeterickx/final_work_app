@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-import { useGLTF as loadGLTF, useGLTF } from '@react-three/drei/native';
+import { useGLTF } from '@react-three/drei/native';
 import { useEffect, useState } from 'react';
 
 const modelAssets = [
@@ -20,45 +19,17 @@ const modelAssets = [
     require('../../../assets/models/coffee_cup.glb'),
 ];
 
-export function usePreloadModels(enabled: boolean = true) {
-    const [isReady, setIsReady] = useState(!enabled);
+export function usePreloadModels(enabled: boolean = false) {
+    const [isReady, setIsReady] = useState(!enabled); // als niet enabled → meteen ready
 
     useEffect(() => {
-        let cancelled = false;
+        if (!enabled) return;
 
-        if (!enabled) {
-            setIsReady(true);
-            return;
-        }
+        modelAssets.forEach((src) => {
+            useGLTF.preload(src as unknown as string);
+        });
 
-        const preload = async () => {
-            modelAssets.forEach((asset) => useGLTF.preload(asset));
-
-            await Promise.all(
-                modelAssets.map(
-                    (asset) =>
-                        new Promise<void>((resolve) => {
-                            const interval = setInterval(() => {
-                                try {
-                                    loadGLTF(asset);
-                                    clearInterval(interval);
-                                    resolve();
-                                } catch {}
-                            }, 100);
-                        }),
-                ),
-            );
-
-            if (!cancelled) {
-                console.log('All models preloaded');
-                setIsReady(true);
-            }
-        };
-
-        preload();
-        return () => {
-            cancelled = true;
-        };
+        setIsReady(true); // fire-and-forget, loading screen verdwijnt meteen
     }, [enabled]);
 
     return { isReady };
