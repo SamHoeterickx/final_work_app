@@ -1,8 +1,11 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Modal, StyleSheet, Text, View } from 'react-native';
 
+// STYLES
 import { baseStyles, colors } from '@/shared/styles/design.system';
+
+// TYPES
 import { ILoadingScreenProps } from '@/shared/types/types';
 
 export const LoadingScreen: FC<ILoadingScreenProps> = ({ message }) => {
@@ -11,28 +14,38 @@ export const LoadingScreen: FC<ILoadingScreenProps> = ({ message }) => {
     const [randomFactIndex] = useState(() => Math.floor(Math.random() * 20) + 1);
 
     return (
-        <View style={styles.container}>
-            <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
-            <Text style={[baseStyles.h3, styles.label]}>Loading...</Text>
+        <Modal
+            visible={true}
+            transparent={true}
+            animationType="fade"
+            statusBarTranslucent={true}
+            onRequestClose={() => {}}
+        >
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
+                <Text style={[baseStyles.h3, styles.label]}>Loading...</Text>
 
-            {message && <Text style={[baseStyles.h4, styles.label]}>{t(message)}</Text>}
+                {message && <Text style={[baseStyles.h4, styles.label]}>{t(message)}</Text>}
 
-            <View style={styles.dykContainer}>
-                <Text style={[baseStyles.h3, styles.dykTitle]}>{t('lesson.dykScreen.title')}</Text>
-                <Text style={[baseStyles.p, styles.dykText]}>
-                    {t(`loadingScreen.didYouKnow.${randomFactIndex}`)}
-                </Text>
+                <View style={styles.dykContainer}>
+                    <Text style={[baseStyles.h3, styles.dykTitle]}>
+                        {t('lesson.dykScreen.title')}
+                    </Text>
+                    <Text style={[baseStyles.p, styles.dykText]}>
+                        {t(`loadingScreen.didYouKnow.${randomFactIndex}`)}
+                    </Text>
+                </View>
             </View>
-        </View>
+        </Modal>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        height: '100%',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: colors.background,
     },
     loader: {
         marginBottom: 16,
@@ -58,3 +71,4 @@ const styles = StyleSheet.create({
         opacity: 0.8,
     },
 });
+

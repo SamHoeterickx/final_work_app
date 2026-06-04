@@ -20,17 +20,26 @@ const modelAssets = [
 ];
 
 export function usePreloadModels(enabled: boolean = false) {
-    const [isReady, setIsReady] = useState(!enabled); // als niet enabled → meteen ready
+    const [isReady, setIsReady] = useState(!enabled);
 
     useEffect(() => {
         if (!enabled) return;
 
-        modelAssets.forEach((src) => {
-            useGLTF.preload(src as unknown as string);
-        });
+        async function preloadAll() {
+            for (const src of modelAssets) {
+                try {
+                    await useGLTF.preload(src as unknown as string);
+                } catch (error) {
+                    console.warn('Failed to load a specific 3D model:', error);
+                }
+            }
 
-        setIsReady(true); // fire-and-forget, loading screen verdwijnt meteen
+            setIsReady(true);
+        }
+
+        preloadAll();
     }, [enabled]);
 
     return { isReady };
 }
+
