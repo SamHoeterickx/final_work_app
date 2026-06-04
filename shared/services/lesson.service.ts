@@ -11,7 +11,6 @@ class LessonService {
                 START_LESSON_QUERY,
                 { ...credentials },
             );
-            console.log('---startLesson', response);
             return response?.startLesson;
         } catch (error) {
             throw error;

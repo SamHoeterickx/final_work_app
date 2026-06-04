@@ -27,7 +27,6 @@ export const getPreferenceLanguage = async (): Promise<ELocales> => {
             GET_PREFERENCE_LANGUAGE,
         );
 
-        console.log('---languageCode', response);
         const pref = response?.getPreferenceLanguage;
         return (pref?.toLowerCase() as ELocales) || ELocales.NL;
     } catch (error) {

@@ -43,8 +43,6 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     }, [isFocused]);
 
     const handleButton = () => {
-        console.log('pressed');
-
         if (!isFocused) {
             handleButtonChapter();
         } else {
