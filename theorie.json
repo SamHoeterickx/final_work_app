@@ -1,66 +1,73 @@
 [
-  {
-    "screen": 1,
-    "type": "info",
-    "screenType": "C_TITLE",
-    "title": "De Ultieme Confrontatie",
-    "body": "Laat zien wat je hebt geleerd! In deze quiz testen we je kennis over hoogte, smaak, biologie en teelt."
-  },
-  {
-    "screen": 2,
-    "type": "quiz",
-    "screenType": "Q_RIGHT_OR_WRONG",
-    "title": "Ronde 1: Geografie",
-    "question": "De delicate Arabica-plant groeit het beste op lage, vochtige vlaktes, terwijl de sterke Robusta-boom juist de ijle lucht van de hooglanden opzoekt.",
-    "answer": "Niet Waar",
-    "options": ["Waar", "Niet Waar"]
-  },
-  {
-    "screen": 3,
-    "type": "quiz",
-    "screenType": "Q_MULTIPLE_CHOICE",
-    "title": "Ronde 2: Biologische Logica",
-    "question": "Waarom bevat een Robusta-boon van nature bijna twee keer zoveel cafeïne als een Arabica-boon?",
-    "answer": "Omdat hij lager groeit en veel cafeïne moet aanmaken als biologisch afweermiddel tegen insecten en schimmels.",
-    "options": [
-      "Omdat hij lager groeit en veel cafeïne moet aanmaken als biologisch afweermiddel tegen insecten en schimmels.",
-      "Omdat de boeren extra cafeïne aan de bodem toevoegen tijdens de teelt.",
-      "Omdat de boom veel groter is en daardoor simpelweg meer stoffen opneemt uit de lucht."
-    ]
-  },
-  {
-    "screen": 4,
-    "type": "quiz",
-    "screenType": "Q_RIGHT_OR_WRONG",
-    "title": "Ronde 3: De Stamboom",
-    "question": "Botanisch gezien is de Arabica-boon eigenlijk een natuurlijk 'kind' (een spontane kruising) van onder andere de Robusta-plant.",
-    "answer": "Waar",
-    "options": ["Waar", "Niet Waar"]
-  },
-  {
-    "screen": 5,
-    "type": "quiz",
-    "screenType": "Q_MULTIPLE_CHOICE",
-    "title": "Ronde 4: Smaak & Chemie",
-    "question": "Wat is de belangrijkste chemische reden dat Arabica-koffie over het algemeen fruitiger en milder smaakt dan Robusta?",
-    "answer": "Arabica bevat bijna twee keer zoveel natuurlijke suikers en aanzienlijk meer oliën (lipiden).",
-    "options": [
-      "Arabica bevat bijna twee keer zoveel natuurlijke suikers en aanzienlijk meer oliën (lipiden).",
-      "Arabica bevat veel meer chlorogeenzuren die voor zoetheid zorgen.",
-      "Arabica-bessen worden na de oogst in suikerwater geweekt om de bitterheid te breken."
-    ]
-  },
-  {
-    "screen": 6,
-    "type": "quiz",
-    "screenType": "Q_MULTIPLE_CHOICE",
-    "title": "Ronde 5: De Praktijk",
-    "question": "Je staat in de winkel en ziet een goedkope zak oploskoffie. Welke boon is hier hoogstwaarschijnlijk massaal voor gebruikt, en waarom?",
-    "answer": "Robusta, omdat de teelt goedkoper is, machines het werk kunnen doen en de oogstkans hoog is.",
-    "options": [
-      "Robusta, omdat de teelt goedkoper is, machines het werk kunnen doen en de oogstkans hoog is.",
-      "Arabica, omdat deze boon minder vetten bevat en daardoor makkelijker poeder wordt.",
-      "Geen van beide, voor oploskoffie wordt een synthetische boon gebruikt die in laboratoria groeit."
-    ]
-  }
+    {
+        "screen": 1,
+        "type": "info",
+        "screenType": "C_TITLE",
+        "title": "Ben jij een Moka Master?",
+        "body": "Geen theorie meer, maar pure actie. Beantwoord deze 5 vragen correct om het hoofdstuk succesvol af te ronden!"
+    },
+    {
+        "screen": 2,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 1: Geschiedenis",
+        "question": "In welk jaar werd de iconische Moka Express (de moka pot) officieel uitgebracht?",
+        "answer": "1933",
+        "options": ["1933", "1958", "1961"]
+    },
+    {
+        "screen": 3,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 2: De Uitvinder",
+        "question": "Wie is de Italiaanse uitvinder die de moka pot heeft ontworpen?",
+        "answer": "Alfonso Bialetti",
+        "options": ["Alfonso Bialetti", "Paul Campani", "Renato Bialetti"]
+    },
+    {
+        "screen": 4,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 3: De Fysica",
+        "question": "Hoeveel bar druk bereikt een moka pot maximaal via zijn natuurlijke stoomdrukmechanisme?",
+        "answer": "1,5 bar",
+        "options": ["1,5 bar", "9 bar", "15 bar"]
+    },
+    {
+        "screen": 5,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 4: Watertemperatuur",
+        "question": "Wat is de beste temperatuur voor het water dat je in het onderste reservoir giet vóórdat de moka pot het vuur op gaat?",
+        "answer": "Al warm of kokend water, om te voorkomen dat de koffiebonen bovenin voortijdig verbranden.",
+        "options": [
+            "Ijskoud water, zodat de druk langzamer kan opbouwen.",
+            "Al warm of kokend water, om te voorkomen dat de koffiebonen bovenin voortijdig verbranden."
+        ]
+    },
+    {
+        "screen": 6,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 5: Veiligheid",
+        "question": "Waarom mag je de koffie in de filtertrechter van een moka pot NOOIT stevig aandrukken met een tamper?",
+        "answer": "De druk kan gevaarlijk hoog oplopen omdat de stoom niet door de aangedrukte puck heen kan breken.",
+        "options": [
+            "De druk kan gevaarlijk hoog oplopen omdat de stoom niet door de aangedrukte puck heen kan breken.",
+            "Het aluminium lost op als de koffie te compact tegen de wanden zit.",
+            "De koffie stroomt dan veel te snel door naar de opvangkamer."
+        ]
+    },
+    {
+        "screen": 7,
+        "type": "quiz",
+        "screenType": "Q_RIGHT_OR_WRONG",
+        "title": "Ronde 6: Onderhoud",
+        "question": "Waarom is de traditionele fabel om een moka pot nooit met zeep te wassen schadelijk voor je uiteindelijke koffiesmaak?",
+        "answer": "Achtergebleven koffie-oliën gaan oxideren en ranzig worden, wat je volgende brouwsel bitter maakt.",
+        "options": [
+            "De metalen smaak van het aluminium verdwijnt hierdoor.",
+            "Achtergebleven koffie-oliën gaan oxideren en ranzig worden, wat je volgende brouwsel bitter maakt."
+        ]
+    }
 ]
