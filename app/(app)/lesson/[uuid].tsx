@@ -29,6 +29,82 @@ import { colors } from '@/shared/styles/design.system';
 // TYPES
 import { ELocales, EPostLessonFlowOptions } from '@/shared/types/enums';
 
+const TEST_LESSON_CONTENT = [
+    {
+        screen: 1,
+        type: 'info',
+        screenType: 'C_TITLE',
+        title: 'De Kracht van Stoom',
+        body: 'Water dat omhoog stroomt tegen de zwaartekracht in? Tijd om de natuurkunde achter de moka pot te ontrafelen.',
+    },
+    {
+        screen: 2,
+        type: 'info',
+        screenType: 'C_TEXT_WITH_IMAGE',
+        imgPath: '${lesson_uuid}_moka_anatomy',
+        title: 'De Drie Kamers',
+        body: [
+            'Een moka pot bestaat uit drie cruciale basisonderdelen: het ***onderste reservoir*** voor het water, de ***trechtervormige filter*** voor de koffie, en de ***bovenste opvangkamer***.',
+            'Zodra je het potje op een warmtebron zet, begint het water onderin op te warmen en verandert een klein deel in ***stoom***.',
+        ],
+    },
+    {
+        screen: 3,
+        type: 'info',
+        screenType: 'C_ONLY_TEXT',
+        title: 'De Wetenschap achter de Stijgbuis',
+        body: [
+            'De opgebouwde stoom heeft steeds minder ruimte en begint hard te drukken op het wateroppervlak. Deze ***stoomdruk*** perst het hete water naar beneden.',
+            'Omdat het water nergens anders heen kan, wordt het via de ***stijgbuis*** van de trechter loodrecht omhoog geduwd.',
+            'Het water stroomt zo op een constante manier ***dóór het koffiebed*** heen, om vervolgens via het bovenste pijpje kant-en-klaar in de opvangkamer te borrelen.',
+        ],
+    },
+    {
+        screen: 4,
+        type: 'video',
+        screenType: 'C_VIDEO',
+        title: 'Werking van de mokapot',
+        path: 'moka_pot_explained',
+    },
+    {
+        screen: 5,
+        type: 'info',
+        screenType: 'C_ONLY_TEXT',
+        title: 'De Espresso Mythe',
+        body: [
+            'Hoewel de moka pot in Italië de *Moka Express* wordt genoemd, maakt hij technisch gezien ***geen echte espresso***.',
+            'Een professionele espressocultuur eist een druk van minimaal ***9 bar*** om oliën te emulgeren tot die typische dikke cremalaag.',
+            'Een moka pot werkt puur op natuurlijke stoomdruk en bereikt maximaal ***1,5 bar***. Het resultaat is een unieke categorie: een zeer intense, volle koffie die tussen filterkoffie en espresso in zit.',
+        ],
+    },
+    {
+        screen: 6,
+        type: 'quiz',
+        screenType: 'Q_RIGHT_OR_WRONG',
+        title: 'Kennischeck: Het Mechanisme',
+        question:
+            'Wat zorgt ervoor dat het water in een moka pot tegen de zwaartekracht in door de koffie heen omhoog wordt geduwd?',
+        answer: 'De stoomdruk die zich opbouwt in het onderste reservoir.',
+        options: [
+            'De stoomdruk die zich opbouwt in het onderste reservoir.',
+            'Een kleine, ingebouwde elektrische pomp in de hendel.',
+            'De magnetische straling van het aluminium.',
+        ],
+    },
+    {
+        screen: 7,
+        type: 'quiz',
+        screenType: 'Q_RIGHT_OR_WRONG',
+        title: 'Kennischeck: De Druk',
+        question: 'Maakt een moka pot technisch gezien echte espresso zoals in een koffiebar?',
+        answer: 'Nee, want hij haalt maximaal 1,5 bar druk, terwijl een espressomachine minstens 9 bar nodig heeft.',
+        options: [
+            'Ja, de druk en de resulterende koffie zijn exact identiek.',
+            'Nee, want hij haalt maximaal 1,5 bar druk, terwijl een espressomachine minstens 9 bar nodig heeft.',
+        ],
+    },
+];
+
 export default function LessonScreen() {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [postFlowData, setPostFlowData] = useState<any | null>(null);
@@ -83,7 +159,7 @@ export default function LessonScreen() {
     if (isPendingStart || isPendingComplete)
         return <LoadingScreen message={LOADING_MESSAGE_KEYS.PREPARING_APP} />;
 
-    const currentScreen = lesson.content?.[0]?.content?.[screenIndex];
+    const currentScreen = TEST_LESSON_CONTENT[screenIndex];
     const isQuizScreen =
         currentScreen?.screenType?.startsWith('Q_') || currentScreen?.type === 'quiz';
 
@@ -101,7 +177,7 @@ export default function LessonScreen() {
             return;
         }
 
-        if (!lesson?.content?.[0]?.content) return;
+        if (!TEST_LESSON_CONTENT) return;
 
         if (isQuizScreen) {
             if (!selectedOption) return;
@@ -116,7 +192,7 @@ export default function LessonScreen() {
             setQuizError(null);
         }
 
-        const content = lesson.content[0].content;
+        const content = TEST_LESSON_CONTENT;
         const bodyArray = Array.isArray(currentScreen.body)
             ? currentScreen.body
             : [currentScreen.body];
@@ -184,7 +260,7 @@ export default function LessonScreen() {
 
         if (screenIndex > 0) {
             const prevScreenIndex = screenIndex - 1;
-            const previousScreen = lesson?.content?.[0]?.content?.[prevScreenIndex];
+            const previousScreen = TEST_LESSON_CONTENT[prevScreenIndex];
             const bodyArray = Array.isArray(previousScreen?.body)
                 ? previousScreen.body
                 : [previousScreen?.body];
@@ -206,7 +282,7 @@ export default function LessonScreen() {
         const bodyArray = Array.isArray(currentScreen?.body)
             ? currentScreen.body
             : [currentScreen?.body];
-        const isLastScreen = screenIndex >= lesson.content[0].content.length - 1;
+        const isLastScreen = screenIndex >= TEST_LESSON_CONTENT.length - 1;
         const isLastSubStep = subStep >= bodyArray.length - 1;
 
         if (isLastScreen && isLastSubStep) {
@@ -223,7 +299,7 @@ export default function LessonScreen() {
         <SafeAreaView style={styles.sLesson}>
             <LessonHeader
                 screenCount={screenIndex}
-                totalScreens={lesson.content[0].content.length - 1}
+                totalScreens={TEST_LESSON_CONTENT.length - 1}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 onBackPress={handleBack}

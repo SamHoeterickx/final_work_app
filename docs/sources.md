@@ -32,3 +32,4 @@
 - [Expo how to build an app to apk - Youtube tutorial build](https://www.youtube.com/watch?v=cs-zgHjt5RQ)
 - [Expo how to build an app to apk - Android bundler](https://docs.expo.dev/build-reference/android-builds/)
 - [Expo how to build an app to apk - Icons and splashscreen](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/)
+- [React native play video - expo av](https://docs.expo.dev/versions/v54.0.0/sdk/audio-av/)

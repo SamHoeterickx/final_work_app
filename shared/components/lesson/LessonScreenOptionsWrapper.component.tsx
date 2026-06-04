@@ -12,6 +12,7 @@ import { RightOrWrongQuizScreen } from './quizScreens/RightOrWrongQuiz.component
 // TYPES
 import { ELessonScreenOptions } from '@/shared/types/enums';
 import { ILessonScreenOptionsWrapperProps } from '@/shared/types/types';
+import { VideoScreen } from './conentScreens/VideoScreen.component';
 
 export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = ({
     screenType,
@@ -26,6 +27,8 @@ export const LessonScreenOptionsWrapper: FC<ILessonScreenOptionsWrapperProps> = 
             return <TextWithImageScreen content={lessonContent} />;
         case ELessonScreenOptions.C_ONLY_TEXT:
             return <OnlyTextScreen content={lessonContent} />;
+        case ELessonScreenOptions.C_VIDEO:
+            return <VideoScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_CLICK_AND_FOCUS:
             return <ClickAndFocusQuizScreen content={lessonContent} />;
         case ELessonScreenOptions.Q_MATCH:
