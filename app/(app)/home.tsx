@@ -4,7 +4,13 @@ import { Animated, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, HomeHeader, LoadingScreen } from '@/shared/components';
+import {
+    BackButton,
+    Chapter,
+    HomeHeader,
+    LoadingScreen,
+    SwipeIndicator,
+} from '@/shared/components';
 
 // HOOKS
 import { useHomeStore } from '@/shared/context/homeStore.context';
@@ -28,11 +34,14 @@ export default function HomeScreen() {
     const activeChapterIndex = useHomeStore((state) => state.activeChapterIndex);
     const chapterIndex = useHomeStore((state) => state.chapterIndex);
     const allChapters = useHomeStore((state) => state.allChapters);
+    const isScreenActive = useHomeStore((state) => state.isScreenActive);
     const setAllChapters = useHomeStore((state) => state.setAllChapters);
     const updateChapterIndex = useHomeStore((state) => state.updateChapterIndex);
     const returnToCurrentChapter = useHomeStore((state) => state.returnToCurrentChapter);
+    const setIsScreenActive = useHomeStore((state) => state.setIsScreenActive);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
+    const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     const { data: userChapters, isPending, refetch, isError, error } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
@@ -44,6 +53,7 @@ export default function HomeScreen() {
             }
             setIsFocused(false);
             returnToCurrentChapter();
+            handleUserInteraction();
         }, [refetch, returnToCurrentChapter]),
     );
 
@@ -51,6 +61,34 @@ export default function HomeScreen() {
         if (!userChapters) return;
         setAllChapters(userChapters);
     }, [userChapters, setAllChapters]);
+
+    useEffect(() => {
+        if (inactivityTimerRef.current) {
+            clearTimeout(inactivityTimerRef.current);
+        }
+        if (isScreenActive) {
+            inactivityTimerRef.current = setTimeout(() => {
+                setIsScreenActive(false);
+            }, 10000);
+        }
+        return () => {
+            if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+        };
+    }, [isScreenActive, setIsScreenActive]);
+
+    const handleUserInteraction = useCallback(() => {
+        if (!isScreenActive) {
+            setIsScreenActive(true);
+        } else {
+            if (inactivityTimerRef.current) {
+                clearTimeout(inactivityTimerRef.current);
+            }
+            inactivityTimerRef.current = setTimeout(() => {
+                setIsScreenActive(false);
+            }, 10000);
+        }
+    }, [isScreenActive, setIsScreenActive]);
+
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || allChapters === null) return;
@@ -111,8 +149,14 @@ export default function HomeScreen() {
             {isError && renderError()}
             <ScrollView
                 contentContainerStyle={styles.wChapter}
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
+                onTouchStart={(e) => {
+                    onTouchStart(e);
+                    handleUserInteraction();
+                }}
+                onTouchEnd={(e) => {
+                    onTouchEnd(e);
+                    handleUserInteraction();
+                }}
                 scrollEnabled={false}
                 style={{
                     opacity:
@@ -140,6 +184,7 @@ export default function HomeScreen() {
             )}
 
             {!isFocused && <HomeHeader onReturnPress={handleReturnAnimated} />}
+            {!isScreenActive && !isFocused && <SwipeIndicator />}
         </SafeAreaView>
     );
 }

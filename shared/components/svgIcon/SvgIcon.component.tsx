@@ -37,16 +37,17 @@ import ArrowLeftFull from '@/assets/icons/arrowLeftFull.svg';
 import Account from '@/assets/icons/navigation/account.svg';
 import Chapters from '@/assets/icons/navigation/chapters.svg';
 import Home from '@/assets/icons/navigation/home.svg';
-import Settings from '@/assets/icons/navigation/settings.svg';
 import Notifications from '@/assets/icons/navigation/notifications.svg';
-import Streaks from '@/assets/icons/navigation/streaks.svg';
 import Return from '@/assets/icons/navigation/return.svg';
+import Settings from '@/assets/icons/navigation/settings.svg';
+import Streaks from '@/assets/icons/navigation/streaks.svg';
+import SwipeIndicator from '@/assets/icons/navigation/swipeIndicator.svg';
 
 // SETTINGS
-import Legal from '@/assets/icons/settings/legal.svg';
-import Privacy from '@/assets/icons/settings/privacy.svg';
 import Info from '@/assets/icons/info.svg';
 import Language from '@/assets/icons/settings/language.svg';
+import Legal from '@/assets/icons/settings/legal.svg';
+import Privacy from '@/assets/icons/settings/privacy.svg';
 
 interface SvgIconProps extends SvgProps {
     name: ESvgIconName | string;
@@ -88,6 +89,7 @@ const IconMap: Record<string, React.FC<SvgProps>> = {
     [ESvgIconName.NOTIFICATIONS]: Notifications,
     [ESvgIconName.SETTINGS]: Settings,
     [ESvgIconName.STREAKS]: Streaks,
+    [ESvgIconName.SWIPE_INDICATOR]: SwipeIndicator,
 
     // SETTINGS
     [ESvgIconName.LEGAL]: Legal,

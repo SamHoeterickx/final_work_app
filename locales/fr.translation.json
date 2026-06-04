@@ -396,5 +396,8 @@
             "19": "Le célèbre compositeur Ludwig van Beethoven prenait son café très au sérieux et comptait toujours exactement 60 grains de café pour chaque tasse.",
             "20": "Au XVIIe siècle, le roi d'Angleterre Charles II a tenté de fermer tous les cafés par crainte que des révoltes politiques n'y soient complotées."
         }
+    },
+    "homeIndicator": {
+        "text": "Balayez pour naviguer"
     }
 }

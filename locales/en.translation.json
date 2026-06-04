@@ -396,5 +396,8 @@
             "19": "The famous composer Ludwig van Beethoven took his coffee extremely seriously and always counted out exactly 60 coffee beans for each cup.",
             "20": "In the 17th century, the English King Charles II tried to close all coffee houses out of fear that political rebellions were being plotted."
         }
+    },
+    "homeIndicator": {
+        "text": "Swipe to navigate"
     }
 }

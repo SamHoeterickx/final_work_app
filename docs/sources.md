@@ -26,3 +26,4 @@
 - [Understanding the expo file system caching questions / plan | Gemini chat](https://gemini.google.com/share/d455436ded66) - tried to save the models in cache to update performace but was unnecesarry
 - [Expo docs filesystem](https://docs.expo.dev/versions/latest/sdk/filesystem/) - tried to save the models in cache to update performace but was unnecesarry
 - [How to access file system with expo](https://stackoverflow.com/questions/73233080/how-to-access-expo-file-system-filesystem-documentdirectory) - tried to save the models in cache to update performace but was unnecesarry
+- [React native reanimated docs](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)

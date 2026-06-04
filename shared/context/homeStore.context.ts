@@ -8,6 +8,7 @@ export const useHomeStore = create<IHomeStore>((set) => ({
     chapterIndex: 0,
     activeChapterIndex: 0,
     aChapterStatus: null,
+    isScreenActive: true,
     returnToCurrentChapter: () =>
         set((state) => {
             const currentChapter = state.allChapters?.[state.chapterIndex];
@@ -38,4 +39,5 @@ export const useHomeStore = create<IHomeStore>((set) => ({
             aChapterStatus: chapters[validIndex]?.status || null,
         });
     },
+    setIsScreenActive: (isActive: boolean) => set({ isScreenActive: isActive }),
 }));

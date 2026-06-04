@@ -24,6 +24,7 @@ export { ChapterUnlockedOnboardingWrapper } from './chapters/ChapterUnlockedOnbo
 
 // HOME UI
 export { HomeHeader } from './homeUi/homeHeader.component';
+export { SwipeIndicator } from './homeUi/SwipeIndicator.component';
 
 // SVG ICON
 export { SvgIcon } from './svgIcon/SvgIcon.component';
@@ -53,3 +54,4 @@ export { TermsOfCondition } from './settings/TermsOfCondition.component';
 export { LessonHeader } from './lesson/LessonHeader.component';
 export { LessonScreenOptionsWrapper } from './lesson/LessonScreenOptionsWrapper.component';
 export { PostLessonFlow } from './lesson/postLessonFlow/PostLessonFlow.component';
+

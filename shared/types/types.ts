@@ -105,9 +105,11 @@ export interface IHomeStore {
     chapterIndex: number;
     activeChapterIndex: number;
     aChapterStatus: EProgressStatus | null;
+    isScreenActive: boolean;
     returnToCurrentChapter: () => void;
     updateChapterIndex: (index: number) => void;
     setAllChapters: (chapters: IGetMyChaptersResponse[]) => void;
+    setIsScreenActive: (isActive: boolean) => void;
 }
 
 export interface IUserDataStore {

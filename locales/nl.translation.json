@@ -396,5 +396,8 @@
             "19": "De beroemde componist Ludwig van Beethoven nam zijn koffie uiterst serieus en telde voor elk kopje altijd exact 60 koffiebonen af.",
             "20": "In de 17e eeuw probeerde de Engelse koning Charles II alle koffiehuizen te sluiten uit angst dat er politieke opstanden werden gesmeed."
         }
+    },
+    "homeIndicator": {
+        "text": "Swipe om te navigeren"
     }
 }
