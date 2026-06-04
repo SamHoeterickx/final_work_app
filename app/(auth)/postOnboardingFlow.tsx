@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useGLTF as loadGLTF, useGLTF } from '@react-three/drei/native';
 
 // COMPONENTS
 import {
@@ -8,26 +9,25 @@ import {
     GeneratingSuccessfull,
     StartLearning,
 } from '@/shared/components';
+import { modelAssets } from '@/shared/components/modelLoader/FloatingIsland.component';
 
 // TYPES
 import { EFlowStep } from '@/shared/types/enums';
+import { IGenerateCustomRoadmapResponse } from '@/shared/types/response.type';
 
 // STYLES
 import { baseStyles } from '@/shared/styles/design.system';
 
 // UTILS & STORE
-import { modelAssets } from '@/shared/components/modelLoader/FloatingIsland.component';
 import { useAuthStore } from '@/shared/context/authStore.context';
-import { IGenerateCustomRoadmapResponse } from '@/shared/types/response.type';
-import { useGLTF as loadGLTF, useGLTF } from '@react-three/drei/native';
 
 export default function PostOnboardingFlow() {
     const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.GENERATING);
 
     const handleRoadmapGenerated = async () => {
-        const response = useAuthStore.getState().roadmapResponse;
+        const response = useAuthStore((state) => state.roadmapResponse);
         const slug = (response as IGenerateCustomRoadmapResponse)?.slug;
-        console.log(slug);
+
         const asset =
             (slug && modelAssets[slug as keyof typeof modelAssets]) || modelAssets.coffee_cup;
 

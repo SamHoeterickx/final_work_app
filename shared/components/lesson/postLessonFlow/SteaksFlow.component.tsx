@@ -9,8 +9,8 @@ import { VIBRATION_PATTERN } from '@/shared/const/settings.const';
 import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
-import { IStreaksFlowProps } from '@/shared/types/types';
 import { useUserDataStore } from '@/shared/context/userDataStore.context';
+import { IStreaksFlowProps } from '@/shared/types/types';
 
 export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const { t } = useTranslation();
@@ -22,7 +22,7 @@ export const StreaksFlowScreen: FC<IStreaksFlowProps> = ({ newStreak }) => {
     const totalOpacityAnim = useRef(new Animated.Value(0)).current;
     const totalTranslateYAnim = useRef(new Animated.Value(40)).current;
 
-    const { setStreaks } = useUserDataStore();
+    const setStreaks = useUserDataStore((state) => state.setStreaks);
 
     useEffect(() => {
         Vibration.vibrate(VIBRATION_PATTERN);

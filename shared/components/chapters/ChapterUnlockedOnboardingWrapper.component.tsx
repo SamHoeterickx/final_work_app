@@ -5,7 +5,7 @@ import { Button } from '../buttons/Button.component';
 import { IPostOnboardingFlowProps } from '@/shared/types/types';
 
 export const ChapterUnlockedOnboardingWrapper: FC<IPostOnboardingFlowProps> = ({ handleNext }) => {
-    const { roadmapResponse } = useAuthStore();
+    const roadmapResponse = useAuthStore((state) => state.roadmapResponse);
 
     return (
         <>

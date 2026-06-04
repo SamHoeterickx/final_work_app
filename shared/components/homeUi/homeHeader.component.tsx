@@ -22,8 +22,8 @@ interface IHomeHeaderProps {
 export const HomeHeader: FC<IHomeHeaderProps> = ({ onReturnPress }) => {
     const [isStreaksModalOpen, setIsStreakModalOpen] = useState<boolean>(false);
 
-    const { aChapterStatus } = useHomeStore();
-    const { streaks } = useUserDataStore();
+    const aChapterStatus = useHomeStore((state) => state.aChapterStatus);
+    const streaks = useUserDataStore((state) => state.streaks);
 
     const renderReturnButton = () => {
         if (

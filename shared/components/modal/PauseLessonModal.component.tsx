@@ -17,9 +17,12 @@ import { IModalProps } from '@/shared/types/types';
 
 export const PauseLessonModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
     const [showConfirmQuit, setShowConfirmQuit] = useState<boolean>(false);
+
+    const setScreenIndex = useLessonStore((state) => state.setScreenIndex);
+    const setIsLessonCompleted = useLessonStore((state) => state.setIsLessonCompleted);
+
     const { t } = useTranslation();
     const router = useRouter();
-    const { setScreenIndex, setIsLessonCompleted } = useLessonStore();
 
     useEffect(() => {
         if (!isModalOpen) {

@@ -18,7 +18,9 @@ import { IModalProps } from '@/shared/types/types';
 
 export const StreaksModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
     const { t, i18n } = useTranslation();
-    const { streaks, longestStreak } = useUserDataStore();
+
+    const streaks = useUserDataStore((state) => state.streaks);
+    const longestStreak = useUserDataStore((state) => state.longestStreak);
 
     const renderStreaksMessage = () => {
         const rIndex = Math.floor(Math.random() * 9);

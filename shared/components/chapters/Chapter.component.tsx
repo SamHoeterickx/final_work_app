@@ -32,7 +32,7 @@ export const Chapter: FC<IChapterProps & { slideAnim?: Animated.Value }> = ({
     const { i18n } = useTranslation();
     const router = useRouter();
 
-    const { aChapterStatus } = useHomeStore();
+    const aChapterStatus = useHomeStore((state) => state.aChapterStatus);
 
     useEffect(() => {
         if (!isFocused) {
