@@ -89,7 +89,6 @@ export default function HomeScreen() {
         }
     }, [isScreenActive, setIsScreenActive]);
 
-
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || allChapters === null) return;
         setIsAnimating(true);

@@ -38,7 +38,7 @@ export default function Register() {
     });
 
     const { mutate, isError, error, isPending } = useRegister();
-    const answers = useOnboardingStore((state) => state.answers)
+    const answers = useOnboardingStore((state) => state.answers);
 
     const { t } = useTranslation();
 

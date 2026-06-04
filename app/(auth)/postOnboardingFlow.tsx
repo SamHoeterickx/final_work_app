@@ -25,7 +25,7 @@ export default function PostOnboardingFlow() {
     const [currentStep, setCurrentStep] = useState<EFlowStep>(EFlowStep.GENERATING);
 
     const handleRoadmapGenerated = async () => {
-        const response = useAuthStore((state) => state.roadmapResponse);
+        const response = useAuthStore.getState().roadmapResponse;
         const slug = (response as IGenerateCustomRoadmapResponse)?.slug;
 
         const asset =

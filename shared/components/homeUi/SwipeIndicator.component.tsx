@@ -16,7 +16,7 @@ import { ESvgIconName } from '@/shared/types/enums';
 
 export const SwipeIndicator: FC = () => {
     const isScreenActive = useHomeStore((state) => state.isScreenActive);
-    const setIsScreenActive = useHomeStore((state) => state.setIsScreenActive)
+    const setIsScreenActive = useHomeStore((state) => state.setIsScreenActive);
 
     const { t } = useTranslation();
 
@@ -61,7 +61,7 @@ export const SwipeIndicator: FC = () => {
 
         setTimeout(() => {
             setIsScreenActive(true);
-        }, 5000)
+        }, 5000);
 
         return () => {
             animation.stop();
@@ -97,6 +97,6 @@ const styles = StyleSheet.create({
     text: {
         color: colors.text.muted,
         width: '40%',
-        textAlign: 'center'
+        textAlign: 'center',
     },
 });

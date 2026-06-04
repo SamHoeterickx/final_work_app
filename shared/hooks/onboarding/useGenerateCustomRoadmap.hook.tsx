@@ -3,7 +3,7 @@ import { onboardingService } from '@/shared/services/onboarding.service';
 import { useMutation } from '@tanstack/react-query';
 
 export const useGenerateCustomRoadmap = () => {
-    const setRoadmapResponse = useAuthStore(state => state.setRoadmapResponse);
+    const setRoadmapResponse = useAuthStore((state) => state.setRoadmapResponse);
 
     return useMutation({
         mutationFn: async () => {

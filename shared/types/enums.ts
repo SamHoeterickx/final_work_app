@@ -50,7 +50,7 @@ export enum ESvgIconName {
     STREAKS = 'streaks',
     LANGUAGE = 'language',
     RETURN = 'return',
-    SWIPE_INDICATOR = 'swipeIndicator'
+    SWIPE_INDICATOR = 'swipeIndicator',
 }
 
 export enum EProgressStatus {
