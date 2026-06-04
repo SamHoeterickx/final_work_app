@@ -1,9 +1,13 @@
 import * as Localization from 'expo-localization';
 
-// TYPES
+// QUERIES
 import { GET_PREFERENCE_LANGUAGE } from '../graphql/query';
-import { ELocales } from '../types/enums';
+
+// UTILS
 import { graphqlFetch } from './api.utils';
+
+// TYPES
+import { ELocales } from '../types/enums';
 
 export const getDeviceLanguage = (): ELocales => {
     try {

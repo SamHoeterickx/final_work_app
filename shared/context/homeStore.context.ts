@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+
+// TYPES
 import { EProgressStatus } from '../types/enums';
 import { IGetMyChaptersResponse } from '../types/response.type';
 import { IHomeStore } from '../types/types';

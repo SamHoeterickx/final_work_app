@@ -1,47 +1,66 @@
 [
-    {
-        "body": "The biological armor.",
-        "type": "info",
-        "title": "The Exocarp",
-        "screen": 1,
-        "screenType": "C_TITLE"
-    },
-    {
-        "body": [
-            "The exocarp forms the tough outer skin of the coffee cherry. This layer consists of a single row of strong parenchyma cells.",
-            "It functions as the ultimate biological armor against harmful external influences. Pests like the coffee berry borer are effectively kept out."
-        ],
-        "type": "info",
-        "title": "The Outer Protective Layer",
-        "screen": 2,
-        "screenType": "C_INFO"
-    },
-    {
-        "body": [
-            "During ripening, this skin undergoes a fascinating chemical change. The chloroplasts present slowly break down as the cherry ages.",
-            "Subsequently, anthocyanins take over within the cell structure. These substances provide the striking, deep red or yellow color of a ripe cherry."
-        ],
-        "type": "info",
-        "title": "The Color Transformation",
-        "screen": 3,
-        "screenType": "C_INFO"
-    },
-    {
-        "type": "quiz",
-        "title": "Biological Coloring",
-        "answer": "Anthocyanins",
-        "screen": 4,
-        "options": ["Pectin", "Anthocyanins", "Cellulose"],
-        "question": "Which chemical component in the exocarp's cell structure is responsible for the color change to red or yellow during ripening?",
-        "screenType": "Q_RIGHT_OR_WRONG"
-    },
-    {
-        "type": "quiz",
-        "title": "The Protector",
-        "answer": "The coffee berry borer",
-        "screen": 5,
-        "options": ["The coffee berry borer", "Aphids", "Fungi"],
-        "question": "Against which specific pest does the exocarp primarily provide a solid biological armor?",
-        "screenType": "Q_RIGHT_OR_WRONG"
-    }
+  {
+    "screen": 1,
+    "type": "info",
+    "screenType": "C_TITLE",
+    "title": "De Ultieme Confrontatie",
+    "body": "Laat zien wat je hebt geleerd! In deze quiz testen we je kennis over hoogte, smaak, biologie en teelt."
+  },
+  {
+    "screen": 2,
+    "type": "quiz",
+    "screenType": "Q_RIGHT_OR_WRONG",
+    "title": "Ronde 1: Geografie",
+    "question": "De delicate Arabica-plant groeit het beste op lage, vochtige vlaktes, terwijl de sterke Robusta-boom juist de ijle lucht van de hooglanden opzoekt.",
+    "answer": "Niet Waar",
+    "options": ["Waar", "Niet Waar"]
+  },
+  {
+    "screen": 3,
+    "type": "quiz",
+    "screenType": "Q_MULTIPLE_CHOICE",
+    "title": "Ronde 2: Biologische Logica",
+    "question": "Waarom bevat een Robusta-boon van nature bijna twee keer zoveel cafeïne als een Arabica-boon?",
+    "answer": "Omdat hij lager groeit en veel cafeïne moet aanmaken als biologisch afweermiddel tegen insecten en schimmels.",
+    "options": [
+      "Omdat hij lager groeit en veel cafeïne moet aanmaken als biologisch afweermiddel tegen insecten en schimmels.",
+      "Omdat de boeren extra cafeïne aan de bodem toevoegen tijdens de teelt.",
+      "Omdat de boom veel groter is en daardoor simpelweg meer stoffen opneemt uit de lucht."
+    ]
+  },
+  {
+    "screen": 4,
+    "type": "quiz",
+    "screenType": "Q_RIGHT_OR_WRONG",
+    "title": "Ronde 3: De Stamboom",
+    "question": "Botanisch gezien is de Arabica-boon eigenlijk een natuurlijk 'kind' (een spontane kruising) van onder andere de Robusta-plant.",
+    "answer": "Waar",
+    "options": ["Waar", "Niet Waar"]
+  },
+  {
+    "screen": 5,
+    "type": "quiz",
+    "screenType": "Q_MULTIPLE_CHOICE",
+    "title": "Ronde 4: Smaak & Chemie",
+    "question": "Wat is de belangrijkste chemische reden dat Arabica-koffie over het algemeen fruitiger en milder smaakt dan Robusta?",
+    "answer": "Arabica bevat bijna twee keer zoveel natuurlijke suikers en aanzienlijk meer oliën (lipiden).",
+    "options": [
+      "Arabica bevat bijna twee keer zoveel natuurlijke suikers en aanzienlijk meer oliën (lipiden).",
+      "Arabica bevat veel meer chlorogeenzuren die voor zoetheid zorgen.",
+      "Arabica-bessen worden na de oogst in suikerwater geweekt om de bitterheid te breken."
+    ]
+  },
+  {
+    "screen": 6,
+    "type": "quiz",
+    "screenType": "Q_MULTIPLE_CHOICE",
+    "title": "Ronde 5: De Praktijk",
+    "question": "Je staat in de winkel en ziet een goedkope zak oploskoffie. Welke boon is hier hoogstwaarschijnlijk massaal voor gebruikt, en waarom?",
+    "answer": "Robusta, omdat de teelt goedkoper is, machines het werk kunnen doen en de oogstkans hoog is.",
+    "options": [
+      "Robusta, omdat de teelt goedkoper is, machines het werk kunnen doen en de oogstkans hoog is.",
+      "Arabica, omdat deze boon minder vetten bevat en daardoor makkelijker poeder wordt.",
+      "Geen van beide, voor oploskoffie wordt een synthetische boon gebruikt die in laboratoria groeit."
+    ]
+  }
 ]

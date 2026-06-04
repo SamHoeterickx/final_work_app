@@ -1,7 +1,12 @@
+// QUERIES & MUTATIONS
 import { COMPLETE_LESSON_MUTATION } from '../graphql/mutations';
 import { START_LESSON_QUERY } from '../graphql/query';
+
+// TYPES
 import { ICompleteLessonResponse, IStartLessonResponse } from '../types/response.type';
 import { ILessonCredentials } from '../types/types';
+
+// UTILS
 import { graphqlFetch } from '../utils/api.utils';
 
 class LessonService {
