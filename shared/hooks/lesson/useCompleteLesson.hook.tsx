@@ -6,7 +6,6 @@ export const useCompleteLesson = () => {
     return useMutation({
         mutationFn: async (credentials: ILessonCredentials) => {
             const response = await lessonService.completeLesson(credentials);
-            console.log('---complete lesson response', response);
             return response;
         },
         onSuccess: () => {

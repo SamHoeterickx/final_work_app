@@ -27,3 +27,9 @@
 - [Expo docs filesystem](https://docs.expo.dev/versions/latest/sdk/filesystem/) - tried to save the models in cache to update performace but was unnecesarry
 - [How to access file system with expo](https://stackoverflow.com/questions/73233080/how-to-access-expo-file-system-filesystem-documentdirectory) - tried to save the models in cache to update performace but was unnecesarry
 - [React native reanimated docs](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)
+- [Expo how to build an app to apk - repack](https://docs.expo.dev/build-reference/repack/)
+- [Expo how to build an app to apk - apk](https://docs.expo.dev/build-reference/apk/)
+- [Expo how to build an app to apk - Youtube tutorial build](https://www.youtube.com/watch?v=cs-zgHjt5RQ)
+- [Expo how to build an app to apk - Android bundler](https://docs.expo.dev/build-reference/android-builds/)
+- [Expo how to build an app to apk - Icons and splashscreen](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/)
+- [React native play video - expo av](https://docs.expo.dev/versions/v54.0.0/sdk/audio-av/)

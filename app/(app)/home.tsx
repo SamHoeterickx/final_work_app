@@ -66,7 +66,7 @@ export default function HomeScreen() {
         if (inactivityTimerRef.current) {
             clearTimeout(inactivityTimerRef.current);
         }
-        if (isScreenActive) {
+        if (isScreenActive && !isFocused) {
             inactivityTimerRef.current = setTimeout(() => {
                 setIsScreenActive(false);
             }, 10000);
@@ -74,7 +74,7 @@ export default function HomeScreen() {
         return () => {
             if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
         };
-    }, [isScreenActive, setIsScreenActive]);
+    }, [isScreenActive, setIsScreenActive, isFocused]);
 
     const handleUserInteraction = useCallback(() => {
         if (!isScreenActive) {
@@ -83,11 +83,13 @@ export default function HomeScreen() {
             if (inactivityTimerRef.current) {
                 clearTimeout(inactivityTimerRef.current);
             }
-            inactivityTimerRef.current = setTimeout(() => {
-                setIsScreenActive(false);
-            }, 10000);
+            if (!isFocused) {
+                inactivityTimerRef.current = setTimeout(() => {
+                    setIsScreenActive(false);
+                }, 10000);
+            }
         }
-    }, [isScreenActive, setIsScreenActive]);
+    }, [isScreenActive, setIsScreenActive, isFocused]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
         if (isAnimating || allChapters === null) return;

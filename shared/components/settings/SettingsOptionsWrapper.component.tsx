@@ -15,7 +15,6 @@ import { ESettingsOptions } from '@/shared/types/enums';
 import { ISettingsOptionsWrapperProps } from '@/shared/types/types';
 
 export const SettingsOptionsWrapper: FC<ISettingsOptionsWrapperProps> = ({ option }) => {
-    console.log(option);
     switch (option) {
         case ESettingsOptions.PROFILE:
             return <ProfileSettings />;

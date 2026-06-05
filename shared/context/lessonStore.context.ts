@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+
+// TYPES
 import { ILessonStore } from '../types/types';
 
 export const useLessonStore = create<ILessonStore>((set) => ({

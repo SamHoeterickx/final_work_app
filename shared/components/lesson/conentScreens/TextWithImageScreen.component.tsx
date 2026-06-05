@@ -69,7 +69,7 @@ export const TextWithImageScreen: FC<ILessonScreenProps> = ({ content }) => {
                         source={{
                             uri: `https://raw.githubusercontent.com/SamHoeterickx/BREWLINGO_public/refs/heads/main/img/${content.imgPath}.png`,
                         }}
-                        resizeMode="cover"
+                        resizeMode="contain"
                     />
                 </Animated.View>
 

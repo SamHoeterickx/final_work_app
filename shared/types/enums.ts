@@ -77,6 +77,7 @@ export enum ELessonScreenOptions {
     C_DID_YOU_KNOW = 'C_DID_YOU_KNOW',
     C_TEXT_WITH_IMAGE = 'C_TEXT_WITH_IMAGE',
     C_ONLY_TEXT = 'C_ONLY_TEXT',
+    C_VIDEO = 'C_VIDEO',
     Q_RIGHT_OR_WRONG = 'Q_RIGHT_OR_WRONG',
     Q_MATCH = 'Q_MATCH',
     Q_CLICK_AND_FOCUS = 'Q_CLICK_AND_FOCUS',

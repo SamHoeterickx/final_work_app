@@ -28,8 +28,6 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
         return <ChapterProgress lessons={chapterUser.chapter.lessons} />;
     };
 
-    console.log(chapterUser);
-
     const renderTitle = () => {
         if (!selectedLesson) {
             return (
@@ -41,7 +39,6 @@ export const ChapterHeader: FC<IChapterHeaderProps> = ({
         }
 
         if (isFocused && selectedLesson) {
-            console.log('selectedLesson', selectedLesson);
             return (
                 <Text style={[baseStyles.h3, styles.lessonTitle]}>
                     {Array.isArray(selectedLesson.translations) &&

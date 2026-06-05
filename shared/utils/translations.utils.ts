@@ -1,9 +1,13 @@
 import * as Localization from 'expo-localization';
 
-// TYPES
+// QUERIES
 import { GET_PREFERENCE_LANGUAGE } from '../graphql/query';
-import { ELocales } from '../types/enums';
+
+// UTILS
 import { graphqlFetch } from './api.utils';
+
+// TYPES
+import { ELocales } from '../types/enums';
 
 export const getDeviceLanguage = (): ELocales => {
     try {
@@ -27,7 +31,6 @@ export const getPreferenceLanguage = async (): Promise<ELocales> => {
             GET_PREFERENCE_LANGUAGE,
         );
 
-        console.log('---languageCode', response);
         const pref = response?.getPreferenceLanguage;
         return (pref?.toLowerCase() as ELocales) || ELocales.NL;
     } catch (error) {
