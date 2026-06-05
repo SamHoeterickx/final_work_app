@@ -12,7 +12,7 @@ const VIDEO_ASSETS: Record<string, any> = {
     moka_pot_explained: require('@/assets/videos/moka_pot_explained.mp4'),
 };
 
-const { width, height } = Dimensions.get('window');
+const WIDTH = Dimensions.get('window').width;
 
 export const VideoScreen: FC<ILessonScreenProps> = ({ content }) => {
     const videoRef = useRef<Video>(null);
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         paddingHorizontal: spacing.sm,
-        position: 'relative'
+        position: 'relative',
     },
     title: {
         textAlign: 'center',
@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
     },
     video: {
         width: '100%',
-        height: width - spacing.sm * 2,
+        height: WIDTH - spacing.sm * 2,
     },
 });

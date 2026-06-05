@@ -30,7 +30,7 @@ export const useUserDataStore = create<IUserDataStore>((set) => ({
     getUserData: async () => {
         try {
             const response = await authService.getUserData();
-            
+
             set({
                 userData: response?.getUserData || null,
                 name: response?.getUserData.name,
