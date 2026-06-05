@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     video: {
-        width: height * 0.6,
+        width: '100%',
         height: width - spacing.sm * 2,
     },
 });
