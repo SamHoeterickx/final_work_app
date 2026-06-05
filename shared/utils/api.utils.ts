@@ -7,8 +7,7 @@ import { useAuthStore } from '@/shared/context/authStore.context';
 import { TGraphQLError, TTokenRefreshSubscriber } from '@/shared/types/types';
 import { IRefreshTokensResponse, TGraphQLResponse } from '../types/response.type';
 
-// const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
-const GRAPHQL_ENDPOINT = 'http://100.110.165.25:8080/graphql';
+const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
 
 let isRefreshing = false;
 let refreshSubscribers: TTokenRefreshSubscriber[] = [];
