@@ -58,6 +58,9 @@ Dit project bestaat uit twee aparte repositories. Deze README dient als centrale
 *   **Dynamische Post-Onboarding:** Na de onboarding flow krijgt de gebruiker nu een dynamisch en soepel gepersonaliseerd traject gepresenteerd.
 *   **3D Modellen Integratie:** Inladen en interactief weergeven van 3D-modellen binnen de app voor een visuele en meeslepende leerervaring.
 
+## Gebruikte Bronnen
+[Gebruikte bronnen](./docs/sources.md)
+
 ## Auteur
 
 Dit project is ontwikkeld door:

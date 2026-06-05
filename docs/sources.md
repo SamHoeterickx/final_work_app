@@ -1,5 +1,7 @@
 # BRONNENLIJST
 
+## FRONTEND
+
 - [React native documentation](https://reactnative.dev/)
 - [Expo docs](https://docs.expo.dev/)
 - [Udemy cursus expo](https://www.udemy.com/course/react-native-development-simplified)
@@ -33,3 +35,17 @@
 - [Expo how to build an app to apk - Android bundler](https://docs.expo.dev/build-reference/android-builds/)
 - [Expo how to build an app to apk - Icons and splashscreen](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/)
 - [React native play video - expo av](https://docs.expo.dev/versions/v54.0.0/sdk/audio-av/)
+
+## BACKEND
+
+- [NestJs Docs](https://docs.nestjs.com/)
+- [GraphQL Docs](https://graphql.org/)
+- [NestJs with GraphQL](https://docs.nestjs.com/graphql/quick-start)
+- [Udemy cursus NestJs](https://www.udemy.com/course/nestjs-the-complete-developers-guide)
+- [Aikido safe-chain](https://github.com/AikidoSec/safe-chain)
+- [Dockerize NestJs](https://docs.nestjs.com/deployment)
+- [Dockerize NestJs](https://gist.github.com/mjex11/c13799fb1c6f8edc50b5f8246a54cff2)
+- [Dockerize NestJs](https://dev.to/code42cate/how-to-dockerize-nestjs-327j)
+- [Resend mail service](https://resend.com/)
+- [GEMINI CHAT - Lesson entity with translations](https://gemini.google.com/share/89f1ecff0e19)
+- [Resend add DNS to domain](https://resend.com/docs/dashboard/domains/introduction)
