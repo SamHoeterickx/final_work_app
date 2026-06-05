@@ -11,7 +11,7 @@ import { IChapterProgressProps } from '@/shared/types/types';
 export const ChapterProgress: FC<IChapterProgressProps> = ({ lessons }) => {
     const allLessons = lessons || [];
 
-    const completed = allLessons.filter((lesson) => lesson.status !== EProgressStatus.LOCKED);
+    const completed = allLessons.filter((lesson) => lesson.status === EProgressStatus.COMPLETED);
 
     return (
         <Text

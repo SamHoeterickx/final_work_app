@@ -1,4 +1,5 @@
 # BRONNENLIJST
+
 - [React native documentation](https://reactnative.dev/)
 - [Expo docs](https://docs.expo.dev/)
 - [Udemy cursus expo](https://www.udemy.com/course/react-native-development-simplified)
@@ -9,4 +10,26 @@
 - [Enable expo interface when docker is started](https://gemini.google.com/share/08819490668c)
 - [React Native Dimensions to get window width and pagingEnabled](https://reactnative.dev/docs/dimensions)
 - [Expo router tab bar](https://docs.expo.dev/router/advanced/custom-tabs/)
-- [React native mod](https://reactnative.dev/docs/modal)
+- [React native modal](https://reactnative.dev/docs/modal)
+- [React native vibrations](https://reactnative.dev/docs/vibration)
+- [Floating island Claude AI](https://claude.ai/share/acf4890f-328e-4f25-bd1e-905e6ee78e57)
+- [3D Model optimalisation Claude AI](https://claude.ai/share/dc89a0f8-6a28-4861-9fb2-98a1c8078142)
+- [DRACO Compression possible with React-three/drei/native | didnt find much online so asked ai](https://gemini.google.com/share/42a909c25e5e)
+- [Gemini generated images for 3D models](https://gemini.google.com/share/8ef1866c8fa2)
+- [Meshy AI to generate 3D models from images](https://www.meshy.ai/workspace)
+- [Github CI / CD Pipeline docs](https://docs.github.com/en/actions/get-started/understand-github-actions)
+- [How to build a CI / CD Pipeline with Github Actions](https://github.blog/enterprise-software/ci-cd/build-ci-cd-pipeline-github-actions-four-steps/)
+- [Defaults for tanstack query](https://tanstack.com/query/v4/docs/framework/react/guides/important-defaults)
+- [How to get a version from package.json in the app](https://stackoverflow.com/questions/38240859/how-to-get-a-versionname-in-react-native-app-on-android)
+- [Gemini CLI is used to bugs when i didn't understand them](https://gemini.google.com/app)
+- [React Native linking to web](https://stackoverflow.com/questions/30540252/how-does-one-display-a-hyperlink-in-react-native-app)
+- [Understanding the expo file system caching questions / plan | Gemini chat](https://gemini.google.com/share/d455436ded66) - tried to save the models in cache to update performace but was unnecesarry
+- [Expo docs filesystem](https://docs.expo.dev/versions/latest/sdk/filesystem/) - tried to save the models in cache to update performace but was unnecesarry
+- [How to access file system with expo](https://stackoverflow.com/questions/73233080/how-to-access-expo-file-system-filesystem-documentdirectory) - tried to save the models in cache to update performace but was unnecesarry
+- [React native reanimated docs](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)
+- [Expo how to build an app to apk - repack](https://docs.expo.dev/build-reference/repack/)
+- [Expo how to build an app to apk - apk](https://docs.expo.dev/build-reference/apk/)
+- [Expo how to build an app to apk - Youtube tutorial build](https://www.youtube.com/watch?v=cs-zgHjt5RQ)
+- [Expo how to build an app to apk - Android bundler](https://docs.expo.dev/build-reference/android-builds/)
+- [Expo how to build an app to apk - Icons and splashscreen](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/)
+- [React native play video - expo av](https://docs.expo.dev/versions/v54.0.0/sdk/audio-av/)

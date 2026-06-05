@@ -47,6 +47,10 @@ export enum ESvgIconName {
     LEGAL = 'legal',
     PRIVACY = 'privacy',
     INFO = 'info',
+    STREAKS = 'streaks',
+    LANGUAGE = 'language',
+    RETURN = 'return',
+    SWIPE_INDICATOR = 'swipeIndicator',
 }
 
 export enum EProgressStatus {
@@ -66,4 +70,52 @@ export enum ESettingsOptions {
     CHANGE_PASSWORD = 'changePassword',
     CHANGE_EMAIL = 'changeEmail',
     CHANGE_NAME = 'changeName',
+}
+
+export enum ELessonScreenOptions {
+    C_TITLE = 'C_TITLE',
+    C_DID_YOU_KNOW = 'C_DID_YOU_KNOW',
+    C_TEXT_WITH_IMAGE = 'C_TEXT_WITH_IMAGE',
+    C_ONLY_TEXT = 'C_ONLY_TEXT',
+    C_VIDEO = 'C_VIDEO',
+    Q_RIGHT_OR_WRONG = 'Q_RIGHT_OR_WRONG',
+    Q_MATCH = 'Q_MATCH',
+    Q_CLICK_AND_FOCUS = 'Q_CLICK_AND_FOCUS',
+}
+
+export enum EPostLessonFlowOptions {
+    SHOW_XP = 'SHOW_XP',
+    SHOW_STREAK = 'SHOW_STREAK',
+    SHOW_UNLOCKED_LESSON = 'SHOW_UNLOCKED_LESSON',
+    SHOW_UNLOCKED_CHAPTER = 'SHOW_UNLOCKED_CHAPTER',
+}
+
+export enum ERoles {
+    ADMIN = 'ADMIN',
+    USER = 'USER',
+}
+
+export enum EIslandModels {
+    COFFEE_BAG = 'coffee_bag',
+    COFFEE_TAMPER = 'coffee_tamper',
+    COFFEE_FRUIT = 'coffee_fruit',
+    TURKISH_COFFEE_POT = 'turkish_coffee_pot',
+    ESPRESSO = 'espresso',
+    FRENCH_PRESS = 'french_press',
+    GRIND_SIZE = 'grind_size',
+    MILK_PITCHER = 'milk_pitcher',
+    MOKA_POT = 'moka_pot',
+    PORTAFILTER = 'portafilter',
+    AEROPRESS = 'aeropress',
+    POUR_OVER = 'pour_over',
+    GOOSENECK_KETTLE = 'gooseneck_kettle',
+    PUCK_PREP = 'puck_prep',
+    COFFEE_CUP = 'coffee_cup',
+}
+
+export enum ELoadingMessages {
+    WORLD_SETUP = 'world_setup',
+    LOADING_MODELS = 'loading_models',
+    PREPARING_APP = 'preparing_app',
+    LOADING_CHAPTERS = 'loading_chapters',
 }

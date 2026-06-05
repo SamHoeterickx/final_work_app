@@ -11,8 +11,10 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 // TYPES
 import { IQuestionProps } from '@/shared/types/types';
 
-export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options, questionIndex }) => {
-    const { answers, setSingleChoiceAnswer } = useOnboardingStore();
+export const SingleChoiceQuestion: FC<IQuestionProps> = ({ options }) => {
+    const answers = useOnboardingStore((state) => state.answers);
+    const setSingleChoiceAnswer = useOnboardingStore((state) => state.setSingleChoiceAnswer);
+    const questionIndex = useOnboardingStore((state) => state.onboardingCount);
     const { t } = useTranslation();
 
     const currentAnswers = answers[questionIndex] || [];

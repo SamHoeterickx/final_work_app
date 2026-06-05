@@ -1,16 +1,18 @@
-import { Animated, Easing, Image, StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useEffect, useRef } from 'react';
 import { useRouter } from 'expo-router';
+import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Animated, Easing, Image, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { Button, LanguageButton } from '@/shared/components';
+import { Button, HyperLink, LanguageButton } from '@/shared/components';
 
 // STYLES
 import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/design.system';
 
 export default function StartAppScreen() {
     const router = useRouter();
+    const { t, i18n } = useTranslation();
 
     const floatAnim = useRef(new Animated.Value(0)).current;
 
@@ -32,6 +34,23 @@ export default function StartAppScreen() {
             ]),
         ).start();
     }, [floatAnim]);
+
+    const renderFooter = () => {
+        return (
+            <Text style={[baseStyles.caption, styles.footer]}>
+                {t('startApp.footer')}{' '}
+                <HyperLink
+                    copy={'startApp.buttons.privacyPolicy'}
+                    path={`https://www.brewlingo.be/${i18n.language}/privacyPolicy`}
+                />{' '}
+                {t('startApp.and')}{' '}
+                <HyperLink
+                    copy={'startApp.buttons.termsOfCondition'}
+                    path={`https://www.brewlingo.be/${i18n.language}/termsOfCondition`}
+                />
+            </Text>
+        );
+    };
 
     return (
         <SafeAreaView style={[baseStyles.container]}>
@@ -56,7 +75,7 @@ export default function StartAppScreen() {
                             ],
                         },
                     ]}
-                    source={require('@/assets/images/moka_pot_1.png')}
+                    source={require('@/assets/images/moka_pot_island.png')}
                     resizeMode="contain"
                 />
                 <Animated.View
@@ -92,6 +111,7 @@ export default function StartAppScreen() {
                     styles="secundary"
                     size="large"
                 />
+                {renderFooter()}
             </View>
         </SafeAreaView>
     );
@@ -121,5 +141,10 @@ const styles = StyleSheet.create({
         borderRadius: borderRadius.full,
         marginTop: -20,
         zIndex: 1,
+    },
+    footer: {
+        textAlign: 'center',
+        marginTop: spacing.md,
+        fontStyle: 'italic',
     },
 });

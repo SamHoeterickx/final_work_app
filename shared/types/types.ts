@@ -2,12 +2,15 @@ import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // ENUMS
 import {
+    ELessonScreenOptions,
     ELocales,
-    EProgressStatus,
-    ESvgIconName,
     EOnboardingQuestionKind,
+    EProgressStatus,
+    ERoles,
     ESettingsOptions,
+    ESvgIconName,
 } from './enums';
+import { IGenerateCustomRoadmapResponse, IGetMyChaptersResponse } from './response.type';
 
 // INTERFACES
 export interface ILoginCredentials {
@@ -43,6 +46,7 @@ export interface IChangePasswordWithResetCodeCredentials {
     newPassword: string;
     repeatNewPassword: string;
 }
+
 export interface IUpdateUsernameCredentials {
     updatedUsername: string;
 }
@@ -50,12 +54,14 @@ export interface IUpdateUsernameCredentials {
 export interface IUpdateEmailCredentials {
     updatedEmailAdress: string;
 }
+
 export interface IDeleteUserCredentials {
     password: string;
 }
 
-export interface IStartLessonCredentials {
+export interface ILessonCredentials {
     lessonUuid: string;
+    languageCode: ELocales;
 }
 
 export interface IRegisterVariables {
@@ -78,36 +84,59 @@ export interface IAuthStore {
     refreshToken: string | null;
     isHydrated: boolean;
     needsRoadmap: boolean;
+    roadmapResponse: IGenerateCustomRoadmapResponse | null;
     setTokens: (accessToken: string, refreshToken: string, needsRoadmap: boolean) => void;
     setNeedsRoadmap: (state: boolean) => void;
+    setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) => void;
     setHydrated: (state: boolean) => void;
     logout: () => void;
 }
 
 export interface IOnboardingStore {
+    onboardingCount: number;
     answers: Record<number, number[]>;
+    setOnboardingCount: (count: number | ((prev: number) => number)) => void;
     toggleMultipleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
     setSingleChoiceAnswer: (questionIndex: number, optionIndex: number) => void;
 }
 
-export interface IUserPreferencesStore {
+export interface IHomeStore {
+    allChapters: IGetMyChaptersResponse[] | null;
+    chapterIndex: number;
+    activeChapterIndex: number;
+    aChapterStatus: EProgressStatus | null;
+    isScreenActive: boolean;
+    returnToCurrentChapter: () => void;
+    updateChapterIndex: (index: number) => void;
+    setAllChapters: (chapters: IGetMyChaptersResponse[]) => void;
+    setIsScreenActive: (isActive: boolean) => void;
+}
+
+export interface IUserDataStore {
     language: ELocales;
+    userData: IUserData | null;
+    name: string;
+    email: string;
+    xp: number;
+    streaks: number;
+    longestStreak: number;
     setLanguage: (language: ELocales) => void;
     fetchUserLanguage: () => Promise<void>;
+    getUserData: () => Promise<void>;
+    setStreaks: (streak: number) => void;
 }
 
-export interface IRefreshTokensResponse {
-    refreshTokens: {
-        accessToken: string;
-        refreshToken: string;
-    };
-}
-
-export interface ILoginUserResponse {
-    loginUser: {
-        accessToken: string;
-        refreshToken: string;
-    };
+export interface ILessonStore {
+    screenIndex: number;
+    isLessonCompleted: boolean;
+    subStep: number;
+    selectedOption: string | null;
+    quizError: string | null;
+    setScreenIndex: (index: number) => void;
+    setIsLessonCompleted: (state: boolean) => void;
+    setSubStep: (step: number | ((prev: number) => number)) => void;
+    setSelectedOption: (option: string | null) => void;
+    setQuizError: (error: string | null) => void;
 }
 
 export interface IOnboardingQuestions {
@@ -122,10 +151,24 @@ export interface IErrorData {
     isError: boolean;
 }
 
+export interface IUserData {
+    role: ERoles;
+    name: string;
+    email: string;
+    xp: string;
+    streaks: {
+        uuid: string;
+        currentStreak: number;
+        lastCompletedDate: Date;
+        longestStreak: number;
+    };
+}
+
 export interface IChapter {
     uuid: string;
-    name: string;
-    description: string;
+    name: ITranslations;
+    description: ITranslations;
+    tags: string[];
     slug: string;
     lessons: ILessonsChapter[];
     created_at: string;
@@ -141,8 +184,35 @@ export interface IChapterUser {
 
 export interface ILessonsChapter {
     uuid: string;
-    name: string;
     status: EProgressStatus;
+    order: number;
+    translations: ILessonTranslations | ILessonTranslations[];
+}
+
+export interface IUnlockedLesson {
+    uuid: string;
+    status: EProgressStatus;
+    order: number;
+    translations: {
+        name: string;
+        languageCode: ELocales;
+        description: string;
+    };
+}
+
+export interface IUnlockedChapter {
+    uuid: string;
+    name: string;
+    slug: string;
+    description: string;
+}
+
+export interface ILessonTranslations {
+    uuid?: string | null;
+    name: string;
+    description: string;
+    languageCode: ELocales;
+    content: any[];
 }
 
 export interface IQuestionOption {
@@ -160,11 +230,6 @@ export type TGraphQLError = {
     extensions?: {
         code?: string;
     };
-};
-
-export type TGraphQLResponse<T = unknown> = {
-    data?: T;
-    errors?: TGraphQLError[];
 };
 
 // PROPS
@@ -189,7 +254,6 @@ export interface IOnboardingQuestionWrapperProps {
 
 export interface IQuestionProps {
     options: IQuestionOption[];
-    questionIndex: number;
 }
 
 export interface IBackButtonProps {
@@ -202,22 +266,13 @@ export interface IPostOnboardingFlowProps {
     handleNext: () => void;
 }
 
-export interface IChapterUnlockedProps extends IPostOnboardingFlowProps {
-    chapter: string;
-    islandPath: string;
-}
-export interface IStartLearningProps extends IPostOnboardingFlowProps {
-    name: string;
-    description: string;
-}
-
 export interface IIslandModelProps {
     islandPath: string;
     scale?: number;
 }
 
 export interface IChapterProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     setIsFocused: (state: boolean) => void;
 }
@@ -232,7 +287,7 @@ export interface IChapterActionsProps {
 }
 
 export interface IChapterHeaderProps {
-    chapterUser: IChapterUser;
+    chapterUser: IGetMyChaptersResponse;
     isFocused: boolean;
     selectedLesson: ILessonsChapter | null;
 }
@@ -278,7 +333,82 @@ export interface IChangePasswordSettingsProps {
     email?: string;
 }
 
-export interface IDeleteUserModalProps {
+export interface IModalProps {
     isModalOpen: boolean;
     setIsModalOpen: (state: boolean) => void;
+}
+
+export interface ILessonHeaderProps {
+    screenCount: number;
+    totalScreens: number | undefined;
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
+    onBackPress: () => void;
+}
+
+export interface ILessonScreenOptionsWrapperProps {
+    screenType: ELessonScreenOptions;
+    lessonContent: any;
+}
+
+export interface ILessonScreenProps {
+    content: any;
+}
+
+export interface IPostLessonFlowProps {
+    data: any;
+    currentStep: string;
+}
+
+export interface IXpFlowProps {
+    newUserXP: number;
+    prevUserXP: number;
+}
+
+export interface IStreaksFlowProps {
+    newStreak: number;
+}
+
+export interface ILessonUnlockedProps {
+    lesson: {
+        status: 'UNLOCKED';
+        uuid: string;
+        translations: [
+            {
+                name: string;
+                description: string;
+                languageCode: ELocales;
+            },
+        ];
+    };
+}
+
+export interface ILessonMeshProps {
+    position: [number, number, number];
+    isLocked: boolean;
+    isCurrent: boolean;
+    delay: number;
+    onClick: () => void;
+}
+
+export interface IFloatingIslandProps {
+    scale?: [number, number, number] | number;
+    position?: [number, number, number];
+    animation: boolean;
+}
+
+export interface ITranslations {
+    nl: string;
+    en: string;
+    fr: string;
+}
+
+export interface ILoadingScreenProps {
+    loadingFor?: string;
+    message?: string;
+}
+
+export interface IHyperLinkProps {
+    path: string;
+    copy: string;
 }

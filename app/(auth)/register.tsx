@@ -38,7 +38,7 @@ export default function Register() {
     });
 
     const { mutate, isError, error, isPending } = useRegister();
-    const { answers } = useOnboardingStore();
+    const answers = useOnboardingStore((state) => state.answers);
 
     const { t } = useTranslation();
 
@@ -65,7 +65,7 @@ export default function Register() {
     const renderError = () => {
         return (
             <View>
-                <Text style={[baseStyles.p, baseStyles.error]}>{error?.message}</Text>
+                <Text style={[baseStyles.p, baseStyles.errorText]}>{error?.message}</Text>
             </View>
         );
     };

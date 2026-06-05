@@ -4,8 +4,12 @@
         "subtitle": "Du grain à la tasse, apprenez tout sur le café et comment préparer la tasse parfaite.",
         "buttons": {
             "onboarding": "Commencer mon voyage",
-            "login": "Reprendre mon voyage"
-        }
+            "login": "Reprendre mon voyage",
+            "privacyPolicy": "Politique de confidentialité",
+            "termsOfCondition": "Conditions générales"
+        },
+        "footer": "En continuant, vous acceptez notre",
+        "and": "et"
     },
     "login": {
         "title": "Connexion",
@@ -66,90 +70,87 @@
     },
     "onboarding": {
         "currentBehaviour": {
-            "title": "Comment préparez-vous actuellement votre café ?",
-            "subtitle": "Choisissez les façons dont vous buvez du café.",
+            "title": "Comment achetez-vous ou buvez-vous habituellement votre café ?",
+            "subtitle": "Cela nous aide à comprendre votre point de départ.",
             "optionLabels": {
-                "instantCoffee": "Café instantané",
-                "work": "Au travail",
-                "espresso": "Expresso",
-                "podMachine": "Machine à capsules",
-                "frenchPress": "Presse française",
-                "coffeeShop": "Au café"
+                "wholeBeans": "Grains de café entiers",
+                "preGround": "Café prémoulu",
+                "convenience": "Dosettes / Café instantané",
+                "coffeeShop": "Cafés / Coffee shops"
             }
         },
         "experienceLevel": {
             "title": "Quelle est votre expérience avec le café ?",
             "subtitle": "Nous adaptons votre parcours d'apprentissage en fonction de ce que vous savez déjà.",
             "optionLabels": {
-                "tasteEnjoyer": "L'Amateur de goût",
+                "tasteEnjoyer": "L'Amateur de Goût",
                 "curious": "Le Curieux",
-                "connoisseur": "Le Connaisseur",
-                "experimenter": "L'Expérimentateur"
+                "connoisseur": "Le Connaisseur"
             },
             "optionDescriptions": {
-                "tasteEnjoyer": "Je bois du café principalement pour la convivialité.",
-                "curious": "J'ai déjà entendu des termes comme taille de mouture ou torréfaction.",
-                "connoisseur": "Un Arabica / Robusta n'a rien de nouveau pour moi.",
-                "experimenter": "J'expérimente avec les méthodes de préparation."
+                "tasteEnjoyer": "Je bois du café principalement pour le goût et l'aspect social. Je suis débutant.",
+                "curious": "J'ai déjà entendu des termes comme taille de mouture, extraction ou profils de torréfaction.",
+                "connoisseur": "J'expérimente activement avec les variables, les méthodes de préparation et le café de spécialité."
             }
         },
         "goal": {
-            "title": "Que souhaitez-vous accomplir ?",
-            "subtitle": "Choisissez votre objectif principal. Pas d'inquiétude, nous couvrons tout, mais nous adaptons votre parcours.",
+            "title": "Qu'aimeriez-vous accomplir ?",
+            "subtitle": "Choisissez votre objectif principal. Ne vous inquiétez pas, nous couvrons tout, mais nous donnerons la priorité à cela.",
             "optionLabels": {
-                "tastingSkills": "Je veux apprendre à reconnaître et décrire les saveurs.",
-                "perfectEspresso": "Je veux apprendre à préparer l'expresso parfait.",
-                "latteArt": "Je veux me concentrer sur la texture du lait et créer de beaux motifs.",
-                "beanToCup": "Je veux apprendre tout le processus, de la plantation à la tasse."
+                "tastingSkills": "Je veux reconnaître, décrire et découvrir des saveurs de café uniques.",
+                "perfectEspresso": "Je veux apprendre à régler et préparer l'espresso parfait.",
+                "latteArt": "Je veux maîtriser la texture du lait et créer un magnifique latte art.",
+                "beanToCup": "Je veux comprendre tout le processus, de la plantation de grains verts à la torréfaction."
             }
         },
         "currentPreferences": {
-            "title": "Quel type de buveur de café êtes-vous ?",
-            "subtitle": "Aimez-vous un grand classique corsé ou préférez-vous chercher des saveurs fruitées ?",
+            "title": "Quel type de profil de saveur préférez-vous ?",
+            "subtitle": "Préférez-vous les classiques noirs et doux ou les saveurs fruitées et légères ?",
             "optionLabels": {
-                "boldClassic": "J'aime un goût puissant et corsé avec des notes profondes.",
-                "milkBalanced": "Pour moi, tout est question d'équilibre entre un café doux et un lait parfait.",
-                "versatile": "Je veux tout apprendre : de terreux et épicé à floral et frais.",
-                "fruityAcidic": "Je recherche des saveurs légères, fraîches et fruitées avec un peu d'acidité."
+                "boldClassic": "Des saveurs fortes, intenses et corsées avec de profondes notes chocolatées.",
+                "milkBalanced": "Un équilibre doux entre richesse et douceur, avec une texture de lait crémeuse.",
+                "fruityAcidic": "Des saveurs légères, florales et fruitées avec une acidité rafraîchissante.",
+                "versatile": "Je veux expérimenter et explorer les saveurs du café de spécialité."
             }
         },
         "desiredTempo": {
             "title": "Quel est votre rythme ?",
-            "subtitle": "Comment et combien de temps souhaitez-vous consacrer chaque jour à votre voyage autour du café ?",
+            "subtitle": "Combien de temps voulez-vous consacrer à votre parcours café quotidien ?",
             "optionLabels": {
                 "quickShot": "Le shot rapide",
                 "dailyRoutine": "La routine quotidienne",
-                "weekendLover": "L'amoureux du week-end",
+                "weekendLover": "L'amateur du week-end",
                 "ownPace": "À mon propre rythme"
             },
             "optionDescriptions": {
-                "quickShot": "Rapide et intense, apprenez-moi l'essentiel.",
-                "dailyRoutine": "Je prends le temps pour une courte leçon en buvant mon café.",
-                "weekendLover": "Le week-end, j'adore me plonger dans la matière.",
-                "ownPace": "Pas d'horaire fixe, je préfère le faire à mon rythme."
+                "quickShot": "Rapide et fort, apprenez-moi l'essentiel absolu.",
+                "dailyRoutine": "Je prends le temps pour une courte leçon en buvant mon café du matin.",
+                "weekendLover": "Le week-end, j'adore me plonger profondément dans le matériel d'apprentissage.",
+                "ownPace": "Pas d'horaire fixe, je préfère naviguer à mon propre rythme."
             }
         },
         "currentMethodes": {
-            "title": "Quelles méthodes de préparation possédez-vous déjà ?",
-            "subtitle": "Sélectionnez les méthodes pour lesquelles vous êtes équipé.",
+            "title": "Quelles méthodes de préparation utilisez-vous actuellement ?",
+            "subtitle": "Sélectionnez les méthodes pour lesquelles vous avez l'équipement.",
             "optionLabels": {
-                "chemex": "Chemex",
+                "espressoMachine": "Machine à expresso",
+                "pourOver": "Pour Over (Filtre)",
                 "mokaPot": "Cafetière Moka",
-                "espressoMachine": "Expresso",
-                "pourOver": "Pour over (filtre manuel)",
-                "frenchPress": "Presse française",
-                "none": "Je n'ai encore rien"
+                "immersion": "AeroPress",
+                "frenchPress": "Cafetière à piston (French Press)",
+                "none": "Aucun"
             }
         },
         "extraGear": {
-            "title": "Qu'y a-t-il d'autre dans votre cuisine ?",
-            "subtitle": "Sélectionnez l'équipement supplémentaire que vous possédez déjà.",
+            "title": "Quel équipement supplémentaire est disponible dans votre cuisine ?",
+            "subtitle": "Sélectionnez les outils que vous possédez déjà.",
             "optionLabels": {
+                "coffeeGrinder": "Moulin à café",
                 "precisionScale": "Balance de précision",
                 "gooseneckKettle": "Bouilloire col de cygne",
-                "coffeeGrinder": "Moulin à café",
-                "milkFrother": "Mousseur à lait",
-                "none": "Je n'ai encore rien"
+                "milkFrother": "Buse vapeur / Mousseur à lait",
+                "puckPrep": "WDT / Tamper",
+                "none": "Aucun"
             }
         },
         "buttons": {
@@ -164,7 +165,7 @@
     },
     "postOnboardingFlow": {
         "generating": {
-            "title": "Création de votre parcours personnalisé..."  
+            "title": "Création de votre parcours personnalisé..."
         },
         "success": {
             "title": "Votre parcours est prêt !",
@@ -188,10 +189,11 @@
             }
         }
     },
-    "home": {
-        "title": "Ceci est un titre"
+    "homeHeader": {
+        "backToCurrent": "return"
     },
     "chapter": {
+        "currentStatus": "Leçon en Cours",
         "buttons": {
             "completed": "Revisiter l'île",
             "continue": "Continuer",
@@ -219,15 +221,21 @@
         "buttons": {
             "logout": "Déconnexion"
         },
+        "deleteAccount": {
+            "title": "es-tu sûr?",
+            "subtitle": "Saisissez le mot de passe pour supprimer le compte",
+            "placeholder": "Mot de passe"
+        },
         "profile": {
-        "title": "Profil",
+            "title": "Profil",
             "tabs": {
                 "changePassword": "Modifier le mot de passe",
                 "changeEmail": "Modifier l'e-mail",
                 "changeName": "Modifier le nom"
             },
             "buttons": {
-                "delete": "Supprimer le compte"
+                "delete": "Supprimer le compte",
+                "cancel": "Annuler"
             }
         },
         "changeLanguage": {
@@ -237,13 +245,41 @@
             "title": "Notifications"
         },
         "about": {
-            "title": "À propos de BrewLingo"
+            "title": "À propos de BrewLingo",
+            "intro": "BrewLingo est votre guide interactif ultime pour explorer l'univers fascinant du café de spécialité. De l'histoire riche du grain de café à la science précise de l'extraction parfaite : nous faisons de vous un véritable barista à la maison.",
+            "missionTitle": "Notre Mission",
+            "missionContent": "La théorie du café peut être complexe et intimidante. BrewLingo change la donne en rendant l'apprentissage accessible, visuel et surtout amusant. Pas de longs textes ennuyeux, mais des leçons interactives adaptées à votre niveau.",
+            "featuresTitle": "Apprentissage Personnalisé",
+            "featuresContent": "Grâce à des expériences en 3D, des quiz et un parcours sur mesure, vous apprenez exactement ce dont vous avez besoin pour votre propre équipement. Que vous ne juriez que par un espresso rapide, que vous expérimentiez avec une cafetière Moka, ou que vous souhaitiez maîtriser le pour-over parfait.",
+            "creatorTitle": "Le Créateur",
+            "creatorContent": "BrewLingo a été conçu et développé par Sam Hoeterickx, un développeur full-stack passionné et amateur de café, avec pour objectif d'ouvrir le monde du café de spécialité à tout le monde, une étape à la fois.",
+            "footer": "BrewLingo — Créé avec passion pour le café et le code © 2026"
         },
         "privacyPolicy": {
-            "title": "Politique de confidentialité"
+            "title": "Politique de confidentialité",
+            "intro": "Chez BrewLingo, nous prenons votre vie privée au sérieux. Cette politique de confidentialité explique quelles données nous collectons, comment nous les utilisons et comment nous les protégeons.",
+            "section1Title": "1. Données que nous collectons",
+            "section1Content": "Lorsque vous créez un compte, nous collectons votre adresse e-mail et votre nom d'utilisateur. Nous suivons également votre progression (comme les leçons terminées et votre série quotidienne) afin de vous offrir la meilleure expérience d'apprentissage.",
+            "section2Title": "2. Comment nous utilisons vos données",
+            "section2Content": "Nous utilisons vos données exclusivement pour faire fonctionner l'application, sauvegarder votre progression et améliorer l'application via des analyses anonymes. Nous ne vendons jamais vos données à des tiers.",
+            "section3Title": "3. Sécurité et stockage",
+            "section3Content": "Vos données sont stockées en toute sécurité et protégées contre tout accès non autorisé. Nous ne conservons pas vos données plus longtemps que nécessaire aux fins pour lesquelles elles ont été collectées.",
+            "section4Title": "4. Vos droits (RGPD)",
+            "section4Content": "Vous avez le droit d'accéder à vos données, de les corriger ou de les supprimer complètement à tout moment. Vous pouvez le faire directement via les paramètres de votre compte dans l'application ou en nous contactant.",
+            "footer": "Dernière mise à jour : juin 2026."
         },
         "termsOfCondition": {
-            "title": "Conditions générales"
+            "title": "Conditions générales d'utilisation",
+            "intro": "Bienvenue sur BrewLingo ! En utilisant notre application, vous acceptez ces conditions générales d'utilisation. Veuillez les lire attentivement.",
+            "section1Title": "1. Utilisation de l'application",
+            "section1Content": "BrewLingo propose du contenu éducatif sur le café, les méthodes d'extraction et la théorie. L'application est destinée à un usage personnel et non commercial. Vous êtes responsable de l'exactitude des informations que vous saisissez (comme vos identifiants).",
+            "section2Title": "2. Propriété intellectuelle",
+            "section2Content": "Tout le contenu de BrewLingo—y compris les textes, logos, leçons interactives et designs—est la propriété de BrewLingo et est protégé par le droit d'auteur. Il est interdit de copier ou de distribuer ce contenu sans autorisation préalable.",
+            "section3Title": "3. Modifications et disponibilité",
+            "section3Content": "Nous nous efforçons d'assurer le bon fonctionnement de l'application, mais nous ne pouvons garantir que le service sera toujours en ligne sans interruption. Nous nous réservons le droit de modifier, de mettre à jour ou de suspendre (temporairement) les fonctionnalités de l'application à tout moment.",
+            "section4Title": "4. Limites de responsabilité",
+            "section4Content": "Les informations contenues dans cette application sont purement éducatives. Bien que nous visions la plus haute qualité et précision dans notre science du café, nous ne saurions être tenus responsables des erreurs d'extraction, des espressos ratés ou des dommages matériels causés par le suivi de nos guides.",
+            "footer": "Dernière mise à jour : juin 2026."
         },
         "changePassword": {
             "title": "Modifier le mot de passe"
@@ -264,6 +300,104 @@
             "virtuoso": "Virtuose des Saveurs",
             "artisan": "Artisan du Café",
             "legend": "Légende du Café"
+        },
+        "streaks": {
+            "title": "Vos Séries",
+            "current": "Actuelle",
+            "longest": "Série la plus longue"
         }
+    },
+    "lesson": {
+        "titleScreen": {
+            "introduction": "Introduction au chapitre"
+        },
+        "dykScreen": {
+            "title": "saviez-vous?"
+        },
+        "quiz": {
+            "tag": "Testez vos connaissances",
+            "wrongAnswer": "Oups, réessayez"
+        },
+        "paused": {
+            "title": "Leçon en pause",
+            "options": {
+                "quit": "Quitter la leçon",
+                "restart": "Recommencer la leçon"
+            },
+            "quitConfirm": {
+                "title": "Êtes-vous sûr ?",
+                "subtitle": "Toute progression dans cette leçon sera perdue."
+            },
+            "buttons": {
+                "resume": "Reprendre la leçon"
+            }
+        },
+        "buttons": {
+            "continue": "Continuer",
+            "complete": "Terminer la leçon"
+        },
+        "postFlow": {
+            "completed": {
+                "tag": "Rafraîchi",
+                "title": "Bien Joué !",
+                "subtitle": "Réviser vos connaissances est la clé de la maîtrise."
+            },
+            "xp": {
+                "congrats": "Bien Joué !",
+                "newTotal": "Nouveau Total d'XP"
+            },
+            "streaks": {
+                "congrats": "En Pleine Forme !",
+                "updated": "Série Prolongée",
+                "days": "Jours"
+            },
+            "lessonUnlocked": {
+                "tag": "Nouvelle Leçon Débloquée"
+            },
+            "chapterUnlocked": {
+                "tag": "Nouveau Chapitre Débloqué"
+            }
+        }
+    },
+    "streaks": {
+        "title": "Vos Séries",
+        "current": "Actuelle",
+        "longest": "Série la plus longue",
+        "dayStreaks": "Jours de Série",
+        "keepGoing": "SUPER CONTINUEZ COMME ÇA"
+    },
+    "loadingScreen": {
+        "messages": {
+            "worldSetup": "Configuration de votre monde",
+            "loadingModels": "Chargement des modèles 3D",
+            "preparingApp": "Préparation de l'application",
+            "loadingChapters": "Chargement de vos chapitres",
+            "buildingIslands": "Construction des îles"
+        },
+        "didYouKnow": {
+            "1": "Le Brésil est à lui seul responsable d'environ un tiers de la production mondiale de café.",
+            "2": "La Finlande est le pays où l'on consomme le plus de tasses de café par habitant au monde.",
+            "3": "Le mot italien espresso signifie littéralement \"pressé\".",
+            "4": "La toute première webcam a été construite à Cambridge en 1991 pour surveiller si la cafetière commune était vide.",
+            "5": "Après le pétrole brut, le café est l'une des matières premières les plus échangées au monde.",
+            "6": "En 2017, la Station spatiale internationale (ISS) a reçu sa première machine à espresso spéciale, baptisée \"ISSpresso\".",
+            "7": "Hawaï est le seul État américain où le climat est propice à la culture commerciale du café.",
+            "8": "Avant l'invention du café en tant que boisson, les tribus d'Afrique de l'Est mâchaient les baies écrasées pour obtenir un regain d'énergie.",
+            "9": "Le cappuccino doit son nom aux moines capucins, car la couleur de la boisson ressemblait exactement à celle de leurs robes brunes.",
+            "10": "Une tasse de café noir pur ne contient pratiquement aucune calorie, jusqu'à ce que vous y ajoutiez du lait ou du sucre.",
+            "11": "Il faut en moyenne trois à quatre ans pour qu'un caféier nouvellement planté produise des baies pour la première fois.",
+            "12": "L'odeur du café à elle seule peut réduire le stress en modifiant l'activité de gènes spécifiques dans le cerveau.",
+            "13": "Le café instantané existe depuis 1890, mais il n'a connu un succès mondial que pendant la Première Guerre mondiale.",
+            "14": "Le marc de café refroidi est un excellent engrais durable pour les plantes qui aiment les sols acides, comme les hortensias.",
+            "15": "L'« Americano » est né pendant la Seconde Guerre mondiale lorsque les soldats américains en Italie ont ajouté de l'eau à leur espresso fort.",
+            "16": "L'Australie et la Nouvelle-Zélande prétendent toutes deux être les inventeurs du célèbre café « flat white » dans les années 1980.",
+            "17": "Macchiato signifie littéralement « tâché » en italien, ce qui fait référence à la petite larme de lait qui marque l'espresso.",
+            "18": "Pour produire un sac standard de 60 kilos de grains de café, environ 600 000 baies cueillies à la main sont nécessaires.",
+            "19": "Le célèbre compositeur Ludwig van Beethoven prenait son café très au sérieux et comptait toujours exactement 60 grains de café pour chaque tasse.",
+            "20": "Au XVIIe siècle, le roi d'Angleterre Charles II a tenté de fermer tous les cafés par crainte que des révoltes politiques n'y soient complotées."
+        }
+    },
+    "homeIndicator": {
+        "text": "Balayez pour naviguer"
     }
 }

@@ -1,14 +1,36 @@
+// QUERIES & MUTATIONS
+import { COMPLETE_LESSON_MUTATION } from '../graphql/mutations';
 import { START_LESSON_QUERY } from '../graphql/query';
-import { IStartLessonCredentials } from '../types/types';
+
+// TYPES
+import { ICompleteLessonResponse, IStartLessonResponse } from '../types/response.type';
+import { ILessonCredentials } from '../types/types';
+
+// UTILS
 import { graphqlFetch } from '../utils/api.utils';
 
 class LessonService {
-    async startLesson(credentials: IStartLessonCredentials) {
+    async startLesson(credentials: ILessonCredentials) {
         try {
-            console.log({ ...credentials });
-            const startLesson = await graphqlFetch<any>(START_LESSON_QUERY, { ...credentials });
+            const response = await graphqlFetch<{ startLesson: IStartLessonResponse }>(
+                START_LESSON_QUERY,
+                { ...credentials },
+            );
+            return response?.startLesson;
+        } catch (error) {
+            throw error;
+        }
+    }
 
-            return startLesson?.startLesson;
+    async completeLesson(credentials: ILessonCredentials) {
+        try {
+            const response = await graphqlFetch<{ completeLesson: ICompleteLessonResponse }>(
+                COMPLETE_LESSON_MUTATION,
+                {
+                    ...credentials,
+                },
+            );
+            return response?.completeLesson;
         } catch (error) {
             throw error;
         }

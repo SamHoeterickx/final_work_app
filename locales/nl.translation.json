@@ -4,8 +4,12 @@
         "subtitle": "Van boon tot cup, leer alles over koffie en het maken van de perfecte cup.",
         "buttons": {
             "onboarding": "Start mijn reis",
-            "login": "Hervat mijn reis"
-        }
+            "login": "Hervat mijn reis",
+            "privacyPolicy": "Privacybeleid",
+            "termsOfCondition":"Voorwaarden"
+        },
+        "footer": "Door verder te gaan, ga je akkoord met onze",
+        "and": "en"
     },
     "login": {
         "title": "Inloggen",
@@ -66,90 +70,87 @@
     },
     "onboarding": {
         "currentBehaviour": {
-            "title": "Hoe zet je momenteel koffie?",
-            "subtitle": "Kies de manieren waarop jij koffie drinkt.",
+            "title": "Hoe koop of drink je je koffie meestal?",
+            "subtitle": "Dit helpt ons je startpunt te begrijpen.",
             "optionLabels": {
-                "instantCoffee": "Oploskoffie",
-                "work": "Op het werk",
-                "espresso": "Espresso",
-                "podMachine": "Cup machine",
-                "frenchPress": "French press",
-                "coffeeShop": "Coffee shop"
+                "wholeBeans": "Hele koffiebonen",
+                "preGround": "Voorgemalen koffie",
+                "convenience": "Capsules / oploskoffie",
+                "coffeeShop": "Koffiebars"
             }
         },
         "experienceLevel": {
-            "title": "Wat is jouw koffie ervaring?",
+            "title": "Wat is je koffie-ervaring?",
             "subtitle": "We passen je leertraject aan op basis van wat je al weet.",
             "optionLabels": {
-                "tasteEnjoyer": "De Smaakgenieter",
+                "tasteEnjoyer": "De Genieter",
                 "curious": "De Nieuwsgierige",
-                "connoisseur": "De Kenner",
-                "experimenter": "De Smaakmaker"
+                "connoisseur": "De Kenner"
             },
             "optionDescriptions": {
-                "tasteEnjoyer": "Ik drink koffie vooral voor de gezelligheid.",
-                "curious": "Ik heb termen als maalgraad of branding wel eens gehoord",
-                "connoisseur": "Een Arabica / Robusta is niets nieuws voor mij",
-                "experimenter": "Ik experimenteer met zetmethodes"
+                "tasteEnjoyer": "Ik drink koffie vooral voor de smaak en gezelligheid. Ik ben een beginner.",
+                "curious": "Ik heb weleens gehoord van termen als maalgraad, extractie of brandprofielen.",
+                "connoisseur": "Ik experimenteer actief met variabelen, zetmethoden en specialty coffee."
             }
         },
         "goal": {
-            "title": "Wat wil je graag bereiken?",
-            "subtitle": "Kies je hoofddoel. Geen zorgen, we behandelen alles, maar we passen je leertraject hierop aan",
+            "title": "Wat wil je bereiken?",
+            "subtitle": "Kies je hoofddoel. Maak je geen zorgen, we behandelen alles, maar we geven hier prioriteit aan.",
             "optionLabels": {
-                "tastingSkills": "Ik wil smaken leren herkennen en omschrijven",
-                "perfectEspresso": "Ik wil de perfecte espresso leren maken",
-                "latteArt": "Ik wil de focus leggen op melktextuur en prachtige figuren maken.",
-                "beanToCup": "Ik wil het hele proces leren, van de plantage tot in het kopje."
+                "tastingSkills": "Ik wil unieke koffiesmaken leren herkennen, beschrijven en ontdekken.",
+                "perfectEspresso": "Ik wil leren hoe ik de perfecte espresso afstel en zet.",
+                "latteArt": "Ik wil het opschuimen van melk onder de knie krijgen en prachtige latte art maken.",
+                "beanToCup": "Ik wil het hele proces begrijpen, van de koffieplantage tot het branden."
             }
         },
         "currentPreferences": {
-            "title": "Wat voor koffiedrinker ben jij?",
-            "subtitle": "Houd je van een stevige klassieker of zoek je liever de fruitige smaken op?",
+            "title": "Welk smaakprofiel heeft je voorkeur?",
+            "subtitle": "Houd je van donkere, zoete klassiekers of juist van lichte, sappige en fruitige smaken?",
             "optionLabels": {
-                "boldClassic": "Ik houd van een krachtige, volle smaak met tonen",
-                "milkBalanced": "Voor mij draait het om de balans tussen zachte koffie en perfecte melk.",
-                "versatile": "Ik wil alles leren: van aards en kruidig tot bloemig en fris",
-                "fruityAcidic": "Ik zoek naar lichte, frisse en fruitige smaken met een beetje aciditeit."
+                "boldClassic": "Sterke, intense en volle smaken met diepe chocoladetonen.",
+                "milkBalanced": "Een zachte balans tussen rijk en zoet, met romig opgeschuimde melk.",
+                "fruityAcidic": "Lichte, bloemige en fruitige smaken met een verfrissende zuurgraad.",
+                "versatile": "Ik wil alle smaken van specialty coffee ervaren en ontdekken."
             }
         },
         "desiredTempo": {
-            "title": "Wat is jouw tempo?",
-            "subtitle": "Hoe en hoeveel tijd wil je dagelijks besteden aan je koffiereis?",
+            "title": "Wat is je tempo?",
+            "subtitle": "Hoeveel tijd wil je dagelijks besteden aan je koffiereis?",
             "optionLabels": {
-                "quickShot": "De snelle shot",
+                "quickShot": "De snelle espresso",
                 "dailyRoutine": "De dagelijkse routine",
-                "weekendLover": "De weekend liefhebber",
-                "ownPace": "Op eigen tempo"
+                "weekendLover": "De weekendliefhebber",
+                "ownPace": "Op mijn eigen tempo"
             },
             "optionDescriptions": {
-                "quickShot": "Snel en krachtig, leer me de belangrijkste zaken.",
-                "dailyRoutine": "Ik neem de tijd voor een korte les tijdens het drinken van mijn koffie.",
-                "weekendLover": "In het weekend duik ik graag in de leerstof.",
-                "ownPace": "Geen vaste tijd, ik doe het liever op mijn eigen tempo."
+                "quickShot": "Snel en krachtig, leer me alleen de absolute basis.",
+                "dailyRoutine": "Ik neem de tijd voor een korte les tijdens het drinken van mijn ochtendkoffie.",
+                "weekendLover": "In het weekend duik ik graag diep in de lesstof.",
+                "ownPace": "Geen vaste planning, ik kijk liever rond op mijn eigen tempo."
             }
         },
         "currentMethodes": {
-            "title": "Welke zetmethodes heb je al?",
-            "subtitle": "Selecteer de methodes waar je materiaal voor hebt.",
+            "title": "Welke zetmethoden gebruik je momenteel?",
+            "subtitle": "Selecteer de methoden waarvoor je apparatuur hebt.",
             "optionLabels": {
-                "chemex": "Chemex",
-                "mokaPot": "Moka pot",
-                "espressoMachine": "Espresso",
-                "pourOver": "Pour over",
-                "frenchPress": "French press",
-                "none": "Heb nog niets"
+                "espressoMachine": "Espressomachine",
+                "pourOver": "Pour Over (Filter)",
+                "mokaPot": "Moka Pot",
+                "immersion": "AeroPress",
+                "frenchPress": "French Press",
+                "none": "Geen"
             }
         },
         "extraGear": {
-            "title": "Wat staat er nog in je keuken?",
-            "subtitle": "Selecteer de extra gear dat je al hebt.",
+            "title": "Welke extra apparatuur heb je in je keuken?",
+            "subtitle": "Selecteer de spullen die je al bezit.",
             "optionLabels": {
-                "precisionScale": "Precisie weegschaal",
-                "gooseneckKettle": "Goosneck Kettle",
-                "coffeeGrinder": "Bonenmaler",
-                "milkFrother": "Melk opschuimer",
-                "none": "Heb nog niets"
+                "coffeeGrinder": "Koffiemolen",
+                "precisionScale": "Precisieweegschaal",
+                "gooseneckKettle": "Zwanenhalswaterkoker",
+                "milkFrother": "Stoompijpje / Melkopschuimer",
+                "puckPrep": "WDT / Tamper",
+                "none": "Geen"
             }
         },
         "buttons": {
@@ -162,9 +163,9 @@
             "update": "Wijzigingen opslaan"
         }
     },
-   "postOnboardingFlow": {
+    "postOnboardingFlow": {
         "generating": {
-            "title": "Jouw persoonlijke traject samenstellen..."  
+            "title": "Jouw persoonlijke traject samenstellen..."
         },
         "success": {
             "title": "Jouw traject staat klaar!",
@@ -188,10 +189,11 @@
             }
         }
     },
-    "home": {
-        "title": "Dit is een titel"
+    "homeHeader": {
+        "backToCurrent": "Terug"
     },
     "chapter": {
+        "currentStatus": "Huidige Les",
         "buttons": {
             "completed": "Bezoek eiland opnieuw",
             "continue": "Ga verder",
@@ -202,7 +204,7 @@
     "chapterLesson": {
         "buttons": {
             "start": "Start",
-            "restart": "Herstart",
+            "completed": "Herstart",
             "locked": "Locked"
         }
     },
@@ -219,15 +221,21 @@
         "buttons": {
             "logout": "Uitloggen"
         },
+        "deleteAccount": {
+            "title": "Ben je zeker?",
+            "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
+            "placeholder": "Wachtwoord"
+        },
         "profile": {
-        "title": "Profiel",
+            "title": "Profiel",
             "tabs": {
                 "changePassword": "Wachtwoord wijzigen",
                 "changeEmail": "E-mail wijzigen",
                 "changeName": "Naam wijzigen"
             },
             "buttons": {
-                "delete": "Account verwijderen"
+                "delete": "Account verwijderen",
+                "cancel": "Annuleren"
             }
         },
         "changeLanguage": {
@@ -238,15 +246,40 @@
         },
         "about": {
             "title": "Over BrewLingo",
-            "content": "BrewLingo is jouw ultieme gids om de wereld van koffie te ontdekken. Van boon tot kopje, leer alles over koffie en het zetten van het perfecte kopje. Ontwikkeld door Sam Hoeterickx."
+            "intro": "BrewLingo is jouw ultieme, interactieve gids om de fascinerende wereld van specialty coffee te ontdekken. Van de rijke geschiedenis van de koffieboon tot de fijne wetenschap achter de perfecte extractie: wij maken van jou een echte thuisbarista.",
+            "missionTitle": "Onze Missie",
+            "missionContent": "Koffietheorie kan complex en intimiderend zijn. BrewLingo brengt hier verandering in door educatie toegankelijk, visueel en vooral leuk te maken. Geen droge lappen tekst, maar behapbare lessen die perfect aansluiten op jouw niveau.",
+            "featuresTitle": "Gepersonaliseerd Leren",
+            "featuresContent": "Met interactieve 3D-ervaringen, quizzen en een op maat gemaakte roadmap leer je precies wat jij nodig hebt voor jouw koffie-setup. Of je nu zweert bij een snelle espresso, experimenteert met een Moka pot, of de perfecte pour-over wilt beheersen.",
+            "creatorTitle": "De Maker",
+            "creatorContent": "BrewLingo is ontworpen en ontwikkeld door Sam Hoeterickx, een gepassioneerde full-stack ontwikkelaar én koffieliefhebber, met als doel om de wereld van specialty coffee stap voor stap voor iedereen te openen.",
+            "footer": "BrewLingo — Gemaakt met passie voor koffie en code © 2026"
         },
         "privacyPolicy": {
             "title": "Privacybeleid",
-            "content": "Jouw privacy is belangrijk voor ons. Dit privacybeleid legt uit hoe we jouw persoonlijke informatie verzamelen, gebruiken en beschermen wanneer je de BrewLingo app gebruikt. We delen jouw gegevens niet met derden."
+            "intro": "Bij BrewLingo nemen we jouw privacy serieus. In dit privacybeleid leggen we uit welke gegevens we verzamelen, hoe we ze gebruiken en hoe we ze beschermen.",
+            "section1Title": "1. Gegevens die we verzamelen",
+            "section1Content": "Wanneer je een account aanmaakt, verzamelen we je e-mailadres en gebruikersnaam. Daarnaast houden we je app-voortgang bij (zoals voltooide lessen en je daily streak) om je de beste leerervaring te bieden.",
+            "section2Title": "2. Hoe we je gegevens gebruiken",
+            "section2Content": "We gebruiken je gegevens uitsluitend om de app te laten functioneren, je voortgang op te slaan en om de app te verbeteren via anonieme analytics. We verkopen jouw gegevens nooit aan derden.",
+            "section3Title": "3. Beveiliging en opslag",
+            "section3Content": "Jouw gegevens worden veilig opgeslagen en beschermd tegen ongeoorloofde toegang. We bewaren je gegevens niet langer dan nodig is voor de doeleinden waarvoor ze zijn verzameld.",
+            "section4Title": "4. Jouw rechten (GDPR)",
+            "section4Content": "Je hebt altijd het recht om je gegevens in te zien, te corrigeren of volledig te laten verwijderen. Dit kun je direct doen via de accountinstellingen in de app of door contact met ons op te nemen.",
+            "footer": "Laatst bijgewerkt: juni 2026."
         },
         "termsOfCondition": {
             "title": "Algemene voorwaarden",
-            "content": "Door de BrewLingo app te gebruiken, ga je akkoord met deze algemene voorwaarden. De inhoud van deze app is voor educatieve doeleinden. Wij behouden ons het recht voor om de dienst op elk moment te wijzigen of te beëindigen."
+            "intro": "Welkom bij BrewLingo! Door onze app te gebruiken, ga je akkoord met deze algemene voorwaarden. Lees ze zorgvuldig door.",
+            "section1Title": "1. Gebruik van de app",
+            "section1Content": "BrewLingo biedt educatieve content over koffie, zetmethoden en theorie. De app is bedoeld voor persoonlijk, niet-commercieel gebruik. Je bent zelf verantwoordelijk voor de juistheid van de gegevens die je invoert (zoals je accountgegevens).",
+            "section2Title": "2. Intellectueel eigendom",
+            "section2Content": "Alle content binnen BrewLingo—inclusief teksten, logo's, interactieve lessen en designs—is eigendom van BrewLingo en wordt beschermd door auteursrecht. Het is niet toegestaan om content te kopiëren of te verspreiden zonder toestemming.",
+            "section3Title": "3. Wijzigingen en beschikbaarheid",
+            "section3Content": "We streven naar een perfecte werking van de app, maar we kunnen niet garanderen dat de dienst altijd zonder onderbrekingen online is. Wij behouden ons het recht voor om de functionaliteiten van de app op elk moment aan te passen, te updaten of (tijdelijk) stop te zetten.",
+            "section4Title": "4. Disclaimers",
+            "section4Content": "De informatie in deze app is puur educatief. Hoewel we streven naar de hoogste kwaliteit en accuraatheid in onze koffiewetenschap, zijn we niet aansprakelijk voor eventuele zetfouten, mislukte espresso-extracties of schade aan apparatuur door het opvolgen van gidsen.",
+            "footer": "Laatst bijgewerkt: juni 2026."
         },
         "changePassword": {
             "title": "Wachtwoord wijzigen"
@@ -267,6 +300,104 @@
             "virtuoso": "Smaak Virtuoos",
             "artisan": "Koffie Ambachtsman",
             "legend": "Koffie Legende"
+        },
+        "streaks": {
+            "title": "Jouw Streaks",
+            "current": "Huidige",
+            "longest": "Langste"
         }
+    },
+    "lesson": {
+        "titleScreen": {
+            "introduction": "Hoofdstuk Introductie"
+        },
+        "dykScreen": {
+            "title": "Wist je dat?"
+        },
+        "quiz": {
+            "tag": "Test Je Kennis",
+            "wrongAnswer": "Oeps, probeer nog eens"
+        },
+        "paused": {
+            "title": "Les gepauzeerd",
+            "options": {
+                "quit": "Stop les",
+                "restart": "Herstart les"
+            },
+            "quitConfirm": {
+                "title": "Weet je het zeker?",
+                "subtitle": "Alle voortgang in deze les gaat verloren."
+            },
+            "buttons": {
+                "resume": "Hervat les"
+            }
+        },
+        "buttons": {
+            "continue": "Volgende",
+            "complete": "Voltooi Les"
+        },
+        "postFlow": {
+            "completed": {
+                "tag": "Opgefrist",
+                "title": "Goed Gedaan!",
+                "subtitle": "Kennis herhalen is de sleutel tot meesterschap."
+            },
+            "xp": {
+                "congrats": "Goed Gedaan!",
+                "newTotal": "Nieuw XP Totaal"
+            },
+            "streaks": {
+                "congrats": "Lekker Bezig!",
+                "updated": "Reeks Verlengd",
+                "days": "Dagen"
+            },
+            "lessonUnlocked": {
+                "tag": "Nieuwe Les Vrijgespeeld"
+            },
+            "chapterUnlocked": {
+                "tag": "Nieuw Hoofdstuk Vrijgespeeld"
+            }
+        }
+    },
+    "streaks": {
+        "title": "Jouw Streaks",
+        "current": "Huidige",
+        "longest": "Langste streak",
+        "dayStreaks": "Dagen Streak",
+        "keepGoing": "GEWELDIG BLIJF ZO DOORGAAN"
+    },
+    "loadingScreen": {
+        "messages": {
+            "worldSetup": "Je wereld wordt opgebouwd",
+            "loadingModels": "3D modellen laden",
+            "preparingApp": "App voorbereiden",
+            "loadingChapters": "Hoofdstukken laden",
+            "buildingIslands": "Eilanden aan het bouwen"
+        },
+        "didYouKnow": {
+            "1": "Brazilië is in zijn eentje verantwoordelijk voor ongeveer een derde van de wereldwijde koffieproductie.",
+            "2": "Finland is het land waar per inwoner de meeste koppen koffie ter wereld worden gedronken.",
+            "3": "Het Italiaanse woord espresso betekent letterlijk vertaald \"uitgeperst\".",
+            "4": "De allereerste webcam werd in 1991 in Cambridge gebouwd om in de gaten te houden of de gezamenlijke koffiepot leeg was.",
+            "5": "Na ruwe olie is koffie één van de meest verhandelde grondstoffen ter wereld.",
+            "6": "In 2017 kreeg het internationale ruimtestation ISS zijn eerste speciale espressomachine, genaamd de \"ISSpresso\".",
+            "7": "Hawaii is de enige Amerikaanse staat waar het klimaat geschikt is om commercieel koffie te verbouwen.",
+            "8": "Vóór de uitvinding van koffie als drank, kauwden Oost-Afrikaanse stammen op de geplette bessen voor een energieboost.",
+            "9": "De cappuccino is vernoemd naar de kapucijnermonniken, omdat de kleur van de drank exact leek op hun bruine gewaden.",
+            "10": "Een kopje pure, zwarte koffie bevat vrijwel geen calorieën, totdat je er melk of suiker aan toevoegt.",
+            "11": "Het duurt gemiddeld drie tot vier jaar voordat een nieuw geplante koffieboom voor het eerst bessen produceert.",
+            "12": "Alleen al de geur van koffie kan stress verminderen door de activiteit van specifieke genen in de hersenen te veranderen.",
+            "13": "Oploskoffie bestaat al sinds 1890, maar werd pas een wereldwijd succes tijdens de Eerste Wereldoorlog.",
+            "14": "Afgekoeld koffiedik is een uitstekende en duurzame meststof voor planten die van een zure bodem houden, zoals hortensia's.",
+            "15": "De \"Americano\" ontstond in de Tweede Wereldoorlog toen Amerikaanse soldaten in Italië water aan hun sterke espresso toevoegden.",
+            "16": "Zowel Australië als Nieuw-Zeeland beweren de uitvinders te zijn van de populaire \"flat white\" koffie in de jaren tachtig.",
+            "17": "Macchiato betekent letterlijk \"gevlekt\" in het Italiaans, wat verwijst naar het kleine scheutje melk dat de espresso markeert.",
+            "18": "Om een standaardzak van 60 kilo koffiebonen te produceren, zijn ongeveer 600.000 met de hand geplukte bessen nodig.",
+            "19": "De beroemde componist Ludwig van Beethoven nam zijn koffie uiterst serieus en telde voor elk kopje altijd exact 60 koffiebonen af.",
+            "20": "In de 17e eeuw probeerde de Engelse koning Charles II alle koffiehuizen te sluiten uit angst dat er politieke opstanden werden gesmeed."
+        }
+    },
+    "homeIndicator": {
+        "text": "Swipe om te navigeren"
     }
 }

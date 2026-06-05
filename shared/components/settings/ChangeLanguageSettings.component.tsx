@@ -1,6 +1,6 @@
 import WheelPicker from '@quidone/react-native-wheel-picker';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 
@@ -8,7 +8,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from '../buttons/Button.component';
 
 // CONTEXT
-import { useUserPreferencesStore } from '@/shared/context/userPreferencesStore.context';
+import { useUserDataStore } from '@/shared/context/userDataStore.context';
 
 // CONST
 import { languageData } from '@/shared/const/changeLanguage.const';
@@ -17,8 +17,9 @@ import { languageData } from '@/shared/const/changeLanguage.const';
 import { ELocales } from '@/shared/types/enums';
 import { useChangePreferenceLanguage } from './useChangePreferenceLanguage.hook';
 
-export const ChangeLanguageSettings = () => {
-    const { language, setLanguage } = useUserPreferencesStore();
+export const ChangeLanguageSettings: FC = () => {
+    const language = useUserDataStore((state) => state.language);
+    const setLanguage = useUserDataStore((state) => state.setLanguage);
 
     const [selectedLanguage, setSelectedLanguage] = useState<ELocales>(language);
 

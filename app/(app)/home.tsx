@@ -1,53 +1,98 @@
-import { useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, ScrollView, StyleSheet } from 'react-native';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // COMPONENTS
-import { BackButton, Chapter, LoadingScreen } from '@/shared/components';
+import {
+    BackButton,
+    Chapter,
+    HomeHeader,
+    LoadingScreen,
+    SwipeIndicator,
+} from '@/shared/components';
 
 // HOOKS
+import { useHomeStore } from '@/shared/context/homeStore.context';
 import { useGetChapters, useSwipe } from '@/shared/hooks';
 
+// CONST
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+
 // STYLES
-import { colors, spacing } from '@/shared/styles/design.system';
+import { baseStyles, colors, spacing } from '@/shared/styles/design.system';
 
 // TYPES
 import { EProgressStatus } from '@/shared/types/enums';
-import { IChapterUser } from '@/shared/types/types';
 
 const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
-    const [currentChapterIndex, setCurrentChapterIndex] = useState<number | null>(null);
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    const slideAnim = useRef(new Animated.Value(0)).current;
+    const activeChapterIndex = useHomeStore((state) => state.activeChapterIndex);
+    const chapterIndex = useHomeStore((state) => state.chapterIndex);
+    const allChapters = useHomeStore((state) => state.allChapters);
+    const isScreenActive = useHomeStore((state) => state.isScreenActive);
+    const setAllChapters = useHomeStore((state) => state.setAllChapters);
+    const updateChapterIndex = useHomeStore((state) => state.updateChapterIndex);
+    const returnToCurrentChapter = useHomeStore((state) => state.returnToCurrentChapter);
+    const setIsScreenActive = useHomeStore((state) => state.setIsScreenActive);
 
-    const { data: userChapters, isPending } = useGetChapters();
+    const slideAnim = useRef(new Animated.Value(0)).current;
+    const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+    const { data: userChapters, isPending, refetch, isError, error } = useGetChapters();
     const { onTouchStart, onTouchEnd } = useSwipe(onSwipeLeft, onSwipeRight, 6);
+
+    useFocusEffect(
+        useCallback(() => {
+            if (refetch) {
+                refetch();
+            }
+            setIsFocused(false);
+            returnToCurrentChapter();
+            handleUserInteraction();
+        }, [refetch, returnToCurrentChapter]),
+    );
 
     useEffect(() => {
         if (!userChapters) return;
-        console.log(userChapters);
-
-        userChapters.forEach((userChapter: IChapterUser, index: number) => {
-            console.log(userChapter.status);
-            if (
-                userChapter.status === EProgressStatus.INPROGRESS ||
-                userChapter.status === EProgressStatus.UNLOCKED
-            ) {
-                setCurrentChapterIndex(index);
-            }
-        });
-    }, [userChapters]);
+        setAllChapters(userChapters);
+    }, [userChapters, setAllChapters]);
 
     useEffect(() => {
-        console.log(currentChapterIndex);
-    }, [currentChapterIndex]);
+        if (inactivityTimerRef.current) {
+            clearTimeout(inactivityTimerRef.current);
+        }
+        if (isScreenActive && !isFocused) {
+            inactivityTimerRef.current = setTimeout(() => {
+                setIsScreenActive(false);
+            }, 10000);
+        }
+        return () => {
+            if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+        };
+    }, [isScreenActive, setIsScreenActive, isFocused]);
+
+    const handleUserInteraction = useCallback(() => {
+        if (!isScreenActive) {
+            setIsScreenActive(true);
+        } else {
+            if (inactivityTimerRef.current) {
+                clearTimeout(inactivityTimerRef.current);
+            }
+            if (!isFocused) {
+                inactivityTimerRef.current = setTimeout(() => {
+                    setIsScreenActive(false);
+                }, 10000);
+            }
+        }
+    }, [isScreenActive, setIsScreenActive, isFocused]);
 
     function animateTransition(newIndex: number, swipeDirection: 'left' | 'right') {
-        if (isAnimating || currentChapterIndex === null) return;
+        if (isAnimating || allChapters === null) return;
         setIsAnimating(true);
 
         const outValue = swipeDirection === 'left' ? -width : width;
@@ -58,7 +103,7 @@ export default function HomeScreen() {
             duration: 200,
             useNativeDriver: true,
         }).start(() => {
-            setCurrentChapterIndex(newIndex);
+            updateChapterIndex(newIndex);
             slideAnim.setValue(inValue);
 
             Animated.timing(slideAnim, {
@@ -73,40 +118,58 @@ export default function HomeScreen() {
 
     function onSwipeRight() {
         if (isFocused) return;
-        if (currentChapterIndex === null || currentChapterIndex <= 0) return;
-        animateTransition(currentChapterIndex - 1, 'right');
+        if (allChapters === null || activeChapterIndex <= 0) return;
+        animateTransition(activeChapterIndex - 1, 'right');
     }
 
     function onSwipeLeft() {
         if (isFocused) return;
-        if (
-            currentChapterIndex === null ||
-            !userChapters ||
-            currentChapterIndex >= userChapters.length - 1
-        )
-            return;
-        animateTransition(currentChapterIndex + 1, 'left');
+        if (allChapters === null || activeChapterIndex >= allChapters.length - 1) return;
+        animateTransition(activeChapterIndex + 1, 'left');
     }
+
+    function handleReturnAnimated() {
+        if (activeChapterIndex > chapterIndex) {
+            animateTransition(chapterIndex, 'right');
+        } else if (activeChapterIndex < chapterIndex) {
+            animateTransition(chapterIndex, 'left');
+        }
+    }
+
+    const renderError = () => {
+        return (
+            <View style={styles.error}>
+                <Text style={[baseStyles.h2, styles.errorMessage]}>{String(error)}</Text>
+            </View>
+        );
+    };
 
     return (
         <SafeAreaView style={styles.sHome}>
-            {isPending && <LoadingScreen />}
+            {isPending && <LoadingScreen message={LOADING_MESSAGE_KEYS.LOADING_CHAPTERS} />}
+            {isError && renderError()}
             <ScrollView
                 contentContainerStyle={styles.wChapter}
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
+                onTouchStart={(e) => {
+                    onTouchStart(e);
+                    handleUserInteraction();
+                }}
+                onTouchEnd={(e) => {
+                    onTouchEnd(e);
+                    handleUserInteraction();
+                }}
                 scrollEnabled={false}
                 style={{
                     opacity:
-                        currentChapterIndex !== null &&
-                        userChapters[currentChapterIndex].status === EProgressStatus.LOCKED
+                        allChapters &&
+                        allChapters[activeChapterIndex]?.status === EProgressStatus.LOCKED
                             ? 0.3
                             : 1,
                 }}
             >
-                {!isPending && currentChapterIndex !== null && userChapters && (
+                {!isPending && allChapters && allChapters[activeChapterIndex] && (
                     <Chapter
-                        chapterUser={userChapters[currentChapterIndex]}
+                        chapterUser={allChapters[activeChapterIndex]}
                         slideAnim={slideAnim}
                         isFocused={isFocused}
                         setIsFocused={setIsFocused}
@@ -120,6 +183,9 @@ export default function HomeScreen() {
                     style={{ zIndex: 10, elevation: 10 }}
                 />
             )}
+
+            {!isFocused && <HomeHeader onReturnPress={handleReturnAnimated} />}
+            {!isScreenActive && !isFocused && <SwipeIndicator />}
         </SafeAreaView>
     );
 }
@@ -132,7 +198,15 @@ const styles = StyleSheet.create({
     },
     wChapter: {
         width: width,
-        marginTop: spacing.xxl * 2,
         flex: 1,
+    },
+    error: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: spacing.lg,
+    },
+    errorMessage: {
+        textAlign: 'center',
     },
 });

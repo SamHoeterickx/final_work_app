@@ -13,7 +13,8 @@ export const REGISTER_USER_MUTATION = `
         $name: String!,
         $password: String!,
         $repeatPassword: String!,
-        $onboarding: OnboardingInput!
+        $onboarding: OnboardingInput!,
+        $language: String!
     ) {
         registerUser(
             input: {
@@ -21,7 +22,8 @@ export const REGISTER_USER_MUTATION = `
                 name: $name,
                 password: $password,
                 repeatPassword: $repeatPassword,
-                onboarding: $onboarding
+                onboarding: $onboarding,
+                language: $language
             }
         ) {
             accessToken
@@ -85,8 +87,24 @@ export const RESET_PASSWORD_WITH_RESET_CODE_MUTATION = `
 `;
 
 export const GENERATE_CUSTOM_ROADMAP_MUTATION = `
-    mutation GenerateCustomRoadmap {
-        generateCustomRoadmap
+   mutation GenerateCustomRoadmap {
+        generateCustomRoadmap {
+            uuid
+            slug
+            name
+            description
+            tags
+            lessons {
+                uuid
+                order
+                translations {
+                    languageCode
+                    name
+                    description
+                }
+            }
+            created_at
+        }
     }
 `;
 
@@ -142,4 +160,48 @@ export const UPDATE_PREFERENCE_LANGUAGE_MUTATION = `
             language: $language 
         })
     }
+`;
+
+export const COMPLETE_LESSON_MUTATION = `
+    mutation CompleteLesson(
+        $lessonUuid: String!
+        $languageCode: String!
+    ) {
+        completeLesson(input: { 
+            lessonUuid: $lessonUuid,
+            languageCode: $languageCode
+        }) {
+            success
+            alreadyCompleted
+            message
+            newUserXP
+            prevUserXP
+            isStreakUpdated
+            newStreak
+            prevStreak
+            streak {
+                currentStreak
+                lastCompletedDate
+                longestStreak
+                uuid
+            }
+            newUnlockedLesson {
+                status
+                uuid
+                translations {
+                    name
+                    languageCode
+                    description
+                }
+            }
+            isLastLesson
+            newUnlockedChapter {
+                uuid
+                slug
+                name
+                description
+            }
+        }
+    }
+
 `;

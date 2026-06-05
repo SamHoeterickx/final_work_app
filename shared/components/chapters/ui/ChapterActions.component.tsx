@@ -4,11 +4,16 @@ import { StyleSheet, View } from 'react-native';
 // COMPONENTS
 import { Button } from '../../buttons/Button.component';
 
+// CONTEXT
+import { useHomeStore } from '@/shared/context/homeStore.context';
+
 // TYPES
 import { EProgressStatus, ESvgIconName } from '@/shared/types/enums';
 import { IChapterActionsProps } from '@/shared/types/types';
 
 export const ChapterActions: FC<IChapterActionsProps> = ({ status, isFocused, onPress }) => {
+    const isScreenActive = useHomeStore((state) => state.isScreenActive);
+
     const renderButtonCopy = () => {
         if (!isFocused) {
             switch (status) {
@@ -46,16 +51,20 @@ export const ChapterActions: FC<IChapterActionsProps> = ({ status, isFocused, on
         return ESvgIconName.ARROW_LEFT_FULL;
     };
 
-    return (
-        <View style={styles.cButton}>
-            <Button
-                copy={renderButtonCopy()}
-                disabled={status === EProgressStatus.LOCKED}
-                onPress={onPress}
-                icon={renderButtonIcon()}
-            />
-        </View>
-    );
+    const renderButton = () => {
+        return (
+            <View style={styles.cButton}>
+                <Button
+                    copy={renderButtonCopy()}
+                    disabled={status === EProgressStatus.LOCKED}
+                    onPress={onPress}
+                    icon={renderButtonIcon()}
+                />
+            </View>
+        );
+    };
+
+    return <>{isScreenActive && renderButton()}</>;
 };
 
 const styles = StyleSheet.create({

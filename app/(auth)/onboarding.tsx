@@ -1,6 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -20,9 +19,9 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 const MAX_ONBOARDING_LENGTH = 6;
 
 export default function OnboardingScreen() {
-    const [onboardingCount, setOnboardingCount] = useState<number>(0);
-
-    const { answers } = useOnboardingStore();
+    const onboardingCount = useOnboardingStore((state) => state.onboardingCount || 0);
+    const setOnboardingCount = useOnboardingStore((state) => state.setOnboardingCount);
+    const answers = useOnboardingStore((state) => state.answers);
 
     const router = useRouter();
     const { t } = useTranslation();
@@ -57,7 +56,6 @@ export default function OnboardingScreen() {
                 <OnboardingQuestionWrapper
                     kind={onboardingQuestions[onboardingCount].kind}
                     options={onboardingQuestions[onboardingCount].options}
-                    questionIndex={onboardingCount}
                 />
             </>
         );

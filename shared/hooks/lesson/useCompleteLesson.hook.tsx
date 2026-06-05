@@ -1,0 +1,18 @@
+import { lessonService } from '@/shared/services/lesson.service';
+import { ILessonCredentials } from '@/shared/types/types';
+import { useMutation } from '@tanstack/react-query';
+
+export const useCompleteLesson = () => {
+    return useMutation({
+        mutationFn: async (credentials: ILessonCredentials) => {
+            const response = await lessonService.completeLesson(credentials);
+            return response;
+        },
+        onSuccess: () => {
+            console.log('Successfully complete lesson');
+        },
+        onError: (error: Error) => {
+            console.error('Failed to complete lesson', error.message);
+        },
+    });
+};

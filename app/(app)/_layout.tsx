@@ -1,4 +1,7 @@
-import { SvgIcon } from '@/shared/components';
+import { LoadingScreen, SvgIcon } from '@/shared/components';
+import { LOADING_MESSAGE_KEYS } from '@/shared/const/loadingScreen.const';
+import { useAuthStore } from '@/shared/context/authStore.context';
+import { usePreloadModels } from '@/shared/hooks';
 import { borderRadius, colors } from '@/shared/styles/design.system';
 import { ESvgIconName } from '@/shared/types/enums';
 import { Tabs } from 'expo-router';
@@ -33,6 +36,15 @@ const AnimatedTabIcon = ({ focused, size, iconName }: AnimatedTabIconProps) => {
 };
 
 export default function AppLayout() {
+    const accessToken = useAuthStore((state) => state.accessToken);
+    const refreshToken = useAuthStore((state) => state.refreshToken);
+    const shouldPreload = !!(accessToken || refreshToken);
+
+    const { isReady } = usePreloadModels(shouldPreload);
+
+    if (!isReady) {
+        return <LoadingScreen message={LOADING_MESSAGE_KEYS.WORLD_SETUP} />;
+    }
     return (
         <Tabs
             screenOptions={{
