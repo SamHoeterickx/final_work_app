@@ -34,11 +34,18 @@ export const useHomeStore = create<IHomeStore>((set) => ({
                 chapter.status === EProgressStatus.UNLOCKED,
         );
         const validIndex = cIndex !== -1 ? cIndex : 0;
-        set({
-            allChapters: chapters,
-            chapterIndex: validIndex,
-            activeChapterIndex: validIndex,
-            aChapterStatus: chapters[validIndex]?.status || null,
+
+        set((state) => {
+            const keepActiveIndex =
+                state.allChapters !== null && state.activeChapterIndex < chapters.length;
+            const newActiveIndex = keepActiveIndex ? state.activeChapterIndex : validIndex;
+
+            return {
+                allChapters: chapters,
+                chapterIndex: validIndex,
+                activeChapterIndex: newActiveIndex,
+                aChapterStatus: chapters[newActiveIndex]?.status || null,
+            };
         });
     },
     setIsScreenActive: (isActive: boolean) => set({ isScreenActive: isActive }),

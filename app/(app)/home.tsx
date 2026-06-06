@@ -37,7 +37,6 @@ export default function HomeScreen() {
     const isScreenActive = useHomeStore((state) => state.isScreenActive);
     const setAllChapters = useHomeStore((state) => state.setAllChapters);
     const updateChapterIndex = useHomeStore((state) => state.updateChapterIndex);
-    const returnToCurrentChapter = useHomeStore((state) => state.returnToCurrentChapter);
     const setIsScreenActive = useHomeStore((state) => state.setIsScreenActive);
 
     const slideAnim = useRef(new Animated.Value(0)).current;
@@ -52,9 +51,8 @@ export default function HomeScreen() {
                 refetch();
             }
             setIsFocused(false);
-            returnToCurrentChapter();
             handleUserInteraction();
-        }, [refetch, returnToCurrentChapter]),
+        }, [refetch]),
     );
 
     useEffect(() => {

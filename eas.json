@@ -1,24 +1,28 @@
 {
-    "cli": {
-        "version": ">= 20.0.0",
-        "appVersionSource": "remote"
+  "cli": {
+    "version": ">= 9.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     },
-    "build": {
-        "development": {
-            "developmentClient": true,
-            "distribution": "internal"
-        },
-        "preview": {
-            "distribution": "internal",
-            "android": {
-                "buildType": "apk"
-            }
-        },
-        "production": {
-            "autoIncrement": true
-        }
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://api.brewlingo.be/graphql"
+      }
     },
-    "submit": {
-        "production": {}
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://api.brewlingo.be/graphql"
+      }
     }
+  },
+  "submit": {
+    "production": {}
+  }
 }
