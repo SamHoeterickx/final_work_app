@@ -7,7 +7,7 @@ import { useAuthStore } from '@/shared/context/authStore.context';
 import { TGraphQLError, TTokenRefreshSubscriber } from '@/shared/types/types';
 import { IRefreshTokensResponse, TGraphQLResponse } from '../types/response.type';
 
-const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql';
+const GRAPHQL_ENDPOINT = process.env.EXPO_PUBLIC_API_URL as string;
 
 let isRefreshing = false;
 let refreshSubscribers: TTokenRefreshSubscriber[] = [];
