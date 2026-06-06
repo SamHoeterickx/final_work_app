@@ -44,8 +44,8 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
         }));
     };
 
-    if(isPending){
-        return <LoadingScreen message={t('settings.deleteAccount.deleting')} />
+    if (isPending) {
+        return <LoadingScreen message={t('settings.deleteAccount.deleting')} />;
     }
 
     return (
@@ -90,13 +90,13 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
                             copy="settings.profile.buttons.delete"
                             onPress={handleDeleteAccount}
                             disabled={isPending}
-                            size='large'
+                            size="large"
                         />
                         <Button
                             copy="settings.profile.buttons.cancel"
                             onPress={() => setIsModalOpen(false)}
                             styles={'secundary'}
-                            size='large'
+                            size="large"
                         />
                     </View>
                 </View>
