@@ -5,7 +5,7 @@ import { TextInput, View } from 'react-native';
 import { IInputFieldProps } from '@/shared/types/types';
 
 // STYLES
-import { baseStyles } from '@/shared/styles/design.system';
+import { baseStyles, colors } from '@/shared/styles/design.system';
 
 export const InputField: FC<IInputFieldProps> = ({
     onChangeText,
@@ -20,6 +20,7 @@ export const InputField: FC<IInputFieldProps> = ({
                 style={[baseStyles.inputField, style]}
                 onChangeText={(text) => onChangeText(name, text)}
                 placeholder={placeholder}
+                placeholderTextColor={colors.text.muted}
                 {...settings}
             />
         </View>
