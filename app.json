@@ -14,12 +14,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "icon": {
-        "light": "./assets/images/ios-icon-default.png",
-        "dark": "./assets/images/ios-icon-dark.png",
-        "monochrome": "./assets/images/ios-icon-monochrome.png",
-        "tinted": "./assets/images/ios-icon-tinted.png"
-      }
+      "icon": "./assets/images/ios-icon-default.png"
     },
     "android": {
       "adaptiveIcon": {
