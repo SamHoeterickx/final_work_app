@@ -144,7 +144,7 @@ export default function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.sHome}>
-            {isPending && <LoadingScreen message={LOADING_MESSAGE_KEYS.LOADING_CHAPTERS} />}
+            {isPending && <LoadingScreen message={LOADING_MESSAGE_KEYS.WORLD_SETUP} />}
             {isError && renderError()}
             <ScrollView
                 contentContainerStyle={styles.wChapter}
