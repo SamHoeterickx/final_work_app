@@ -15,6 +15,7 @@ import { baseStyles, borderRadius, colors, spacing } from '@/shared/styles/desig
 
 // TYPES
 import { IDeleteUserCredentials, IModalProps } from '@/shared/types/types';
+import { LoadingScreen } from '../loadingScreen/LoadingScreen.component';
 
 export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
     const [formData, setFormData] = useState<IDeleteUserCredentials>({
@@ -42,6 +43,10 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
             [name]: value,
         }));
     };
+
+    if(isPending){
+        return <LoadingScreen message={t('settings.deleteAccount.deleting')} />
+    }
 
     return (
         <Modal
@@ -85,11 +90,13 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
                             copy="settings.profile.buttons.delete"
                             onPress={handleDeleteAccount}
                             disabled={isPending}
+                            size='large'
                         />
                         <Button
                             copy="settings.profile.buttons.cancel"
                             onPress={() => setIsModalOpen(false)}
                             styles={'secundary'}
+                            size='large'
                         />
                     </View>
                 </View>
@@ -139,7 +146,7 @@ const styles = StyleSheet.create({
     cButton: {
         alignItems: 'center',
         marginTop: 'auto',
-        width: '100%',
+        width: '75%',
         gap: spacing.md,
     },
     text: {

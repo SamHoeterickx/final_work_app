@@ -224,7 +224,8 @@
         "deleteAccount": {
             "title": "es-tu sûr?",
             "subtitle": "Saisissez le mot de passe pour supprimer le compte",
-            "placeholder": "Mot de passe"
+            "placeholder": "Mot de passe",
+            "loadingScreenMessage": "Suppression de vos données..."
         },
         "profile": {
             "title": "Profil",

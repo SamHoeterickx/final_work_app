@@ -224,7 +224,9 @@
         "deleteAccount": {
             "title": "Ben je zeker?",
             "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
-            "placeholder": "Wachtwoord"
+            "placeholder": "Wachtwoord",
+            "loadingScreenMessage": "Uw gegevens worden verwijderd..."
+
         },
         "profile": {
             "title": "Profiel",

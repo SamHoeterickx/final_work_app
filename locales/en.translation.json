@@ -221,7 +221,8 @@
         "deleteAccount": {
             "title": "Are you sure?",
             "subtitle": "Enter password to delete account",
-            "placeholder": "Password"
+            "placeholder": "Password",
+            "loadingScreenMessage": "Removing your data..."
         },
         "buttons": {
             "logout": "logout"
