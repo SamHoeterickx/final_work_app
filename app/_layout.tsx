@@ -41,11 +41,11 @@ const queryClient = new QueryClient();
 SplashScreen.preventAutoHideAsync();
 
 const InitialLayout = () => {
-    const accessToken = useAuthStore((state) => state.accessToken);
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
     const isHydrated = useAuthStore((state) => state.isHydrated);
     const needsRoadmap = useAuthStore((state) => state.needsRoadmap);
     const setHydrated = useAuthStore((state) => state.setHydrated);
-    const setTokens = useAuthStore((state) => state.setTokens);
+    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
 
     const segments = useSegments();
     const router = useRouter();
@@ -72,7 +72,7 @@ const InitialLayout = () => {
                         await SecureStore.deleteItemAsync('accessToken');
                         await SecureStore.deleteItemAsync('refreshToken');
                     } else {
-                        setTokens(secureAccessToken, secureRefreshToken, false);
+                        setAuthenticated(true, false);
                     }
                 }
             } catch (error) {
@@ -89,16 +89,16 @@ const InitialLayout = () => {
 
         const inAuthGroup = segments[0] === '(auth)';
 
-        if (!accessToken && !inAuthGroup) {
+        if (!isAuthenticated && !inAuthGroup) {
             router.replace('/(auth)/startApp');
-        } else if (accessToken && needsRoadmap) {
+        } else if (isAuthenticated && needsRoadmap) {
             router.replace('/(auth)/postOnboardingFlow');
-        } else if (accessToken && inAuthGroup && !needsRoadmap) {
+        } else if (isAuthenticated && inAuthGroup && !needsRoadmap) {
             router.replace('/(app)/home');
         }
 
         SplashScreen.hideAsync();
-    }, [accessToken, isHydrated, fontsLoaded, segments, needsRoadmap]);
+    }, [isAuthenticated, isHydrated, fontsLoaded, segments, needsRoadmap]);
 
     if (!isHydrated || !fontsLoaded) {
         return null;
@@ -119,7 +119,7 @@ export default function RootLayout() {
     const fetchUserLanguage = useUserDataStore((state) => state.fetchUserLanguage);
     const getUserData = useUserDataStore((state) => state.getUserData);
     const isHydrated = useAuthStore((state) => state.isHydrated);
-    const accessToken = useAuthStore((state) => state.accessToken);
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
     const { i18n } = useTranslation();
 
     useEffect(() => {
@@ -129,11 +129,11 @@ export default function RootLayout() {
     }, [language, i18n]);
 
     useEffect(() => {
-        if (isHydrated && accessToken) {
+        if (isHydrated && isAuthenticated) {
             fetchUserLanguage();
             if (getUserData) getUserData();
         }
-    }, [isHydrated, accessToken]);
+    }, [isHydrated, isAuthenticated]);
 
     return (
         <QueryClientProvider client={queryClient}>

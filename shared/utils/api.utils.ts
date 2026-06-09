@@ -85,7 +85,7 @@ export const graphqlFetch = async <T = unknown>(
         return { response, data };
     };
 
-    const currentToken = useAuthStore.getState().accessToken;
+    const currentToken = await SecureStore.getItemAsync('accessToken');
     if (!currentToken) {
         throw new Error('Unauthorized: failed to find token');
     }
@@ -103,7 +103,7 @@ export const graphqlFetch = async <T = unknown>(
             isRefreshing = true;
 
             try {
-                const currentRefreshToken = useAuthStore.getState().refreshToken;
+                const currentRefreshToken = await SecureStore.getItemAsync('refreshToken');
                 if (!currentRefreshToken) throw new Error('No refresh token available');
 
                 const refreshQuery = `
@@ -144,7 +144,7 @@ export const graphqlFetch = async <T = unknown>(
 
                 await SecureStore.setItemAsync('accessToken', newAccessToken);
                 await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-                useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
+                useAuthStore.getState().setAuthenticated(true, false);
 
                 onRefreshed(newAccessToken);
                 isRefreshing = false;
@@ -207,7 +207,7 @@ export const graphFetchAuth = async (
     variables: Record<string, unknown> = {},
 ): Promise<{ response: Response; data: TGraphQLResponse } | undefined> => {
     try {
-        const token = useAuthStore.getState().accessToken;
+        const token = await SecureStore.getItemAsync('accessToken');
 
         const headers = new Headers({
             'Content-Type': 'application/json',

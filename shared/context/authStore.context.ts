@@ -1,20 +1,19 @@
 import { create } from 'zustand';
 
 // TYPES
-import { IAuthStore } from '../types/types';
 import { IGenerateCustomRoadmapResponse } from '../types/response.type';
+import { IAuthStore } from '../types/types';
 
 export const useAuthStore = create<IAuthStore>((set) => ({
-    accessToken: null,
-    refreshToken: null,
+    isAuthenticated: false,
     isHydrated: false,
     needsRoadmap: false,
     roadmapResponse: null,
-    setTokens: (accessToken: string, refreshToken: string, needsRoadmap: boolean = false) =>
-        set({ accessToken, refreshToken, needsRoadmap }),
+    setAuthenticated: (isAuthenticated: boolean, needsRoadmap: boolean = false) =>
+        set({ isAuthenticated, needsRoadmap }),
     setNeedsRoadmap: (state: boolean) => set({ needsRoadmap: state }),
     setHydrated: (state: boolean) => set({ isHydrated: state }),
     setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) =>
         set({ roadmapResponse: chapter }),
-    logout: () => set({ accessToken: null, refreshToken: null, needsRoadmap: false }),
+    logout: () => set({ isAuthenticated: false, needsRoadmap: false }),
 }));

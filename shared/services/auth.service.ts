@@ -93,7 +93,7 @@ class AuthService {
 
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
+            useAuthStore.getState().setAuthenticated(true, false);
         } catch (error) {
             throw error;
         }
@@ -140,7 +140,7 @@ class AuthService {
 
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, true);
+            useAuthStore.getState().setAuthenticated(true, true);
         } catch (error) {
             throw error;
         }
@@ -291,7 +291,7 @@ class AuthService {
 
             await SecureStore.setItemAsync('accessToken', newAccessToken);
             await SecureStore.setItemAsync('refreshToken', newRefreshToken);
-            useAuthStore.getState().setTokens(newAccessToken, newRefreshToken, false);
+            useAuthStore.getState().setAuthenticated(true, false);
         } catch (error) {
             throw error;
         }
