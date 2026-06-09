@@ -18,8 +18,8 @@ import { ILessonUnlockedProps } from '@/shared/types/types';
 export const LessonUnlockedScreen: FC<ILessonUnlockedProps> = ({ lesson }) => {
     const { t } = useTranslation();
 
-    const lName = lesson?.translations?.[0]?.name || 'Nieuwe Les';
-    const lDescription = lesson?.translations?.[0]?.description || '';
+    const lName = lesson.translations.name || 'Nieuwe Les';
+    const lDescription = lesson.translations.description || '';
 
     const lockOpacity = useRef(new Animated.Value(1)).current;
     const lockScale = useRef(new Animated.Value(1)).current;

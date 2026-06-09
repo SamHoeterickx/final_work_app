@@ -373,13 +373,11 @@ export interface ILessonUnlockedProps {
     lesson: {
         status: 'UNLOCKED';
         uuid: string;
-        translations: [
-            {
-                name: string;
-                description: string;
-                languageCode: ELocales;
-            },
-        ];
+        translations: {
+            name: string;
+            description: string;
+            languageCode: ELocales;
+        };
     };
 }
 

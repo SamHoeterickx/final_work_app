@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // COMPONENTS
 import { Button } from '../index';
@@ -11,6 +12,8 @@ import { useAuthStore } from '@/shared/context/authStore.context';
 export const StartLearning: FC = () => {
     const roadmapResponse = useAuthStore((state) => state.roadmapResponse);
     const setNeedsRoadmap = useAuthStore((state) => state.setNeedsRoadmap);
+
+    const { i18n } = useTranslation();
     const router = useRouter();
 
     const firstLesson = roadmapResponse?.lessons?.[0];
@@ -20,13 +23,22 @@ export const StartLearning: FC = () => {
         router.replace(`/(app)/lesson/${firstLesson?.uuid}`);
     };
 
+    const translation =
+        firstLesson?.translations.find(
+            (translation) => translation.languageCode === i18n.language,
+        ) || firstLesson?.translations[0];
+
+    console.log('translation', translation);
+
+    console.log(firstLesson);
+
     return (
         <>
             <LessonUnlockedScreen
                 lesson={{
                     status: 'UNLOCKED',
                     uuid: firstLesson?.uuid || '',
-                    translations: firstLesson?.translations as any,
+                    translations: translation!,
                 }}
             />
 

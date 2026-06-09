@@ -226,7 +226,6 @@
             "subtitle": "Voer het wachtwoord in om het account te verwijderen.",
             "placeholder": "Wachtwoord",
             "loadingScreenMessage": "Uw gegevens worden verwijderd..."
-
         },
         "profile": {
             "title": "Profiel",

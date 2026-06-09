@@ -45,7 +45,7 @@ export const DeleteUserModal: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }
     };
 
     if (isPending) {
-        return <LoadingScreen message={t('settings.deleteAccount.deleting')} />;
+        return <LoadingScreen message={t('settings.deleteAccount.loadingScreenMessage')} />;
     }
 
     return (
