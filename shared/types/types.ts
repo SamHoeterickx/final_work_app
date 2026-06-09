@@ -80,12 +80,11 @@ export interface IOnboardingAnswers {
 }
 
 export interface IAuthStore {
-    accessToken: string | null;
-    refreshToken: string | null;
+    isAuthenticated: boolean;
     isHydrated: boolean;
     needsRoadmap: boolean;
     roadmapResponse: IGenerateCustomRoadmapResponse | null;
-    setTokens: (accessToken: string, refreshToken: string, needsRoadmap: boolean) => void;
+    setAuthenticated: (authState: boolean, roadmapState: boolean) => void;
     setNeedsRoadmap: (state: boolean) => void;
     setRoadmapResponse: (chapter: IGenerateCustomRoadmapResponse) => void;
     setHydrated: (state: boolean) => void;
