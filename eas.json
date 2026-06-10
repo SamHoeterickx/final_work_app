@@ -17,7 +17,6 @@
             }
         },
         "production": {
-            "package": "com.brewlingo",
             "env": {
                 "EXPO_PUBLIC_API_URL": "https://api.brewlingo.be/graphql"
             },

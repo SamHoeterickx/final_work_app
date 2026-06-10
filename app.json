@@ -30,7 +30,7 @@
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.INTERNET"
       ],
-      "package": "com.anonymous.brewlingo"
+      "package": "com.brewlingo"
     },
     "web": {
       "output": "static",
